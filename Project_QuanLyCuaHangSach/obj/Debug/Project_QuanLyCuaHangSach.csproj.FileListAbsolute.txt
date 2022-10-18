@@ -1,0 +1,278 @@
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.SuggestedBindingRedirects.cache
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\lelon\Desktop\DOAN\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\ACER\Downloads\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.SuggestedBindingRedirects.cache
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\lelon\Desktop\D\Project_QuanLyCuaHangSach\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\justa\OneDrive\Máy tính\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+D:\Semester 2 - Second year\Windows programming\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\justa\OneDrive\Máy tính\window\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.SuggestedBindingRedirects.cache
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+C:\Users\lelon\Desktop\FINAL\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.SuggestedBindingRedirects.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.AssemblyReference.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.SuggestedBindingRedirects.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBook.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomer.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmCustomerType.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmLogin.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmMain.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSell.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmSignUp.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateAuthor.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdateCategory.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmUpdatePublisher.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.Properties.Resources.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.dje-NE.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmEmployee.vi-VN.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.GenerateResource.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CoreCompileInputs.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.exe
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe.config
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.exe
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\Project_QuanLyCuaHangSach.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.xml
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\bin\Debug\EntityFramework.SqlServer.xml
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
