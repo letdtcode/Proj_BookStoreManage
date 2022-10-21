@@ -88,6 +88,6 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             string strSql = "SearchPublisher";
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
-
+           
     }
 }

@@ -23,7 +23,7 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
 
         public DataSet LayThongTinSach ()
         {
-            return db.ExecuteQueryDataSet("select * from view_Book_BillOutput", CommandType.);
+            return db.ExecuteQueryDataSet("select * from view_Book_BillOutput", CommandType.Text);
         }
 
         public DataSet TimSach (int id)
@@ -74,6 +74,5 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             return db.MyExecuteNonQuery(strSQL, CommandType.StoredProcedure, paramets, ref err);
         }
 
-        public bool XoaSach
     }
 }

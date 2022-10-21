@@ -212,6 +212,7 @@
             this.dgvPublisher.Name = "dgvPublisher";
             this.dgvPublisher.Size = new System.Drawing.Size(548, 343);
             this.dgvPublisher.TabIndex = 11;
+            this.dgvPublisher.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPublisher_CellClick);
             // 
             // btnFinish
             // 
@@ -223,6 +224,7 @@
             this.btnFinish.TabIndex = 33;
             this.btnFinish.Text = "Xác nhận";
             this.btnFinish.UseVisualStyleBackColor = false;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // frmUpdatePublisher
             // 

@@ -24,6 +24,9 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             return dB.ExecuteQueryDataSet("select * from view_book_publisher", CommandType.Text);
         }
 
-        public bool insertBook ()
+        public bool insertBook()
+        {
+            return false;
+        }
     }
 }
