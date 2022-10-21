@@ -150,7 +150,8 @@ go
 --select * from CUSTOMER
 --exec UpdateCustomer 4, N'AAA', 'GL', '0123456787'
 
--- Tìm kiếm khách hàng 
+-- Tìm kiếm khách hàng
+
 
 
 
@@ -191,6 +192,7 @@ go
 -- Tìm kiếm thông tin của sách trong kho
 
 
+
 -----------------------AUTHOR--------------------------
 ---Thêm author
 Create or alter proc InsertAuthor (@name varchar(30), @phoneNumber varchar(10))
@@ -223,8 +225,104 @@ begin
 end
 go
 
-select * from AUTHOR
-exec SearchAuthor null, N'nguyen van A'
+--select * from AUTHOR
+--exec SearchAuthor null, N'nguyen van A'
 
--------------
+-------------Account-------------------------------
+-- Thêm tài khoản
+create or alter proc InsertAccount(@name varchar(20), @pass varchar(30), @type bit, @idEmployee int)
+as
+begin
+	Insert into ACCOUNT (nameAccount, pass, typeOfAcc, idEmployee) values (@name, @pass, @type, @idEmployee)
+end
+go
 
+--- Xóa tài khoản
+Create or alter proc DeleteAccount (@id int)
+as
+begin
+	Delete ACCOUNT where idAccount = @id
+end
+go
+
+-- Sửa tài khoản 
+Create or alter proc UpdateAccount (@id int, @name varchar(20), @pass varchar(30))
+as
+begin
+	update ACCOUNT set nameAccount = @name, pass = @pass where idAccount = @id
+end
+go
+
+-- Tìm kiếm tài khoản
+Create or alter proc SearchAccount (@id int, @name varchar(20))
+as
+begin
+	select * from ACCOUNT where idAccount = @id or nameAccount = @name
+end
+go
+
+-- Employee
+-- thêm nhân viên
+Create or alter proc InsertEmployee (@firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), 
+										@sex nvarchar(10), @addEmp nvarchar(30), @phoneNumber varchar(10), @email varchar(50),
+										@yearOfBirth date)
+as
+begin
+	Insert into EMPLOYEE (firstName, middleName, lastName, sex, addEmp, phoneNumber, email, yearOfBirth)
+	values (@firstName, @middleName, @lastName, @sex, @addEmp, @phoneNumber, @email, @yearOfBirth)
+end
+go
+
+--Sửa nhân viên
+Create or alter proc UpdateEmployee (@id int, @firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), 
+										@sex nvarchar(10), @addEmp nvarchar(30), @phoneNumber varchar(10), @email varchar(50),
+										@yearOfBirth date)
+as
+begin
+	Update EMPLOYEE set firstName = @firstName, middleName = @middleName, lastName = @lastName, sex = @sex,
+						addEmp = @addEmp, phoneNumber = @phoneNumber, email = @email, yearOfBirth = @yearOfBirth
+					where idEmployee = @id
+end
+go
+
+-- Xóa nhân viên 
+Create or alter proc DeleteEmployee (@id int)
+as
+begin
+	Delete EMPLOYEE where idEmployee = @id
+end
+go
+
+---PUBLISHER
+---Thêm nhà xuất bản
+Create or alter proc InsertPublisher (@name nvarchar(30), @addr nvarchar(30), @phoneNumber varchar(10))
+as
+begin
+	insert into PUBLISHER (namePublisher, addressPublisher, phoneNumber)
+	values (@name, @addr, @phoneNumber)
+end
+go
+
+-- Xóa nhà xuât bản
+Create or alter proc DeletePublisher (@id int)
+as
+begin
+	delete PUBLISHER where idPublisher = @id
+end
+go
+
+-- Sửa nhà xuất bản
+Create or alter proc UpdatePublisher (@id int, @name nvarchar(30), @addr nvarchar(30), @phoneNumber varchar(10))
+as
+begin
+	Update PUBLISHER set namePublisher = @name, addressPublisher = @addr, phoneNumber = @phoneNumber where idPublisher = @id
+end
+go
+
+-- Tìm kiếm nhà xuất bản
+Create or alter proc SearchPublisher (@id int, @name nvarchar (30))
+as
+begin
+	Select * from PUBLISHER where idPublisher = @id or namePublisher = @name
+end
+go
