@@ -16,6 +16,12 @@ namespace Project_QuanLyCuaHangSach
         {
             InitializeComponent();
         }
+
+        void loadDataBook()
+        {
+
+        }
+
         private void frmSell_Load(object sender, EventArgs e)
         {
 

@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Business_Layer\Book.cs" />
     <Compile Include="Business_Layer\Customer.cs" />
+    <Compile Include="Business_Layer\Publisher.cs" />
+    <Compile Include="Business_Layer\SellBook.cs" />
     <Compile Include="DB_Layer\DBMain.cs" />
     <Compile Include="View_Layer\frmBook.cs">
       <SubType>Form</SubType>

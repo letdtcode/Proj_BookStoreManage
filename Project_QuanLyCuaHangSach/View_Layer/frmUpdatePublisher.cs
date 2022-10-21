@@ -12,6 +12,7 @@ namespace Project_QuanLyCuaHangSach
 {
     public partial class frmUpdatePublisher : Form
     {
+        bool insert, update, delete, search;
         public frmUpdatePublisher()
         {
             InitializeComponent();
@@ -24,6 +25,12 @@ namespace Project_QuanLyCuaHangSach
             txtPublisherNAME.ResetText();
             txtPublisherADDRESS.ResetText();
             txtPHONENUM.ResetText();
+
+            this.insert = false;
+            this.update = false;
+            this.delete = false;
+            this.search = false;
+
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -32,6 +39,9 @@ namespace Project_QuanLyCuaHangSach
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            this.insert = true;
+            this.btnFinish.Enabled = true;
+            this.txtPublisherID.Enabled = false;
             
         }
 
