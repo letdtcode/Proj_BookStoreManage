@@ -137,7 +137,7 @@ end
 go
 
 --- Cập nhật khách hàng
-create or alter procedure proc_UpdateCustomer (@id int, @name nvarchar(30), @address nvarchar(30), @phoneNumber varchar(20))
+create procedure proc_UpdateCustomer (@id int, @name nvarchar(30), @address nvarchar(30), @phoneNumber varchar(20))
 as
 begin
 	update CUSTOMER set nameCus = @name, addressCus = @address, phoneNumber = @phoneNumber
@@ -189,8 +189,61 @@ begin
 end
 go
 
--- Tìm kiếm thông tin của sách trong kho
+-- Lấy thông tin sách 
+create or alter proc GetBook 
+as
+begin
+	select BOOK.idBook, BOOK.nameBook ,STRING_AGG(nameCategory, '-'), STRING_AGG(nameAuthor, '-'),  namePublisher, BOOK.priceExport, BOOK.amount
+	from BOOK, BOOK_CATEGORY, CATEGORY, AUTHOR, BOOK_AUTHOR, PUBLISHER
+	where Book.idBook = BOOK_CATEGORY.idBook and 
+			BOOK_CATEGORY.idCategory = CATEGORY.idCategory and 
+			BOOK.idBook = BOOK_AUTHOR.idBook and 
+			BOOK_AUTHOR.idAuthor = AUTHOR.idAuthor and
+			BOOK.idPublisher = PUBLISHER.idPublisher
+	group by book.idBook, BOOK.nameBook, namePublisher, priceExport, amount
+end
+go
 
+
+-- Tìm kiếm
+Create or alter proc SearchBook (@id int, @name nvarchar(50))
+as
+begin
+
+	select BOOK.idBook, BOOK.nameBook ,STRING_AGG(nameCategory, '-'), STRING_AGG(nameAuthor, '-'),  namePublisher, BOOK.priceExport, BOOK.amount
+	from BOOK, BOOK_CATEGORY, CATEGORY, AUTHOR, BOOK_AUTHOR, PUBLISHER
+	where	(BOOK.idBook = @id or BOOK.nameBook like @name) and 
+			Book.idBook = BOOK_CATEGORY.idBook and 
+			BOOK_CATEGORY.idCategory = CATEGORY.idCategory and 
+			BOOK.idBook = BOOK_AUTHOR.idBook and 
+			BOOK_AUTHOR.idAuthor = AUTHOR.idAuthor and
+			BOOK.idPublisher = PUBLISHER.idPublisher
+	group by book.idBook, BOOK.nameBook, namePublisher, priceExport, amount	
+
+end
+go
+
+
+-- Xóa sách khỏi kho (Cần phải chỉnh sửa --Xóa ở các bảng có khóa ngoại trc (Tạo transacion))
+
+Create or alter proc DeleteBook (@id int)
+as
+begin
+	delete BOOK where idBook = @id
+end
+go
+
+
+
+----Cập nhật thông tin sách
+
+Create or alter proc UpdateBook (@id int, @name nvarchar(50), @price int)
+as
+begin
+	update BOOK set nameBook = @name, priceExport = @price where idBook = @id
+
+end
+go
 
 
 -----------------------AUTHOR--------------------------
@@ -293,7 +346,7 @@ begin
 end
 go
 
----PUBLISHER
+---PUBLISHER---------------------------------------------------
 ---Thêm nhà xuất bản
 Create or alter proc InsertPublisher (@name nvarchar(30), @addr nvarchar(30), @phoneNumber varchar(10))
 as
