@@ -17,7 +17,7 @@ namespace Project_QuanLyCuaHangSach
         string err;
 
         DataTable dt;
-        Publisher publisher = new Publisher();
+        Publisher publisher;
 
 
         public frmUpdatePublisher()
@@ -32,8 +32,9 @@ namespace Project_QuanLyCuaHangSach
             try
             {
                 dt = new DataTable();
+                publisher = new Publisher();
                 DataSet ds = publisher.getPublishers();
-
+                publisher = new Publisher();
                 dt = ds.Tables[0];
 
                 dgvPublisher.DataSource = dt;
@@ -138,9 +139,28 @@ namespace Project_QuanLyCuaHangSach
             {
                 try
                 {
-                    publisher.searchPublisher(Convert.ToInt32(txtPublisherID.Text), 
-                        txtPublisherNAME.Text.ToString().Trim(), 
+                    //publisher.searchPublisher(Convert.ToInt32(txtPublisherID.Text), 
+                    //    txtPublisherNAME.Text.ToString().Trim(), 
+                    //    ref err);
+
+                    dt = new DataTable();
+
+                    publisher = new Publisher();
+
+                    DataSet ds = publisher.searchPublisher(Convert.ToInt32(txtPublisherID.Text),
+                        txtPublisherNAME.Text.ToString().Trim(),
                         ref err);
+
+                    dt = ds.Tables[0];
+
+                    dgvPublisher.DataSource = dt;
+
+                    this.txtPublisherID.Text = dgvPublisher.Rows[0].Cells[0].Value.ToString().Trim();
+                    this.txtPublisherNAME.Text = dgvPublisher.Rows[0].Cells[1].Value.ToString().Trim();
+                    this.txtPublisherADDRESS.Text = dgvPublisher.Rows[0].Cells[2].Value.ToString().Trim();
+                    this.txtPHONENUM.Text = dgvPublisher.Rows[0].Cells[3].Value.ToString().Trim();
+
+
                     if (err != null)
                         MessageBox.Show(err);
                 }
@@ -187,7 +207,6 @@ namespace Project_QuanLyCuaHangSach
                 MessageBox.Show("Lỗi rồi");
             }
             Reset();
-            loadData();
         }
 
         private void dgvPublisher_CellClick(object sender, DataGridViewCellEventArgs e)

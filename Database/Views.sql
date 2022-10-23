@@ -91,11 +91,3 @@ where BILLOUTPUT.idCus= CUSTOMER.idCus and
 
 
 
-
-	  select * from view_customer_bookOutput 
-	  select * from CUSTOMER
-	  select * from BILLOUTPUT
-	  select * from TYPECUSTOMER
-
-	select * from BOOK_BILLOUTPUT
-	select * from BILLOUTPUT

@@ -40,6 +40,29 @@ namespace Project_QuanLyCuaHangSach.DB_Layer
             return ds;
         }
 
+
+        public DataSet ExecuteQueryDataSet(string strSQL, CommandType ct, List<SqlParameter> parameters)
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+
+            conn.Open();
+            cmd.CommandText = strSQL;
+            cmd.CommandType = ct;
+
+            foreach (SqlParameter parameter in parameters)
+            {
+                cmd.Parameters.Add(parameter);
+            }
+            
+            adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            return ds;
+        }
+
         //public string ExecuteQueryXML (string strSQL, CommandType ct, params SqlParameter[] p)
         //{
         //    cmd.CommandText = strSQL;
@@ -85,7 +108,7 @@ namespace Project_QuanLyCuaHangSach.DB_Layer
 
             foreach (SqlParameter i in parameters)
             {
-                cmd.Parameters.Add(i.ParameterName, i.Value);
+                cmd.Parameters.Add(i);
             }    
 
             try

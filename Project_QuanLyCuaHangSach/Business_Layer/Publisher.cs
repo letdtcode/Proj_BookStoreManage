@@ -73,7 +73,7 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
-        public bool searchPublisher(int id, string name, ref string err)
+        public DataSet searchPublisher(int id, string name, ref string err)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
 
@@ -86,7 +86,7 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             
 
             string strSql = "SearchPublisher";
-            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+            return dB.ExecuteQueryDataSet(strSql, CommandType.StoredProcedure, parameters);
         }
            
     }

@@ -13,65 +13,61 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
     {
         DBMain db;
 
-        List<SqlParameter> paramets;
-        SqlParameter paramet;
+        
+        SqlParameter parameter;
 
         public Book()
         {
             db = new DBMain();
         }
 
-        public DataSet LayThongTinSach ()
+        public DataSet getBook ()
         {
-            return db.ExecuteQueryDataSet("select * from view_Book_BillOutput", CommandType.Text);
+            return db.ExecuteQueryDataSet("GetBook", CommandType.StoredProcedure);
         }
 
-        public DataSet TimSach (int id)
+        public DataSet searchBook (int id, string name)
         {
-            return db.ExecuteQueryDataSet("select * from view_Book_BillOutput where = " + id, CommandType.Text);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            string strSql = "SearchBook";
+            parameter = new SqlParameter("@id", id);
+            parameters.Add(parameter);
+
+
+            parameter = new SqlParameter("@name", name);
+            parameters.Add(parameter);
+
+
+            return db.ExecuteQueryDataSet (strSql, CommandType.StoredProcedure, parameters);
         }
 
-        public bool SuaThongTinSach(int id, string name, string theLoai, string NXB, ref string err)
-         {
-            string strSQL = "UpdateBook";
-            paramets.Add(paramet);
+        public bool deleteBook (int id, ref string err)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            string strSql = "DeleteBook";
+            parameter = new SqlParameter("@id", id);
+            parameters.Add(parameter);
 
-            paramet = new SqlParameter("@id", id);
-            paramets.Add(paramet);
-
-            paramet = new SqlParameter("@name", name);
-            paramets.Add(paramet);
-
-            paramet = new SqlParameter("@theLoai", theLoai);
-            paramets.Add(paramet);
-
-            paramet = new SqlParameter("@NXB", NXB);
-            paramets.Add(paramet);
-
-            return db.MyExecuteNonQuery(strSQL, CommandType.StoredProcedure, paramets, ref err);
+            return db.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
-        public bool ThemSach (string name, int idNXB, int priceImport, int priceOut, string theLoai, ref string err)
+
+        public bool updatehBook(int id, string name, int price, ref string err)
         {
-            string strSQL = "InsertBook";
-            paramets.Add(paramet);
+            List<SqlParameter> parameters = new List<SqlParameter> ();
+            string strSql = "UpdateBook";
+            parameter = new SqlParameter("@id", id);
+            parameters.Add(parameter);
 
-            paramet = new SqlParameter("@priceOut", priceOut);
-            paramets.Add(paramet);
 
-            paramet = new SqlParameter("@name", name);
-            paramets.Add(paramet);
+            parameter = new SqlParameter("@name", name);
+            parameters.Add(parameter);
 
-            paramet = new SqlParameter("@theLoai", theLoai);
-            paramets.Add(paramet);
+            parameter = new SqlParameter("@price", price);
+            parameters.Add(parameter);
 
-            paramet = new SqlParameter("@idNXB", idNXB);
-            paramets.Add(paramet);
 
-            paramet = new SqlParameter("@priceImport", priceImport);
-            paramets.Add(paramet);
-
-            return db.MyExecuteNonQuery(strSQL, CommandType.StoredProcedure, paramets, ref err);
+            return db.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
     }
