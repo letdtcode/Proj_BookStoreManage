@@ -17,7 +17,7 @@ namespace Project_QuanLyCuaHangSach
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBook());
+            Application.Run(new frmSell());
         }
     }
 }

@@ -276,3 +276,4 @@ D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Proje
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\dje-NE\Project_QuanLyCuaHangSach.resources.dll
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\vi-VN\Project_QuanLyCuaHangSach.resources.dll
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.csproj.CopyComplete
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Project_QuanLyCuaHangSach\obj\Debug\Project_QuanLyCuaHangSach.frmBill.resources

@@ -8,18 +8,59 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Project_QuanLyCuaHangSach.Business_Layer;
+
 namespace Project_QuanLyCuaHangSach
 {
     public partial class frmSell : Form
     {
+        public static int idBill;
+        Book book;
+        SellBook sellBook;
+
+        DataTable dt;
+
+        string err;
+        bool update, delete;
+
         public frmSell()
         {
             InitializeComponent();
+            loadDataBook();
+            loadDataBillOutPut();
+        }
+
+        public frmSell(int h)
+        {
+            idBill = h;
+            InitializeComponent();
+            loadDataBook();
+            loadDataBillOutPut();
+            this.txtBillID.Text = idBill.ToString();
         }
 
         void loadDataBook()
         {
+            dt = new DataTable();
+            book = new Book();
+            DataSet ds = book.getBook();
+            dt = ds.Tables[0];
 
+            dgvAllBook.DataSource = dt;
+
+        }
+
+        void loadDataBillOutPut()
+        {
+            if (idBill != 0)
+            {
+                dt = new DataTable();
+                sellBook = new SellBook();
+                DataSet ds = sellBook.getCart(idBill);
+                dt = ds.Tables[0];
+
+                dgvBill.DataSource = dt;
+            }    
         }
 
         private void frmSell_Load(object sender, EventArgs e)
@@ -39,18 +80,32 @@ namespace Project_QuanLyCuaHangSach
         {
             try
             {
+                sellBook = new SellBook();
+                int idBook = Convert.ToInt32(txtBookID.Text);
+                int amount = Convert.ToInt32(txtAmount.Text);
 
+                sellBook.addBookToCart(idBill, idBook, amount, ref err);
+                if (err != null)
+                {
+                    MessageBox.Show(err);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng nhập số lượng sách hợp lệ");
+                MessageBox.Show(ex.Message);
                 txtAmount.Focus();
             }
+
+            loadDataBillOutPut();
         }
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
-            
+            frmPayBill fmPaBill = new frmPayBill();
 
+            fmPaBill.idBill = idBill;
+
+            fmPaBill.Show();
+            this.Close();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -60,32 +115,24 @@ namespace Project_QuanLyCuaHangSach
 
         private void dgvAllBook_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row = dgvAllBook.Rows[e.RowIndex];
-                txtBookID.Text = Convert.ToString(row.Cells[2].Value);
-                txtAmount.Text = "";
-                txtAmount.Focus();
-            }
+            int r = dgvAllBook.CurrentCell.RowIndex;
+
+            this.txtBookID.Text = dgvAllBook.Rows[r].Cells[0].Value.ToString().Trim();
         }
 
         private void dgvBillDetail_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row = dgvBillDetail.Rows[e.RowIndex];
-                txtBookID.Text = Convert.ToString(row.Cells[2].Value);
-                txtBillID.Text = Convert.ToString(row.Cells[3].Value);
-                txtAmount.Text = Convert.ToString(row.Cells[5].Value);
-            }
+            int r = dgvBill.CurrentCell.RowIndex;
+
+            this.txtBookID.Text = dgvBill.Rows[r].Cells[1].ToString().Trim();
+            this.txtAmount.Text = dgvBill.Rows[r].Cells[2].ToString().Trim();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-          
+            this.delete = true;
         }
+
         public void SumBill()
         {
             
@@ -98,24 +145,66 @@ namespace Project_QuanLyCuaHangSach
             btnSua.Enabled = false;
             txtBillID.Enabled = false;
             txtBookID.Enabled = false;
-
-            btnLuu.Enabled = true;
-            btnHuy.Enabled = true;
-
+          
             txtAmount.Focus();
-        }
 
+            this.update = true;
 
-        private void btnCus_Click(object sender, EventArgs e)
-        {
-            frmCustomer frm = new frmCustomer();
-            frm.ShowDialog();
-            this.Hide();
-        }
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
            
         }
+
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+           if (update)
+            {
+                try
+                {
+                    sellBook = new SellBook();
+                    int idBook = Convert.ToInt32(txtBookID.Text);
+                    //int idBill = Convert.ToInt32(txtBillID.Text);
+                    int amount = Convert.ToInt32(txtAmount.Text);
+
+                    sellBook.addBookToCart(idBill, idBook, amount, ref err);
+                    if (err != null)
+                    {
+                        MessageBox.Show(err);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    txtAmount.Focus();
+                }
+                this.update = false;
+            }
+            
+           else if (delete)
+            {
+                try
+                {
+                    sellBook = new SellBook();
+                    int idBook = Convert.ToInt32(txtBookID.Text);
+                    //int idBill = Convert.ToInt32(txtBillID.Text);
+
+
+                    sellBook.deleteBookFromCart(idBill, idBook, ref err);
+                    if (err != null)
+                    {
+                        MessageBox.Show(err);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    txtAmount.Focus();
+                }
+                this.delete = false;
+            }
+            loadDataBillOutPut();
+            loadDataBook();
+        }
+
         private void frmSell_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmMain frm = new frmMain();
@@ -125,6 +214,7 @@ namespace Project_QuanLyCuaHangSach
 
         private void cbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
         {
+
         }
 
         private void cbEmployeeNAME_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,6 +234,15 @@ namespace Project_QuanLyCuaHangSach
         {
 
         }
+
+        private void btnFindID_Click(object sender, EventArgs e)
+        {
+            frmBill fmBill = new frmBill();
+            fmBill.Show();
+            this.Hide();
+            
+        }
+        
 
         private void dgvBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

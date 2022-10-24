@@ -388,3 +388,59 @@ begin
 	Select * from PUBLISHER where idPublisher = @id or namePublisher = @name
 end
 go
+
+-----------------------------------------BILLOUTPUT---------------------------------------
+---- Tạo hóa đơn------
+create or alter proc CreateBillOutput (@idCus int, @idEmp int, @date date)
+as
+begin
+	insert into BILLOUTPUT (dateOfBill, idCus, idEmployee)
+	values (@date, @idCus, @idEmp)
+end
+go
+
+
+--- lấy data BILLOUTPUT
+
+Create or alter proc getAllBill
+as
+	select idBillOutPut, idCus, idEmployee from BILLOUTPUT
+go
+
+--- Lấy data BOOK_BILLOUTPUT
+create or alter proc GetCart (@idBill int)
+as
+begin
+	Select idBillOutput, BOOK_BILLOUTPUT.idBook, nameBook, amount from BOOK, BOOK_BILLOUTPUT
+	where idBillOutput = @idBill and
+			BOOK.idBook = BOOK_BILLOUTPUT.idBook
+end
+go
+
+exec GetBook
+
+--- Thêm vào giỏ hàng
+Create or alter proc AddBookToCart(@idBill int, @idBook int, @amount int)
+as
+begin
+	Insert into BOOK_BILLOUTPUT values (@idBill, @idBook, @amount)
+end
+go
+
+---- Cập nhật số lượng sách trong giỏ hàng
+Create or alter proc UpdateAmountBookInCart (@idBill int, @idBook int, @amount int)
+as
+begin
+	update BOOK_BILLOUTPUT set amountOutput = @amount
+	where idBillOutput = @idBill and idBook = @idBook
+
+end
+go
+
+--- Xóa sách trong giỏ hàng
+Create or alter proc DeleteBookFromCart(@idBill int, @idBook int)
+as
+begin
+	delete BOOK_BILLOUTPUT where idBillOutput = @idBill and idBook = @idBook
+end
+go

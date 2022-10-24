@@ -14,19 +14,93 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
     {
         DBMain dB;
 
+        SqlParameter parameter;
+        List<SqlParameter> parameters;
+
         public SellBook()
         {
             dB = new DBMain();
         }
 
-        public DataSet getBooks()
+        
+        public bool createBill(int idCus, int idEmp, DateTime date, ref string err)
         {
-            return dB.ExecuteQueryDataSet("select * from view_book_publisher", CommandType.Text);
+            string strSql = "CreateBillOutPut";
+
+
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idCus", idCus);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idCus", idCus);
+            parameters.Add(parameter);
+
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
-        public bool insertBook()
+        public DataSet getBill()
         {
-            return false;
+            return dB.ExecuteQueryDataSet("GetAllBill", CommandType.StoredProcedure);
         }
+
+        public DataSet getCart(int id)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", id);
+            parameters.Add(parameter);
+
+            return dB.ExecuteQueryDataSet("GetCart", CommandType.StoredProcedure, parameters);
+        }
+
+
+        public bool addBookToCart (int idBill, int idBook, int amount, ref string err)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@amount", amount);
+            parameters.Add(parameter);
+
+            string strSql = "AddBookToCart";
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+        }
+
+        public bool deleteBookFromCart (int idBill, int idBook, ref string err)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            string strSql = "DeleteBookFromCart";
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+        }
+
+        public bool updateAmountBookInCart(int idBill, int idBook, int amount, ref string err)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@amount", amount);
+            parameters.Add(parameter);
+
+            string strSql = "UpdateAmountBookInCart";
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+        }    
     }
 }
