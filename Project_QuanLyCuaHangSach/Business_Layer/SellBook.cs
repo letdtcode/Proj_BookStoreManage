@@ -151,6 +151,16 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             return dB.ExecuteQueryDataSet(strSql, CommandType.StoredProcedure, parameters);
         }
 
+        public bool export(int idBill, ref string err)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            string strSql = "Export";
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+        }
 
     }
 }

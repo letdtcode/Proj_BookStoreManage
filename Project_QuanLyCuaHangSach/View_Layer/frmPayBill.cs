@@ -126,7 +126,20 @@ namespace Project_QuanLyCuaHangSach
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            try
+            {
+                sellBook = new SellBook();
+                sellBook.export(idBill, ref err);
+                if (err != null)
+                {
+                    MessageBox.Show(err);
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dgvVoucher_CellClick(object sender, DataGridViewCellEventArgs e)

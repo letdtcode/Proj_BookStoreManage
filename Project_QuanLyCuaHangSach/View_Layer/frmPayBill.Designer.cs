@@ -45,8 +45,8 @@
             this.lbNotVoucher = new System.Windows.Forms.Label();
             this.lbPayMust = new System.Windows.Forms.Label();
             this.btnFinish = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.lbIdVoucher = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.dgvBill = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoucher)).BeginInit();
@@ -226,24 +226,24 @@
             this.btnFinish.UseVisualStyleBackColor = true;
             this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(415, 374);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 22);
-            this.label2.TabIndex = 98;
-            // 
             // lbIdVoucher
             // 
             this.lbIdVoucher.AutoSize = true;
             this.lbIdVoucher.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdVoucher.Location = new System.Drawing.Point(66, 374);
+            this.lbIdVoucher.Location = new System.Drawing.Point(415, 374);
             this.lbIdVoucher.Name = "lbIdVoucher";
-            this.lbIdVoucher.Size = new System.Drawing.Size(122, 22);
-            this.lbIdVoucher.TabIndex = 99;
-            this.lbIdVoucher.Text = "Mã giảm giá";
+            this.lbIdVoucher.Size = new System.Drawing.Size(0, 22);
+            this.lbIdVoucher.TabIndex = 98;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(66, 374);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(122, 22);
+            this.label.TabIndex = 99;
+            this.label.Text = "Mã giảm giá";
             // 
             // dgvBill
             // 
@@ -259,8 +259,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 486);
             this.Controls.Add(this.dgvBill);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.lbIdVoucher);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.lbPayMust);
             this.Controls.Add(this.lbNotVoucher);
@@ -298,8 +298,8 @@
         private System.Windows.Forms.Label lbNotVoucher;
         private System.Windows.Forms.Label lbPayMust;
         private System.Windows.Forms.Button btnFinish;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbIdVoucher;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.DataGridView dgvBill;
     }
 }
