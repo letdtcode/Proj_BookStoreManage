@@ -402,28 +402,49 @@ go
 
 --- lấy data BILLOUTPUT
 
-Create or alter proc getAllBill
+Create or alter proc GetAllBill
 as
 	select idBillOutPut, idCus, idEmployee from BILLOUTPUT
 go
+
+create or alter proc GetBill (@idBill int)
+as
+begin
+	select idBillOutPut, dateOfBill, total, nameCus, pointCus, BILLOUTPUT.idVoucher from BILLOUTPUT, CUSTOMER 
+	where idBillOutPut = @idBill and
+			BILLOUTPUT.idCus = CUSTOMER.idCus
+end
+go
+
+exec GetBill 1
 
 --- Lấy data BOOK_BILLOUTPUT
 create or alter proc GetCart (@idBill int)
 as
 begin
-	Select idBillOutput, BOOK_BILLOUTPUT.idBook, nameBook, amount from BOOK, BOOK_BILLOUTPUT
+	Select idBillOutput, BOOK_BILLOUTPUT.idBook, nameBook, BOOK.priceExport, BOOK_BILLOUTPUT.amountOutput from BOOK, BOOK_BILLOUTPUT
 	where idBillOutput = @idBill and
 			BOOK.idBook = BOOK_BILLOUTPUT.idBook
 end
 go
 
-exec GetBook
+-- Cập nhật giá tiền phải trả trong bill
+Create or alter proc UpdateTotalMoney (@idBill int)
+as
+begin
+	declare @totalMoney int
+	set @totalMoney = (select dbo.func_totalPayCurrent(@idBill))
+	update BILLOUTPUT set total = @totalMoney where idBillOutPut = @idBill
+end
+go
+
 
 --- Thêm vào giỏ hàng
 Create or alter proc AddBookToCart(@idBill int, @idBook int, @amount int)
 as
 begin
 	Insert into BOOK_BILLOUTPUT values (@idBill, @idBook, @amount)
+	exec UpdateTotalMoney @idBill
 end
 go
 
@@ -433,7 +454,8 @@ as
 begin
 	update BOOK_BILLOUTPUT set amountOutput = @amount
 	where idBillOutput = @idBill and idBook = @idBook
-
+	
+	exec UpdateTotalMoney @idBill
 end
 go
 
@@ -442,5 +464,49 @@ Create or alter proc DeleteBookFromCart(@idBill int, @idBook int)
 as
 begin
 	delete BOOK_BILLOUTPUT where idBillOutput = @idBill and idBook = @idBook
+
+	exec UpdateTotalMoney @idBill
+	
 end
 go
+
+-- Xem voucher
+Create or alter proc GetVoucher (@date  date)
+as
+begin
+	select * from VOUCHER
+	where dateStart <= @date and
+			dateEnd >= @date
+end
+go
+
+
+-----Áp dụng voucher
+Create or alter proc AddVoucher (@idBill int, @idVoucher int)
+as
+begin
+	update BILLOUTPUT set @idVoucher = @idVoucher where idBillOutPut = @idBill
+	exec UpdateTotalMoney @idBill
+end
+go
+
+-- Bỏ áp dụng voucher 
+Create or alter proc RemoveVoucher(@idBill int)
+as
+begin
+	update BILLOUTPUT set idVoucher = null where idBillOutPut = @idBill
+	exec UpdateTotalMoney @idBill
+end
+go
+
+--- Xuất đơn 
+Create or alter proc Export(@idBill int)
+as
+begin
+	--- Cập nhật lại số sách trong kho
+
+	--- Cập nhật lại điểm cho người dùng
+	--- Cập nhật lại số lượng voucher
+end
+go
+
