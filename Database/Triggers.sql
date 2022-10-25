@@ -32,35 +32,19 @@ begin
 end
 go
 
---Kiểm tra điều kiện tổng tiền được giảm không quá 50% giá trị đơn hàng và voucher phải còn hạn sử dụng thì mới áp dụng được
-create or alter trigger trg_discountAndUpdateVoucher
-on DISCOUNT
+------------------------------------- Kiểm tra voucher còn hạn sử dụng hay không-----------------------------------
+create or alter trigger trg_ExpiryUseVoucher
+on BILLOUTPUT 
 for insert, update
 as
 begin
-	declare @idBillDiscount int, @idVcher int, @totalCurrent int, @totalAfterDiscount int, @totalStart int, @checkBill bit
-	select @idBillDiscount=i.idBill, @idVcher=i.idVoucher, @totalCurrent=dbo.totalPayCurrent(@idBillDiscount), @totalStart=dbo.totalPayBeforeDiscount(@idBillDiscount)
-	from inserted i
-	--Kiểm tra idVoucher có tồn tại 
-	if (not exists(select * from VOUCHER where @idVcher=VOUCHER.idVoucher))
-		begin
-			print (N'Voucher không tồn tại trong kho')
-			rollback transaction
-		end
-	--Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill 
-	select @totalAfterDiscount=@totalCurrent-VOUCHER.valueVoucher
-	from dbo.VOUCHER
-	where VOUCHER.idVoucher=@idVcher
+	declare @checkBill bit, @idBillOutput int, @idVoucher int
+	select @idBillOutput = i.idBillOutPut, @idVoucher = i.idVoucher from inserted i
 
-	if (@totalAfterDiscount < (0.5*@totalStart))
-		begin
-			print (N'Voucher không thể áp dụng do vượt quá 50% giá trị hóa đơn')
-			rollback transaction
-		end
-	--Kiểm tra Voucher có còn hạn sử dụng 
-	select @checkBill=dbo.checkVoucherValidOrNot(VOUCHER.dateStart,VOUCHER.dateEnd,BILLOUTPUT.dateOfBill)
+
+	select @checkBill = dbo.func_checkVoucherValidOrNot (VOUCHER.dateStart,VOUCHER.dateEnd,BILLOUTPUT.dateOfBill)
 	from dbo.BILLOUTPUT, dbo.VOUCHER
-	where BILLOUTPUT.idBillOutPut=@idBillDiscount and VOUCHER.idVoucher=@idVcher
+	where BILLOUTPUT.idBillOutPut= @idBillOutput and VOUCHER.idVoucher= @idVoucher
 	if (@checkBill=0)
 		begin
 			print (N'Voucher đã hết hạn sử dụng')
@@ -69,6 +53,8 @@ begin
 end
 go
 
+--select dbo.func_checkVoucherValidOrNot('2022-1-1', '2022-10-10', '2022-10-9')
+ 
 
 ---- Kiểm tra nếu số sách trong kho = 0 mới cho phép xóa
 --Create or alter trigger CheckAmountBook on BOOK
@@ -87,8 +73,8 @@ go
 --	end
 --end
 
--- Kiểm tra số điện thoại của khách = 9 con số != 0 và phải có ký tự đầu tiên = 0 thì hợp lệ
 
+------------------------------------- Kiểm tra số điện thoại của khách = 9 con số != 0 và phải có ký tự đầu tiên = 0 thì hợp lệ---------------------
 Create or alter trigger checkPhoneNumberOfCustomer 
 on CUSTOMER
 for insert, update
@@ -116,7 +102,7 @@ go
 
 --select * from CUSTOMER
 
--- Khách hàng không có đơn hàng nào mới được xóa (Không cần thiết, vì khi có đơn hàng sẽ bị ràng buộc khóa ngoại)
+----------------------- Khách hàng không có đơn hàng nào mới được xóa (Không cần thiết, vì khi có đơn hàng sẽ bị ràng buộc khóa ngoại)
 Create or alter trigger DeleCus on CUSTOMER for delete
 as
 begin
