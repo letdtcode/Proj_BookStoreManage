@@ -2,7 +2,7 @@
 go
 
 -----------------------------------------Function phụ trợ--------------------------------------------------
---Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào
+------------------------------------------------------------Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào----------------
 create or alter function func_totalPayBeforeDiscount(@idBill int)
 returns int
 as
@@ -12,11 +12,16 @@ begin
 	select sum(priceExport*amountOutput)
 	from dbo.BOOK,dbo.BOOK_BILLOUTPUT
 	where BOOK.idBook=BOOK_BILLOUTPUT.idBook and @idBill=BOOK_BILLOUTPUT.idBillOutput)
+
+	if (@totalPrice is null)
+	begin
+		set @totalPrice = 0
+	end
 	return @totalPrice
 end
 go
 
--- Tính số tiền được giảm giá
+------------------------------------------------------------ Tính số tiền được giảm giá----------------------------------------------------------
 create or alter function fuc_discount(@idbill int)
 returns float
 as
@@ -36,20 +41,24 @@ begin
 	set @discount = (@discount/100)*  dbo.func_totalPayBeforeDiscount(@idbill)
 	return @discount
 end
+go
+--select dbo.fuc_discount(1002)
 
-select dbo.fuc_discount(1002)
 
+--select * from BILLOUTPUT
+--select * from TYPECUSTOMER
 
-select * from BILLOUTPUT
-select * from TYPECUSTOMER
-
---Hàm tính tổng tiền hóa đơn hiện tại
+------------------------------------------------------------Hàm tính tổng tiền hóa đơn hiện tại------------------------------------
 create or alter function func_totalPayCurrent(@idBill int)
 returns int
 as 
 begin
 	declare @totalPrice int, @discount float
-	set @discount = (select valueVoucher from Voucher, BILLOUTPUT where idBillOutPut = @idBill and VOUCHER.idVoucher = BILLOUTPUT.idVoucher)
+	set @discount = (
+		select valueVoucher from Voucher, BILLOUTPUT 
+		where idBillOutPut = @idBill and 
+			VOUCHER.idVoucher = BILLOUTPUT.idVoucher
+	)
 	if (@discount is NULL)
 	begin
 		set @discount = 0
@@ -59,23 +68,23 @@ begin
 end
 go
 
-select dbo.func_totalPayCurrent(1)
+--select dbo.func_totalPayCurrent(1)
 
---Hàm kiểm tra voucher còn trong thời gian sử dụng hay không
+---------------------------Hàm kiểm tra voucher còn trong thời gian sử dụng hay không------------------------------------------------------
 create or alter function func_checkVoucherValidOrNot(@dateStart date,@dateEnd date,@dateCurrent date)
 returns bit
 as
 begin
 	declare @dayOfVoucher int, @dayCurrentSinceVoucher int
-	set @dayOfVoucher=DATEDIFF(day,@dateEnd,@dateStart)
-	set @dayCurrentSinceVoucher=DATEDIFF(day,@dateCurrent,@dateStart)
+	set @dayOfVoucher = DATEDIFF(day, @dateEnd,@dateStart)
+	set @dayCurrentSinceVoucher = DATEDIFF(day, @dateCurrent, @dateStart)
 	if (@dayCurrentSinceVoucher < @dayOfVoucher)
 		return 0
 	return 1
 end
 go
 
--- Kiểm tra số sách trong kho
+-- -------------------------------------------------Kiểm tra số sách trong kho----------------------------------------------------------
 create or alter function returnAmountBook (@idBook int)
 returns int
 as
@@ -86,7 +95,7 @@ begin
 end
 go
 
--- Tính thổng doanh thu trong 1 tháng 
+------------------------------------------------------------ Tính thổng doanh thu trong 1 tháng -------------------------------------------------
 create or alter function revenueInMonth (@month int, @year int)
 returns float
 as
@@ -97,7 +106,7 @@ begin
 end
 go
 
--- Tính tổng doanh thu theo tháng
+------------------------------------------------------------ Tính tổng doanh thu theo tháng-----------------------------------------------
 create or alter function revenueInMonths (@startMonth int, @endMoth int, @year int)
 returns @tableRevenueInMonths table (monthIndex int, revenue float) 
 as
@@ -114,7 +123,7 @@ end
 go
 
 
--- Hàm tính doanh thu trong năm
+------------------------------------------------------------ Hàm tính doanh thu trong năm---------------------------------------------
 create or alter function revenueInYear (@year int)
 returns float
 as
@@ -125,7 +134,7 @@ begin
 end
 go
 
--- Hàm tính doanh thu theo năm
+------------------------------------------------------------ Hàm tính doanh thu theo năm--------------------------------------------
 
 create or alter function revenueInYears (@startYear int, @endYear int)
 returns @tableRevenueInYears table (yearIndex int, revenue float) 
@@ -141,34 +150,6 @@ begin
 	return 
 end
 go
-
-select * from dbo.revenueInYears(2021, 2023)
-
-----Hàm kiểm tra số điện thoại (trả về true nếu chỉ chứa ký tự số, false nếu ngược lại)
-
---create or alter function CheckPhoneNumber (@phoneNumber varchar(10))
---returns int
---as
---begin
---	declare @i int
---	set @i = 0
---	while (@i <10)
---	begin
---		if (SUBSTRING(@phoneNumber, @i +1, 1) < '0' or SUBSTRING(@phoneNumber, @i +1, 1) > '9') 
---		-- Hàm substring là hàm cắt chuỗi syntax: SUBSTRING (string, start, length) 
---		begin
---			return 0;
---		end
---		set @i+=1
---	end
---	return 1
---end
---go
-
---select dbo.CheckPhoneNumber('1234567891')
-
-
-
 
 
 
