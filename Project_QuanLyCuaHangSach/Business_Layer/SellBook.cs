@@ -44,6 +44,16 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
             return dB.ExecuteQueryDataSet("GetAllBill", CommandType.StoredProcedure);
         }
 
+        public DataSet getBill(int idBill)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            return dB.ExecuteQueryDataSet("GetBill", CommandType.StoredProcedure, parameters);
+        }
+
         public DataSet getCart(int id)
         {
             parameters = new List<SqlParameter>();
@@ -101,6 +111,46 @@ namespace Project_QuanLyCuaHangSach.Business_Layer
 
             string strSql = "UpdateAmountBookInCart";
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
-        }    
+        }
+
+
+        public bool addVoucher(int idBill, int idVoucher, ref string err)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idVoucher", idVoucher);
+            parameters.Add(parameter);
+
+            string strSql = "AddVoucher";
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+
+        }
+
+        public bool deleteVoucher(int idBill, ref string err)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            string strSql = "RemoveVoucher";
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+        }
+
+        public DataSet getVoucher (DateTime date)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@date", date);
+            parameters.Add(parameter);
+
+            string strSql = "GetVoucher";
+            return dB.ExecuteQueryDataSet(strSql, CommandType.StoredProcedure, parameters);
+        }
+
+
     }
 }

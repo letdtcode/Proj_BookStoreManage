@@ -14,7 +14,7 @@ namespace Project_QuanLyCuaHangSach
 {
     public partial class frmSell : Form
     {
-        public static int idBill;
+        public int idBill;
         Book book;
         SellBook sellBook;
 
@@ -30,9 +30,9 @@ namespace Project_QuanLyCuaHangSach
             loadDataBillOutPut();
         }
 
-        public frmSell(int h)
+        public frmSell(int id)
         {
-            idBill = h;
+            this.idBill = id;
             InitializeComponent();
             loadDataBook();
             loadDataBillOutPut();
@@ -100,10 +100,7 @@ namespace Project_QuanLyCuaHangSach
         }
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
-            frmPayBill fmPaBill = new frmPayBill();
-
-            fmPaBill.idBill = idBill;
-
+            frmPayBill fmPaBill = new frmPayBill(idBill);
             fmPaBill.Show();
             this.Close();
         }
@@ -124,8 +121,8 @@ namespace Project_QuanLyCuaHangSach
         {
             int r = dgvBill.CurrentCell.RowIndex;
 
-            this.txtBookID.Text = dgvBill.Rows[r].Cells[1].ToString().Trim();
-            this.txtAmount.Text = dgvBill.Rows[r].Cells[2].ToString().Trim();
+            this.txtBookID.Text = dgvBill.Rows[r].Cells[1].Value.ToString().Trim();
+            this.txtAmount.Text = dgvBill.Rows[r].Cells[4].Value.ToString().Trim();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -139,24 +136,63 @@ namespace Project_QuanLyCuaHangSach
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
+
             btnAdd.Enabled = false;
             btnCreateBill.Enabled = false;
             btnXoa.Enabled = false;
             btnSua.Enabled = false;
-            txtBillID.Enabled = false;
-            txtBookID.Enabled = false;
-          
             txtAmount.Focus();
 
             this.update = true;
 
            
         }
-
-
-        private void btnLuu_Click(object sender, EventArgs e)
+        
+        void reset ()
         {
-           if (update)
+            btnAdd.Enabled = true;
+            btnCreateBill.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled= true;
+
+            this.txtAmount.ResetText();
+            this.txtBookID.ResetText();
+        }
+
+
+        private void frmSell_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void cbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbEmployeeNAME_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+
+
+        private void btnFindID_Click(object sender, EventArgs e)
+        {
+            frmBill fmBill = new frmBill();
+            fmBill.Show();
+            this.Hide();
+            
+        }
+
+        private void btnCancel_click(object sender, EventArgs e)
+        {
+            reset();
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+            if (update)
             {
                 try
                 {
@@ -165,7 +201,7 @@ namespace Project_QuanLyCuaHangSach
                     //int idBill = Convert.ToInt32(txtBillID.Text);
                     int amount = Convert.ToInt32(txtAmount.Text);
 
-                    sellBook.addBookToCart(idBill, idBook, amount, ref err);
+                    sellBook.updateAmountBookInCart(idBill, idBook, amount, ref err);
                     if (err != null)
                     {
                         MessageBox.Show(err);
@@ -178,8 +214,8 @@ namespace Project_QuanLyCuaHangSach
                 }
                 this.update = false;
             }
-            
-           else if (delete)
+
+            else if (delete)
             {
                 try
                 {
@@ -203,50 +239,7 @@ namespace Project_QuanLyCuaHangSach
             }
             loadDataBillOutPut();
             loadDataBook();
-        }
-
-        private void frmSell_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            frmMain frm = new frmMain();
-            frm.Show();
-            this.Hide();
-        }
-
-        private void cbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbEmployeeNAME_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-      
-
-      
-        private void dgvBillDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvAllBook_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnFindID_Click(object sender, EventArgs e)
-        {
-            frmBill fmBill = new frmBill();
-            fmBill.Show();
-            this.Hide();
-            
-        }
-        
-
-        private void dgvBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            reset();
         }
     }
 }

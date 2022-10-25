@@ -23,7 +23,6 @@ namespace Project_QuanLyCuaHangSach.DB_Layer
             this.cmd = conn.CreateCommand();
         }
 
-
         public DataSet ExecuteQueryDataSet(string strSQL, CommandType ct)
         {
             if (conn.State == ConnectionState.Open)

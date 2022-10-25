@@ -172,6 +172,9 @@
     <EmbeddedResource Include="View_Layer\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View_Layer\frmPayBill.resx">
+      <DependentUpon>frmPayBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View_Layer\frmSell.resx">
       <DependentUpon>frmSell.cs</DependentUpon>
     </EmbeddedResource>
