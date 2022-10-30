@@ -70,7 +70,7 @@ go
 
 --select dbo.func_totalPayCurrent(1)
 
----------------------------Hàm kiểm tra voucher còn trong thời gian sử dụng hay không------------------------------------------------------
+--------------------------------------------Hàm kiểm tra voucher còn trong thời gian sử dụng hay không------------------------------------------------------
 create or alter function func_checkVoucherValidOrNot(@dateStart date,@dateEnd date,@dateCurrent date)
 returns bit
 as
@@ -84,16 +84,6 @@ begin
 end
 go
 
--- -------------------------------------------------Kiểm tra số sách trong kho----------------------------------------------------------
-create or alter function returnAmountBook (@idBook int)
-returns int
-as
-begin
-	declare @amount int
-	set @amount = (select amount from BOOK where idBook = @idBook)
-	return @amount
-end
-go
 
 ------------------------------------------------------------ Tính thổng doanh thu trong 1 tháng -------------------------------------------------
 create or alter function revenueInMonth (@month int, @year int)
@@ -152,8 +142,16 @@ end
 go
 
 
-
-
+-- -------------------------------------------------Kiểm tra số sách trong kho----------------------------------------------------------
+create or alter function returnAmountBook (@idBook int)
+returns int
+as
+begin
+	declare @amount int
+	set @amount = (select amount from BOOK where idBook = @idBook)
+	return @amount
+end
+go
 
 
 

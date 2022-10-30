@@ -120,7 +120,17 @@ begin
 			rollback transaction
 		end
 end
-
+go
 --select * from CUSTOMER
 
 --delete CUSTOMER where idCus = 10
+
+-------------------------------------------------------Kiểm tra số sách thêm vào giỏ hàng phải nhỏ hơn hoặc bằng sách trong kho-------------
+Create or alter trigger trg_checkAmountBook on BOOK_BILLOUTPUT
+for insert, update
+as
+begin
+	
+
+end
+go

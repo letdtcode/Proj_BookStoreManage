@@ -147,9 +147,26 @@ begin
 end
 go
 
---select * from CUSTOMER
---exec UpdateCustomer 4, N'AAA', 'GL', '0123456787'
 
+-------------------------------------------Cập nhật điểm của khách hàng---------------------------------------------------------
+Create procedure proc_UpdateScore (@id int, @price int)
+as
+begin
+	declare @score int, @scoreCus int 
+
+	set @scoreCus = (select pointCus from CUSTOMER where idCus = @id)
+
+	set @score = (select dbo.CalcScore (@price))
+	
+	set @scoreCus += @score
+
+	update CUSTOMER set pointCus = @scoreCus where idCus = @id
+end
+go
+
+
+select * from CUSTOMER
+select * from TYPECUSTOMER
 -- Tìm kiếm khách hàng
 
 
@@ -209,6 +226,7 @@ begin
 end
 go
 
+
 -- Tìm kiếm
 Create or alter proc SearchBook (@id int, @name nvarchar(50))
 as
@@ -244,7 +262,7 @@ go
 
 
 
-----Cập nhật thông tin sách
+----------------------------------------------Cập nhật thông tin sách
 
 Create or alter proc UpdateBook (@id int, @name nvarchar(50), @price int)
 as
@@ -255,7 +273,7 @@ end
 go
 
 
------------------------AUTHOR--------------------------
+----------------------------------------------------------------------AUTHOR--------------------------
 ---Thêm author
 Create or alter proc InsertAuthor (@name varchar(30), @phoneNumber varchar(10))
 as
@@ -271,7 +289,7 @@ begin
 end
 go
 
----Xóa Author
+----------------------------------------------------------------------Xóa Author
 Create or alter proc DeleteAuthor (@id int)
 as
 begin
@@ -290,7 +308,7 @@ go
 --select * from AUTHOR
 --exec SearchAuthor null, N'nguyen van A'
 
--------------Account-------------------------------
+----------------------------------------------------------------Account-------------------------------
 -- Thêm tài khoản
 create or alter proc InsertAccount(@name varchar(20), @pass varchar(30), @type bit, @idEmployee int)
 as
@@ -323,7 +341,7 @@ begin
 end
 go
 
--- Employee
+------------------------------------------------------ Employee
 -- thêm nhân viên
 Create or alter proc InsertEmployee (@firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), 
 										@sex nvarchar(10), @addEmp nvarchar(30), @phoneNumber varchar(10), @email varchar(50),
@@ -355,7 +373,7 @@ begin
 end
 go
 
----PUBLISHER---------------------------------------------------
+-----------------------------------------------------PUBLISHER---------------------------------------------------
 ---Thêm nhà xuất bản
 Create or alter proc InsertPublisher (@name nvarchar(30), @addr nvarchar(30), @phoneNumber varchar(10))
 as
@@ -416,7 +434,7 @@ begin
 end
 go
 
-exec GetBill 1
+--exec GetBill 1
 
 --- Lấy data BOOK_BILLOUTPUT
 create or alter proc GetCart (@idBill int)
@@ -499,14 +517,74 @@ begin
 end
 go
 
---- Xuất đơn 
-Create or alter proc Export(@idBill int)
-as
-begin
-	--- Cập nhật lại số sách trong kho
 
-	--- Cập nhật lại điểm cho người dùng
-	--- Cập nhật lại số lượng voucher
+------------------------------------------------------- Xóa đơn -----------------------------------------------------
+Create or alter proc RemoveBill (@idBill int)
+as begin
+	delete BOOK_BILLOUTPUT where idBillOutput = @idBill
+	delete BILLOUTPUT where idBillOutPut = @idBill
 end
 go
 
+
+------------------------------------------------------- Xuất đơn -------------------------------------------------------
+Create or alter proc Export(@idBill int, @flag bit)
+as
+begin
+	begin transaction
+		save transaction Confirm
+		declare @idCus int
+		--- Cập nhật lại số sách trong kho
+
+		--- Cập nhật lại điểm cho người dùng
+		set @idCus = (select idCus from BILLOUTPUT where idBillOutPut = @idBill)
+		exec Up
+		--- Cập nhật lại số lượng voucher
+
+		if (@flag = 0)
+		begin 
+			rollback transaction Confirm
+			exec RemoveBill @idBill
+		end
+
+	end
+	
+end
+go
+
+
+
+-----------------------------------------------------------BOOK INPUT----------------------------------------------------------------------
+------------------------------------------------ Thêm sách vào kho ---------------------------------------------------------------------
+Create or alter proc AddBook (@nameBook nvarchar(20), @amount int, @priceImport int, @priceExport int, @idPublisher int)
+as
+begin
+	Insert into BOOK (nameBook, amount, priceImport, priceExport, idPublisher)
+	values (@nameBook, @amount, @priceImport, @priceExport, @idPublisher)
+end
+go
+
+------------------------------------------------ Tạo hóa đơn Input ---------------------------------------------------------------------
+Create or alter proc CreateBillInput (@date Datetime, @idEmployee int)
+as
+begin
+	Insert into BILLINPUT (dateOfInput, idEmployee) values (@date, @idEmployee)
+
+end
+go
+
+------------------------------------------------ Tạo bill nhập sách ---------------------------------------------------------------------
+Create or alter proc CreateBookBillInput (@idBill int, @idBook int, @amount int)
+as
+begin
+	Insert into BOOK_BILLINPUT (idBillInput, idBook, amountInput)
+	values (@idBill, @idBook, @amount)
+end
+go
+
+select * from BOOK
+select * from BOOK_BILLINPUT
+select * from BILLINPUT
+
+
+select * from BOOK

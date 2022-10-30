@@ -62,7 +62,7 @@ group by CUSTOMER.idCus, CUSTOMER.nameCus,
 		CUSTOMER.addressCus, CUSTOMER.phoneNumber, CUSTOMER.pointCus, nameTypeCus
 go
 
-select * from view_customer_bookOutput where idCus = 1
+--select * from view_customer_bookOutput where idCus = 1
 
 --4.	Thống kê doanh thu theo từng ngày:
 create view view_Revenue_BillOutput
