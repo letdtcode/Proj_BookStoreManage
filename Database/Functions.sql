@@ -154,5 +154,40 @@ end
 go
 
 
+-----------------------------------------------Tính điểm của khách qua tổng tiền trong hóa đơn---------------------------------------------
+Create or alter function CalcScore (@price int)
+returns int
+as
+begin
+	declare @score int
+
+	if (@price<=0)
+	begin 
+		set @score = 0
+	end
+	if (@price > 0 and @price <= 100000)
+	begin
+		set @score = 5
+	end
+
+	else if (@price > 100000 and @price <= 1000000)
+	begin
+		set @score = 10
+	end
+
+	else if (@price > 1000000 and @price <= 2000000)
+	begin
+		set @score = 30
+	end
+
+	else if (@price >= 2000000)
+	begin
+		set @score = 100
+	end
+
+	return @score
+end
+go
+
 
 
