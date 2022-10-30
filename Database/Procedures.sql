@@ -488,15 +488,7 @@ begin
 end
 go
 
--- Xem voucher
-Create or alter proc GetVoucher (@date  date)
-as
-begin
-	select * from VOUCHER
-	where dateStart <= @date and
-			dateEnd >= @date
-end
-go
+
 
 
 -----Áp dụng voucher
@@ -533,13 +525,19 @@ as
 begin
 	begin transaction
 		save transaction Confirm
-		declare @idCus int
+		declare @idCus int, @TotalPrice int, @idVoucher int, @idBook int
+
+		select @idCus=idCus, @TotalPrice=total, @idVoucher= idVoucher
+		from BILLOUTPUT where idBillOutPut = @idBill
+
+		select @idBook = idBook from BOOK_BILLOUTPUT where idBillOutput = @idBill
 		--- Cập nhật lại số sách trong kho
 
 		--- Cập nhật lại điểm cho người dùng
-		set @idCus = (select idCus from BILLOUTPUT where idBillOutPut = @idBill)
-		exec Up
+		
+		exec proc_UpdateScore @idCus, @TotalPrice
 		--- Cập nhật lại số lượng voucher
+		exec proc_UpdateAmountVoucher @idVoucher
 
 		if (@flag = 0)
 		begin 
@@ -552,6 +550,45 @@ begin
 end
 go
 
+-----------------------------------------------------------------Voucher----------------------------------------------------
+-----------------------------------------------------Lấy tất cả voucher---------------------------------------------------
+
+Create or alter proc GetVoucher (@date  dateTime)
+as
+begin
+	select * from VOUCHER
+	where dateStart <= @date and
+			dateEnd >= @date
+end
+go
+
+
+-------------------------------------------------Thêm voucher-------------------------------------------------------
+create or alter proc InsertVoucher (@value int, @name nvarchar(40), @dateStart date, @dateEnd date, @amount int)
+as
+begin
+	insert into VOUCHER (valueVoucher, nameOfEventVoucher, dateStart, dateEnd, amount)
+	values (@value, @name, @dateStart, @dateEnd, @amount)
+end
+go
+
+---------------------------------------------------Xóa voucher-----------------------------------------
+--Không thể xóa, đặt cờ
+-----------------------------------------------Sửa thông tin voucher---------------------------
+Create or alter proc UpdateVoucher (@id int, @name nvarchar(40))
+as
+begin
+	update VOUCHER set nameOfEventVoucher = @name where idVoucher = @id
+end
+go
+
+---------------------------------------------Tìm kiếm voucher----------------
+Create or alter proc SearchVoucher (@id int, @name nvarchar(40))
+as
+begin
+	select * from VOUCHER where idVoucher = @id or nameOfEventVoucher like @name
+end
+go
 
 
 -----------------------------------------------------------BOOK INPUT----------------------------------------------------------------------
