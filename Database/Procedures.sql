@@ -207,7 +207,7 @@ end
 go
 
 -- Lấy thông tin sách 
-create or alter proc GetBook 
+create or alter proc GetBook
 as
 begin
 	
@@ -228,28 +228,29 @@ go
 
 
 -- Tìm kiếm
-Create or alter proc SearchBook (@id int, @name nvarchar(50))
+Create or alter proc SearchBook (@id int, @nameBook nvarchar(50), @nameAuthor nvarchar (100), @nameCategory nvarchar(100))
 as
 begin
 
 	select A.idBook, nameBook, nameAuthor, nameCategory, namePublisher, priceExport, amount from 
 	(select BOOK.idBook, BOOK.nameBook, STRING_AGG(nameCategory, ' - ') as nameCategory, namePublisher, BOOK.priceExport, BOOK.amount from BOOK, BOOK_CATEGORY, CATEGORY, PUBLISHER
-	where	(BOOK.idBook = @id or nameBook = @name) and
-			BOOK.idPublisher = PUBLISHER.idPublisher and
+	where	BOOK.idPublisher = PUBLISHER.idPublisher and
 			Book.idBook = BOOK_CATEGORY.idBook and 
 			BOOK_CATEGORY.idCategory = CATEGORY.idCategory
 	group by BOOK.idBook, BOOK.nameBook, namePublisher, BOOK.priceExport, BOOK.amount)A join
 
 	(select BOOK.idBook, STRING_AGG(nameAuthor, ' - ') as nameAuthor from BOOK, BOOK_AUTHOR, AUTHOR
-	where	Book.idBook = BOOK_AUTHOR.idBook and 
-			BOOK_AUTHOR.idAuthor = AUTHOR.idAuthor
+	where	(Book.idBook = BOOK_AUTHOR.idBook and 
+			BOOK_AUTHOR.idAuthor = AUTHOR.idAuthor)
 	group by BOOK.idBook) B on A.idBook = B.idBook
+	where nameAuthor like + '%'+ @nameAuthor + '%' or
+			A.idBook = @id or 
+			nameBook like + '%'+ @nameBook + '%' or
+			nameCategory like + '%'+ @nameCategory + '%'
 
-
+			
 end
 go
-
-
 
 -- Xóa sách khỏi kho (Cần phải chỉnh sửa --Xóa ở các bảng có khóa ngoại trc (Tạo transacion))
 
