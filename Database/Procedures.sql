@@ -243,12 +243,10 @@ begin
 	where	(Book.idBook = BOOK_AUTHOR.idBook and 
 			BOOK_AUTHOR.idAuthor = AUTHOR.idAuthor)
 	group by BOOK.idBook) B on A.idBook = B.idBook
-	where nameAuthor like + '%'+ @nameAuthor + '%' or
-			A.idBook = @id or 
-			nameBook like + '%'+ @nameBook + '%' or
-			nameCategory like + '%'+ @nameCategory + '%'
-
-			
+	where nameAuthor like @nameAuthor or
+			nameBook like  @nameBook  or
+			nameCategory like  @nameCategory  or
+			A.idBook = @id
 end
 go
 
@@ -409,7 +407,7 @@ end
 go
 
 -----------------------------------------BILLOUTPUT---------------------------------------
----- Tạo hóa đơn------
+----------------------------------------- Tạo hóa đơn-------------------------------------------
 create or alter proc CreateBillOutput (@idCus int, @idEmp int, @date date)
 as
 begin
@@ -419,25 +417,28 @@ end
 go
 
 
---- lấy data BILLOUTPUT
+---------------------------------------- lấy data BILLOUTPUT-------------------------------------
 
 Create or alter proc GetAllBill
 as
-	select idBillOutPut, idCus, idEmployee from BILLOUTPUT
+begin
+	select idBillOutPut, nameCus, BILLOUTPUT.idEmployee, dateOfBill, idVoucher, total from BILLOUTPUT, CUSTOMER
+	where BILLOUTPUT.idCus = CUSTOMER.idCus
+end
 go
 
 create or alter proc GetBill (@idBill int)
 as
 begin
-	select idBillOutPut, dateOfBill, total, nameCus, pointCus, BILLOUTPUT.idVoucher from BILLOUTPUT, CUSTOMER 
-	where idBillOutPut = @idBill and
-			BILLOUTPUT.idCus = CUSTOMER.idCus
+	select idBillOutPut, nameCus, BILLOUTPUT.idEmployee, dateOfBill, idVoucher, total from BILLOUTPUT, CUSTOMER
+	where BILLOUTPUT.idCus = CUSTOMER.idCus and
+	idBillOutPut = @idBill
 end
 go
 
 --exec GetBill 1
 
---- Lấy data BOOK_BILLOUTPUT
+---------------------------------------- Lấy data BOOK_BILLOUTPUT-------------------------------------
 create or alter proc GetCart (@idBill int)
 as
 begin
@@ -447,7 +448,7 @@ begin
 end
 go
 
--- Cập nhật giá tiền phải trả trong bill
+--------------------------------------- Cập nhật giá tiền phải trả trong bill-------------------------------------
 Create or alter proc UpdateTotalMoney (@idBill int)
 as
 begin
@@ -458,7 +459,7 @@ end
 go
 
 
---- Thêm vào giỏ hàng
+---------------------------------------- Thêm vào giỏ hàng-------------------------------------
 Create or alter proc AddBookToCart(@idBill int, @idBook int, @amount int)
 as
 begin
@@ -467,7 +468,7 @@ begin
 end
 go
 
----- Cập nhật số lượng sách trong giỏ hàng
+----------------------------------------- Cập nhật số lượng sách trong giỏ hàng------------------------------------------
 Create or alter proc UpdateAmountBookInCart (@idBill int, @idBook int, @amount int)
 as
 begin
@@ -478,7 +479,7 @@ begin
 end
 go
 
---- Xóa sách trong giỏ hàng
+--------------------------------------------- Xóa sách trong giỏ hàng------------------------------------------
 Create or alter proc DeleteBookFromCart(@idBill int, @idBook int)
 as
 begin
@@ -489,27 +490,25 @@ begin
 end
 go
 
-
-
-
------Áp dụng voucher
+-----------------------------------------------Áp dụng voucher------------------------------------------
 Create or alter proc AddVoucher (@idBill int, @idVoucher int)
 as
 begin
-	update BILLOUTPUT set @idVoucher = @idVoucher where idBillOutPut = @idBill
+	update BILLOUTPUT set idVoucher = @idVoucher where idBillOutPut = @idBill
 	exec UpdateTotalMoney @idBill
+	print N'Đã Áp Dụng Voucher Thành Công'
 end
 go
 
--- Bỏ áp dụng voucher 
+-------------------------------------------- Bỏ áp dụng voucher ------------------------------------------
 Create or alter proc RemoveVoucher(@idBill int)
 as
 begin
 	update BILLOUTPUT set idVoucher = null where idBillOutPut = @idBill
 	exec UpdateTotalMoney @idBill
+	print N'Đã gỡ bỏ Voucher Thành Công'
 end
 go
-
 
 ------------------------------------------------------- Xóa đơn -----------------------------------------------------
 Create or alter proc RemoveBill (@idBill int)
@@ -551,6 +550,7 @@ begin
 end
 go
 
+
 -----------------------------------------------------------------Voucher----------------------------------------------------
 -----------------------------------------------------Lấy tất cả voucher---------------------------------------------------
 
@@ -570,6 +570,7 @@ as
 begin
 	insert into VOUCHER (valueVoucher, nameOfEventVoucher, dateStart, dateEnd, amount)
 	values (@value, @name, @dateStart, @dateEnd, @amount)
+	
 end
 go
 
@@ -623,6 +624,4 @@ go
 select * from BOOK
 select * from BOOK_BILLINPUT
 select * from BILLINPUT
-
-
 select * from BOOK
