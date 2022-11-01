@@ -50,7 +50,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.lblInfo.Location = new System.Drawing.Point(133, 35);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(242, 28);
+            this.lblInfo.Size = new System.Drawing.Size(192, 23);
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "VOUCHER ÁP DỤNG";
             // 
@@ -59,7 +59,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbVoucher.FormattingEnabled = true;
             this.cbVoucher.Location = new System.Drawing.Point(241, 168);
             this.cbVoucher.Name = "cbVoucher";
-            this.cbVoucher.Size = new System.Drawing.Size(163, 24);
+            this.cbVoucher.Size = new System.Drawing.Size(163, 21);
             this.cbVoucher.TabIndex = 1;
             // 
             // panel1
@@ -104,7 +104,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblVoucher.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVoucher.Location = new System.Drawing.Point(66, 162);
             this.lblVoucher.Name = "lblVoucher";
-            this.lblVoucher.Size = new System.Drawing.Size(115, 30);
+            this.lblVoucher.Size = new System.Drawing.Size(91, 22);
             this.lblVoucher.TabIndex = 6;
             this.lblVoucher.Text = "Voucher";
             // 
@@ -114,7 +114,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblBill.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBill.Location = new System.Drawing.Point(66, 88);
             this.lblBill.Name = "lblBill";
-            this.lblBill.Size = new System.Drawing.Size(176, 30);
+            this.lblBill.Size = new System.Drawing.Size(134, 22);
             this.lblBill.TabIndex = 7;
             this.lblBill.Text = "Mã Hóa Đơn: ";
             // 
@@ -130,6 +130,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnApply.TabIndex = 8;
             this.btnApply.Text = "Cập Nhật";
             this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // lblNumBill
             // 
@@ -137,7 +138,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNumBill.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumBill.Location = new System.Drawing.Point(236, 88);
             this.lblNumBill.Name = "lblNumBill";
-            this.lblNumBill.Size = new System.Drawing.Size(26, 30);
+            this.lblNumBill.Size = new System.Drawing.Size(21, 22);
             this.lblNumBill.TabIndex = 7;
             this.lblNumBill.Text = "0";
             // 

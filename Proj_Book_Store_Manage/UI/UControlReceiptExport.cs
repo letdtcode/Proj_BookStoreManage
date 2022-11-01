@@ -33,5 +33,10 @@ namespace Proj_Book_Store_Manage.UI
         {
 
         }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

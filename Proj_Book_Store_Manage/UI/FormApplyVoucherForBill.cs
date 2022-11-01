@@ -21,5 +21,10 @@ namespace Proj_Book_Store_Manage.UI
         {
             this.Dispose();
         }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

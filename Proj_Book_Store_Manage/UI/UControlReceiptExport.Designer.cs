@@ -31,11 +31,8 @@ namespace Proj_Book_Store_Manage.UI
         {
             this.btnDetailExportReceipt = new System.Windows.Forms.Button();
             this.dtpReceiptImport = new System.Windows.Forms.DateTimePicker();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gpSearch = new System.Windows.Forms.GroupBox();
-            this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
-            this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnReload = new System.Windows.Forms.Button();
@@ -48,9 +45,11 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnVoucher = new System.Windows.Forms.Button();
             this.gbReceiptExport = new System.Windows.Forms.GroupBox();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.lblEmployee = new System.Windows.Forms.Label();
+            this.txtNameEmp = new System.Windows.Forms.TextBox();
+            this.txtNameCus = new System.Windows.Forms.TextBox();
+            this.txtIdBill = new System.Windows.Forms.TextBox();
             this.gpSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptExport)).BeginInit();
@@ -77,13 +76,6 @@ namespace Proj_Book_Store_Manage.UI
             this.dtpReceiptImport.Size = new System.Drawing.Size(200, 20);
             this.dtpReceiptImport.TabIndex = 3;
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(54, 67);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 20);
-            this.txtSearch.TabIndex = 2;
-            // 
             // lblSearchBy
             // 
             this.lblSearchBy.AutoSize = true;
@@ -91,37 +83,20 @@ namespace Proj_Book_Store_Manage.UI
             this.lblSearchBy.Location = new System.Drawing.Point(16, 27);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(91, 21);
+            this.lblSearchBy.Size = new System.Drawing.Size(108, 21);
             this.lblSearchBy.TabIndex = 0;
-            this.lblSearchBy.Text = "Thuộc tính";
+            this.lblSearchBy.Text = "Mã Hóa Đơn";
             // 
             // gpSearch
             // 
-            this.gpSearch.Controls.Add(this.txtSearch);
-            this.gpSearch.Controls.Add(this.cbAttributeSearch);
+            this.gpSearch.Controls.Add(this.txtIdBill);
             this.gpSearch.Controls.Add(this.lblSearchBy);
             this.gpSearch.Location = new System.Drawing.Point(532, 21);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(320, 130);
+            this.gpSearch.Size = new System.Drawing.Size(354, 171);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
-            // 
-            // cbAttributeSearch
-            // 
-            this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(157, 26);
-            this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 21);
-            this.cbAttributeSearch.TabIndex = 1;
-            // 
-            // cbEmployee
-            // 
-            this.cbEmployee.FormattingEnabled = true;
-            this.cbEmployee.Location = new System.Drawing.Point(203, 79);
-            this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(200, 21);
-            this.cbEmployee.TabIndex = 4;
             // 
             // btnCancel
             // 
@@ -142,9 +117,9 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(903, 198);
+            this.panel2.Location = new System.Drawing.Point(917, 198);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(169, 360);
+            this.panel2.Size = new System.Drawing.Size(155, 360);
             this.panel2.TabIndex = 10;
             // 
             // btnReload
@@ -156,6 +131,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload.TabIndex = 1;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnAdd
             // 
@@ -246,8 +222,8 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbReceiptExport
             // 
-            this.gbReceiptExport.Controls.Add(this.cbCustomer);
-            this.gbReceiptExport.Controls.Add(this.cbEmployee);
+            this.gbReceiptExport.Controls.Add(this.txtNameCus);
+            this.gbReceiptExport.Controls.Add(this.txtNameEmp);
             this.gbReceiptExport.Controls.Add(this.dtpReceiptImport);
             this.gbReceiptExport.Controls.Add(this.lblCustomer);
             this.gbReceiptExport.Controls.Add(this.lblEmployee);
@@ -260,14 +236,6 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.TabIndex = 0;
             this.gbReceiptExport.TabStop = false;
             this.gbReceiptExport.Text = "Thông tin bán sách";
-            // 
-            // cbCustomer
-            // 
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(203, 123);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(200, 21);
-            this.cbCustomer.TabIndex = 4;
             // 
             // lblCustomer
             // 
@@ -290,6 +258,27 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmployee.Size = new System.Drawing.Size(123, 21);
             this.lblEmployee.TabIndex = 1;
             this.lblEmployee.Text = "Tên Nhân Viên";
+            // 
+            // txtNameEmp
+            // 
+            this.txtNameEmp.Location = new System.Drawing.Point(203, 80);
+            this.txtNameEmp.Name = "txtNameEmp";
+            this.txtNameEmp.Size = new System.Drawing.Size(200, 20);
+            this.txtNameEmp.TabIndex = 4;
+            // 
+            // txtNameCus
+            // 
+            this.txtNameCus.Location = new System.Drawing.Point(203, 127);
+            this.txtNameCus.Name = "txtNameCus";
+            this.txtNameCus.Size = new System.Drawing.Size(200, 20);
+            this.txtNameCus.TabIndex = 5;
+            // 
+            // txtIdBill
+            // 
+            this.txtIdBill.Location = new System.Drawing.Point(148, 28);
+            this.txtIdBill.Name = "txtIdBill";
+            this.txtIdBill.Size = new System.Drawing.Size(200, 20);
+            this.txtIdBill.TabIndex = 6;
             // 
             // UControlReceiptExport
             // 
@@ -314,11 +303,8 @@ namespace Proj_Book_Store_Manage.UI
 
         private System.Windows.Forms.Button btnDetailExportReceipt;
         private System.Windows.Forms.DateTimePicker dtpReceiptImport;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearchBy;
         private System.Windows.Forms.GroupBox gpSearch;
-        private System.Windows.Forms.ComboBox cbAttributeSearch;
-        private System.Windows.Forms.ComboBox cbEmployee;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnReload;
@@ -330,9 +316,11 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.DataGridView dgvReceiptExport;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbReceiptExport;
-        private System.Windows.Forms.ComboBox cbCustomer;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Label lblEmployee;
         private System.Windows.Forms.Button btnVoucher;
+        private System.Windows.Forms.TextBox txtIdBill;
+        private System.Windows.Forms.TextBox txtNameCus;
+        private System.Windows.Forms.TextBox txtNameEmp;
     }
 }
