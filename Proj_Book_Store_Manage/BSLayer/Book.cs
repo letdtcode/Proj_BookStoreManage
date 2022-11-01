@@ -13,44 +13,50 @@ namespace Proj_Book_Store_Manage.BSLayer
 {
     internal class Book
     {
-        DBMain db;
+        DBMain dB;
 
-
+        List<SqlParameter> parameters;
         SqlParameter parameter;
 
         public Book()
         {
-            db = new DBMain();
+            dB = new DBMain();
         }
 
         public DataSet getBook()
         {
-            return db.ExecuteQueryDataSet("GetBook", CommandType.StoredProcedure);
+            return dB.ExecuteQueryDataSet("GetBook", CommandType.StoredProcedure);
         }
 
-        public DataSet searchBook(int id, string name)
+        public DataSet searchBook(int id, string nameBook, string nameAuthor, string nameCategory)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            string strSql = "SearchBook";
+
+            parameters = new List<SqlParameter>();
+
             parameter = new SqlParameter("@id", id);
             parameters.Add(parameter);
 
-
-            parameter = new SqlParameter("@name", name);
+            parameter = new SqlParameter("@nameBook", nameBook);
             parameters.Add(parameter);
 
+            parameter = new SqlParameter("@nameAuthor", nameAuthor);
+            parameters.Add(parameter);
 
-            return db.ExecuteQueryDataSet(strSql, CommandType.StoredProcedure, parameters);
+            parameter = new SqlParameter("@nameCategory", nameCategory);
+            parameters.Add(parameter);
+
+            string strSQL = "SearchBook";
+            return dB.ExecuteQueryDataSet(strSQL, CommandType.StoredProcedure, parameters);
         }
 
         public bool deleteBook(int id, ref string err)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters = new List<SqlParameter>();
             string strSql = "DeleteBook";
             parameter = new SqlParameter("@id", id);
             parameters.Add(parameter);
 
-            return db.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
 
@@ -69,7 +75,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
 
-            return db.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
     }

@@ -29,10 +29,8 @@ namespace Proj_Book_Store_Manage.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gpSearch = new System.Windows.Forms.GroupBox();
-            this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -51,6 +49,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPublisher = new System.Windows.Forms.Label();
             this.lblPriceImport = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUploadImg = new System.Windows.Forms.Button();
             this.ptbBook = new System.Windows.Forms.PictureBox();
             this.dgvBook = new System.Windows.Forms.DataGridView();
             this.panelCategory = new System.Windows.Forms.Panel();
@@ -68,7 +67,9 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDeleteCate = new System.Windows.Forms.Button();
             this.btnAddCate = new System.Windows.Forms.Button();
             this.lblNameCategory = new System.Windows.Forms.Label();
-            this.btnUploadImg = new System.Windows.Forms.Button();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             this.gbInfoBook.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,28 +82,22 @@ namespace Proj_Book_Store_Manage.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(63, 110);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 22);
-            this.txtSearch.TabIndex = 2;
-            // 
             // lblSearchBy
             // 
             this.lblSearchBy.AutoSize = true;
             this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(23, 49);
+            this.lblSearchBy.Location = new System.Drawing.Point(7, 25);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(93, 21);
+            this.lblSearchBy.Size = new System.Drawing.Size(61, 19);
             this.lblSearchBy.TabIndex = 0;
-            this.lblSearchBy.Text = "Thuộc tính";
+            this.lblSearchBy.Text = "Thể Loại";
             // 
             // gpSearch
             // 
-            this.gpSearch.Controls.Add(this.txtSearch);
-            this.gpSearch.Controls.Add(this.cbAttributeSearch);
+            this.gpSearch.Controls.Add(this.label1);
+            this.gpSearch.Controls.Add(this.txtAuthor);
+            this.gpSearch.Controls.Add(this.txtCategory);
             this.gpSearch.Controls.Add(this.lblSearchBy);
             this.gpSearch.Location = new System.Drawing.Point(486, 6);
             this.gpSearch.Name = "gpSearch";
@@ -110,14 +105,6 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
-            // 
-            // cbAttributeSearch
-            // 
-            this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(132, 46);
-            this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
-            this.cbAttributeSearch.TabIndex = 1;
             // 
             // btnReload
             // 
@@ -138,6 +125,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -183,7 +171,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtNameAuthor.Location = new System.Drawing.Point(106, 38);
             this.txtNameAuthor.Name = "txtNameAuthor";
-            this.txtNameAuthor.Size = new System.Drawing.Size(147, 22);
+            this.txtNameAuthor.Size = new System.Drawing.Size(147, 20);
             this.txtNameAuthor.TabIndex = 2;
             // 
             // lblAmount
@@ -193,7 +181,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAmount.Location = new System.Drawing.Point(10, 83);
             this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(74, 21);
+            this.lblAmount.Size = new System.Drawing.Size(65, 19);
             this.lblAmount.TabIndex = 1;
             this.lblAmount.Text = "Số lượng";
             // 
@@ -204,7 +192,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook.Location = new System.Drawing.Point(10, 39);
             this.lblNameBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameBook.Name = "lblNameBook";
-            this.lblNameBook.Size = new System.Drawing.Size(85, 21);
+            this.lblNameBook.Size = new System.Drawing.Size(71, 19);
             this.lblNameBook.TabIndex = 0;
             this.lblNameBook.Text = "Tên Sách";
             // 
@@ -233,28 +221,28 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.textBox3.Location = new System.Drawing.Point(344, 110);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(87, 22);
+            this.textBox3.Size = new System.Drawing.Size(87, 20);
             this.textBox3.TabIndex = 2;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(344, 50);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(87, 22);
+            this.textBox2.Size = new System.Drawing.Size(87, 20);
             this.textBox2.TabIndex = 2;
             // 
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(105, 84);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(147, 22);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(147, 20);
             this.txtPhoneNumber.TabIndex = 2;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(107, 131);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 22);
+            this.textBox1.Size = new System.Drawing.Size(145, 20);
             this.textBox1.TabIndex = 2;
             // 
             // lblPriceExport
@@ -264,7 +252,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceExport.Location = new System.Drawing.Point(260, 111);
             this.lblPriceExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceExport.Name = "lblPriceExport";
-            this.lblPriceExport.Size = new System.Drawing.Size(77, 21);
+            this.lblPriceExport.Size = new System.Drawing.Size(65, 19);
             this.lblPriceExport.TabIndex = 1;
             this.lblPriceExport.Text = "Giá Bán";
             // 
@@ -275,7 +263,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPublisher.Location = new System.Drawing.Point(10, 130);
             this.lblPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPublisher.Name = "lblPublisher";
-            this.lblPublisher.Size = new System.Drawing.Size(43, 21);
+            this.lblPublisher.Size = new System.Drawing.Size(36, 19);
             this.lblPublisher.TabIndex = 1;
             this.lblPublisher.Text = "NXB";
             // 
@@ -286,7 +274,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceImport.Location = new System.Drawing.Point(260, 51);
             this.lblPriceImport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceImport.Name = "lblPriceImport";
-            this.lblPriceImport.Size = new System.Drawing.Size(89, 21);
+            this.lblPriceImport.Size = new System.Drawing.Size(75, 19);
             this.lblPriceImport.TabIndex = 1;
             this.lblPriceImport.Text = "Giá Nhập";
             // 
@@ -302,6 +290,15 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1072, 180);
             this.panel1.TabIndex = 3;
+            // 
+            // btnUploadImg
+            // 
+            this.btnUploadImg.Location = new System.Drawing.Point(974, 68);
+            this.btnUploadImg.Name = "btnUploadImg";
+            this.btnUploadImg.Size = new System.Drawing.Size(73, 44);
+            this.btnUploadImg.TabIndex = 3;
+            this.btnUploadImg.Text = "Up Ảnh";
+            this.btnUploadImg.UseVisualStyleBackColor = true;
             // 
             // ptbBook
             // 
@@ -351,7 +348,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.textBox5.Location = new System.Drawing.Point(105, 31);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(165, 22);
+            this.textBox5.Size = new System.Drawing.Size(165, 20);
             this.textBox5.TabIndex = 2;
             // 
             // dgvAuthor
@@ -401,7 +398,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameAuthor.Location = new System.Drawing.Point(11, 33);
             this.lblNameAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameAuthor.Name = "lblNameAuthor";
-            this.lblNameAuthor.Size = new System.Drawing.Size(87, 19);
+            this.lblNameAuthor.Size = new System.Drawing.Size(71, 16);
             this.lblNameAuthor.TabIndex = 0;
             this.lblNameAuthor.Text = "Tên Tác Giả";
             // 
@@ -424,7 +421,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.textBox4.Location = new System.Drawing.Point(93, 31);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(165, 22);
+            this.textBox4.Size = new System.Drawing.Size(165, 20);
             this.textBox4.TabIndex = 2;
             // 
             // dgvCategory
@@ -474,18 +471,34 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameCategory.Location = new System.Drawing.Point(7, 34);
             this.lblNameCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCategory.Name = "lblNameCategory";
-            this.lblNameCategory.Size = new System.Drawing.Size(85, 19);
+            this.lblNameCategory.Size = new System.Drawing.Size(69, 16);
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
             // 
-            // btnUploadImg
+            // txtCategory
             // 
-            this.btnUploadImg.Location = new System.Drawing.Point(974, 68);
-            this.btnUploadImg.Name = "btnUploadImg";
-            this.btnUploadImg.Size = new System.Drawing.Size(73, 44);
-            this.btnUploadImg.TabIndex = 3;
-            this.btnUploadImg.Text = "Up Ảnh";
-            this.btnUploadImg.UseVisualStyleBackColor = true;
+            this.txtCategory.Location = new System.Drawing.Point(111, 26);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(147, 20);
+            this.txtCategory.TabIndex = 3;
+            // 
+            // txtAuthor
+            // 
+            this.txtAuthor.Location = new System.Drawing.Point(111, 82);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(147, 20);
+            this.txtAuthor.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 87);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 19);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Tác Giả";
             // 
             // UControlInfoBook
             // 
@@ -521,11 +534,8 @@ namespace Proj_Book_Store_Manage.UI
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearchBy;
         private System.Windows.Forms.GroupBox gpSearch;
-        private System.Windows.Forms.ComboBox cbAttributeSearch;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
@@ -562,5 +572,8 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnAddCate;
         private System.Windows.Forms.Label lblNameCategory;
         private System.Windows.Forms.Button btnUploadImg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtAuthor;
+        private System.Windows.Forms.TextBox txtCategory;
     }
 }

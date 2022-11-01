@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BSLayer\AuthorBL.cs" />
     <Compile Include="BSLayer\Book.cs" />
+    <Compile Include="BSLayer\BookInput.cs" />
     <Compile Include="BSLayer\Publisher.cs" />
     <Compile Include="BSLayer\SellBook.cs" />
     <Compile Include="BSLayer\Voucher.cs" />
