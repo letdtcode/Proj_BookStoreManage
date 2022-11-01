@@ -39,19 +39,19 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gbVoucher = new System.Windows.Forms.GroupBox();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.txtIdVoucher = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.txtNameVoucher = new System.Windows.Forms.TextBox();
             this.txtValueVoucher = new System.Windows.Forms.TextBox();
-            this.lblDateEnd = new System.Windows.Forms.Label();
             this.lblDateStart = new System.Windows.Forms.Label();
             this.lblNameEvent = new System.Windows.Forms.Label();
             this.lblValueVoucher = new System.Windows.Forms.Label();
-            this.txtIdVoucher = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.btnReload = new System.Windows.Forms.Button();
+            this.lblDateEnd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoucher)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -182,15 +182,64 @@ namespace Proj_Book_Store_Manage.UI
             this.gbVoucher.TabStop = false;
             this.gbVoucher.Text = "Thông tin Voucher";
             // 
+            // btnReload
+            // 
+            this.btnReload.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Location = new System.Drawing.Point(893, 25);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(110, 37);
+            this.btnReload.TabIndex = 2;
+            this.btnReload.Text = "Làm mới";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(598, 36);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(86, 20);
+            this.txtAmount.TabIndex = 8;
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.Location = new System.Drawing.Point(481, 35);
+            this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(77, 21);
+            this.lblAmount.TabIndex = 7;
+            this.lblAmount.Text = "Số Lượng";
+            // 
             // dtpDateEnd
             // 
+            this.dtpDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateEnd.Location = new System.Drawing.Point(586, 172);
             this.dtpDateEnd.Name = "dtpDateEnd";
             this.dtpDateEnd.Size = new System.Drawing.Size(200, 20);
             this.dtpDateEnd.TabIndex = 4;
             // 
+            // txtIdVoucher
+            // 
+            this.txtIdVoucher.Location = new System.Drawing.Point(173, 38);
+            this.txtIdVoucher.Name = "txtIdVoucher";
+            this.txtIdVoucher.Size = new System.Drawing.Size(200, 20);
+            this.txtIdVoucher.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 21);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Mã Voucher";
+            // 
             // dtpDateStart
             // 
+            this.dtpDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateStart.Location = new System.Drawing.Point(173, 171);
             this.dtpDateStart.Name = "dtpDateStart";
             this.dtpDateStart.Size = new System.Drawing.Size(200, 20);
@@ -209,17 +258,6 @@ namespace Proj_Book_Store_Manage.UI
             this.txtValueVoucher.Name = "txtValueVoucher";
             this.txtValueVoucher.Size = new System.Drawing.Size(200, 20);
             this.txtValueVoucher.TabIndex = 2;
-            // 
-            // lblDateEnd
-            // 
-            this.lblDateEnd.AutoSize = true;
-            this.lblDateEnd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateEnd.Location = new System.Drawing.Point(435, 170);
-            this.lblDateEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateEnd.Name = "lblDateEnd";
-            this.lblDateEnd.Size = new System.Drawing.Size(123, 21);
-            this.lblDateEnd.TabIndex = 1;
-            this.lblDateEnd.Text = "Ngày Kết Thúc";
             // 
             // lblDateStart
             // 
@@ -254,52 +292,16 @@ namespace Proj_Book_Store_Manage.UI
             this.lblValueVoucher.TabIndex = 0;
             this.lblValueVoucher.Text = "Giá Trị Voucher";
             // 
-            // txtIdVoucher
+            // lblDateEnd
             // 
-            this.txtIdVoucher.Location = new System.Drawing.Point(173, 38);
-            this.txtIdVoucher.Name = "txtIdVoucher";
-            this.txtIdVoucher.Size = new System.Drawing.Size(200, 20);
-            this.txtIdVoucher.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 35);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 21);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Mã Voucher";
-            // 
-            // txtAmount
-            // 
-            this.txtAmount.Location = new System.Drawing.Point(598, 36);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(86, 20);
-            this.txtAmount.TabIndex = 8;
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(481, 35);
-            this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(77, 21);
-            this.lblAmount.TabIndex = 7;
-            this.lblAmount.Text = "Số Lượng";
-            // 
-            // btnReload
-            // 
-            this.btnReload.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Location = new System.Drawing.Point(893, 25);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(110, 37);
-            this.btnReload.TabIndex = 2;
-            this.btnReload.Text = "Làm mới";
-            this.btnReload.UseVisualStyleBackColor = true;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            this.lblDateEnd.AutoSize = true;
+            this.lblDateEnd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateEnd.Location = new System.Drawing.Point(435, 170);
+            this.lblDateEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDateEnd.Name = "lblDateEnd";
+            this.lblDateEnd.Size = new System.Drawing.Size(123, 21);
+            this.lblDateEnd.TabIndex = 1;
+            this.lblDateEnd.Text = "Ngày Kết Thúc";
             // 
             // UControlVoucher
             // 
