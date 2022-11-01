@@ -139,7 +139,7 @@ namespace Proj_Book_Store_Manage.UI
                     string name = this.txtNameBook.Text.ToString();
                     int price = Convert.ToInt32(txtPriceExport.Text);
 
-                    book.updatehBook(id, Name, price, ref err);
+                    book.updatehBook(id, name, price, ref err);
                     if (err != null)
                     {
                         MessageBox.Show(err);
