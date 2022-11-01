@@ -587,7 +587,7 @@ go
 Create or alter proc SearchVoucher (@id int, @name nvarchar(40))
 as
 begin
-	select * from VOUCHER where idVoucher = @id or nameOfEventVoucher like @name
+	select * from VOUCHER where idVoucher = @id or nameOfEventVoucher like '%' + @name + '%'
 end
 go
 
