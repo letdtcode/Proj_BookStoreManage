@@ -72,7 +72,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 749);
+            this.panel1.Size = new System.Drawing.Size(222, 711);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -91,9 +91,9 @@ namespace Proj_Book_Store_Manage.UI
             this.btnVoucher.FlatAppearance.BorderSize = 0;
             this.btnVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoucher.Image = ((System.Drawing.Image)(resources.GetObject("btnVoucher.Image")));
-            this.btnVoucher.Location = new System.Drawing.Point(30, 675);
+            this.btnVoucher.Location = new System.Drawing.Point(31, 562);
             this.btnVoucher.Name = "btnVoucher";
-            this.btnVoucher.Size = new System.Drawing.Size(191, 106);
+            this.btnVoucher.Size = new System.Drawing.Size(191, 83);
             this.btnVoucher.TabIndex = 3;
             this.btnVoucher.Text = "Voucher";
             this.btnVoucher.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -109,9 +109,9 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEmployee.FlatAppearance.BorderSize = 0;
             this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployee.Image")));
-            this.btnEmployee.Location = new System.Drawing.Point(30, 569);
+            this.btnEmployee.Location = new System.Drawing.Point(31, 479);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(191, 106);
+            this.btnEmployee.Size = new System.Drawing.Size(191, 83);
             this.btnEmployee.TabIndex = 3;
             this.btnEmployee.Text = "Nhân Viên";
             this.btnEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -127,9 +127,9 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCustomer.FlatAppearance.BorderSize = 0;
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
-            this.btnCustomer.Location = new System.Drawing.Point(30, 463);
+            this.btnCustomer.Location = new System.Drawing.Point(31, 396);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(191, 106);
+            this.btnCustomer.Size = new System.Drawing.Size(191, 83);
             this.btnCustomer.TabIndex = 3;
             this.btnCustomer.Text = "Khách Hàng";
             this.btnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -145,9 +145,9 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReceipt.FlatAppearance.BorderSize = 0;
             this.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReceipt.Image = ((System.Drawing.Image)(resources.GetObject("btnReceipt.Image")));
-            this.btnReceipt.Location = new System.Drawing.Point(30, 357);
+            this.btnReceipt.Location = new System.Drawing.Point(31, 313);
             this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(191, 106);
+            this.btnReceipt.Size = new System.Drawing.Size(191, 83);
             this.btnReceipt.TabIndex = 3;
             this.btnReceipt.Text = "Hóa Đơn";
             this.btnReceipt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -163,9 +163,9 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAccount.FlatAppearance.BorderSize = 0;
             this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
-            this.btnAccount.Location = new System.Drawing.Point(30, 251);
+            this.btnAccount.Location = new System.Drawing.Point(31, 231);
             this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(191, 106);
+            this.btnAccount.Size = new System.Drawing.Size(191, 82);
             this.btnAccount.TabIndex = 3;
             this.btnAccount.Text = "Tài Khoản";
             this.btnAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -183,7 +183,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnBook.Image = ((System.Drawing.Image)(resources.GetObject("btnBook.Image")));
             this.btnBook.Location = new System.Drawing.Point(30, 145);
             this.btnBook.Name = "btnBook";
-            this.btnBook.Size = new System.Drawing.Size(191, 106);
+            this.btnBook.Size = new System.Drawing.Size(191, 89);
             this.btnBook.TabIndex = 3;
             this.btnBook.Text = "      Sách";
             this.btnBook.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -233,7 +233,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel3.Location = new System.Drawing.Point(222, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1072, 93);
+            this.panel3.Size = new System.Drawing.Size(1103, 93);
             this.panel3.TabIndex = 1;
             // 
             // btnExit
@@ -243,7 +243,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(991, 0);
+            this.btnExit.Location = new System.Drawing.Point(1022, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(81, 93);
             this.btnExit.TabIndex = 9;
@@ -271,7 +271,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel4.Location = new System.Drawing.Point(222, 93);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1072, 52);
+            this.panel4.Size = new System.Drawing.Size(1103, 52);
             this.panel4.TabIndex = 2;
             // 
             // lblRole
@@ -316,21 +316,17 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // panelMain
             // 
-            this.panelMain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelMain.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelMain.Location = new System.Drawing.Point(227, 152);
-            this.panelMain.MaximumSize = new System.Drawing.Size(1055, 629);
-            this.panelMain.MinimumSize = new System.Drawing.Size(1055, 629);
+            this.panelMain.Location = new System.Drawing.Point(228, 152);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1055, 629);
-            this.panelMain.TabIndex = 1;
+            this.panelMain.Size = new System.Drawing.Size(1085, 547);
+            this.panelMain.TabIndex = 3;
             // 
             // FormDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1294, 749);
+            this.ClientSize = new System.Drawing.Size(1325, 711);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -369,12 +365,12 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnReceipt;
         private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Panel panelSide;
-        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label lblNameEmployee;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Panel panelMain;
     }
 }

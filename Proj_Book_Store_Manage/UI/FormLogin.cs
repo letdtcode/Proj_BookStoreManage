@@ -30,5 +30,10 @@ namespace Proj_Book_Store_Manage
                 frmDashBoard.ShowDialog();
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -164,19 +164,12 @@ begin
 end
 go
 
-
-select * from CUSTOMER
-select * from TYPECUSTOMER
--- Tìm kiếm khách hàng
-
-
-
-
 -----------------BOOK----------------------------------
+
 
 ---- Cập nhật số lượng sách trong kho
 
-create procedure proc_updateAmountBook (@idBook int, @amount int)
+create or alter procedure proc_updateAmountBook (@idBook int, @amount int)
 as
 begin
 	update BOOK
@@ -225,7 +218,6 @@ begin
 	
 end
 go
-
 
 -- Tìm kiếm
 Create or alter proc SearchBook (@id int, @nameBook nvarchar(50), @nameAuthor nvarchar (100), @nameCategory nvarchar(100))
@@ -594,12 +586,11 @@ go
 
 
 -----------------------------------------------------------BOOK INPUT----------------------------------------------------------------------
------------------------------------------------- Thêm sách vào kho ---------------------------------------------------------------------
-Create or alter proc AddBook (@nameBook nvarchar(20), @amount int, @priceImport int, @priceExport int, @idPublisher int)
+-----------------------------------------Lấy thông tin BillInput
+create or alter proc GetBillsInput
 as
 begin
-	Insert into BOOK (nameBook, amount, priceImport, priceExport, idPublisher)
-	values (@nameBook, @amount, @priceImport, @priceExport, @idPublisher)
+	select * from BILLINPUT
 end
 go
 
@@ -608,10 +599,18 @@ Create or alter proc CreateBillInput (@date Datetime, @idEmployee int)
 as
 begin
 	Insert into BILLINPUT (dateOfInput, idEmployee) values (@date, @idEmployee)
-
 end
 go
 
+--------------------------------Tìm kiếm BillInput---------------------------------
+Create or alter proc SearchBillInput (@idBill int)
+as
+begin
+	select * from BILLINPUT where idBillInput = @idBill
+end
+go
+
+------------------------------------------------ Xóa hóa đơn---------------------------------------------------------------------
 ------------------------------------------------ Tạo bill nhập sách ---------------------------------------------------------------------
 Create or alter proc CreateBookBillInput (@idBill int, @idBook int, @amount int)
 as
@@ -621,12 +620,55 @@ begin
 end
 go
 
-select * from BOOK
-select * from BOOK_BILLINPUT
-select * from BILLINPUT
-select * from BOOK
+------------------------------Lấy thông tin của billInput-----------------------------------
+Create or alter proc GetBooksInBill(@idBill int)
+as
+begin	
+	select * from BOOK_BILLINPUT where idBillInput = @idBill
+end
+go
+-----------------------Cập nhật số lượng sách trong BillInput-----------------------------
+Create or alter proc UpdateAmoutBookInBillInput (@idBill int, @idBook int, @amount int)
+as
+begin
+	update BOOK_BILLINPUT set amountInput = @amount
+	where idBillInput = @idBill and
+			idBook = @idBook
+end
+go
+-------------------------Xóa Book trong billInput -------------------------------
+Create or alter proc DeleteBookInBillInput (@idBill int, @idBook int)
+as
+begin
+	delete BOOK_BILLINPUT
+	where idBillInput = @idBill and
+			idBook = @idBook
+end
+go
+
+------------------------------Cập nhật số tiền trong BILLINTPUT-------------------------
+
+Create or alter proc UpdateTotalPriceBooksInBillInput (@idBill int)
+as
+begin
+	declare @totalMoney int
+	set @totalMoney = (select dbo.returnPriceInput(@idBill))
+
+	
+	update BILLINPUT set total = @totalMoney 
+	where idBillInput = @idBill
+end
+go
 
 
+------------------------------------------------ Thêm sách vào kho ---------------------------------------------------------------------
+Create or alter proc AddBook (@nameBook nvarchar(20), @priceImport int, @priceExport int, @idPublisher int)
+as
+begin
+	Insert into BOOK (nameBook, priceImport, priceExport, idPublisher)
+	values (@nameBook, @priceImport, @priceExport, @idPublisher)
+end
+go
 
 ---------------------------------------------PROCEDURE THÊM, SỬA, XÓA ACCOUNT-------------------------------------------
 ---------------------------------------------Thêm một account mới-------------------------------------------
@@ -717,3 +759,4 @@ begin
 	where dbo.AUTHOR.idAuthor=@idAuthor
 end
 go
+

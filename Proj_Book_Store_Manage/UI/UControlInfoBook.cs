@@ -51,6 +51,18 @@ namespace Proj_Book_Store_Manage.UI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            setText(true);
+            this.txtIdBook.Enabled = false;
+            setBtn(false);
+            this.btnCancel.Enabled = true;
+            this.btnSave.Enabled = true;
+
+            setFlag(false);
+            this.insert = true;
+        }
         private void btnEdit_Click(object sender, EventArgs e)
         {
             setText(true);
@@ -174,6 +186,10 @@ namespace Proj_Book_Store_Manage.UI
                     MessageBox.Show(ex.Message);
                 }
             }
+            else if (insert)
+            {
+               
+            }
             setBtn(true);
             this.btnSave.Enabled = false;
             this.btnCancel.Enabled = false;
@@ -189,6 +205,8 @@ namespace Proj_Book_Store_Manage.UI
             this.txtNameBook.Text = dgvBook.Rows[r].Cells[1].Value.ToString().Trim();
             this.txtPriceExport.Text = dgvBook.Rows[r].Cells[5].Value.ToString().Trim();
         }
+
+      
 
         void setText(bool flag)
         {

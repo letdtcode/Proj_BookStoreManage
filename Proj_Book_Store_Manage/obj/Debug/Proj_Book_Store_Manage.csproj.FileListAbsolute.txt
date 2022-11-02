@@ -113,3 +113,4 @@ D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Pr
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.CoreCompileInputs.cache
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.exe
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormAddBook.resources

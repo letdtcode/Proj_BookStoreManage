@@ -85,6 +85,5 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
-
     }
 }
