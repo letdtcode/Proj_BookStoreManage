@@ -22,6 +22,18 @@ namespace Proj_Book_Store_Manage.BSLayer
             dB = new DBMain();
         }
 
+        public bool updateBillMoney(int idBill,ref string err)
+        {
+            string strSql = "UpdateTotalMoney";
+
+
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", idBill);
+            parameters.Add(parameter);
+
+            return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
+        }
 
         public bool createBill(int idCus, int idEmp, DateTime date, ref string err)
         {
@@ -39,6 +51,16 @@ namespace Proj_Book_Store_Manage.BSLayer
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
+        public DataSet searchBill(int id)
+        {
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBill", id);
+            parameters.Add(parameter);
+
+            string strSQL = "GetBill";
+            return dB.ExecuteQueryDataSet(strSQL, CommandType.StoredProcedure, parameters);
+        }
         public DataSet getBill()
         {
             return dB.ExecuteQueryDataSet("GetAllBill", CommandType.StoredProcedure);
@@ -113,7 +135,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
-
+        //Thừa
         public bool addVoucher(int idBill, int idVoucher, ref string err)
         {
             parameters = new List<SqlParameter>();
@@ -129,6 +151,8 @@ namespace Proj_Book_Store_Manage.BSLayer
 
         }
 
+
+        //Thừa
         public bool deleteVoucher(int idBill, ref string err)
         {
             parameters = new List<SqlParameter>();
@@ -139,7 +163,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             string strSql = "RemoveVoucher";
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
-
+        //Thừa
         public DataSet getVoucher(DateTime date)
         {
             parameters = new List<SqlParameter>();
@@ -162,5 +186,10 @@ namespace Proj_Book_Store_Manage.BSLayer
             return dB.MyExecuteNonQuery(strSql, CommandType.StoredProcedure, parameters, ref err);
         }
 
+        //
+        public DataSet calcTotalMoney (int idbill)
+        {
+            return dB.ExecuteQueryDataSet("select dbo.func_totalPayBeforeDiscount(" + idbill + ")", CommandType.Text);
+        }
     }
 }
