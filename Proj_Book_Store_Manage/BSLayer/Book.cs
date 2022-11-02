@@ -30,6 +30,14 @@ namespace Proj_Book_Store_Manage.BSLayer
 
         public DataSet searchBook(int id, string nameBook, string nameAuthor, string nameCategory)
         {
+            //if (nameBook == "")
+            //    nameBook = null;
+
+            //if (nameAuthor == "")
+            //    nameAuthor = null;
+
+            //if (nameCategory == "")
+            //    nameCategory = null;
 
             parameters = new List<SqlParameter>();
 

@@ -11,9 +11,10 @@ namespace Proj_Book_Store_Manage.BSLayer
 {
     public class AuthorBL
     {
-        //DBMain db = null;
-        //SqlConnection conn = null;
-        //String nameView = "view_Author";
+        //private DBMain db = null;
+        //private SqlConnection conn = null;
+        //private String nameView = "view_Author";
+        //private string err = "";
 
         //public AuthorBL()
         //{
@@ -22,22 +23,23 @@ namespace Proj_Book_Store_Manage.BSLayer
         //}
         //public DataTable getDataAuthor()
         //{
-        //    return db.LoadData(nameView, CommandType.Text);
+        //    //return db.LoadData(nameView, CommandType.Text);
         //}
-        //public bool addNewAuthor(string nameAuthor, string phoneNumber)
+
+        //public bool addNewAuthor(string nameAuthor, string phoneNumber, ref string err)
         //{
         //    String sqlString = "exec proc_addNewAuthor @nameAuthor = '" + nameAuthor + "', @phoneNumber = '" + phoneNumber + "'";
-        //    return db.ExecuteProcedure(sqlString, CommandType.Text);
+        //    //return db.ExecuteProcedure(sqlString, CommandType.Text, ref err);
         //}
-        //public bool modifyAuthor(int idAuthor, string nameAuthor, string phoneNumber)
+        //public bool modifyAuthor(int idAuthor, string nameAuthor, string phoneNumber, ref string err)
         //{
         //    String sqlString = "exec proc_updateAuthor @idAuthor = " + idAuthor + " @nameAuthor = '" + nameAuthor + "', @phoneNumber = '" + phoneNumber + "'";
-        //    return db.ExecuteProcedure(sqlString, CommandType.Text);
+        //    //return db.ExecuteProcedure(sqlString, CommandType.Text, ref err);
         //}
-        //public bool deleteAuthor(int idAuthor)
+        //public bool deleteAuthor(int idAuthor, ref string err)
         //{
         //    String sqlString = "exec proc_DeleteAuthor @idAuthor = " + idAuthor;
-        //    return db.ExecuteProcedure(sqlString, CommandType.Text);
+        //    //return db.ExecuteProcedure(sqlString, CommandType.Text, ref err);
         //}
     }
 }
