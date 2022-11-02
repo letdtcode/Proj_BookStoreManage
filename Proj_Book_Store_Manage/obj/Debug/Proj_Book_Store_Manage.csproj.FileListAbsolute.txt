@@ -84,3 +84,32 @@ D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Proj_
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.CoreCompileInputs.cache
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.exe
 D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\bin\Debug\Proj_Book_Store_Manage.exe.config
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\bin\Debug\Proj_Book_Store_Manage.exe
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\bin\Debug\Proj_Book_Store_Manage.pdb
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.AssemblyReference.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.SuggestedBindingRedirects.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormApplyVoucherForBill.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDashBoard.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptExport.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptImport.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.frmLogin.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.Properties.Resources.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlAccount.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlAuthor.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlBookOverview.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlCategory.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlCustomerOverview.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlEmployee.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlInfoBook.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlInfoCustomer.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlPublisher.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlReceiptExport.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlReceiptImport.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlReceiptOverview.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlTypeCustomer.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlVoucher.resources
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.GenerateResource.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.CoreCompileInputs.cache
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.exe
+D:\Nam3(2022-2023)\HK1\Hệ quản trị cơ sở dữ liệu\New folder\DBMS_Project\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.pdb

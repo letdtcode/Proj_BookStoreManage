@@ -135,7 +135,7 @@ begin
 end
 go
 
---------------------------------Voucher
+--------------------------------Voucher--------------------------
 --kiểm tra value phải nhỏ hơn hoặc = 100 và  lớn hơn 0
 Create or alter trigger trg_checkValueVoucher on VOUCHER
 for insert, update
@@ -166,5 +166,24 @@ begin
 		rollback transaction
 	end
 
+end
+go
+
+
+--Điều kiện giá bán phải lớn hơn giá nhập
+create or alter trigger trg_checkPriceOfBook
+on BOOK
+for insert, update
+as
+begin
+	declare @priceImport int, @priceExport int
+	select @priceImport=i.priceImport, @priceExport=i.priceExport
+	from inserted i
+
+	if (@priceImport > @priceExport)
+	begin
+		raiserror ('Giá nhập sách phải nhỏ hơn giá bán',16,1)
+		rollback transaction
+	end
 end
 go

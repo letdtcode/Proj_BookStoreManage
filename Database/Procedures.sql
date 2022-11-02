@@ -625,3 +625,95 @@ select * from BOOK
 select * from BOOK_BILLINPUT
 select * from BILLINPUT
 select * from BOOK
+
+
+
+---------------------------------------------PROCEDURE THÊM, SỬA, XÓA ACCOUNT-------------------------------------------
+---------------------------------------------Thêm một account mới-------------------------------------------
+create or alter procedure proc_addNewAccount
+@nameAccount varchar(20),
+@password varchar(30),
+@typeOfAcc bit,
+@idEmployee int
+as
+begin
+	insert into dbo.ACCOUNT 
+		(
+	nameAccount,
+	pass,
+	typeOfAcc,
+	idEmployee
+		)
+	values
+		(
+	@nameAccount,
+	@password,
+	@typeOfAcc,
+	@idEmployee
+		)
+end
+go
+---------------------------------------------Chỉnh sửa một Account-------------------------------------------
+create or alter procedure proc_updateAccount
+@idAccount int,
+@nameAccount varchar(20),
+@password varchar(30),
+@typeOfAcc bit,
+@idEmployee int
+as
+begin
+	update dbo.ACCOUNT
+	set ACCOUNT.nameAccount=@nameAccount, ACCOUNT.pass=@password, ACCOUNT.typeOfAcc=@typeOfAcc, ACCOUNT.idEmployee=@idEmployee
+	where ACCOUNT.idAccount=@idAccount
+end
+go
+---------------------------------------------Xóa một Account-------------------------------------------
+create or alter procedure proc_DeleteAccount
+@idAccount int
+as
+begin
+	delete from dbo.ACCOUNT
+	where dbo.ACCOUNT.idAccount=@idAccount
+end
+go
+
+---------------------------------------------PROCEDURE THÊM, SỬA, XÓA AUTHOR-------------------------------------------
+---------------------------------------------Thêm một Author
+create or alter procedure proc_addNewAuthor
+@nameAuthor nvarchar(30),
+@phoneNumber varchar(10)
+as
+begin
+	insert into dbo.AUTHOR
+		(
+	nameAuthor,
+	phoneNumber
+		)
+	values
+		(
+	@nameAuthor,
+	@phoneNumber
+		)
+end
+go
+---------------------------------------------Chỉnh sửa một Author
+create or alter procedure proc_updateAuthor
+@idAuthor int,
+@nameAuthor nvarchar(30),
+@phoneNumber varchar(10)
+as
+begin
+	update dbo.AUTHOR
+	set AUTHOR.nameAuthor=@nameAuthor, AUTHOR.phoneNumber=@phoneNumber
+	where dbo.AUTHOR.idAuthor=@idAuthor
+end
+go
+---------------------------------------------Xóa một Author
+create or alter procedure proc_DeleteAuthor
+@idAuthor int
+as
+begin
+	delete from dbo.AUTHOR
+	where dbo.AUTHOR.idAuthor=@idAuthor
+end
+go
