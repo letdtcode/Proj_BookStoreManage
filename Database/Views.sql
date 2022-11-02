@@ -90,4 +90,3 @@ where BILLOUTPUT.idCus= CUSTOMER.idCus and
 	  DISCOUNT.idBill = BILLOUTPUT.idBillOutPut
 
 
-
