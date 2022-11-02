@@ -82,7 +82,7 @@ namespace Proj_Book_Store_Manage
             this.label1.Location = new System.Drawing.Point(136, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 28);
+            this.label1.Size = new System.Drawing.Size(231, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Quản Lý Cửa Hàng Sách";
             // 
@@ -102,7 +102,7 @@ namespace Proj_Book_Store_Manage
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(337, 138);
+            this.pictureBox2.Location = new System.Drawing.Point(337, 121);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(381, 92);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -115,10 +115,10 @@ namespace Proj_Book_Store_Manage
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(160)))));
-            this.label2.Location = new System.Drawing.Point(457, 246);
+            this.label2.Location = new System.Drawing.Point(457, 229);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 28);
+            this.label2.Size = new System.Drawing.Size(123, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "ĐĂNG NHẬP";
             // 
@@ -128,7 +128,7 @@ namespace Proj_Book_Store_Manage
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(44, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 28);
+            this.label3.Size = new System.Drawing.Size(111, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "User Name";
             // 
@@ -138,7 +138,7 @@ namespace Proj_Book_Store_Manage
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(44, 166);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 28);
+            this.label4.Size = new System.Drawing.Size(96, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Password";
             // 
@@ -147,7 +147,7 @@ namespace Proj_Book_Store_Manage
             this.txtUserName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUserName.Location = new System.Drawing.Point(49, 87);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(408, 36);
+            this.txtUserName.Size = new System.Drawing.Size(408, 30);
             this.txtUserName.TabIndex = 4;
             // 
             // txtPassword
@@ -155,7 +155,7 @@ namespace Proj_Book_Store_Manage
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.Location = new System.Drawing.Point(49, 231);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(408, 36);
+            this.txtPassword.Size = new System.Drawing.Size(408, 30);
             this.txtPassword.TabIndex = 5;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -181,17 +181,17 @@ namespace Proj_Book_Store_Manage
             this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtPassword);
-            this.panel2.Location = new System.Drawing.Point(265, 304);
+            this.panel2.Location = new System.Drawing.Point(263, 264);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(559, 389);
             this.panel2.TabIndex = 7;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1054, 714);
+            this.ClientSize = new System.Drawing.Size(1054, 681);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
@@ -202,6 +202,7 @@ namespace Proj_Book_Store_Manage
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
