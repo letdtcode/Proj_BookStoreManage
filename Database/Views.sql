@@ -90,3 +90,22 @@ where BILLOUTPUT.idCus= CUSTOMER.idCus and
 	  DISCOUNT.idBill = BILLOUTPUT.idBillOutPut
 
 
+<<<<<<< HEAD
+=======
+
+------------------------------View-------------------------------------------
+--View tác giả
+create view view_Author
+as
+select *
+from dbo.AUTHOR
+go
+
+--View tài khoản
+create view view_Account
+as
+select *
+from dbo.ACCOUNT
+go
+
+>>>>>>> 8b764eec229463d82f96fc9fed78a671131d4404

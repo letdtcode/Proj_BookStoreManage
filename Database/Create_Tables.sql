@@ -1,4 +1,4 @@
-﻿\create database BOOKSTOREMANAGE
+﻿create database BOOKSTOREMANAGE
 go
 
 use BOOKSTOREMANAGE

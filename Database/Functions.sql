@@ -189,5 +189,17 @@ begin
 end
 go
 
+-------------------------Trả về tổng số tiền khi nhập sách----------------------------
+create or alter function returnPriceInput (@idBill int)
+returns int
+as
+begin
+	declare @priceInput int
+	set @priceInput = (select SUM(BOOK_BILLINPUT.amountInput* BOOK.priceImport) from BOOK_BILLINPUT, BOOK 
+						where idBillInput = @idBill and
+								BOOK_BILLINPUT.idBook = BOOK.idBook)
 
 
+	return @priceInput
+end
+go

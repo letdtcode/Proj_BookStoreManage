@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BSLayer\AccountBL.cs" />
     <Compile Include="BSLayer\AuthorBL.cs" />
     <Compile Include="BSLayer\Book.cs" />
     <Compile Include="BSLayer\BookInput.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="UI\UControlVoucher.Designer.cs">
       <DependentUpon>UControlVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <EmbeddedResource Include="UI\FormApplyVoucherForBill.resx">
       <DependentUpon>FormApplyVoucherForBill.cs</DependentUpon>
     </EmbeddedResource>

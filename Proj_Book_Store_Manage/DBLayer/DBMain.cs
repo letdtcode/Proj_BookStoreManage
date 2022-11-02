@@ -62,15 +62,7 @@ namespace Proj_Book_Store_Manage.DBLayer
             return ds;
         }
 
-        //public string ExecuteQueryXML (string strSQL, CommandType ct, params SqlParameter[] p)
-        //{
-        //    cmd.CommandText = strSQL;
-        //    cmd.CommandType = ct;
-        //    adapter = new SqlDataAdapter(cmd);
-        //    DataSet ds = new DataSet();
-        //    adapter.Fill(ds);
-        //    return ds.GetXml();
-        //}
+      
 
         public bool MyExecuteNonQuery(string strSQL, CommandType ct, ref string error)
         {
