@@ -91,3 +91,18 @@ where BILLOUTPUT.idCus= CUSTOMER.idCus and
 
 
 
+------------------------------View-------------------------------------------
+--View tác giả
+create view view_Author
+as
+select *
+from dbo.AUTHOR
+go
+
+--View tài khoản
+create view view_Account
+as
+select *
+from dbo.ACCOUNT
+go
+
