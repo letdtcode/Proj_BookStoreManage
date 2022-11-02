@@ -53,7 +53,10 @@
     <Compile Include="BSLayer\Publisher.cs" />
     <Compile Include="BSLayer\SellBook.cs" />
     <Compile Include="BSLayer\Voucher.cs" />
+    <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DBLayer\DBMain.cs" />
+    <Compile Include="DTO\Category.cs" />
     <Compile Include="UI\FormApplyVoucherForBill.cs">
       <SubType>Form</SubType>
     </Compile>
