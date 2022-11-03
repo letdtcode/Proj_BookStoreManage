@@ -203,3 +203,12 @@ begin
 	return @priceInput
 end
 go
+---Tính số lượng sách bán đc-----
+create or alter function funAmountBooksold()
+returns table as
+return
+	select BOOK_BILLOUTPUT.idBook, nameBook, sum( BOOK_BILLOUTPUT.amountOutput) as SoldBook
+	from BOOK_BILLOUTPUT, BOOK
+	where BOOK.idBook = BOOK_BILLOUTPUT.idBook
+	group by BOOK_BILLOUTPUT.idBook, BOOK.nameBook	
+go

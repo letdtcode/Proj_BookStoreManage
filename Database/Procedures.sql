@@ -114,8 +114,58 @@ begin
 	insert into BOOK_BILLOUTPUT values (@idBill, @idBook, @amount)
 end
 go
-
-
+------------------------ Loại khách hàng------------------------------
+--PROCEDURE TYPECUSTOMER
+--Thêm một TypeCustomer
+create or alter procedure proc_addNewTypeCustomer
+@nameTypeCus nvarchar(30),
+@pointMark int,
+@valueTypeCus int
+as
+begin
+	insert into dbo.TYPECUSTOMER
+		(
+	nameTypeCus,
+	pointMark,
+	valueTypeCus
+		)
+	values
+		(
+	@nameTypeCus,
+	@pointMark,
+	@valueTypeCus
+		)
+end
+go
+--Chỉnh sửa một Type Customer
+create or alter procedure proc_updateTypeCustomer
+@idTypeCus int,
+@nameTypeCus nvarchar(30),
+@pointMark int,
+@valueTypeCus int
+as
+begin
+	update dbo.TYPECUSTOMER
+	set nameTypeCus=@nameTypeCus, pointMark=@pointMark, valueTypeCus=@valueTypeCus
+	where dbo.TYPECUSTOMER.idTypeCus=@idTypeCus
+end
+go
+--Xóa một TypeCustomer
+create or alter procedure proc_deleteTypeCustomer
+@idTypeCus int
+as
+begin
+	delete from dbo.TYPECUSTOMER
+	where dbo.TYPECUSTOMER.idTypeCus=@idTypeCus
+end
+go
+-------- Tìm kiếm theo tên và mã khách hàng
+create procedure proc_findTypeCus
+as
+begin
+	select idTypeCus, nameTypeCus from TYPECUSTOMER
+end 
+go
 ----------------------------CUSTOMER------------------------
 ---Thêm khách hàng
 create or alter proc proc_InsertCustomer (@name varchar(30), @address varchar(30), @phoneNumber varchar(20))
@@ -125,8 +175,6 @@ begin
 	values (@name, @address, @phoneNumber, 0)
 end
 go
-
-
 
 --Xóa khách hàng
 Create or alter proc proc_DeleteCustomer (@id int)
@@ -146,8 +194,13 @@ begin
 
 end
 go
-
-
+-------- Tìm kiếm theo tên và mã khách hàng--------------
+create procedure proc_findCustomer
+as
+begin
+	select idCus, nameCus from CUSTOMER
+end 
+go
 -------------------------------------------Cập nhật điểm của khách hàng---------------------------------------------------------
 Create procedure proc_UpdateScore (@id int, @price int)
 as
