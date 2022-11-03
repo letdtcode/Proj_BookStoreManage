@@ -60,7 +60,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtSearch.Location = new System.Drawing.Point(91, 131);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 20);
+            this.txtSearch.Size = new System.Drawing.Size(224, 22);
             this.txtSearch.TabIndex = 2;
             // 
             // lblSearchBy
@@ -70,7 +70,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblSearchBy.Location = new System.Drawing.Point(24, 57);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(91, 21);
+            this.lblSearchBy.Size = new System.Drawing.Size(106, 23);
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "Thuộc tính";
             // 
@@ -91,7 +91,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbAttributeSearch.FormattingEnabled = true;
             this.cbAttributeSearch.Location = new System.Drawing.Point(173, 51);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 21);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // dgvPublisher
@@ -182,14 +182,14 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(147, 139);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(247, 20);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(247, 22);
             this.txtPhoneNumber.TabIndex = 2;
             // 
             // txtNamePublisher
             // 
             this.txtNamePublisher.Location = new System.Drawing.Point(147, 49);
             this.txtNamePublisher.Name = "txtNamePublisher";
-            this.txtNamePublisher.Size = new System.Drawing.Size(247, 20);
+            this.txtNamePublisher.Size = new System.Drawing.Size(247, 22);
             this.txtNamePublisher.TabIndex = 2;
             // 
             // lblPhoneNumber
@@ -199,7 +199,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPhoneNumber.Location = new System.Drawing.Point(25, 138);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(39, 21);
+            this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
             this.lblPhoneNumber.TabIndex = 1;
             this.lblPhoneNumber.Text = "SĐT";
             // 
@@ -210,7 +210,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNamePublisher.Location = new System.Drawing.Point(25, 48);
             this.lblNamePublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNamePublisher.Name = "lblNamePublisher";
-            this.lblNamePublisher.Size = new System.Drawing.Size(72, 21);
+            this.lblNamePublisher.Size = new System.Drawing.Size(87, 23);
             this.lblNamePublisher.TabIndex = 0;
             this.lblNamePublisher.Text = "Tên NXB";
             // 
@@ -235,7 +235,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtAddress.Location = new System.Drawing.Point(147, 94);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(247, 20);
+            this.txtAddress.Size = new System.Drawing.Size(247, 22);
             this.txtAddress.TabIndex = 2;
             // 
             // lblAddress
@@ -245,7 +245,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAddress.Location = new System.Drawing.Point(25, 93);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(64, 21);
+            this.lblAddress.Size = new System.Drawing.Size(79, 23);
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Địa chỉ";
             // 
@@ -268,7 +268,6 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel1);
             this.Name = "UControlPublisher";
             this.Size = new System.Drawing.Size(1072, 581);
-            this.Load += new System.EventHandler(this.UControlPublisher_Load);
             this.gpSearch.ResumeLayout(false);
             this.gpSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPublisher)).EndInit();
