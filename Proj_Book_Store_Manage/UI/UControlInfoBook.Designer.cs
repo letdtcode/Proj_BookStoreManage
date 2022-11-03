@@ -47,7 +47,6 @@ namespace Proj_Book_Store_Manage.UI
             this.txtIdBook = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnUploadImg = new System.Windows.Forms.Button();
             this.ptbBook = new System.Windows.Forms.PictureBox();
             this.dgvBook = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -235,7 +234,6 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnUploadImg);
             this.panel1.Controls.Add(this.ptbBook);
             this.panel1.Controls.Add(this.gpSearch);
             this.panel1.Controls.Add(this.gbInfoBook);
@@ -246,19 +244,10 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Size = new System.Drawing.Size(1072, 180);
             this.panel1.TabIndex = 3;
             // 
-            // btnUploadImg
-            // 
-            this.btnUploadImg.Location = new System.Drawing.Point(974, 68);
-            this.btnUploadImg.Name = "btnUploadImg";
-            this.btnUploadImg.Size = new System.Drawing.Size(73, 44);
-            this.btnUploadImg.TabIndex = 3;
-            this.btnUploadImg.Text = "Up Ảnh";
-            this.btnUploadImg.UseVisualStyleBackColor = true;
-            // 
             // ptbBook
             // 
             this.ptbBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ptbBook.Location = new System.Drawing.Point(811, 6);
+            this.ptbBook.Location = new System.Drawing.Point(861, 6);
             this.ptbBook.Name = "ptbBook";
             this.ptbBook.Size = new System.Drawing.Size(155, 153);
             this.ptbBook.TabIndex = 2;
@@ -325,7 +314,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvBook;
         private System.Windows.Forms.PictureBox ptbBook;
-        private System.Windows.Forms.Button btnUploadImg;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.TextBox txtCategory;

@@ -90,6 +90,8 @@ where BILLOUTPUT.idCus= CUSTOMER.idCus and
 	  DISCOUNT.idBill = BILLOUTPUT.idBillOutPut
 
 
+<<<<<<< HEAD
+=======
 
 ------------------------------View-------------------------------------------
 --View tác giả
@@ -106,3 +108,4 @@ select *
 from dbo.ACCOUNT
 go
 
+>>>>>>> 8b764eec229463d82f96fc9fed78a671131d4404
