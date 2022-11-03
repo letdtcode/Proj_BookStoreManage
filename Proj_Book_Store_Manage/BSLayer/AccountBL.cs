@@ -79,7 +79,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public DataTable searchAccount(int idAccount, string userName, string password, bool typeOfAcc, int idEmp, ref string err)
+        /*public DataTable searchAccount(int idAccount, string userName, string password, bool typeOfAcc, int idEmp, ref string err)
         {
             strSQL = "func_searchAccount";
             parameters = new List<SqlParameter>();
@@ -101,6 +101,6 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteFunction(strSQL, CommandType.Text, parameters, ref err);
-        }
+        }*/
     }
 }

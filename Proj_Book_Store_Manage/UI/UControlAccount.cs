@@ -56,7 +56,7 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (account.deleteAccount(utl.row, ref err) == true)
+                        if (account.deleteAccount(utl.IDCurrent, ref err) == true)
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
@@ -114,7 +114,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    account.modifyAccount(utl.row, this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
+                    account.modifyAccount(utl.IDCurrent, this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -180,12 +180,12 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnShowResult_Click(object sender, EventArgs e)
         {
-            if (cbTypeAcc.Text == "Admin")
+            /*if (cbTypeAcc.Text == "Admin")
                 roleTemp = true;
             else
                 roleTemp = false;
             dgvAuthor.DataSource = account.searchAccount(int.Parse(txtIDAccount.Text), txtUserName.Text.ToString(), txtPassword.Text.ToString(), roleTemp, int.Parse(cbEmployee.Text), ref err);
-            dgvAuthor.Show();
+            dgvAuthor.Show();*/
         }
     }
 }

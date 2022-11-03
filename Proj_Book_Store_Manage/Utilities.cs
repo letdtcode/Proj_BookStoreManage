@@ -29,7 +29,7 @@ namespace Proj_Book_Store_Manage
             set => checkIDValid = value;
         }
         public List<Control> Controls { get => controls; set => controls = value; }
-        public int row
+        public int IDCurrent
         {
             get => rowIDCurrentIndex;
             //set => rowIDCurrentIndex = value;

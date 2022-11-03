@@ -17,6 +17,7 @@ namespace Proj_Book_Store_Manage.UI
     {
         private List<Control> controls = null;
         private DataTable dtBook = null;
+        DataTable dtCategoryOfBook = null;
         private Utilities utl = null;
         private int IDBook;
         private string err = "";
@@ -65,7 +66,7 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (book.deleteBook(utl.row, ref err) == true)
+                        if (book.deleteBook(utl.IDCurrent, ref err) == true)
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
@@ -120,7 +121,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    book.modifyBook(utl.row, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), int.Parse(this.cbIDPublisher.Text), ref err);
+                    book.modifyBook(utl.IDCurrent, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), int.Parse(this.cbIDPublisher.Text), ref err);
                     LoadData();
                     if (err == "")
                     {
@@ -157,7 +158,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAddCate_Click(object sender, EventArgs e)
         {
-
+            //btnedit
         }
 
         private void btnDeleteCate_Click(object sender, EventArgs e)
@@ -194,9 +195,11 @@ namespace Proj_Book_Store_Manage.UI
                 this.Text = openFileDialog.FileName;
             }
         }
-        
 
-        
+        private void LoadDataCategory(int idBook)
+        {
+
+        }
         private void LoadData()
         {
             controls = new List<Control> { txtNameBook, txtAmount, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
@@ -215,7 +218,11 @@ namespace Proj_Book_Store_Manage.UI
 
         private void dgvBook_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            err = "";
             utl.CellClick(btnCancel, btnDelete);
+
+            dgvCategory.DataSource = book.showCategory(utl.IDCurrent,ref err);
+            dgvAuthor.DataSource = book.showAuthor(utl.IDCurrent, ref err);
             if (dgvBook.Rows[utl.rowCurrent].Cells[6].Value.ToString() == "")
                 ptbBook.Image = null;
             else

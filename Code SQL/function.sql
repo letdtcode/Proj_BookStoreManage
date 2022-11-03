@@ -70,5 +70,21 @@ begin
 	
 end
 go
+--Trả về danh sách các thể loại của sách
+create or alter function func_getAllCategoryOfBook(@idBook int)
+returns table
+as 
+return (select distinct dbo.CATEGORY.nameCategory as TheLoai
+from dbo.CATEGORY, dbo.BOOK_CATEGORY
+where dbo.BOOK_CATEGORY.idBook=@idBook and dbo.CATEGORY.idCategory=dbo.BOOK_CATEGORY.idCategory)
 go
-exec GetBook
+--Trả về danh sách các tác giả của sách
+create or alter function func_getAllAuthorOfBook(@idBook int)
+returns table
+as 
+return (select distinct dbo.AUTHOR.nameAuthor as TacGia
+from dbo.AUTHOR, dbo.BOOK_AUTHOR
+where dbo.BOOK_AUTHOR.idBook=@idBook and dbo.AUTHOR.idAuthor=dbo.BOOK_AUTHOR.idAuthor)
+go
+select * from dbo.func_getAllAuthorOfBook(6)
+go

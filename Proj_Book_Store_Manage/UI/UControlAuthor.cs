@@ -94,7 +94,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    author.modifyAuthor(utl.row, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
+                    author.modifyAuthor(utl.IDCurrent, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -133,7 +133,7 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (author.deleteAuthor(utl.row, ref err) == true)
+                        if (author.deleteAuthor(utl.IDCurrent, ref err) == true)
                         {
                             MessageBox.Show("Xóa thành công !");
                         }

@@ -240,28 +240,12 @@ go
 create or alter procedure proc_updateBookAuthor
 @idBook int,
 @idAuthor int,
-@idNewBook int,
 @idNewAuthor int 
 as
 begin
-	if (@idNewAuthor is null and @idNewBook is not null)
-	begin
-		update dbo.BOOK_AUTHOR
-		set idBook=@idNewBook
-		where dbo.BOOK_AUTHOR.idBook=@idBook
-	end
-	else if (@idNewBook is null and @idNewAuthor is not null)
-	begin
-		update dbo.BOOK_AUTHOR
-		set idAuthor=@idAuthor
-		where dbo.BOOK_AUTHOR.idBook=@idBook
-	end
-	else
-	begin
-		update dbo.BOOK_AUTHOR
-		set idAuthor=@idNewAuthor, idBook=@idNewBook
-		where dbo.BOOK_AUTHOR.idBook=@idBook and dbo.BOOK_AUTHOR.idAuthor=@idAuthor
-	end
+	update dbo.BOOK_AUTHOR
+	set idAuthor=@idNewAuthor
+	where dbo.BOOK_AUTHOR.idBook=@idBook
 end
 go
 --Xóa bộ sách-tác giả
@@ -829,5 +813,5 @@ begin
 	where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
 end
 go
-select *
-from proc_
+select * 
+from proc_deleteBookBillOutput

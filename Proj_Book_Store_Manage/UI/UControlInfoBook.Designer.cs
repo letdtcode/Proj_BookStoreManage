@@ -56,19 +56,21 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvBook = new System.Windows.Forms.DataGridView();
             this.panelCategory = new System.Windows.Forms.Panel();
             this.gbAuthor = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.dgvAuthor = new System.Windows.Forms.DataGridView();
             this.btnSaveAuthor = new System.Windows.Forms.Button();
             this.btnDeleteAuthor = new System.Windows.Forms.Button();
             this.btnAddAuthor = new System.Windows.Forms.Button();
             this.lblNameAuthor = new System.Windows.Forms.Label();
             this.gbCategoryBook = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.dgvCategory = new System.Windows.Forms.DataGridView();
             this.btnSaveCate = new System.Windows.Forms.Button();
             this.btnDeleteCate = new System.Windows.Forms.Button();
             this.btnAddCate = new System.Windows.Forms.Button();
             this.lblNameCategory = new System.Windows.Forms.Label();
+            this.cbaddCategory = new System.Windows.Forms.ComboBox();
+            this.cbaddAuthor = new System.Windows.Forms.ComboBox();
+            this.btnEditCate = new System.Windows.Forms.Button();
+            this.btnEditAuthor = new System.Windows.Forms.Button();
             this.gpSearch.SuspendLayout();
             this.gbInfoBook.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -335,11 +337,11 @@ namespace Proj_Book_Store_Manage.UI
             // dgvBook
             // 
             this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBook.Location = new System.Drawing.Point(44, 256);
+            this.dgvBook.Location = new System.Drawing.Point(18, 275);
             this.dgvBook.Name = "dgvBook";
             this.dgvBook.RowHeadersWidth = 51;
             this.dgvBook.RowTemplate.Height = 24;
-            this.dgvBook.Size = new System.Drawing.Size(595, 294);
+            this.dgvBook.Size = new System.Drawing.Size(602, 294);
             this.dgvBook.TabIndex = 5;
             this.dgvBook.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBook_CellClick);
             // 
@@ -348,47 +350,41 @@ namespace Proj_Book_Store_Manage.UI
             this.panelCategory.Controls.Add(this.gbAuthor);
             this.panelCategory.Controls.Add(this.gbCategoryBook);
             this.panelCategory.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCategory.Location = new System.Drawing.Point(675, 180);
+            this.panelCategory.Location = new System.Drawing.Point(640, 180);
             this.panelCategory.Name = "panelCategory";
-            this.panelCategory.Size = new System.Drawing.Size(397, 401);
+            this.panelCategory.Size = new System.Drawing.Size(432, 401);
             this.panelCategory.TabIndex = 7;
             // 
             // gbAuthor
             // 
-            this.gbAuthor.Controls.Add(this.textBox5);
+            this.gbAuthor.Controls.Add(this.cbaddAuthor);
             this.gbAuthor.Controls.Add(this.dgvAuthor);
+            this.gbAuthor.Controls.Add(this.btnEditAuthor);
             this.gbAuthor.Controls.Add(this.btnSaveAuthor);
             this.gbAuthor.Controls.Add(this.btnDeleteAuthor);
             this.gbAuthor.Controls.Add(this.btnAddAuthor);
             this.gbAuthor.Controls.Add(this.lblNameAuthor);
             this.gbAuthor.Location = new System.Drawing.Point(12, 199);
             this.gbAuthor.Name = "gbAuthor";
-            this.gbAuthor.Size = new System.Drawing.Size(366, 190);
+            this.gbAuthor.Size = new System.Drawing.Size(417, 190);
             this.gbAuthor.TabIndex = 0;
             this.gbAuthor.TabStop = false;
             this.gbAuthor.Text = "Tác giả";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(105, 31);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(165, 22);
-            this.textBox5.TabIndex = 2;
-            // 
             // dgvAuthor
             // 
             this.dgvAuthor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAuthor.Location = new System.Drawing.Point(15, 76);
+            this.dgvAuthor.Location = new System.Drawing.Point(15, 82);
             this.dgvAuthor.Name = "dgvAuthor";
             this.dgvAuthor.RowHeadersWidth = 51;
             this.dgvAuthor.RowTemplate.Height = 24;
-            this.dgvAuthor.Size = new System.Drawing.Size(255, 95);
+            this.dgvAuthor.Size = new System.Drawing.Size(211, 95);
             this.dgvAuthor.TabIndex = 0;
             // 
             // btnSaveAuthor
             // 
             this.btnSaveAuthor.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAuthor.Location = new System.Drawing.Point(292, 128);
+            this.btnSaveAuthor.Location = new System.Drawing.Point(320, 131);
             this.btnSaveAuthor.Name = "btnSaveAuthor";
             this.btnSaveAuthor.Size = new System.Drawing.Size(68, 43);
             this.btnSaveAuthor.TabIndex = 1;
@@ -399,7 +395,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnDeleteAuthor
             // 
             this.btnDeleteAuthor.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAuthor.Location = new System.Drawing.Point(292, 79);
+            this.btnDeleteAuthor.Location = new System.Drawing.Point(246, 131);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
             this.btnDeleteAuthor.Size = new System.Drawing.Size(68, 43);
             this.btnDeleteAuthor.TabIndex = 1;
@@ -410,7 +406,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnAddAuthor
             // 
             this.btnAddAuthor.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAuthor.Location = new System.Drawing.Point(292, 30);
+            this.btnAddAuthor.Location = new System.Drawing.Point(246, 82);
             this.btnAddAuthor.Name = "btnAddAuthor";
             this.btnAddAuthor.Size = new System.Drawing.Size(68, 43);
             this.btnAddAuthor.TabIndex = 1;
@@ -422,7 +418,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameAuthor.AutoSize = true;
             this.lblNameAuthor.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameAuthor.Location = new System.Drawing.Point(11, 33);
+            this.lblNameAuthor.Location = new System.Drawing.Point(101, 33);
             this.lblNameAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameAuthor.Name = "lblNameAuthor";
             this.lblNameAuthor.Size = new System.Drawing.Size(87, 19);
@@ -431,40 +427,34 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbCategoryBook
             // 
-            this.gbCategoryBook.Controls.Add(this.textBox4);
+            this.gbCategoryBook.Controls.Add(this.cbaddCategory);
             this.gbCategoryBook.Controls.Add(this.dgvCategory);
             this.gbCategoryBook.Controls.Add(this.btnSaveCate);
+            this.gbCategoryBook.Controls.Add(this.btnEditCate);
             this.gbCategoryBook.Controls.Add(this.btnDeleteCate);
             this.gbCategoryBook.Controls.Add(this.btnAddCate);
             this.gbCategoryBook.Controls.Add(this.lblNameCategory);
             this.gbCategoryBook.Location = new System.Drawing.Point(12, 15);
             this.gbCategoryBook.Name = "gbCategoryBook";
-            this.gbCategoryBook.Size = new System.Drawing.Size(366, 178);
+            this.gbCategoryBook.Size = new System.Drawing.Size(417, 178);
             this.gbCategoryBook.TabIndex = 0;
             this.gbCategoryBook.TabStop = false;
             this.gbCategoryBook.Text = "Thể loại sách";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(93, 31);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(165, 22);
-            this.textBox4.TabIndex = 2;
-            // 
             // dgvCategory
             // 
             this.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCategory.Location = new System.Drawing.Point(37, 70);
+            this.dgvCategory.Location = new System.Drawing.Point(15, 80);
             this.dgvCategory.Name = "dgvCategory";
             this.dgvCategory.RowHeadersWidth = 51;
             this.dgvCategory.RowTemplate.Height = 24;
-            this.dgvCategory.Size = new System.Drawing.Size(221, 92);
+            this.dgvCategory.Size = new System.Drawing.Size(211, 92);
             this.dgvCategory.TabIndex = 0;
             // 
             // btnSaveCate
             // 
             this.btnSaveCate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveCate.Location = new System.Drawing.Point(292, 119);
+            this.btnSaveCate.Location = new System.Drawing.Point(320, 133);
             this.btnSaveCate.Name = "btnSaveCate";
             this.btnSaveCate.Size = new System.Drawing.Size(68, 43);
             this.btnSaveCate.TabIndex = 1;
@@ -475,7 +465,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnDeleteCate
             // 
             this.btnDeleteCate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteCate.Location = new System.Drawing.Point(292, 70);
+            this.btnDeleteCate.Location = new System.Drawing.Point(246, 133);
             this.btnDeleteCate.Name = "btnDeleteCate";
             this.btnDeleteCate.Size = new System.Drawing.Size(68, 43);
             this.btnDeleteCate.TabIndex = 1;
@@ -486,7 +476,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnAddCate
             // 
             this.btnAddCate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCate.Location = new System.Drawing.Point(292, 21);
+            this.btnAddCate.Location = new System.Drawing.Point(246, 80);
             this.btnAddCate.Name = "btnAddCate";
             this.btnAddCate.Size = new System.Drawing.Size(68, 43);
             this.btnAddCate.TabIndex = 1;
@@ -498,12 +488,50 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameCategory.AutoSize = true;
             this.lblNameCategory.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCategory.Location = new System.Drawing.Point(7, 34);
+            this.lblNameCategory.Location = new System.Drawing.Point(101, 33);
             this.lblNameCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCategory.Name = "lblNameCategory";
             this.lblNameCategory.Size = new System.Drawing.Size(85, 19);
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
+            // 
+            // cbaddCategory
+            // 
+            this.cbaddCategory.FormattingEnabled = true;
+            this.cbaddCategory.Location = new System.Drawing.Point(210, 28);
+            this.cbaddCategory.Name = "cbaddCategory";
+            this.cbaddCategory.Size = new System.Drawing.Size(121, 24);
+            this.cbaddCategory.TabIndex = 2;
+            // 
+            // cbaddAuthor
+            // 
+            this.cbaddAuthor.FormattingEnabled = true;
+            this.cbaddAuthor.Location = new System.Drawing.Point(210, 33);
+            this.cbaddAuthor.Name = "cbaddAuthor";
+            this.cbaddAuthor.Size = new System.Drawing.Size(121, 24);
+            this.cbaddAuthor.TabIndex = 2;
+            // 
+            // btnEditCate
+            // 
+            this.btnEditCate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditCate.Location = new System.Drawing.Point(320, 80);
+            this.btnEditCate.Name = "btnEditCate";
+            this.btnEditCate.Size = new System.Drawing.Size(68, 43);
+            this.btnEditCate.TabIndex = 1;
+            this.btnEditCate.Text = "Sửa";
+            this.btnEditCate.UseVisualStyleBackColor = true;
+            this.btnEditCate.Click += new System.EventHandler(this.btnDeleteCate_Click);
+            // 
+            // btnEditAuthor
+            // 
+            this.btnEditAuthor.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditAuthor.Location = new System.Drawing.Point(320, 82);
+            this.btnEditAuthor.Name = "btnEditAuthor";
+            this.btnEditAuthor.Size = new System.Drawing.Size(68, 43);
+            this.btnEditAuthor.TabIndex = 1;
+            this.btnEditAuthor.Text = "Sửa";
+            this.btnEditAuthor.UseVisualStyleBackColor = true;
+            this.btnEditAuthor.Click += new System.EventHandler(this.btnSaveAuthor_Click);
             // 
             // UControlInfoBook
             // 
@@ -568,17 +596,19 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.GroupBox gbCategoryBook;
         private System.Windows.Forms.DataGridView dgvCategory;
         private System.Windows.Forms.PictureBox ptbBook;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button btnSaveAuthor;
         private System.Windows.Forms.Button btnDeleteAuthor;
         private System.Windows.Forms.Button btnAddAuthor;
         private System.Windows.Forms.Label lblNameAuthor;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btnSaveCate;
         private System.Windows.Forms.Button btnDeleteCate;
         private System.Windows.Forms.Button btnAddCate;
         private System.Windows.Forms.Label lblNameCategory;
         private System.Windows.Forms.Button btnUploadImg;
         private System.Windows.Forms.ComboBox cbIDPublisher;
+        private System.Windows.Forms.ComboBox cbaddAuthor;
+        private System.Windows.Forms.ComboBox cbaddCategory;
+        private System.Windows.Forms.Button btnEditAuthor;
+        private System.Windows.Forms.Button btnEditCate;
     }
 }

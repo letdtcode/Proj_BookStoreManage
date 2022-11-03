@@ -43,7 +43,7 @@ namespace Proj_Book_Store_Manage.DBLayer
             return dt;
             //conn.Close();
         }
-        public DataTable ExecuteFunction(string sqlFunction, CommandType ct, List<SqlParameter> parameters, ref string error)
+        public DataTable ExecuteFunction(SqlCommand cmdFunction, ref string error)
         {
             error = "";
             dt = new DataTable();
@@ -51,13 +51,8 @@ namespace Proj_Book_Store_Manage.DBLayer
                 conn.Close();
             conn.Open();
             //cmd = new SqlCommand();
-            cmd.CommandText = "select * from dbo." + sqlFunction;
-            cmd.CommandType = ct;
-            cmd.Parameters.Clear();
-            foreach (SqlParameter i in parameters)
-            {
-                cmd.Parameters.Add(i);
-            }
+            cmd = cmdFunction;
+            cmd.Connection = conn;
             try
             {
                 adapter = new SqlDataAdapter(cmd);

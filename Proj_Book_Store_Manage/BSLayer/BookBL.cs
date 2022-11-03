@@ -132,5 +132,51 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
+        public DataTable showCategory(int idBook, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("Select * from func_getAllCategoryOfBook(@idBook)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBook", idBook);
+            return db.ExecuteFunction(cmd, ref err);
+        }
+        public DataTable showAuthor(int idBook, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("Select * from func_getAllAuthorOfBook(@idBook)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBook", idBook);
+            return db.ExecuteFunction(cmd, ref err);
+        }
+        /*public DataTable addNewCateForBook(int idBook, int nameBook, ref string err)
+        {
+            strSQL = "proc_addNewBookCategory";
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idCategory", nameBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@urlImage", imgString);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@amount", amount);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@priceImport", priceImport);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@priceExport", priceExport);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idPublisher", idPublisher);
+            parameters.Add(parameter);
+
+            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }*/
     }
 }
+
+
+
+
