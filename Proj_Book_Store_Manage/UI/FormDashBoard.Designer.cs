@@ -254,7 +254,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(290, 30);
+            this.lblInfo.Location = new System.Drawing.Point(262, 31);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(468, 39);
             this.lblInfo.TabIndex = 0;

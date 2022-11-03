@@ -39,18 +39,19 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtNameAuthor = new System.Windows.Forms.TextBox();
+            this.txtNameBook = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblNameBook = new System.Windows.Forms.Label();
             this.gbInfoBook = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbIDPublisher = new System.Windows.Forms.ComboBox();
+            this.txtPriceExport = new System.Windows.Forms.TextBox();
+            this.txtPriceImport = new System.Windows.Forms.TextBox();
+            this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblPriceExport = new System.Windows.Forms.Label();
             this.lblPublisher = new System.Windows.Forms.Label();
             this.lblPriceImport = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUploadImg = new System.Windows.Forms.Button();
             this.ptbBook = new System.Windows.Forms.PictureBox();
             this.dgvBook = new System.Windows.Forms.DataGridView();
             this.panelCategory = new System.Windows.Forms.Panel();
@@ -68,7 +69,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDeleteCate = new System.Windows.Forms.Button();
             this.btnAddCate = new System.Windows.Forms.Button();
             this.lblNameCategory = new System.Windows.Forms.Label();
-            this.btnUploadImg = new System.Windows.Forms.Button();
             this.gpSearch.SuspendLayout();
             this.gbInfoBook.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -128,6 +128,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload.TabIndex = 1;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnAdd
             // 
@@ -138,6 +139,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -148,6 +150,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnCancel
             // 
@@ -158,6 +161,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
@@ -168,6 +172,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -178,13 +183,14 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtNameAuthor
+            // txtNameBook
             // 
-            this.txtNameAuthor.Location = new System.Drawing.Point(106, 38);
-            this.txtNameAuthor.Name = "txtNameAuthor";
-            this.txtNameAuthor.Size = new System.Drawing.Size(147, 22);
-            this.txtNameAuthor.TabIndex = 2;
+            this.txtNameBook.Location = new System.Drawing.Point(106, 38);
+            this.txtNameBook.Name = "txtNameBook";
+            this.txtNameBook.Size = new System.Drawing.Size(147, 22);
+            this.txtNameBook.TabIndex = 2;
             // 
             // lblAmount
             // 
@@ -210,11 +216,11 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbInfoBook
             // 
-            this.gbInfoBook.Controls.Add(this.textBox3);
-            this.gbInfoBook.Controls.Add(this.textBox2);
-            this.gbInfoBook.Controls.Add(this.txtPhoneNumber);
-            this.gbInfoBook.Controls.Add(this.textBox1);
-            this.gbInfoBook.Controls.Add(this.txtNameAuthor);
+            this.gbInfoBook.Controls.Add(this.cbIDPublisher);
+            this.gbInfoBook.Controls.Add(this.txtPriceExport);
+            this.gbInfoBook.Controls.Add(this.txtPriceImport);
+            this.gbInfoBook.Controls.Add(this.txtAmount);
+            this.gbInfoBook.Controls.Add(this.txtNameBook);
             this.gbInfoBook.Controls.Add(this.lblPriceExport);
             this.gbInfoBook.Controls.Add(this.lblPublisher);
             this.gbInfoBook.Controls.Add(this.lblPriceImport);
@@ -229,33 +235,36 @@ namespace Proj_Book_Store_Manage.UI
             this.gbInfoBook.TabStop = false;
             this.gbInfoBook.Text = "Thông tin Sách";
             // 
-            // textBox3
+            // cbIDPublisher
             // 
-            this.textBox3.Location = new System.Drawing.Point(344, 110);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(87, 22);
-            this.textBox3.TabIndex = 2;
+            this.cbIDPublisher.FormattingEnabled = true;
+            this.cbIDPublisher.Items.AddRange(new object[] {
+            "3"});
+            this.cbIDPublisher.Location = new System.Drawing.Point(105, 127);
+            this.cbIDPublisher.Name = "cbIDPublisher";
+            this.cbIDPublisher.Size = new System.Drawing.Size(121, 24);
+            this.cbIDPublisher.TabIndex = 3;
             // 
-            // textBox2
+            // txtPriceExport
             // 
-            this.textBox2.Location = new System.Drawing.Point(344, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(87, 22);
-            this.textBox2.TabIndex = 2;
+            this.txtPriceExport.Location = new System.Drawing.Point(356, 111);
+            this.txtPriceExport.Name = "txtPriceExport";
+            this.txtPriceExport.Size = new System.Drawing.Size(87, 22);
+            this.txtPriceExport.TabIndex = 2;
             // 
-            // txtPhoneNumber
+            // txtPriceImport
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(105, 84);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(147, 22);
-            this.txtPhoneNumber.TabIndex = 2;
+            this.txtPriceImport.Location = new System.Drawing.Point(356, 49);
+            this.txtPriceImport.Name = "txtPriceImport";
+            this.txtPriceImport.Size = new System.Drawing.Size(87, 22);
+            this.txtPriceImport.TabIndex = 2;
             // 
-            // textBox1
+            // txtAmount
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtAmount.Location = new System.Drawing.Point(105, 84);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(147, 22);
+            this.txtAmount.TabIndex = 2;
             // 
             // lblPriceExport
             // 
@@ -303,24 +312,36 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Size = new System.Drawing.Size(1072, 180);
             this.panel1.TabIndex = 3;
             // 
+            // btnUploadImg
+            // 
+            this.btnUploadImg.Location = new System.Drawing.Point(974, 68);
+            this.btnUploadImg.Name = "btnUploadImg";
+            this.btnUploadImg.Size = new System.Drawing.Size(73, 44);
+            this.btnUploadImg.TabIndex = 3;
+            this.btnUploadImg.Text = "Up Ảnh";
+            this.btnUploadImg.UseVisualStyleBackColor = true;
+            this.btnUploadImg.Click += new System.EventHandler(this.btnUploadImg_Click);
+            // 
             // ptbBook
             // 
             this.ptbBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ptbBook.Location = new System.Drawing.Point(811, 6);
             this.ptbBook.Name = "ptbBook";
             this.ptbBook.Size = new System.Drawing.Size(155, 153);
+            this.ptbBook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbBook.TabIndex = 2;
             this.ptbBook.TabStop = false;
             // 
             // dgvBook
             // 
             this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBook.Location = new System.Drawing.Point(16, 257);
+            this.dgvBook.Location = new System.Drawing.Point(44, 256);
             this.dgvBook.Name = "dgvBook";
             this.dgvBook.RowHeadersWidth = 51;
             this.dgvBook.RowTemplate.Height = 24;
-            this.dgvBook.Size = new System.Drawing.Size(586, 294);
+            this.dgvBook.Size = new System.Drawing.Size(595, 294);
             this.dgvBook.TabIndex = 5;
+            this.dgvBook.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBook_CellClick);
             // 
             // panelCategory
             // 
@@ -373,6 +394,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSaveAuthor.TabIndex = 1;
             this.btnSaveAuthor.Text = "Lưu";
             this.btnSaveAuthor.UseVisualStyleBackColor = true;
+            this.btnSaveAuthor.Click += new System.EventHandler(this.btnSaveAuthor_Click);
             // 
             // btnDeleteAuthor
             // 
@@ -383,6 +405,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDeleteAuthor.TabIndex = 1;
             this.btnDeleteAuthor.Text = "Xóa";
             this.btnDeleteAuthor.UseVisualStyleBackColor = true;
+            this.btnDeleteAuthor.Click += new System.EventHandler(this.btnDeleteAuthor_Click);
             // 
             // btnAddAuthor
             // 
@@ -393,6 +416,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAddAuthor.TabIndex = 1;
             this.btnAddAuthor.Text = "Thêm";
             this.btnAddAuthor.UseVisualStyleBackColor = true;
+            this.btnAddAuthor.Click += new System.EventHandler(this.btnAddAuthor_Click);
             // 
             // lblNameAuthor
             // 
@@ -446,6 +470,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSaveCate.TabIndex = 1;
             this.btnSaveCate.Text = "Lưu";
             this.btnSaveCate.UseVisualStyleBackColor = true;
+            this.btnSaveCate.Click += new System.EventHandler(this.btnSaveCate_Click);
             // 
             // btnDeleteCate
             // 
@@ -456,6 +481,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDeleteCate.TabIndex = 1;
             this.btnDeleteCate.Text = "Xóa";
             this.btnDeleteCate.UseVisualStyleBackColor = true;
+            this.btnDeleteCate.Click += new System.EventHandler(this.btnDeleteCate_Click);
             // 
             // btnAddCate
             // 
@@ -466,6 +492,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAddCate.TabIndex = 1;
             this.btnAddCate.Text = "Thêm";
             this.btnAddCate.UseVisualStyleBackColor = true;
+            this.btnAddCate.Click += new System.EventHandler(this.btnAddCate_Click);
             // 
             // lblNameCategory
             // 
@@ -477,15 +504,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameCategory.Size = new System.Drawing.Size(85, 19);
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
-            // 
-            // btnUploadImg
-            // 
-            this.btnUploadImg.Location = new System.Drawing.Point(974, 68);
-            this.btnUploadImg.Name = "btnUploadImg";
-            this.btnUploadImg.Size = new System.Drawing.Size(73, 44);
-            this.btnUploadImg.TabIndex = 3;
-            this.btnUploadImg.Text = "Up Ảnh";
-            this.btnUploadImg.UseVisualStyleBackColor = true;
             // 
             // UControlInfoBook
             // 
@@ -532,19 +550,18 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtNameAuthor;
+        private System.Windows.Forms.TextBox txtNameBook;
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Label lblNameBook;
         private System.Windows.Forms.GroupBox gbInfoBook;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvBook;
         private System.Windows.Forms.Label lblPriceExport;
         private System.Windows.Forms.Label lblPublisher;
         private System.Windows.Forms.Label lblPriceImport;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPriceExport;
+        private System.Windows.Forms.TextBox txtPriceImport;
         private System.Windows.Forms.Panel panelCategory;
         private System.Windows.Forms.GroupBox gbAuthor;
         private System.Windows.Forms.DataGridView dgvAuthor;
@@ -562,5 +579,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnAddCate;
         private System.Windows.Forms.Label lblNameCategory;
         private System.Windows.Forms.Button btnUploadImg;
+        private System.Windows.Forms.ComboBox cbIDPublisher;
     }
 }

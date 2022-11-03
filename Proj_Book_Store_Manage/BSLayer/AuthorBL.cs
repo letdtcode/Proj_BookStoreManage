@@ -12,9 +12,7 @@ namespace Proj_Book_Store_Manage.BSLayer
     public class AuthorBL
     {
         private DBMain db = null;
-        //private SqlConnection conn = null;
         private String nameView = "view_Author";
-        private string err = "";
         SqlParameter parameter;
         List<SqlParameter> parameters;
         string strSQL = "";

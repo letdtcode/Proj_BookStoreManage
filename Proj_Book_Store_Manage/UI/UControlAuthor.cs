@@ -15,90 +15,107 @@ namespace Proj_Book_Store_Manage.UI
 {
     public partial class UControlAuthor : UserControl
     {
-        DataTable dtAuthor = null;
+        private List<Control> controls = null;
+        private DataTable dtAuthor = null;
+        private Utilities utl = null;
+        private int IDAuthor;
+        private string err = "";
+        private DialogResult result;
 
         //false là chế độ sửa, true là chế độ thêm
-        bool tempAdd = false;
+        private bool isAdd = false;
+        private bool isEdit = false;
         AuthorBL author = new AuthorBL();
-        private string err = "";
+        //private bool roleTemp;
         public UControlAuthor()
         {
             InitializeComponent();
         }
         public void LoadData()
         {
-            try
-            {
-                dtAuthor = new DataTable();
-                dtAuthor = author.getDataAuthor();
-                //Đưa dữ liệu lên datagridview
-                dgvAuthor.DataSource = dtAuthor;
-                dgvAuthor.AutoResizeColumns();
-
-                //Reset lại textbox
-                this.txtNameAuthor.ResetText();
-                this.txtPhoneNumber.ResetText();
-                this.txtSearch.ResetText();
-
-                //Khóa button save và cancel
-                this.btnSave.Enabled = false;
-                this.btnCancel.Enabled = false;
-                this.txtNameAuthor.Enabled = false;
-                this.txtPhoneNumber.Enabled = false;
-
-                //Mở button add, edit, delete
-                this.btnAdd.Enabled = true;
-                this.btnEdit.Enabled = true;
-                this.btnDelete.Enabled = true;
-
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("Không lấy được dữ liệu ! Vui lòng kiểm tra lại");
-            }
+            controls = new List<Control> { txtNameAuthor, txtPhoneNumber };
+            dtAuthor = author.getDataAuthor();
+            dgvAuthor.DataSource = dtAuthor;
+            utl = new Utilities(controls, dgvAuthor);
+            dgvAuthor.AutoResizeColumns();
+            utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
+            utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
+            utl.setEnableControl(false);
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //Kích hoạt biến Thêm
-            tempAdd = true;
-
-            //Xóa trống các đối tượng trong panel
-            this.txtNameAuthor.ResetText();
-            this.txtPhoneNumber.ResetText();
-            this.txtSearch.ResetText();
-
-            //Cho phép thao tác trên các nút Save/Cancel
-            this.btnSave.Enabled = true;
-            this.btnCancel.Enabled = true;
-
-            //Mở cho người dùng nhập các text field
-            this.txtNameAuthor.Enabled = true;
-            this.txtPhoneNumber.Enabled = true;
-
-            //Đưa con trỏ đến vị trí bắt đầu
-            this.txtNameAuthor.Focus();
+            isAdd = true;
+            utl.SetNullForAllControl();
+            utl.setEnableControl(true);
+            utl.SetEnableButton(new List<Button> { btnEdit, btnDelete }, false);
+            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            isEdit = true;
+            //utl.SetNullForAllControl();
+            utl.setEnableControl(true);
+            utl.SetEnableButton(new List<Button> { btnAdd, btnDelete }, false);
+            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (tempAdd)
+            try
             {
-                try
+                if (utl.checkAllControlIsFill() == false)
                 {
-                    //author = new AuthorBL();
-                    author.addNewAuthor(this.txtNameAuthor.Text, this.txtPhoneNumber.Text,ref err);
-                    LoadData();
-                    MessageBox.Show("Thêm Tác Giả thành công !");
+                    result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    isAdd = false;
+                    isEdit = false;
+                    return;
                 }
-                catch
+                if (isAdd)
                 {
-                    MessageBox.Show("Đã có lỗi xảy ra !");
+                    author = new AuthorBL();
+                    try
+                    {
+                        author.addNewAuthor(this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
+                        if (err == "")
+                        {
+                            MessageBox.Show("Thêm tài khoản thành công !");
+                        }
+                        else
+                        {
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Thông tin không hợp lệ");
+                    }
                 }
+                else if (isEdit)
+                {
+                    //account = new AccountBL()
+                    author.modifyAuthor(utl.row, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
+                    //LoadData();
+                    if (err == "")
+                    {
+                        MessageBox.Show("Sửa tài khoản thành công !");
+                    }
+                    else
+                    {
+                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Đã có lỗi xảy ra !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isAdd = false;
+                isEdit = false;
+                utl.SetNullForAllControl();
+                LoadData();
             }
         }
 
@@ -109,17 +126,48 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (utl.CheckIDValid is true)
+                {
+                    result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (author.deleteAuthor(utl.row, ref err) == true)
+                        {
+                            MessageBox.Show("Xóa thành công !");
+                        }
+                        else
+                            MessageBox.Show("Xoá thất bại !");
 
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không thể xóa !");
+            }
+            finally
+            {
+                LoadData();
+            }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvAuthor_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            utl.CellClick(btnCancel, btnDelete);
+            txtNameAuthor.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[1].Value.ToString();
+            txtPhoneNumber.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[2].Value.ToString();
         }
     }
 }

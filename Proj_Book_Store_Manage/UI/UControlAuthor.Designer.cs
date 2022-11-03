@@ -250,6 +250,7 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvAuthor.RowTemplate.Height = 24;
             this.dgvAuthor.Size = new System.Drawing.Size(721, 280);
             this.dgvAuthor.TabIndex = 2;
+            this.dgvAuthor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuthor_CellClick);
             // 
             // UControlAuthor
             // 

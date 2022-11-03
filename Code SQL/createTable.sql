@@ -190,13 +190,10 @@ CONSTRAINT fk_idBillOuput FOREIGN KEY (idBillOutput) REFERENCES BILLOUTPUT (idBi
 CONSTRAINT fk_idBook_into_output FOREIGN KEY (idBook) REFERENCES BOOK (idBook)
 )
 go
-
-
-
-
-
-
-
+alter table dbo.Book
+alter column urlImage image
+go
+select * from dbo.view_Book
 
 
 

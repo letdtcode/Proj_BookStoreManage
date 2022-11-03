@@ -83,6 +83,7 @@ go
 create or alter view view_Book
 as
 select *
+--BOOK.idBook, BOOK.nameBook, BOOK.amount, BOOK.priceImport, BOOK.priceExport, BOOK.idPublisher
 from dbo.BOOK
 go
 --View thể loại
@@ -153,3 +154,4 @@ as
 select *
 from dbo.VOUCHER
 go
+delete dbo.BOOK where BOOK.idBook=5

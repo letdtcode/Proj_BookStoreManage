@@ -15,7 +15,7 @@ namespace Proj_Book_Store_Manage.UI
         private List<Control> controls = null;
         private DataTable dtAccount = null;
         private Utilities utl = null;
-        private int IDAccount;
+        //private int IDAccount;
         private string err="";
         private DialogResult result;
 

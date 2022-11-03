@@ -165,7 +165,7 @@ go
 --Thêm một Book
 create or alter procedure proc_addNewBook
 @nameBook nvarchar(20),
-@urlImage varchar(60),
+@urlImage image,
 @amount int,
 @priceImport int,
 @priceExport int,
@@ -196,7 +196,7 @@ go
 create or alter procedure proc_updateBook
 @idBook int,
 @nameBook nvarchar(20),
-@urlImage varchar(60),
+@urlImage image,
 @amount int,
 @priceImport int,
 @priceExport int,

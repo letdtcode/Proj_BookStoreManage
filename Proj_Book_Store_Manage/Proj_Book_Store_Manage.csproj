@@ -47,8 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BSLayer\AccountBL.cs" />
-    <Compile Include="BSLayer\AssistBL.cs" />
     <Compile Include="BSLayer\AuthorBL.cs" />
+    <Compile Include="BSLayer\BookBL.cs" />
     <Compile Include="DBLayer\DBMain.cs" />
     <Compile Include="UI\FormApplyVoucherForBill.cs">
       <SubType>Form</SubType>
