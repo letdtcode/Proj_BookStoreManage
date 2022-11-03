@@ -16,5 +16,10 @@ namespace Proj_Book_Store_Manage.UI
         {
             InitializeComponent();
         }
+
+        private void UControlPublisher_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

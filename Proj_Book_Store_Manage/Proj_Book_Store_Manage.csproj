@@ -53,13 +53,19 @@
     <Compile Include="BSLayer\Publisher.cs" />
     <Compile Include="BSLayer\SellBook.cs" />
     <Compile Include="BSLayer\Voucher.cs" />
+    <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DBLayer\DBMain.cs" />
+<<<<<<< HEAD
+    <Compile Include="DTO\Category.cs" />
+=======
     <Compile Include="UI\FormAddBook.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FormAddBook.Designer.cs">
       <DependentUpon>FormAddBook.cs</DependentUpon>
     </Compile>
+>>>>>>> 6c4dbd0f869addc8f62a7c61b9f98b1a4b781430
     <Compile Include="UI\FormApplyVoucherForBill.cs">
       <SubType>Form</SubType>
     </Compile>
