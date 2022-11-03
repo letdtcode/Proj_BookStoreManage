@@ -17,7 +17,7 @@ namespace Proj_Book_Store_Manage
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDashBoard());
+            Application.Run(new frmLogin());
         }
     }
 }
