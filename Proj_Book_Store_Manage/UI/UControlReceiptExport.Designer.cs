@@ -62,7 +62,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.btnDetailExportReceipt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnDetailExportReceipt.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetailExportReceipt.Location = new System.Drawing.Point(917, 18);
+            this.btnDetailExportReceipt.Location = new System.Drawing.Point(938, 18);
             this.btnDetailExportReceipt.Name = "btnDetailExportReceipt";
             this.btnDetailExportReceipt.Size = new System.Drawing.Size(110, 93);
             this.btnDetailExportReceipt.TabIndex = 9;
@@ -100,7 +100,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(532, 21);
+            this.gpSearch.Location = new System.Drawing.Point(612, 38);
             this.gpSearch.Name = "gpSearch";
             this.gpSearch.Size = new System.Drawing.Size(320, 130);
             this.gpSearch.TabIndex = 1;
@@ -235,7 +235,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.btnVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnVoucher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoucher.Location = new System.Drawing.Point(917, 117);
+            this.btnVoucher.Location = new System.Drawing.Point(938, 117);
             this.btnVoucher.Name = "btnVoucher";
             this.btnVoucher.Size = new System.Drawing.Size(110, 70);
             this.btnVoucher.TabIndex = 9;
@@ -255,7 +255,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.Margin = new System.Windows.Forms.Padding(4);
             this.gbReceiptExport.Name = "gbReceiptExport";
             this.gbReceiptExport.Padding = new System.Windows.Forms.Padding(4);
-            this.gbReceiptExport.Size = new System.Drawing.Size(476, 171);
+            this.gbReceiptExport.Size = new System.Drawing.Size(575, 171);
             this.gbReceiptExport.TabIndex = 0;
             this.gbReceiptExport.TabStop = false;
             this.gbReceiptExport.Text = "Thông tin bán sách";

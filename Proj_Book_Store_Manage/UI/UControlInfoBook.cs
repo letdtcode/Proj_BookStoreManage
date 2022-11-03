@@ -158,17 +158,19 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAddCate_Click(object sender, EventArgs e)
         {
-            //btnedit
+            cbaddCategory.Enabled = true;
+            btnSaveCate.Enabled = true;
         }
 
         private void btnDeleteCate_Click(object sender, EventArgs e)
         {
-
+            cbaddCategory.Enabled = true;
+            btnSaveCate.Enabled = true;
         }
 
         private void btnSaveCate_Click(object sender, EventArgs e)
         {
-
+            cbaddCategory.Enabled = false;
         }
 
         private void btnAddAuthor_Click(object sender, EventArgs e)

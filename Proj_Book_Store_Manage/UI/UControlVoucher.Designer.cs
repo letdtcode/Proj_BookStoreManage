@@ -38,26 +38,26 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.gpSearch = new System.Windows.Forms.GroupBox();
-            this.lblSearchBy = new System.Windows.Forms.Label();
-            this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbVoucher = new System.Windows.Forms.GroupBox();
-            this.lblValueVoucher = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.lblNameEvent = new System.Windows.Forms.Label();
-            this.lblDateStart = new System.Windows.Forms.Label();
-            this.lblDateEnd = new System.Windows.Forms.Label();
-            this.txtValueVoucher = new System.Windows.Forms.TextBox();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.txtEvent = new System.Windows.Forms.TextBox();
-            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
             this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
+            this.txtEvent = new System.Windows.Forms.TextBox();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.txtValueVoucher = new System.Windows.Forms.TextBox();
+            this.lblDateEnd = new System.Windows.Forms.Label();
+            this.lblDateStart = new System.Windows.Forms.Label();
+            this.lblNameEvent = new System.Windows.Forms.Label();
+            this.lblAmount = new System.Windows.Forms.Label();
+            this.lblValueVoucher = new System.Windows.Forms.Label();
+            this.gpSearch = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
+            this.lblSearchBy = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoucher)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.gpSearch.SuspendLayout();
             this.gbVoucher.SuspendLayout();
+            this.gpSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvVoucher
@@ -93,6 +93,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload.TabIndex = 1;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnAdd
             // 
@@ -103,6 +104,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -113,6 +115,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -123,6 +126,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSave
             // 
@@ -133,6 +137,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -143,6 +148,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel3
             // 
@@ -153,44 +159,6 @@ namespace Proj_Book_Store_Manage.UI
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1018, 256);
             this.panel3.TabIndex = 5;
-            // 
-            // gpSearch
-            // 
-            this.gpSearch.Controls.Add(this.txtSearch);
-            this.gpSearch.Controls.Add(this.cbAttributeSearch);
-            this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(668, 41);
-            this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(320, 151);
-            this.gpSearch.TabIndex = 1;
-            this.gpSearch.TabStop = false;
-            this.gpSearch.Text = "Tìm kiếm";
-            // 
-            // lblSearchBy
-            // 
-            this.lblSearchBy.AutoSize = true;
-            this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(23, 48);
-            this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(106, 23);
-            this.lblSearchBy.TabIndex = 0;
-            this.lblSearchBy.Text = "Thuộc tính";
-            // 
-            // cbAttributeSearch
-            // 
-            this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(156, 47);
-            this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
-            this.cbAttributeSearch.TabIndex = 1;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(69, 99);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 22);
-            this.txtSearch.TabIndex = 2;
             // 
             // gbVoucher
             // 
@@ -213,49 +181,40 @@ namespace Proj_Book_Store_Manage.UI
             this.gbVoucher.TabStop = false;
             this.gbVoucher.Text = "Thông tin Voucher";
             // 
-            // lblValueVoucher
+            // dtpDateEnd
             // 
-            this.lblValueVoucher.AutoSize = true;
-            this.lblValueVoucher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValueVoucher.Location = new System.Drawing.Point(8, 37);
-            this.lblValueVoucher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblValueVoucher.Name = "lblValueVoucher";
-            this.lblValueVoucher.Size = new System.Drawing.Size(158, 23);
-            this.lblValueVoucher.TabIndex = 0;
-            this.lblValueVoucher.Text = "Giá Trị Voucher";
+            this.dtpDateEnd.Location = new System.Drawing.Point(173, 174);
+            this.dtpDateEnd.Name = "dtpDateEnd";
+            this.dtpDateEnd.Size = new System.Drawing.Size(200, 22);
+            this.dtpDateEnd.TabIndex = 4;
             // 
-            // lblAmount
+            // dtpDateStart
             // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(408, 37);
-            this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(87, 23);
-            this.lblAmount.TabIndex = 0;
-            this.lblAmount.Text = "Số Lượng";
+            this.dtpDateStart.Location = new System.Drawing.Point(173, 128);
+            this.dtpDateStart.Name = "dtpDateStart";
+            this.dtpDateStart.Size = new System.Drawing.Size(200, 22);
+            this.dtpDateStart.TabIndex = 4;
             // 
-            // lblNameEvent
+            // txtEvent
             // 
-            this.lblNameEvent.AutoSize = true;
-            this.lblNameEvent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameEvent.Location = new System.Drawing.Point(8, 80);
-            this.lblNameEvent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNameEvent.Name = "lblNameEvent";
-            this.lblNameEvent.Size = new System.Drawing.Size(110, 23);
-            this.lblNameEvent.TabIndex = 1;
-            this.lblNameEvent.Text = "Tên Sự Kiện";
+            this.txtEvent.Location = new System.Drawing.Point(173, 81);
+            this.txtEvent.Name = "txtEvent";
+            this.txtEvent.Size = new System.Drawing.Size(200, 22);
+            this.txtEvent.TabIndex = 2;
             // 
-            // lblDateStart
+            // txtAmount
             // 
-            this.lblDateStart.AutoSize = true;
-            this.lblDateStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateStart.Location = new System.Drawing.Point(8, 128);
-            this.lblDateStart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateStart.Name = "lblDateStart";
-            this.lblDateStart.Size = new System.Drawing.Size(139, 23);
-            this.lblDateStart.TabIndex = 1;
-            this.lblDateStart.Text = "Ngày Bắt Đầu";
+            this.txtAmount.Location = new System.Drawing.Point(525, 38);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(86, 22);
+            this.txtAmount.TabIndex = 2;
+            // 
+            // txtValueVoucher
+            // 
+            this.txtValueVoucher.Location = new System.Drawing.Point(173, 37);
+            this.txtValueVoucher.Name = "txtValueVoucher";
+            this.txtValueVoucher.Size = new System.Drawing.Size(200, 22);
+            this.txtValueVoucher.TabIndex = 2;
             // 
             // lblDateEnd
             // 
@@ -268,40 +227,87 @@ namespace Proj_Book_Store_Manage.UI
             this.lblDateEnd.TabIndex = 1;
             this.lblDateEnd.Text = "Ngày Kết Thúc";
             // 
-            // txtValueVoucher
+            // lblDateStart
             // 
-            this.txtValueVoucher.Location = new System.Drawing.Point(173, 37);
-            this.txtValueVoucher.Name = "txtValueVoucher";
-            this.txtValueVoucher.Size = new System.Drawing.Size(200, 22);
-            this.txtValueVoucher.TabIndex = 2;
+            this.lblDateStart.AutoSize = true;
+            this.lblDateStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateStart.Location = new System.Drawing.Point(8, 128);
+            this.lblDateStart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDateStart.Name = "lblDateStart";
+            this.lblDateStart.Size = new System.Drawing.Size(139, 23);
+            this.lblDateStart.TabIndex = 1;
+            this.lblDateStart.Text = "Ngày Bắt Đầu";
             // 
-            // txtAmount
+            // lblNameEvent
             // 
-            this.txtAmount.Location = new System.Drawing.Point(525, 38);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(86, 22);
-            this.txtAmount.TabIndex = 2;
+            this.lblNameEvent.AutoSize = true;
+            this.lblNameEvent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameEvent.Location = new System.Drawing.Point(8, 80);
+            this.lblNameEvent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNameEvent.Name = "lblNameEvent";
+            this.lblNameEvent.Size = new System.Drawing.Size(110, 23);
+            this.lblNameEvent.TabIndex = 1;
+            this.lblNameEvent.Text = "Tên Sự Kiện";
             // 
-            // txtEvent
+            // lblAmount
             // 
-            this.txtEvent.Location = new System.Drawing.Point(173, 81);
-            this.txtEvent.Name = "txtEvent";
-            this.txtEvent.Size = new System.Drawing.Size(200, 22);
-            this.txtEvent.TabIndex = 2;
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.Location = new System.Drawing.Point(408, 37);
+            this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(87, 23);
+            this.lblAmount.TabIndex = 0;
+            this.lblAmount.Text = "Số Lượng";
             // 
-            // dtpDateStart
+            // lblValueVoucher
             // 
-            this.dtpDateStart.Location = new System.Drawing.Point(173, 128);
-            this.dtpDateStart.Name = "dtpDateStart";
-            this.dtpDateStart.Size = new System.Drawing.Size(200, 22);
-            this.dtpDateStart.TabIndex = 4;
+            this.lblValueVoucher.AutoSize = true;
+            this.lblValueVoucher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValueVoucher.Location = new System.Drawing.Point(8, 37);
+            this.lblValueVoucher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblValueVoucher.Name = "lblValueVoucher";
+            this.lblValueVoucher.Size = new System.Drawing.Size(158, 23);
+            this.lblValueVoucher.TabIndex = 0;
+            this.lblValueVoucher.Text = "Giá Trị Voucher";
             // 
-            // dtpDateEnd
+            // gpSearch
             // 
-            this.dtpDateEnd.Location = new System.Drawing.Point(173, 174);
-            this.dtpDateEnd.Name = "dtpDateEnd";
-            this.dtpDateEnd.Size = new System.Drawing.Size(200, 22);
-            this.dtpDateEnd.TabIndex = 4;
+            this.gpSearch.Controls.Add(this.txtSearch);
+            this.gpSearch.Controls.Add(this.cbAttributeSearch);
+            this.gpSearch.Controls.Add(this.lblSearchBy);
+            this.gpSearch.Location = new System.Drawing.Point(668, 41);
+            this.gpSearch.Name = "gpSearch";
+            this.gpSearch.Size = new System.Drawing.Size(320, 151);
+            this.gpSearch.TabIndex = 1;
+            this.gpSearch.TabStop = false;
+            this.gpSearch.Text = "Tìm kiếm";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(69, 99);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(224, 22);
+            this.txtSearch.TabIndex = 2;
+            // 
+            // cbAttributeSearch
+            // 
+            this.cbAttributeSearch.FormattingEnabled = true;
+            this.cbAttributeSearch.Location = new System.Drawing.Point(156, 47);
+            this.cbAttributeSearch.Name = "cbAttributeSearch";
+            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
+            this.cbAttributeSearch.TabIndex = 1;
+            // 
+            // lblSearchBy
+            // 
+            this.lblSearchBy.AutoSize = true;
+            this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchBy.Location = new System.Drawing.Point(23, 48);
+            this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearchBy.Name = "lblSearchBy";
+            this.lblSearchBy.Size = new System.Drawing.Size(106, 23);
+            this.lblSearchBy.TabIndex = 0;
+            this.lblSearchBy.Text = "Thuộc tính";
             // 
             // UControlVoucher
             // 
@@ -314,10 +320,10 @@ namespace Proj_Book_Store_Manage.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoucher)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.gpSearch.ResumeLayout(false);
-            this.gpSearch.PerformLayout();
             this.gbVoucher.ResumeLayout(false);
             this.gbVoucher.PerformLayout();
+            this.gpSearch.ResumeLayout(false);
+            this.gpSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }

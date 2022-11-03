@@ -36,8 +36,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gbCustomer = new System.Windows.Forms.GroupBox();
             this.cbTypeCus = new System.Windows.Forms.ComboBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtPhoneNumberCus = new System.Windows.Forms.TextBox();
+            this.txtAddCus = new System.Windows.Forms.TextBox();
             this.txtNameCustomer = new System.Windows.Forms.TextBox();
             this.lblTypeCus = new System.Windows.Forms.Label();
             this.lblPointCus = new System.Windows.Forms.Label();
@@ -112,8 +112,8 @@ namespace Proj_Book_Store_Manage.UI
             // gbCustomer
             // 
             this.gbCustomer.Controls.Add(this.cbTypeCus);
-            this.gbCustomer.Controls.Add(this.txtPhoneNumber);
-            this.gbCustomer.Controls.Add(this.txtAddress);
+            this.gbCustomer.Controls.Add(this.txtPhoneNumberCus);
+            this.gbCustomer.Controls.Add(this.txtAddCus);
             this.gbCustomer.Controls.Add(this.txtNameCustomer);
             this.gbCustomer.Controls.Add(this.lblTypeCus);
             this.gbCustomer.Controls.Add(this.lblPointCus);
@@ -138,19 +138,19 @@ namespace Proj_Book_Store_Manage.UI
             this.cbTypeCus.Size = new System.Drawing.Size(121, 24);
             this.cbTypeCus.TabIndex = 3;
             // 
-            // txtPhoneNumber
+            // txtPhoneNumberCus
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(106, 103);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(247, 22);
-            this.txtPhoneNumber.TabIndex = 2;
+            this.txtPhoneNumberCus.Location = new System.Drawing.Point(106, 103);
+            this.txtPhoneNumberCus.Name = "txtPhoneNumberCus";
+            this.txtPhoneNumberCus.Size = new System.Drawing.Size(247, 22);
+            this.txtPhoneNumberCus.TabIndex = 2;
             // 
-            // txtAddress
+            // txtAddCus
             // 
-            this.txtAddress.Location = new System.Drawing.Point(106, 67);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(247, 22);
-            this.txtAddress.TabIndex = 2;
+            this.txtAddCus.Location = new System.Drawing.Point(106, 67);
+            this.txtAddCus.Name = "txtAddCus";
+            this.txtAddCus.Size = new System.Drawing.Size(247, 22);
+            this.txtAddCus.TabIndex = 2;
             // 
             // txtNameCustomer
             // 
@@ -234,6 +234,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload.TabIndex = 1;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnAdd
             // 
@@ -244,6 +245,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -254,6 +256,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnCancel
             // 
@@ -264,6 +267,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -274,6 +278,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panel2
             // 
@@ -298,6 +303,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dgvCustomer
             // 
@@ -308,6 +314,7 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvCustomer.RowTemplate.Height = 24;
             this.dgvCustomer.Size = new System.Drawing.Size(721, 280);
             this.dgvCustomer.TabIndex = 8;
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
             // 
             // UControlInfoCustomer
             // 
@@ -317,6 +324,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.dgvCustomer);
             this.Name = "UControlInfoCustomer";
             this.Size = new System.Drawing.Size(1072, 568);
+            this.Load += new System.EventHandler(this.UControlInfoCustomer_Load);
             this.panel1.ResumeLayout(false);
             this.gpSearch.ResumeLayout(false);
             this.gpSearch.PerformLayout();
@@ -336,7 +344,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.ComboBox cbAttributeSearch;
         private System.Windows.Forms.Label lblSearchBy;
         private System.Windows.Forms.GroupBox gbCustomer;
-        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtAddCus;
         private System.Windows.Forms.TextBox txtNameCustomer;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblNameCustomer;
@@ -349,7 +357,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.ComboBox cbTypeCus;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.TextBox txtPhoneNumberCus;
         private System.Windows.Forms.Label lblTypeCus;
         private System.Windows.Forms.Label lblPointCus;
         private System.Windows.Forms.Label lblPoint;

@@ -22,5 +22,35 @@ namespace Proj_Book_Store_Manage.UI
             FormDetailReceiptImport frm_DetailReceiptImport = new FormDetailReceiptImport();
             frm_DetailReceiptImport.ShowDialog();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

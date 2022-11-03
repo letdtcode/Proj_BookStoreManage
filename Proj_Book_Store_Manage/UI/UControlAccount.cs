@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proj_Book_Store_Manage.BSLayer;
+
 namespace Proj_Book_Store_Manage.UI
 {
     public partial class UControlAccount : UserControl

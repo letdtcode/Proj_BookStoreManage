@@ -23,16 +23,8 @@ namespace Proj_Book_Store_Manage.BSLayer
         public BookBL()
         {
             db = new DBMain();
-            //conn = new SqlConnection();
         }
-        /*public Image ByteArrayToImage(byte[] byteArrayIn)
-        {
-            Image img = null;
-            MemoryStream ms = new MemoryStream(byteArrayIn, 0, byteArrayIn.Length);
-            img = Image.FromStream(ms);
-            ms.Close();
-            return img;
-        }*/
+        
         public Image ByteArrayToImage(byte[] byteArrayIn)
         {
             using (MemoryStream mStream = new MemoryStream(byteArrayIn))

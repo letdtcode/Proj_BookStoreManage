@@ -194,6 +194,9 @@ alter table dbo.Book
 alter column urlImage image
 go
 select * from dbo.view_Book
+go
+alter table dbo.category
+add unique(nameCategory)
 
 
 
