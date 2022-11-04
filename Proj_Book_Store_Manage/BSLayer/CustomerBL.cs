@@ -23,7 +23,20 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
         public DataTable getDataCustomer()
         {
+            
             return db.LoadData(nameView, CommandType.Text);
+        }
+        public List<string> getAllIDCustomer()
+        {
+            List<string> dataIDCustomer = new List<string>();
+            DataTable dtCustomer = new DataTable();
+            dtCustomer = db.LoadData(nameView, CommandType.Text);
+            dataIDCustomer.Clear();
+            foreach (DataRow row in dtCustomer.Rows)
+            {
+                dataIDCustomer.Add(row[0].ToString());
+            }
+            return dataIDCustomer;
         }
         public bool addNewCustomer(string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
         {
@@ -76,6 +89,6 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }
+        }  
     }
 }

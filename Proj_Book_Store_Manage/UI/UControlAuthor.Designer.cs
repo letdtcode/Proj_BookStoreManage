@@ -236,18 +236,15 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // dgvAuthor
             // 
-            this.dgvAuthor.AllowUserToAddRows = false;
-            this.dgvAuthor.AllowUserToDeleteRows = false;
-            this.dgvAuthor.AllowUserToOrderColumns = true;
-            this.dgvAuthor.AllowUserToResizeColumns = false;
-            this.dgvAuthor.AllowUserToResizeRows = false;
             this.dgvAuthor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAuthor.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvAuthor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAuthor.Location = new System.Drawing.Point(30, 265);
             this.dgvAuthor.Name = "dgvAuthor";
+            this.dgvAuthor.ReadOnly = true;
             this.dgvAuthor.RowHeadersWidth = 51;
             this.dgvAuthor.RowTemplate.Height = 24;
+            this.dgvAuthor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvAuthor.Size = new System.Drawing.Size(721, 280);
             this.dgvAuthor.TabIndex = 2;
             this.dgvAuthor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuthor_CellClick);

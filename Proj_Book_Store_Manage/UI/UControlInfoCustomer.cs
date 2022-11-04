@@ -23,8 +23,9 @@ namespace Proj_Book_Store_Manage.UI
         //false là chế độ sửa, true là chế độ thêm
         private bool isAdd = false;
         private bool isEdit = false;
-        CustomerBL account = new AccountBL();
-        private bool roleTemp;
+        CustomerBL customer = new CustomerBL();
+        private TypeCustomerBL typeCus = new TypeCustomerBL();
+
         public UControlInfoCustomer()
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (account.deleteAccount(utl.IDCurrent, ref err) == true)
+                        if (customer.deleteCustomer(utl.IDCurrent, ref err) == true)
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
@@ -81,10 +82,6 @@ namespace Proj_Book_Store_Manage.UI
         {
             try
             {
-                if (cbTypeAcc.Text == "Admin")
-                    roleTemp = true;
-                else
-                    roleTemp = false;
                 if (utl.checkAllControlIsFill() == false)
                 {
                     result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,13 +91,13 @@ namespace Proj_Book_Store_Manage.UI
                 }
                 if (isAdd)
                 {
-                    account = new AccountBL();
+                    customer = new CustomerBL();
                     try
                     {
-                        account.addNewAccount(this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
+                        customer.addNewCustomer(this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, int.Parse(this.cbTypeCus.Text), ref err);
                         if (err == "")
                         {
-                            MessageBox.Show("Thêm tài khoản thành công !");
+                            MessageBox.Show("Thêm thông tin khách hàng thành công !");
                         }
                         else
                         {
@@ -115,11 +112,11 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    account.modifyAccount(utl.IDCurrent, this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
+                    customer.modifyCustomer(utl.IDCurrent, this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, int.Parse(this.cbTypeCus.Text), ref err);
                     //LoadData();
                     if (err == "")
                     {
-                        MessageBox.Show("Sửa tài khoản thành công !");
+                        MessageBox.Show("Sửa thông tin khách hàng thành công !");
                     }
                     else
                     {
@@ -146,11 +143,12 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            controls = new List<Control> { txtUserName, txtPassword, cbTypeAcc, cbEmployee };
-            dtAccount = account.getDataAccount();
-            dgvAuthor.DataSource = dtAccount;
-            utl = new Utilities(controls, dgvAuthor);
-            dgvAuthor.AutoResizeColumns();
+            LoadDataIntoCbTypeCus(typeCus.getAllNameTypeCus());
+            controls = new List<Control> { txtNameCustomer, txtAddCus, txtPhoneNumberCus, cbTypeCus };
+            dtCustomer = customer.getDataCustomer();
+            dgvCustomer.DataSource = dtCustomer;
+            utl = new Utilities(controls, dgvCustomer);
+            dgvCustomer.AutoResizeColumns();
             utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
             utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
             utl.setEnableControl(false);
@@ -164,15 +162,24 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
-            txtUserName.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[1].Value.ToString();
-            txtPassword.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[2].Value.ToString();
-            cbTypeAcc.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[3].Value.ToString();
-            cbEmployee.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[4].Value.ToString();
+            txtNameCustomer.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[1].Value.ToString();
+            txtAddCus.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[2].Value.ToString();
+            txtPhoneNumberCus.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[3].Value.ToString();
+            lblPoint.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[4].Value.ToString();
+            cbTypeCus.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[5].Value.ToString();
         }
 
         private void UControlInfoCustomer_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+        private void LoadDataIntoCbTypeCus(List<string> nameTypeCustomers)
+        {
+            cbTypeCus.Items.Clear();
+            foreach (string nameTypeCustomer in nameTypeCustomers)
+            {
+                cbTypeCus.Items.Add(nameTypeCustomer);
+            }
         }
     }
 }

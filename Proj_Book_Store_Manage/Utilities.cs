@@ -90,6 +90,9 @@ namespace Proj_Book_Store_Manage
                 SetEnableButton(new List<Button>() { Cancel, Delete }, true);
                 rowIDCurrentIndex = (int)dgv.Rows[rowCurrentIndex].Cells[0].Value;
             }
+            /*rowCurrentIndex = dgv.SelectedCells[0].RowIndex;
+            SetEnableButton(new List<Button>() { Cancel, Delete }, true);
+            rowIDCurrentIndex = (int)dgv.Rows[rowCurrentIndex].Cells[0].Value;*/
         }
         public bool checkAllControlIsFill()
         {

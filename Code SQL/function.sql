@@ -88,3 +88,36 @@ where dbo.BOOK_AUTHOR.idBook=@idBook and dbo.AUTHOR.idAuthor=dbo.BOOK_AUTHOR.idA
 go
 select * from dbo.func_getAllAuthorOfBook(6)
 go
+--Kiểm tra trước khi thanh toán hóa đơn nhập
+create or alter function func_checkInvoiceBillIn(@idBill int)
+returns integer
+as
+begin
+	declare @status bit, @total int
+	select @status=dbo.BILLINPUT.sttus, @total=dbo.BILLINPUT.total
+	from dbo.BILLINPUT
+	where dbo.BILLINPUT.idBillInput=@idBill
+	if(@total > 0 and @status = 0)
+		return 1
+	else if(@total > 0 and @status = 1)
+		return 0
+	return -1
+end
+go
+--Kiểm tra trước khi thanh toán hóa đơn xuất
+create or alter function func_checkInvoiceBillOut(@idBill int)
+returns integer
+as
+begin
+	declare @status bit, @total int
+	select @status=dbo.BILLOUTPUT.sttus, @total=dbo.BILLOUTPUT.total
+	from dbo.BILLOUTPUT
+	where dbo.BILLOUTPUT.idBillOutput=@idBill
+	if(@total > 0 and @status = 0)
+		return 1
+	else if(@total > 0 and @status = 1)
+		return 0
+	return -1
+end
+go
+--Các hàm bổ trợ để thuận tiện cho việc lấy dữ liệu qua lại các form

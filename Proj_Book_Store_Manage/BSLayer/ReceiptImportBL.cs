@@ -16,6 +16,9 @@ namespace Proj_Book_Store_Manage.BSLayer
         string strSQL = "";
         SqlParameter parameter;
         List<SqlParameter> parameters;
+        private int totalOfCurrent = 0;
+
+        public int TotalOfCurrent { get => totalOfCurrent; set => totalOfCurrent = value; }
 
         public ReceiptImportBL()
         {
@@ -25,58 +28,46 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewReceiptImport(string nameAccount, string passWord, bool typeOfAcc, int idEmployee, ref string err)
+        public bool addNewReceiptImport(string dateOfInput, int idEmployee, ref string err)
         {
-            strSQL = "proc_addNewAccount";
+            strSQL = "proc_addNewBillInput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@nameAccount", nameAccount);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@password", passWord);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@typeOfAcc", typeOfAcc);
+            parameter = new SqlParameter("@dateOfInput", dateOfInput);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idEmployee", idEmployee);
             parameters.Add(parameter);
 
-            //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyReceiptImport(int idAccount, string nameAccount, string password, bool typeOfAcc, int idEmployee, ref string err)
+        public bool modifyReceiptImport(int idBillInput, string dateOfInput, int total, int idEmployee, ref string err)
         {
-            strSQL = "proc_updateAccount";
+            strSQL = "proc_updateBillInput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idAccount", idAccount);
+            parameter = new SqlParameter("@idBillInput", idBillInput);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@nameAccount", nameAccount);
+            parameter = new SqlParameter("@dateOfInput", dateOfInput);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@password", password);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@typeOfAcc", typeOfAcc);
+            parameter = new SqlParameter("@total", total);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idEmployee", idEmployee);
             parameters.Add(parameter);
 
-            //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteReceiptImport(int idAccount, ref string err)
+        public bool deleteReceiptImport(int idBillInput, ref string err)
         {
-            strSQL = "proc_DeleteAccount";
+            strSQL = "proc_deleteBillInput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idAccount", idAccount);
+            parameter = new SqlParameter("@idBillInput", idBillInput);
             parameters.Add(parameter);
 
-            //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
     }

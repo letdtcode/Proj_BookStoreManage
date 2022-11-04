@@ -28,6 +28,7 @@ namespace Proj_Book_Store_Manage.UI
         public UControlAccount()
         {
             InitializeComponent();
+            lblIDAcount.Enabled = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -150,6 +151,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
+            lblIDAcount.Text = "None";
             controls = new List<Control> { txtUserName, txtPassword, cbTypeAcc, cbEmployee };
             dtAccount = account.getDataAccount();
             dgvAuthor.DataSource = dtAccount;
@@ -168,6 +170,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvAuthor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel,btnDelete);
+            lblIDAcount.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[0].Value.ToString();
             txtUserName.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtPassword.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             cbTypeAcc.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[3].Value.ToString();

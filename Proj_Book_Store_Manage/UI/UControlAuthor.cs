@@ -48,7 +48,7 @@ namespace Proj_Book_Store_Manage.UI
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
             utl.SetEnableButton(new List<Button> { btnEdit, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
+            utl.SetEnableButton(new List<Button> { btnSave, btnReload, btnCancel }, true);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace Proj_Book_Store_Manage.UI
             //utl.SetNullForAllControl();
             utl.setEnableControl(true);
             utl.SetEnableButton(new List<Button> { btnAdd, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
+            utl.SetEnableButton(new List<Button> { btnSave, btnReload, btnCancel }, true);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void dgvAuthor_CellClick(object sender, DataGridViewCellEventArgs e)

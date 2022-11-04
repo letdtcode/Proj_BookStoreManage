@@ -43,7 +43,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
         public bool modifyPublisher(int idPublisher, string namePublisher, string addPublisher, string phoneNumber, ref string err)
         {
-            strSQL = "proc_updateAccount";
+            strSQL = "proc_updatePublisher";
             parameters = new List<SqlParameter>();
 
             parameter = new SqlParameter("@idPublisher", idPublisher);

@@ -73,7 +73,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteAccount(int idVoucher, ref string err)
+        public bool deleteVoucher(int idVoucher, ref string err)
         {
             strSQL = "proc_deleteVoucher";
             parameters = new List<SqlParameter>();

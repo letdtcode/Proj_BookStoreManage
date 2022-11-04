@@ -50,6 +50,9 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -82,7 +85,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(683, 21);
+            this.gpSearch.Location = new System.Drawing.Point(739, 56);
             this.gpSearch.Name = "gpSearch";
             this.gpSearch.Size = new System.Drawing.Size(320, 151);
             this.gpSearch.TabIndex = 1;
@@ -132,19 +135,22 @@ namespace Proj_Book_Store_Manage.UI
             this.gbEmployee.Controls.Add(this.lblEmail);
             this.gbEmployee.Controls.Add(this.lblPhoneNumber);
             this.gbEmployee.Controls.Add(this.lblAddress);
+            this.gbEmployee.Controls.Add(this.lblID);
+            this.gbEmployee.Controls.Add(this.label2);
+            this.gbEmployee.Controls.Add(this.label1);
             this.gbEmployee.Controls.Add(this.lblFirstName);
             this.gbEmployee.Location = new System.Drawing.Point(30, 21);
             this.gbEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.gbEmployee.Name = "gbEmployee";
             this.gbEmployee.Padding = new System.Windows.Forms.Padding(4);
-            this.gbEmployee.Size = new System.Drawing.Size(646, 212);
+            this.gbEmployee.Size = new System.Drawing.Size(685, 233);
             this.gbEmployee.TabIndex = 0;
             this.gbEmployee.TabStop = false;
             this.gbEmployee.Text = "Thông tin nhân viên";
             // 
             // dtpBirth
             // 
-            this.dtpBirth.Location = new System.Drawing.Point(415, 171);
+            this.dtpBirth.Location = new System.Drawing.Point(447, 184);
             this.dtpBirth.Name = "dtpBirth";
             this.dtpBirth.Size = new System.Drawing.Size(200, 22);
             this.dtpBirth.TabIndex = 4;
@@ -152,49 +158,49 @@ namespace Proj_Book_Store_Manage.UI
             // cbSex
             // 
             this.cbSex.FormattingEnabled = true;
-            this.cbSex.Location = new System.Drawing.Point(106, 174);
+            this.cbSex.Location = new System.Drawing.Point(106, 203);
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(76, 24);
             this.cbSex.TabIndex = 3;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(106, 130);
+            this.txtLastName.Location = new System.Drawing.Point(106, 159);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(182, 22);
             this.txtLastName.TabIndex = 2;
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Location = new System.Drawing.Point(106, 81);
+            this.txtMiddleName.Location = new System.Drawing.Point(106, 110);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(182, 22);
             this.txtMiddleName.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(415, 131);
+            this.txtEmail.Location = new System.Drawing.Point(447, 144);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(224, 22);
             this.txtEmail.TabIndex = 2;
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(415, 81);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(447, 94);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(224, 22);
             this.txtPhoneNumber.TabIndex = 2;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(415, 38);
+            this.txtAddress.Location = new System.Drawing.Point(447, 51);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(224, 22);
             this.txtAddress.TabIndex = 2;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(106, 38);
+            this.txtFirstName.Location = new System.Drawing.Point(106, 67);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(182, 22);
             this.txtFirstName.TabIndex = 2;
@@ -203,7 +209,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblSex.AutoSize = true;
             this.lblSex.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSex.Location = new System.Drawing.Point(8, 174);
+            this.lblSex.Location = new System.Drawing.Point(8, 203);
             this.lblSex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(85, 23);
@@ -214,7 +220,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(8, 128);
+            this.lblLastName.Location = new System.Drawing.Point(8, 157);
             this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(43, 23);
@@ -225,7 +231,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblMiddleName.AutoSize = true;
             this.lblMiddleName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMiddleName.Location = new System.Drawing.Point(8, 80);
+            this.lblMiddleName.Location = new System.Drawing.Point(8, 109);
             this.lblMiddleName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMiddleName.Name = "lblMiddleName";
             this.lblMiddleName.Size = new System.Drawing.Size(74, 23);
@@ -236,7 +242,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblBirth.AutoSize = true;
             this.lblBirth.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBirth.Location = new System.Drawing.Point(302, 171);
+            this.lblBirth.Location = new System.Drawing.Point(334, 184);
             this.lblBirth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBirth.Name = "lblBirth";
             this.lblBirth.Size = new System.Drawing.Size(106, 23);
@@ -247,7 +253,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(302, 127);
+            this.lblEmail.Location = new System.Drawing.Point(334, 140);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(62, 23);
@@ -258,7 +264,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(302, 78);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(334, 91);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
@@ -269,18 +275,51 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(302, 35);
+            this.lblAddress.Location = new System.Drawing.Point(334, 48);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(82, 23);
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Địa Chỉ";
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(157, 30);
+            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(21, 23);
+            this.lblID.TabIndex = 0;
+            this.lblID.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 30);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "ID Nhân viên:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(102, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Họ";
+            // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(8, 37);
+            this.lblFirstName.Location = new System.Drawing.Point(8, 66);
             this.lblFirstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(33, 23);
@@ -296,6 +335,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload.TabIndex = 1;
             this.btnReload.Text = "Tải lại";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnAdd
             // 
@@ -306,6 +346,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -316,6 +357,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -326,6 +368,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSave
             // 
@@ -336,6 +379,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -346,16 +390,21 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dgvEmployee
             // 
+            this.dgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvEmployee.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(30, 293);
             this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
             this.dgvEmployee.Size = new System.Drawing.Size(734, 294);
             this.dgvEmployee.TabIndex = 8;
+            this.dgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellClick);
             // 
             // panel2
             // 
@@ -379,6 +428,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel2);
             this.Name = "UControlEmployee";
             this.Size = new System.Drawing.Size(1072, 647);
+            this.Load += new System.EventHandler(this.UControlEmployee_Load);
             this.panel1.ResumeLayout(false);
             this.gpSearch.ResumeLayout(false);
             this.gpSearch.PerformLayout();
@@ -422,5 +472,8 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -60,7 +60,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteAccount(int idTypeCus, ref string err)
+        public bool deleteTypeCustomer(int idTypeCus, ref string err)
         {
             strSQL = "proc_deleteTypeCustomer";
             parameters = new List<SqlParameter>();
@@ -69,6 +69,17 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }
+        public List<string> getAllNameTypeCus()
+        {
+            List<string> dataNameTypeCus = new List<string>();
+            DataTable dtTypeCustomer = new DataTable();
+            dtTypeCustomer = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtTypeCustomer.Rows)
+            {
+                dataNameTypeCus.Add(row[1].ToString());
+            }
+            return dataNameTypeCus;
         }
     }
 }

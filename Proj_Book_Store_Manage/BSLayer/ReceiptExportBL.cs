@@ -16,6 +16,9 @@ namespace Proj_Book_Store_Manage.BSLayer
         string strSQL = "";
         SqlParameter parameter;
         List<SqlParameter> parameters;
+        private int totalOfCurrent = 0;
+
+        public int TotalOfCurrent { get => totalOfCurrent; set => totalOfCurrent = value; }
 
         public ReceiptExportBL()
         {
@@ -66,6 +69,16 @@ namespace Proj_Book_Store_Manage.BSLayer
         public bool deleteReceiptExport(int idBillOutput, ref string err)
         {
             strSQL = "proc_deleteBillOutput";
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBillOutput", idBillOutput);
+            parameters.Add(parameter);
+
+            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }
+        public bool invoiceBill(int idBillOutput, ref string err)
+        {
+            strSQL = "proc_invoiceBillOutput";
             parameters = new List<SqlParameter>();
 
             parameter = new SqlParameter("@idBillOutput", idBillOutput);

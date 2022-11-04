@@ -49,6 +49,8 @@ namespace Proj_Book_Store_Manage.UI
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblIDPublisher = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPublisher)).BeginInit();
             this.panel2.SuspendLayout();
@@ -79,7 +81,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(580, 21);
+            this.gpSearch.Location = new System.Drawing.Point(668, 21);
             this.gpSearch.Name = "gpSearch";
             this.gpSearch.Size = new System.Drawing.Size(384, 180);
             this.gpSearch.TabIndex = 1;
@@ -99,10 +101,12 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvPublisher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPublisher.Location = new System.Drawing.Point(30, 259);
             this.dgvPublisher.Name = "dgvPublisher";
+            this.dgvPublisher.ReadOnly = true;
             this.dgvPublisher.RowHeadersWidth = 51;
             this.dgvPublisher.RowTemplate.Height = 24;
             this.dgvPublisher.Size = new System.Drawing.Size(721, 280);
             this.dgvPublisher.TabIndex = 5;
+            this.dgvPublisher.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPublisher_CellClick);
             // 
             // panel2
             // 
@@ -186,23 +190,23 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(147, 139);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(422, 111);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(247, 22);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(175, 22);
             this.txtPhoneNumber.TabIndex = 2;
             // 
             // txtNamePublisher
             // 
-            this.txtNamePublisher.Location = new System.Drawing.Point(147, 49);
+            this.txtNamePublisher.Location = new System.Drawing.Point(107, 115);
             this.txtNamePublisher.Name = "txtNamePublisher";
-            this.txtNamePublisher.Size = new System.Drawing.Size(247, 22);
+            this.txtNamePublisher.Size = new System.Drawing.Size(91, 22);
             this.txtNamePublisher.TabIndex = 2;
             // 
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(25, 138);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(313, 112);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
@@ -213,7 +217,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNamePublisher.AutoSize = true;
             this.lblNamePublisher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNamePublisher.Location = new System.Drawing.Point(25, 48);
+            this.lblNamePublisher.Location = new System.Drawing.Point(8, 112);
             this.lblNamePublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNamePublisher.Name = "lblNamePublisher";
             this.lblNamePublisher.Size = new System.Drawing.Size(87, 23);
@@ -227,28 +231,30 @@ namespace Proj_Book_Store_Manage.UI
             this.gbPublisher.Controls.Add(this.txtNamePublisher);
             this.gbPublisher.Controls.Add(this.lblPhoneNumber);
             this.gbPublisher.Controls.Add(this.lblAddress);
+            this.gbPublisher.Controls.Add(this.lblIDPublisher);
+            this.gbPublisher.Controls.Add(this.label1);
             this.gbPublisher.Controls.Add(this.lblNamePublisher);
             this.gbPublisher.Location = new System.Drawing.Point(30, 21);
             this.gbPublisher.Margin = new System.Windows.Forms.Padding(4);
             this.gbPublisher.Name = "gbPublisher";
             this.gbPublisher.Padding = new System.Windows.Forms.Padding(4);
-            this.gbPublisher.Size = new System.Drawing.Size(476, 180);
+            this.gbPublisher.Size = new System.Drawing.Size(620, 180);
             this.gbPublisher.TabIndex = 0;
             this.gbPublisher.TabStop = false;
             this.gbPublisher.Text = "Thông tin nhà xuất bản";
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(147, 94);
+            this.txtAddress.Location = new System.Drawing.Point(422, 51);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(247, 22);
+            this.txtAddress.Size = new System.Drawing.Size(175, 22);
             this.txtAddress.TabIndex = 2;
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(25, 93);
+            this.lblAddress.Location = new System.Drawing.Point(313, 52);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(79, 23);
@@ -266,6 +272,28 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Size = new System.Drawing.Size(1072, 208);
             this.panel1.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 48);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã NXB";
+            // 
+            // lblIDPublisher
+            // 
+            this.lblIDPublisher.AutoSize = true;
+            this.lblIDPublisher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDPublisher.Location = new System.Drawing.Point(103, 48);
+            this.lblIDPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDPublisher.Name = "lblIDPublisher";
+            this.lblIDPublisher.Size = new System.Drawing.Size(21, 23);
+            this.lblIDPublisher.TabIndex = 0;
+            this.lblIDPublisher.Text = "0";
+            // 
             // UControlPublisher
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -274,6 +302,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel1);
             this.Name = "UControlPublisher";
             this.Size = new System.Drawing.Size(1072, 581);
+            this.Load += new System.EventHandler(this.UControlPublisher_Load);
             this.gpSearch.ResumeLayout(false);
             this.gpSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPublisher)).EndInit();
@@ -307,5 +336,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label lblIDPublisher;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -318,27 +318,31 @@ go
 --PROCEDURE THÊM, SỬA, XÓA CATEGORY
 --Thêm một thể loại mới 
 create or alter procedure proc_addNewCategory
-@nameCategory nvarchar(20)
+@nameCategory nvarchar(20),
+@describleCategory nvarchar(50)
 as
 begin
 	insert into dbo.CATEGORY
 		(
-	nameCategory
+	nameCategory,
+	describeCategory
 		)
 	values
 		(
-	@nameCategory
+	@nameCategory,
+	@describleCategory
 		)
 end
 go
 --Chỉnh sửa một thể loại
 create or alter procedure proc_updateCategory
 @idCategory int,
-@nameCategory nvarchar(20)
+@nameCategory nvarchar(20),
+@describleCategory nvarchar(50)
 as
 begin
 	update dbo.CATEGORY
-	set nameCategory=@nameCategory
+	set nameCategory=@nameCategory, describeCategory=@describleCategory
 	where dbo.CATEGORY.idCategory=@idCategory
 end
 go
@@ -357,7 +361,6 @@ create or alter procedure proc_addNewCustomer
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
 @phoneNumber varchar(20),
-@pointCus int,
 @idTypeCus int
 as
 begin
@@ -366,7 +369,6 @@ begin
 	nameCus,
 	addressCus,
 	phoneNumber,
-	pointCus,
 	idTypeCus
 		)
 	values
@@ -374,7 +376,6 @@ begin
 	@nameCus,
 	@addressCus,
 	@phoneNumber,
-	@pointCus,
 	@idTypeCus
 		)
 end
@@ -385,12 +386,11 @@ create or alter procedure proc_updateCustomer
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
 @phoneNumber varchar(20),
-@pointCus int,
 @idTypeCus int
 as
 begin
 	update dbo.CUSTOMER
-	set nameCus=@nameCus, addressCus=@addressCus, phoneNumber=@phoneNumber, pointCus=@pointCus, idTypeCus=@idTypeCus
+	set nameCus=@nameCus, addressCus=@addressCus, phoneNumber=@phoneNumber, idTypeCus=@idTypeCus
 	where dbo.CUSTOMER.idCus=@idCus
 end
 go
@@ -649,6 +649,23 @@ begin
 	where dbo.BILLINPUT.idBillInput=@idBillInput
 end
 go
+--Xuất hóa đơn BillInput
+create or alter procedure proc_invoiceBillInput
+@idBillInput int
+as
+begin
+	if(dbo.func_checkInvoiceBillIn(@idBillInput)=0)
+		raiserror(N'Hóa đơn đã được xuất!',16,1)
+	else if(dbo.func_checkInvoiceBillIn(@idBillInput)=-1)
+		raiserror(N'Tổng tiền hóa đơn phải lớn hơn 0',16,1)
+	else
+	begin
+			update dbo.BILLINPUT
+			set dbo.BILLINPUT.sttus=1
+			where dbo.BILLINPUT.idBillInput=@idBillInput
+	end
+end
+go
 --PROCEDURE THÊM SỬA XÓA BILLOUTPUT
 --Thêm một BillOutput
 create or alter procedure proc_addNewBillOutput
@@ -692,6 +709,23 @@ as
 begin
 	delete from dbo.BILLOUTPUT
 	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+end
+go
+--Xuất hóa đơn BillOutput
+create or alter procedure proc_invoiceBillOutput
+@idBillOutput int
+as
+begin
+	if(dbo.func_checkInvoiceBillOut(@idBillOutput)=0)
+		raiserror(N'Hóa đơn đã được xuất!',16,1)
+	else if(dbo.func_checkInvoiceBillOut(@idBillOutput)=-1)
+		raiserror(N'Tổng tiền hóa đơn phải lớn hơn 0',16,1)
+	else
+	begin
+			update dbo.BILLOUTPUT
+			set dbo.BILLOUTPUT.sttus=1
+			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+	end
 end
 go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLINPUT
