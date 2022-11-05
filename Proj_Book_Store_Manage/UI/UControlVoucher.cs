@@ -28,6 +28,10 @@ namespace Proj_Book_Store_Manage.UI
         public UControlVoucher()
         {
             InitializeComponent();
+            dtpDateStart.Format = DateTimePickerFormat.Custom;
+            dtpDateStart.CustomFormat = "dd-MM-yyyy";
+            dtpDateEnd.Format = DateTimePickerFormat.Custom;
+            dtpDateEnd.CustomFormat = "dd-MM-yyyy";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -93,7 +97,7 @@ namespace Proj_Book_Store_Manage.UI
                     voucher = new VoucherBL();
                     try
                     {
-                        voucher.addNewVoucher(int.Parse(this.txtValueVoucher.Text), this.txtEvent.Text, this.dtpDateStart.Value.ToString(), this.dtpDateEnd.Value.ToString(), int.Parse(this.txtAmount.Text), ref err);
+                        voucher.addNewVoucher(int.Parse(this.txtValueVoucher.Text), this.txtEvent.Text, this.dtpDateStart.Value.Date, this.dtpDateEnd.Value.Date, int.Parse(this.txtAmount.Text), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm voucher thành công !");
@@ -111,7 +115,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    voucher.modifyVoucher(utl.IDCurrent, int.Parse(this.txtValueVoucher.Text), this.txtEvent.Text, this.dtpDateStart.Value.ToString(), this.dtpDateEnd.Value.ToString(), int.Parse(this.txtAmount.Text), ref err);
+                    voucher.modifyVoucher(utl.IDCurrent, int.Parse(this.txtValueVoucher.Text), this.txtEvent.Text, this.dtpDateStart.Value.Date, this.dtpDateEnd.Value.Date, int.Parse(this.txtAmount.Text), ref err);
                     //LoadData();
                     if (err == "")
                     {

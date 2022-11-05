@@ -165,7 +165,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvTypeCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
-            lblID.Text = dgvTypeCustomer.Rows[utl.IDCurrent].Cells[0].Value.ToString();
+            lblID.Text = dgvTypeCustomer.Rows[utl.rowCurrent].Cells[0].Value.ToString();
             txtTypeCustomer.Text = dgvTypeCustomer.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtPointMark.Text = dgvTypeCustomer.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             txtValue.Text = dgvTypeCustomer.Rows[utl.rowCurrent].Cells[3].Value.ToString();

@@ -3,7 +3,7 @@ go
 use BOOKSTOREMANAGE
 go
 CREATE TABLE [dbo].AUTHOR (
-idAuthor INT IDENTITY(1,1) NOT NULL,
+idAuthor varchar(8) NOT NULL,
 nameAuthor nvarchar(30) NOT NULL,
 phoneNumber varchar(10) NULL
 
@@ -13,7 +13,7 @@ CONSTRAINT chk_phoneAuthor CHECK (len(phoneNumber) = 10)
 GO 
 
 CREATE TABLE [dbo].PUBLISHER (
-idPublisher INT IDENTITY(1,1) NOT NULL,
+idPublisher varchar(8) NOT NULL,
 namePublisher nvarchar(30) NOT NULL,
 addressPublisher nvarchar(30) NULL,
 phoneNumber varchar(10) NULL
@@ -24,13 +24,13 @@ CONSTRAINT pk_publisher PRIMARY KEY (idPublisher)
 GO 
 
 CREATE TABLE [dbo].BOOK (
-idBook INT IDENTITY(1,1) NOT NULL,
+idBook varchar(8) NOT NULL,
 nameBook nvarchar(20) NOT NULL,
-urlImage varchar(60) NULL,
+urlImage image NULL,
 amount int NULL,
 priceImport int NULL,
 priceExport int NULL,
-idPublisher int NULL
+idPublisher varchar(8) NULL
 
 CONSTRAINT pk_book PRIMARY KEY (idBook),
 CONSTRAINT fk_Publisher FOREIGN KEY (idPublisher) REFERENCES PUBLISHER (idPublisher),
@@ -41,7 +41,7 @@ CONSTRAINT chk_price CHECK (priceImport >= 0 and priceExport >= 0)
 GO 
 
 CREATE TABLE [dbo].TYPECUSTOMER (
-idTypeCus INT IDENTITY(1,1) NOT NULL,
+idTypeCus varchar(8) NOT NULL,
 nameTypeCus nvarchar(30) NOT NULL,
 pointMark int NULL,
 valueTypeCus int NULL
@@ -51,12 +51,12 @@ CONSTRAINT pk_typeCus PRIMARY KEY (idTypeCus)
 GO
 
 CREATE TABLE [dbo].CUSTOMER (
-idCus INT IDENTITY(1,1) NOT NULL,
+idCus varchar(8) NOT NULL,
 nameCus nvarchar(30) NOT NULL,
 addressCus nvarchar(30) NULL,
 phoneNumber varchar(20) NULL,
 pointCus int NOT NULL DEFAULT 0,
-idTypeCus INT NULL
+idTypeCus varchar(8) NULL
 
 CONSTRAINT pk_customer PRIMARY KEY (idCus),
 CONSTRAINT fk_TypeCus FOREIGN KEY (idTypeCus) REFERENCES TYPECUSTOMER (idTypeCus),
@@ -65,7 +65,7 @@ CONSTRAINT chk_phoneCustomer CHECK (len(phoneNumber) = 10)
 GO
 
 CREATE TABLE [dbo].EMPLOYEE (
-idEmployee INT IDENTITY(1,1) NOT NULL,
+idEmployee varchar(8) NOT NULL,
 firstName nvarchar(10) NOT NULL,
 middleName nvarchar(10) NULL,
 lastName varchar(10) NOT NULL,
@@ -86,7 +86,7 @@ go
 
 
 CREATE TABLE [dbo].VOUCHER (
-idVoucher INT IDENTITY(1,1) NOT NULL,
+idVoucher varchar(8) NOT NULL,
 valueVoucher int NOT NULL,
 nameOfEventVoucher nvarchar(40) NULL,
 dateStart date null,
@@ -98,13 +98,13 @@ CONSTRAINT pk_voucher PRIMARY KEY (idVoucher),
 GO
 
 CREATE TABLE [dbo].BILLOUTPUT (
-idBillOutPut INT IDENTITY(1,1) NOT NULL,
+idBillOutPut varchar(8) NOT NULL,
 dateOfBill date NOT NULL,
 total int NOT NULL DEFAULT 0,
-idCus int NULL,
-idEmployee int NULL,
+idCus varchar(8) NULL,
+idEmployee varchar(8) NULL,
 sttus bit default 0,
-idVoucher int null,
+idVoucher varchar(8) null,
 
 CONSTRAINT pk_billOutPut PRIMARY KEY (idBillOutPut),
 CONSTRAINT fk_pay FOREIGN KEY (idCus) REFERENCES CUSTOMER (idCus),
@@ -114,11 +114,11 @@ CONSTRAINT fk_Discount FOREIGN KEY (idVoucher) REFERENCES VOUCHER (idVoucher),
 GO 
 
 CREATE TABLE [dbo].ACCOUNT (
-idAccount INT IDENTITY(1,1) NOT NULL,
+idAccount varchar(8) NOT NULL,
 nameAccount varchar(20) NOT NULL unique,
 password varchar(30) NOT NULL,
 typeOfAcc bit NOT NULL,
-idEmployee int NULL
+idEmployee varchar(8) NULL
 
 CONSTRAINT pk_account PRIMARY KEY (idAccount),
 CONSTRAINT fk_acc_Of_Employee FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee),
@@ -128,10 +128,11 @@ CONSTRAINT chk_passwd CHECK (len(password) > 6)
 GO
 
 CREATE TABLE [dbo].CATEGORY (
-idCategory INT IDENTITY(1,1) NOT NULL,
+idCategory varchar(8) NOT NULL,
 nameCategory nvarchar(20) NOT NULL,
 describeCategory nvarchar(50) NULL,
 
+unique(nameCategory),
 CONSTRAINT pk_category PRIMARY KEY (idCategory)
 )
 go
@@ -139,8 +140,8 @@ go
 
 
 CREATE TABLE [dbo].BOOK_AUTHOR (
-idBook INT NOT NULL,
-idAuthor INT NOT NULL
+idBook varchar(8) NOT NULL,
+idAuthor varchar(8) NOT NULL
 
 CONSTRAINT pk_book_author PRIMARY KEY (idBook,idAuthor),
 CONSTRAINT fk_book FOREIGN KEY (idBook) REFERENCES BOOK (idBook),
@@ -149,8 +150,8 @@ CONSTRAINT fk_author FOREIGN KEY (idAuthor) REFERENCES AUTHOR (idAuthor)
 GO
 
 CREATE TABLE [dbo].BOOK_CATEGORY (
-idBook INT NOT NULL,
-idCategory int NOT NULL
+idBook varchar(8) NOT NULL,
+idCategory varchar(8) NOT NULL
 
 CONSTRAINT pk_book_category PRIMARY KEY (idBook,idCategory)
 CONSTRAINT fk_id_into_book FOREIGN KEY (idBook) REFERENCES BOOK (idBook),
@@ -159,10 +160,10 @@ CONSTRAINT fk_id_into_categgory FOREIGN KEY (idCategory) REFERENCES CATEGORY (id
 GO
 
 CREATE TABLE [dbo].BILLINPUT (
-idBillInput INT IDENTITY(1,1) NOT NULL,
+idBillInput varchar(8) NOT NULL,
 dateOfInput date NULL,
 total int NOT NULL DEFAULT 0,
-idEmployee INT NULL,
+idEmployee varchar(8) NULL,
 sttus bit default 0,
 
 CONSTRAINT pk_billinput PRIMARY KEY (idBillInput),
@@ -171,8 +172,8 @@ CONSTRAINT fk_employee_checkin FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idE
 GO
 
 CREATE TABLE [dbo].BOOK_BILLINPUT (
-idBillInput INT NOT NULL,
-idBook INT NOT NULL,
+idBillInput varchar(8) NOT NULL,
+idBook varchar(8) NOT NULL,
 amountInput INT NULL,
 
 CONSTRAINT pk_book_billinput PRIMARY KEY (idBillInput,idBook),
@@ -181,8 +182,8 @@ CONSTRAINT fk_idBook_into_input FOREIGN KEY (idBook) REFERENCES BOOK (idBook)
 )
 GO
 CREATE TABLE [dbo].BOOK_BILLOUTPUT (
-idBillOutput INT NOT NULL,
-idBook INT NOT NULL,
+idBillOutput varchar(8) NOT NULL,
+idBook varchar(8) NOT NULL,
 amountOutput int NULL
 
 CONSTRAINT pk_book_billoutput PRIMARY KEY (idBillOutput,idBook),
@@ -197,6 +198,7 @@ select * from dbo.view_Book
 go
 alter table dbo.category
 add unique(nameCategory)
+go
 
 
 

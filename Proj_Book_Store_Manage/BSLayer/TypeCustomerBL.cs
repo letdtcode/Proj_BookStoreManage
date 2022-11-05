@@ -25,10 +25,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewTypeCustomer(string nameTypeCus, int pointMark, int valueTypeCus, ref string err)
+        public bool addNewTypeCustomer(string idTypeCustomer, string nameTypeCus, int pointMark, int valueTypeCus, ref string err)
         {
             strSQL = "proc_addNewTypeCustomer";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idTypeCustomer", idTypeCustomer);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@nameTypeCus", nameTypeCus);
             parameters.Add(parameter);
@@ -41,7 +44,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyTypeCustomer(int idTypeCus, string nameTypeCus, int pointMark, int valueTypeCus, ref string err)
+        public bool modifyTypeCustomer(string idTypeCus, string nameTypeCus, int pointMark, int valueTypeCus, ref string err)
         {
             strSQL = "proc_updateTypeCustomer";
             parameters = new List<SqlParameter>();
@@ -60,7 +63,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteTypeCustomer(int idTypeCus, ref string err)
+        public bool deleteTypeCustomer(string idTypeCus, ref string err)
         {
             strSQL = "proc_deleteTypeCustomer";
             parameters = new List<SqlParameter>();
@@ -70,16 +73,16 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public List<string> getAllNameTypeCus()
+        public List<string> getAllIDTypeCus()
         {
-            List<string> dataNameTypeCus = new List<string>();
+            List<string> dataIDTypeCus = new List<string>();
             DataTable dtTypeCustomer = new DataTable();
             dtTypeCustomer = db.LoadData(nameView, CommandType.Text);
             foreach (DataRow row in dtTypeCustomer.Rows)
             {
-                dataNameTypeCus.Add(row[1].ToString());
+                dataIDTypeCus.Add(row[0].ToString());
             }
-            return dataNameTypeCus;
+            return dataIDTypeCus;
         }
     }
 }

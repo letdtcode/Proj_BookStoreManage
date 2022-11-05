@@ -59,11 +59,17 @@ namespace Proj_Book_Store_Manage.BSLayer
             return dtBook;
         }
 
-        public bool addNewBook(string nameBook, Image img, int amount, int priceImport, int priceExport, int idPublisher, ref string err)
+        public bool addNewBook(string idBook, string nameBook, Image img, int amount, int priceImport, int priceExport, int idPublisher, ref string err)
         {
             strSQL = "proc_addNewBook";
             byte[] imgString = ImgToByteArray(img);
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@nameBook", nameBook);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@nameBook", nameBook);
             parameters.Add(parameter);
@@ -85,7 +91,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyBook(int idBook, string nameBook, Image img, int amount, int priceImport, int priceExport, int idPublisher, ref string err)
+        public bool modifyBook(string idBook, string nameBook, Image img, int amount, int priceImport, int priceExport, int idPublisher, ref string err)
         {
             strSQL = "proc_updateBook";
             byte[] imgString = ImgToByteArray(img);
@@ -114,7 +120,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteBook(int idBook, ref string err)
+        public bool deleteBook(string idBook, ref string err)
         {
             strSQL = "proc_DeleteBook";
             parameters = new List<SqlParameter>();

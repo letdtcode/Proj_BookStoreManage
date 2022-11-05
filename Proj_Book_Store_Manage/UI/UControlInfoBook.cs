@@ -17,9 +17,7 @@ namespace Proj_Book_Store_Manage.UI
     {
         private List<Control> controls = null;
         private DataTable dtBook = null;
-        DataTable dtCategoryOfBook = null;
         private Utilities utl = null;
-        private int IDBook;
         private string err = "";
         private DialogResult result;
 
@@ -27,8 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         BookBL book = new BookBL();
-        private byte[] imgBook = null;
-        //private bool roleTemp;
+        EmployeeBL employee = new EmployeeBL();
         public UControlInfoBook()
         {
             InitializeComponent();
@@ -204,6 +201,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
+            LoadDataIntoCbPublisher(employee.getAllIDEmployee());
             controls = new List<Control> { txtNameBook, txtAmount, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
             dtBook = book.getDataBook();
             //DataGridViewImageColumn
@@ -234,6 +232,14 @@ namespace Proj_Book_Store_Manage.UI
             txtPriceImport.Text = dgvBook.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
             cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();
+        }
+        private void LoadDataIntoCbPublisher(List<string> idPublisher)
+        {
+            cbIDPublisher.Items.Clear();
+            foreach (string idCus in idPublisher)
+            {
+                cbIDPublisher.Items.Add(idCus);
+            }
         }
     }
 }

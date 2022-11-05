@@ -28,10 +28,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewReceiptImport(string dateOfInput, int idEmployee, ref string err)
+        public bool addNewReceiptImport(string idBillInput, DateTime dateOfInput, int idEmployee, ref string err)
         {
             strSQL = "proc_addNewBillInput";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBillInput", idBillInput);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@dateOfInput", dateOfInput);
             parameters.Add(parameter);
@@ -41,7 +44,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyReceiptImport(int idBillInput, string dateOfInput, int total, int idEmployee, ref string err)
+        public bool modifyReceiptImport(string idBillInput, DateTime dateOfInput, int total, int idEmployee, ref string err)
         {
             strSQL = "proc_updateBillInput";
             parameters = new List<SqlParameter>();
@@ -60,7 +63,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteReceiptImport(int idBillInput, ref string err)
+        public bool deleteReceiptImport(string idBillInput, ref string err)
         {
             strSQL = "proc_deleteBillInput";
             parameters = new List<SqlParameter>();

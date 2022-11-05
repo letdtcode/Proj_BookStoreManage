@@ -25,10 +25,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewCategory(string nameCategory, string describle, ref string err)
+        public bool addNewCategory(string idCategory, string nameCategory, string describle, ref string err)
         {
             strSQL = "proc_addNewCategory";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idCategory", idCategory);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@nameCategory", nameCategory);
             parameters.Add(parameter);
@@ -39,7 +42,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyCategory(int idCategory, string nameCategory, string describle, ref string err)
+        public bool modifyCategory(string idCategory, string nameCategory, string describle, ref string err)
         {
             strSQL = "proc_updateCategory";
             parameters = new List<SqlParameter>();
@@ -55,7 +58,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteCategory(int idCategory, ref string err)
+        public bool deleteCategory(string idCategory, ref string err)
         {
             strSQL = "proc_deleteCategory";
             parameters = new List<SqlParameter>();

@@ -25,10 +25,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewEmployee(string firstName, string middleName, string lastName, string sex, string addEmp, string phoneNumber, string email, string yearOfBirth, ref string err)
+        public bool addNewEmployee(string idEmployee, string firstName, string middleName, string lastName, string sex, string addEmp, string phoneNumber, string email, DateTime yearOfBirth, ref string err)
         {
             strSQL = "proc_addNewEmployee";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idEmployee", idEmployee);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@firstName", firstName);
             parameters.Add(parameter);
@@ -56,7 +59,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyEmployee(int idEmployee, string firstName, string middleName, string lastName, string sex, string addEmp, string phoneNumber, string email, string yearOfBirth, ref string err)
+        public bool modifyEmployee(string idEmployee, string firstName, string middleName, string lastName, string sex, string addEmp, string phoneNumber, string email, DateTime yearOfBirth, ref string err)
         {
             strSQL = "proc_updateEmployee";
             parameters = new List<SqlParameter>();
@@ -90,7 +93,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteEmployee(int idEmp, ref string err)
+        public bool deleteEmployee(string idEmp, ref string err)
         {
             strSQL = "proc_deleteEmployee";
             parameters = new List<SqlParameter>();
@@ -99,6 +102,17 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }
+        public List<string> getAllIDEmployee()
+        {
+            List<string> dataIDEmp = new List<string>();
+            DataTable dtEmp = new DataTable();
+            dtEmp = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtEmp.Rows)
+            {
+                dataIDEmp.Add(row[0].ToString());
+            }
+            return dataIDEmp;
         }
         /*public DataTable searchAccount(int idAccount, string userName, string password, bool typeOfAcc, int idEmp, ref string err)
         {

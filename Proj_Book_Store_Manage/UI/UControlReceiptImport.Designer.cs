@@ -32,8 +32,12 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptImport = new System.Windows.Forms.GroupBox();
             this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.dtpReceiptImport = new System.Windows.Forms.DateTimePicker();
+            this.lblIDBill = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.lblStt = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblInfoTotal = new System.Windows.Forms.Label();
+            this.lbl10 = new System.Windows.Forms.Label();
             this.lblEmployee = new System.Windows.Forms.Label();
             this.lblDateImport = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
@@ -50,10 +54,6 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvReceiptImport = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDetailImportReceipt = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblStt = new System.Windows.Forms.Label();
-            this.lbl10 = new System.Windows.Forms.Label();
-            this.lblIDBill = new System.Windows.Forms.Label();
             this.gbReceiptImport.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gpSearch.SuspendLayout();
@@ -97,6 +97,17 @@ namespace Proj_Book_Store_Manage.UI
             this.dtpReceiptImport.Size = new System.Drawing.Size(200, 22);
             this.dtpReceiptImport.TabIndex = 3;
             // 
+            // lblIDBill
+            // 
+            this.lblIDBill.AutoSize = true;
+            this.lblIDBill.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDBill.Location = new System.Drawing.Point(123, 36);
+            this.lblIDBill.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDBill.Name = "lblIDBill";
+            this.lblIDBill.Size = new System.Drawing.Size(21, 23);
+            this.lblIDBill.TabIndex = 1;
+            this.lblIDBill.Text = "0";
+            // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
@@ -107,6 +118,28 @@ namespace Proj_Book_Store_Manage.UI
             this.lblTotal.Size = new System.Drawing.Size(21, 23);
             this.lblTotal.TabIndex = 1;
             this.lblTotal.Text = "0";
+            // 
+            // lblStt
+            // 
+            this.lblStt.AutoSize = true;
+            this.lblStt.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStt.Location = new System.Drawing.Point(123, 140);
+            this.lblStt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStt.Name = "lblStt";
+            this.lblStt.Size = new System.Drawing.Size(21, 23);
+            this.lblStt.TabIndex = 1;
+            this.lblStt.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 140);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Trạng thái";
             // 
             // lblInfoTotal
             // 
@@ -119,6 +152,17 @@ namespace Proj_Book_Store_Manage.UI
             this.lblInfoTotal.TabIndex = 1;
             this.lblInfoTotal.Text = "Tổng tiền";
             // 
+            // lbl10
+            // 
+            this.lbl10.AutoSize = true;
+            this.lbl10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl10.Location = new System.Drawing.Point(8, 37);
+            this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl10.Name = "lbl10";
+            this.lbl10.Size = new System.Drawing.Size(65, 23);
+            this.lbl10.TabIndex = 1;
+            this.lbl10.Text = "ID Bill:";
+            // 
             // lblEmployee
             // 
             this.lblEmployee.AutoSize = true;
@@ -126,9 +170,9 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmployee.Location = new System.Drawing.Point(175, 109);
             this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(151, 23);
+            this.lblEmployee.Size = new System.Drawing.Size(149, 23);
             this.lblEmployee.TabIndex = 1;
-            this.lblEmployee.Text = "Tên Nhân Viên";
+            this.lblEmployee.Text = "Mã Nhân Viên";
             // 
             // lblDateImport
             // 
@@ -294,50 +338,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDetailImportReceipt.Text = "Chi tiết hóa đơn";
             this.btnDetailImportReceipt.UseVisualStyleBackColor = false;
             this.btnDetailImportReceipt.Click += new System.EventHandler(this.btnDetailImportReceipt_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 140);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Trạng thái";
-            // 
-            // lblStt
-            // 
-            this.lblStt.AutoSize = true;
-            this.lblStt.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStt.Location = new System.Drawing.Point(123, 140);
-            this.lblStt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStt.Name = "lblStt";
-            this.lblStt.Size = new System.Drawing.Size(21, 23);
-            this.lblStt.TabIndex = 1;
-            this.lblStt.Text = "0";
-            // 
-            // lbl10
-            // 
-            this.lbl10.AutoSize = true;
-            this.lbl10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl10.Location = new System.Drawing.Point(8, 37);
-            this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl10.Name = "lbl10";
-            this.lbl10.Size = new System.Drawing.Size(65, 23);
-            this.lbl10.TabIndex = 1;
-            this.lbl10.Text = "ID Bill:";
-            // 
-            // lblIDBill
-            // 
-            this.lblIDBill.AutoSize = true;
-            this.lblIDBill.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDBill.Location = new System.Drawing.Point(123, 36);
-            this.lblIDBill.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDBill.Name = "lblIDBill";
-            this.lblIDBill.Size = new System.Drawing.Size(21, 23);
-            this.lblIDBill.TabIndex = 1;
-            this.lblIDBill.Text = "0";
             // 
             // UControlReceiptImport
             // 

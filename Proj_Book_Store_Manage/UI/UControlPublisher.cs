@@ -32,8 +32,9 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            int indexLastRow = dgvPublisher.Rows.GetLastRow(DataGridViewElementStates.None);
-            lblIDPublisher.Text = ((int)dgvPublisher.Rows[indexLastRow].Cells["idPublisher"].Value + 1).ToString();
+            //int indexLastRow = dgvPublisher.Rows.GetLastRow(DataGridViewElementStates.None);
+            //lblIDPublisher.Text = ((int)dgvPublisher.Rows[indexLastRow-1].Cells[0].Value + 1).ToString();
+            lblIDPublisher.Text = utl.createID("NXB ");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);

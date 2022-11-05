@@ -25,10 +25,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewVoucher(int valueVoucher, string nameOfEvent, string dateStart, string dateEnd, int amount, ref string err)
+        public bool addNewVoucher(string idVoucher, int valueVoucher, string nameOfEvent, DateTime dateStart, DateTime dateEnd, int amount, ref string err)
         {
             strSQL = "proc_addNewVoucher";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idVoucher", idVoucher);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@valueVoucher", valueVoucher);
             parameters.Add(parameter);
@@ -48,7 +51,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyVoucher(int idVoucher, int valueVoucher, string nameOfEvent, string dateStart, string dateEnd, int amount, ref string err)
+        public bool modifyVoucher(string idVoucher, int valueVoucher, string nameOfEvent, DateTime dateStart, DateTime dateEnd, int amount, ref string err)
         {
             strSQL = "proc_updateVoucher";
             parameters = new List<SqlParameter>();
@@ -73,7 +76,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteVoucher(int idVoucher, ref string err)
+        public bool deleteVoucher(string idVoucher, ref string err)
         {
             strSQL = "proc_deleteVoucher";
             parameters = new List<SqlParameter>();

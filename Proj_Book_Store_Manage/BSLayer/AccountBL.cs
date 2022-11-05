@@ -25,10 +25,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewAccount(string nameAccount, string passWord, bool typeOfAcc, int idEmployee, ref string err)
+        public bool addNewAccount(string idAccount, string nameAccount, string passWord, bool typeOfAcc, int idEmployee, ref string err)
         {
             strSQL = "proc_addNewAccount";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idAccount", idAccount);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@nameAccount", nameAccount);
             parameters.Add(parameter);
@@ -45,7 +48,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyAccount(int idAccount, string nameAccount, string password, bool typeOfAcc, int idEmployee, ref string err)
+        public bool modifyAccount(string idAccount, string nameAccount, string password, bool typeOfAcc, int idEmployee, ref string err)
         {
             strSQL = "proc_updateAccount";
             parameters = new List<SqlParameter>();
@@ -68,7 +71,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteAccount(int idAccount, ref string err)
+        public bool deleteAccount(string idAccount, ref string err)
         {
             strSQL = "proc_DeleteAccount";
             parameters = new List<SqlParameter>();

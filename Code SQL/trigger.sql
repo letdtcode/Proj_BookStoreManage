@@ -7,7 +7,7 @@ on BOOK_BILLOUTPUT
 for insert, update
 as
 begin	
-	declare @dateOutput date, @idBill int, @dateInput date, @numBookSold int, @idBookSold int
+	declare @dateOutput date, @idBill varchar(8), @dateInput date, @numBookSold int, @idBookSold varchar(8)
 	select @dateOutput=(select BILLOUTPUT.dateOfBill from dbo.BILLOUTPUT where BILLOUTPUT.idBillOutPut=i.idBillOutput),
 	@idBill=i.idBillOutput,
 	@numBookSold=i.amountOutput,
@@ -37,7 +37,7 @@ on BILLOUTPUT
 for insert, update
 as
 begin
-	declare @idBillDiscount int, @idVcher int, @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit
+	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit
 	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=dbo.func_totalPayBeforeDiscount(@idBillDiscount)
 	from inserted i
 	--Kiểm tra idVoucher có tồn tại 

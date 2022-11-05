@@ -25,10 +25,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewPublisher(string namePublisher, string addPublisher, string phoneNumber, ref string err)
+        public bool addNewPublisher(string idPublisher, string namePublisher, string addPublisher, string phoneNumber, ref string err)
         {
             strSQL = "proc_addNewPublisher";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idPublisher", idPublisher);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@namePublisher", namePublisher);
             parameters.Add(parameter);
@@ -41,7 +44,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyPublisher(int idPublisher, string namePublisher, string addPublisher, string phoneNumber, ref string err)
+        public bool modifyPublisher(string idPublisher, string namePublisher, string addPublisher, string phoneNumber, ref string err)
         {
             strSQL = "proc_updatePublisher";
             parameters = new List<SqlParameter>();
@@ -60,7 +63,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deletePublisher(int idPublisher, ref string err)
+        public bool deletePublisher(string idPublisher, ref string err)
         {
             strSQL = "proc_deletePublisher";
             parameters = new List<SqlParameter>();
@@ -70,6 +73,17 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }
+        public List<string> getAllIDPublisher()
+        {
+            List<string> dataIDPub = new List<string>();
+            DataTable dtPublisher = new DataTable();
+            dtPublisher = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtPublisher.Rows)
+            {
+                dataIDPub.Add(row[0].ToString());
+            }
+            return dataIDPub;
         }
     }
 }

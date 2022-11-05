@@ -25,6 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         ReceiptExportBL receiptExport = new ReceiptExportBL();
 
         private CustomerBL cus = new CustomerBL();
+        private EmployeeBL employee = new EmployeeBL();
         public UControlReceiptExport()
         {
             InitializeComponent();
@@ -109,10 +110,10 @@ namespace Proj_Book_Store_Manage.UI
                     receiptExport = new ReceiptExportBL();
                     try
                     {
-                        receiptExport.addNewReceiptExport(this.dtpReceiptExport.Value.ToShortDateString(), int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
+                        receiptExport.addNewReceiptExport(this.dtpReceiptExport.Value.Date, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
                         if (err == "")
                         {
-                            MessageBox.Show("Thêm tài khoản thành công !");
+                            MessageBox.Show("Thêm hóa đơn thành công !");
                         }
                         else
                         {
@@ -127,7 +128,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    receiptExport.modifyReceiptExport(utl.IDCurrent, this.dtpReceiptExport.Value.ToShortDateString(), receiptExport.TotalOfCurrent, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
+                    receiptExport.modifyReceiptExport(utl.IDCurrent, this.dtpReceiptExport.Value.Date, receiptExport.TotalOfCurrent, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -154,6 +155,7 @@ namespace Proj_Book_Store_Manage.UI
         private void LoadData()
         {
             LoadDataIntoCbCus(cus.getAllIDCustomer());
+            LoadDataIntoCbEmployee(employee.getAllIDEmployee());
             controls = new List<Control> { dtpReceiptExport, cbIDEmp, cbIDCus };
             dtReceiptExport = receiptExport.getDataReceiptExport();
             dgvReceiptExport.DataSource = dtReceiptExport;
@@ -200,6 +202,14 @@ namespace Proj_Book_Store_Manage.UI
             foreach(string idCus in idCustomers)
             {
                 cbIDCus.Items.Add(idCus);
+            }
+        }
+        private void LoadDataIntoCbEmployee(List<string> idEmployee)
+        {
+            cbIDEmp.Items.Clear();
+            foreach (string idEmp in idEmployee)
+            {
+                cbIDEmp.Items.Add(idEmp);
             }
         }
     }

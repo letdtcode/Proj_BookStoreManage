@@ -143,7 +143,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            LoadDataIntoCbTypeCus(typeCus.getAllNameTypeCus());
+            LoadDataIntoCbTypeCus(typeCus.getAllIDTypeCus());
             controls = new List<Control> { txtNameCustomer, txtAddCus, txtPhoneNumberCus, cbTypeCus };
             dtCustomer = customer.getDataCustomer();
             dgvCustomer.DataSource = dtCustomer;

@@ -24,6 +24,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         AccountBL account = new AccountBL();
+        EmployeeBL employee = new EmployeeBL();
         private bool roleTemp;
         public UControlAccount()
         {
@@ -151,6 +152,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
+            LoadDataIntoCbEmp(employee.getAllIDEmployee());
             lblIDAcount.Text = "None";
             controls = new List<Control> { txtUserName, txtPassword, cbTypeAcc, cbEmployee };
             dtAccount = account.getDataAccount();
@@ -190,6 +192,14 @@ namespace Proj_Book_Store_Manage.UI
                 roleTemp = false;
             dgvAuthor.DataSource = account.searchAccount(int.Parse(txtIDAccount.Text), txtUserName.Text.ToString(), txtPassword.Text.ToString(), roleTemp, int.Parse(cbEmployee.Text), ref err);
             dgvAuthor.Show();*/
+        }
+        private void LoadDataIntoCbEmp(List<string> idEmp)
+        {
+            cbEmployee.Items.Clear();
+            foreach (string idCus in idEmp)
+            {
+                cbEmployee.Items.Add(idCus);
+            }
         }
     }
 }

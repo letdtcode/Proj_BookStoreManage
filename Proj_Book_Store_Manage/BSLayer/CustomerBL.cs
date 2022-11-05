@@ -26,22 +26,14 @@ namespace Proj_Book_Store_Manage.BSLayer
             
             return db.LoadData(nameView, CommandType.Text);
         }
-        public List<string> getAllIDCustomer()
-        {
-            List<string> dataIDCustomer = new List<string>();
-            DataTable dtCustomer = new DataTable();
-            dtCustomer = db.LoadData(nameView, CommandType.Text);
-            dataIDCustomer.Clear();
-            foreach (DataRow row in dtCustomer.Rows)
-            {
-                dataIDCustomer.Add(row[0].ToString());
-            }
-            return dataIDCustomer;
-        }
-        public bool addNewCustomer(string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
+        
+        public bool addNewCustomer(string idCustomer, string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
         {
             strSQL = "proc_addNewCustomer";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idCustomer", idCustomer);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@nameCus", nameCus);
             parameters.Add(parameter);
@@ -57,7 +49,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyCustomer(int idCus, string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
+        public bool modifyCustomer(string idCus, string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
         {
             strSQL = "proc_updateCustomer";
             parameters = new List<SqlParameter>();
@@ -89,6 +81,17 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }  
+        }
+        public List<string> getAllIDCustomer()
+        {
+            List<string> dataIDCustomer = new List<string>();
+            DataTable dtCustomer = new DataTable();
+            dtCustomer = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtCustomer.Rows)
+            {
+                dataIDCustomer.Add(row[0].ToString());
+            }
+            return dataIDCustomer;
+        }
     }
 }

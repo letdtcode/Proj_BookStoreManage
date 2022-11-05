@@ -158,6 +158,10 @@ namespace Proj_Book_Store_Manage.UI
             // cbSex
             // 
             this.cbSex.FormattingEnabled = true;
+            this.cbSex.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ",
+            "Khác"});
             this.cbSex.Location = new System.Drawing.Point(106, 203);
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(76, 24);

@@ -27,10 +27,13 @@ namespace Proj_Book_Store_Manage.BSLayer
             return db.LoadData(nameView, CommandType.Text);
         }
 
-        public bool addNewAuthor(string nameAuthor, string phoneNumber, ref string err)
+        public bool addNewAuthor(string idAuthor, string nameAuthor, string phoneNumber, ref string err)
         {
             strSQL = "proc_addNewAuthor";
             parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idAuthor", idAuthor);
+            parameters.Add(parameter);
 
             parameter = new SqlParameter("@nameAuthor", nameAuthor);
             parameters.Add(parameter);
@@ -41,7 +44,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
 
         }
-        public bool modifyAuthor(int idAuthor, string nameAuthor, string phoneNumber, ref string err)
+        public bool modifyAuthor(string idAuthor, string nameAuthor, string phoneNumber, ref string err)
         {
             strSQL = "proc_updateAuthor";
             parameters = new List<SqlParameter>();
@@ -57,7 +60,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteAuthor(int idAuthor, ref string err)
+        public bool deleteAuthor(string idAuthor, ref string err)
         {
             strSQL = "proc_DeleteAuthor";
             parameters = new List<SqlParameter>();

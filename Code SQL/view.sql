@@ -68,13 +68,13 @@ select * from view_detail_BillOutPut
 go
 ------------------------------View-------------------------------------------
 --View tác giả
-create view view_Author
+create or alter view view_Author
 as
 select *
 from dbo.AUTHOR
 go
 --View nhà xuất bản
-create view view_Publisher
+create or alter view view_Publisher
 as
 select *
 from dbo.PUBLISHER
@@ -154,4 +154,3 @@ as
 select *
 from dbo.VOUCHER
 go
-delete dbo.BOOK where BOOK.idBook=5

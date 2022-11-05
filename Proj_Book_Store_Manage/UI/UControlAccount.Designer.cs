@@ -51,6 +51,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnShowResult = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuthor)).BeginInit();
             this.gbAccount.SuspendLayout();
@@ -195,6 +196,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbAccount.Controls.Add(this.lblTypeAcc);
             this.gbAccount.Controls.Add(this.lblPassword);
             this.gbAccount.Controls.Add(this.lblIDAcount);
+            this.gbAccount.Controls.Add(this.label1);
             this.gbAccount.Controls.Add(this.lblID);
             this.gbAccount.Controls.Add(this.lblUserName);
             this.gbAccount.Location = new System.Drawing.Point(30, 21);
@@ -302,6 +304,17 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(184, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ID Account";
+            // 
             // UControlAccount
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -345,5 +358,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnShowResult;
         private System.Windows.Forms.Label lblIDAcount;
         private System.Windows.Forms.DataGridView dgvAuthor;
+        private System.Windows.Forms.Label label1;
     }
 }

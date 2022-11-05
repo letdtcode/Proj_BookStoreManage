@@ -39,11 +39,21 @@ namespace Proj_Book_Store_Manage
             get => rowCurrentIndex;
             set => rowCurrentIndex = value;
         }
-        public string createID(string nameTable, int numberIDBefore)
+        public string createID(string codeMark)
         {
-            string ID = nameTable + numberIDBefore.ToString();
-            return ID;
+            int numIDNext = 0;
+            int indexLastRow = dgv.Rows.GetLastRow(DataGridViewElementStates.None);
+            if (indexLastRow == 0)
+            {
+                numIDNext = 1;
+            }
+            else
+            {
+                numIDNext = (int)dgv.Rows[indexLastRow - 1].Cells[0].Value + 1;
+            }
+            return codeMark+numIDNext.ToString();
         }
+
         public void setEnableControl(bool b)
         {
             foreach (Control control in controls)

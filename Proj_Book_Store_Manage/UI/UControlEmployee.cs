@@ -27,6 +27,8 @@ namespace Proj_Book_Store_Manage.UI
         public UControlEmployee()
         {
             InitializeComponent();
+            dtpBirth.Format = DateTimePickerFormat.Custom;
+            dtpBirth.CustomFormat = "dd-MM-yyyy";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -92,7 +94,7 @@ namespace Proj_Book_Store_Manage.UI
                     employee = new EmployeeBL();
                     try
                     {
-                        employee.addNewEmployee(this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Items.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text, this.dtpBirth.Value.ToString(), ref err);
+                        employee.addNewEmployee(this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Text.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text,  this.dtpBirth.Value.Date, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm thông tin nhân viên thành công !");
@@ -110,7 +112,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    employee.modifyEmployee(utl.IDCurrent, this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Items.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text, this.dtpBirth.Value.ToString(), ref err);
+                    employee.modifyEmployee(utl.IDCurrent, this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Text.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text, this.dtpBirth.Value.Date, ref err);
                     //LoadData();
                     if (err == "")
                     {

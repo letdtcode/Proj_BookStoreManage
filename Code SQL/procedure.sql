@@ -5,10 +5,11 @@ go
 --PROCEDURE THÊM, SỬA, XÓA ACCOUNT
 --Thêm một account mới
 create or alter procedure proc_addNewAccount
+@idAccount varchar(8),
 @nameAccount varchar(20),
 @password varchar(30),
 @typeOfAcc bit,
-@idEmployee int
+@idEmployee varchar(8)
 as
 begin
 	insert into dbo.ACCOUNT 
@@ -29,11 +30,11 @@ end
 go
 --Chỉnh sửa một Account
 create or alter procedure proc_updateAccount
-@idAccount int,
+@idAccount varchar(8),
 @nameAccount varchar(20),
 @password varchar(30),
 @typeOfAcc bit,
-@idEmployee int
+@idEmployee varchar(8)
 as
 begin
 	update dbo.ACCOUNT
@@ -43,7 +44,7 @@ end
 go
 --Xóa một Account
 create or alter procedure proc_DeleteAccount
-@idAccount int
+@idAccount varchar(8)
 as
 begin
 	delete from dbo.ACCOUNT
@@ -52,11 +53,11 @@ end
 go
 --Tìm kiếm account
 --create or alter procedure proc_searchAccount
---@idAccount int,
+--@idAccount varchar(8),
 --@userName varchar(20),
 --@password varchar(30),
 --@typeAcc bit,
---@idEmployee int
+--@idEmployee varchar(8)
 --as
 --begin
 --select * 
@@ -67,63 +68,64 @@ go
 --go
 --CHưa
 -- Đổi mật khẩu account
-create or alter procedure proc_changepassAcc
-@acc_name varchar(30),
-@password_old varchar(30),
-@password_new varchar(30),
-@password_confirm varchar(30)
-as
-begin 
-	declare @acc_passwd varchar(30), @status varchar(150)
-	if exists(select *from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name and ACCOUNT.pass = @password_old)
-	begin 
-		if(@password_old != @password_new)
-		begin 
-			if(@password_new = @password_confirm)
-			begin
-				update dbo.ACCOUNT set ACCOUNT.pass=@password_new
-				where ACCOUNT.nameAccount = @acc_name
-				set @status = 'Thay đổi mật khẩu thành công!!'
-			end
-			else
-			begin
-				set @status = 'Xác nhận mật khẩu không chính xác!!'
-			end
-		end
-		else
-		begin
-			set @status = 'New password must be different from the old password'
-		end
-	end
-	else
-	begin
-		set @status = 'Mật khẩu không chính xác!'
-	end
-	select @status as status
+--create or alter procedure proc_changepassAcc
+--@acc_name varchar(30),
+--@password_old varchar(30),
+--@password_new varchar(30),
+--@password_confirm varchar(30)
+--as
+--begin 
+--	declare @acc_passwd varchar(30), @status varchar(150)
+--	if exists(select *from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name and ACCOUNT.pass = @password_old)
+--	begin 
+--		if(@password_old != @password_new)
+--		begin 
+--			if(@password_new = @password_confirm)
+--			begin
+--				update dbo.ACCOUNT set ACCOUNT.pass=@password_new
+--				where ACCOUNT.nameAccount = @acc_name
+--				set @status = 'Thay đổi mật khẩu thành công!!'
+--			end
+--			else
+--			begin
+--				set @status = 'Xác nhận mật khẩu không chính xác!!'
+--			end
+--		end
+--		else
+--		begin
+--			set @status = 'New password must be different from the old password'
+--		end
+--	end
+--	else
+--	begin
+--		set @status = 'Mật khẩu không chính xác!'
+--	end
+--	select @status as status
 
-end
-go
+--end
+--go
 ----Kiểm tra đăng nhập
-create or alter procedure proc_checklogin
-@acc_name varchar(30),
-@password varchar(30)
-as
-begin
-	declare @status nvarchar(50), @role varchar(30)
-	if exists (select * from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name and ACCOUNT.pass = @password)
-	begin
-		set @role = (select typeOfAcc from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name)
-		set @status = 'Đăng nhập thành công!';
-	end
-	else
-		set @status = 'Sai thông tin đăng nhập!!';
-	select @status as status, @role as role
-end
-go
+--create or alter procedure proc_checklogin
+--@acc_name varchar(30),
+--@password varchar(30)
+--as
+--begin
+--	declare @status nvarchar(50), @role varchar(30)
+--	if exists (select * from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name and ACCOUNT.pass = @password)
+--	begin
+--		set @role = (select typeOfAcc from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name)
+--		set @status = 'Đăng nhập thành công!';
+--	end
+--	else
+--		set @status = 'Sai thông tin đăng nhập!!';
+--	select @status as status, @role as role
+--end
+--go
 
 --PROCEDURE THÊM, SỬA, XÓA AUTHOR
 --Thêm một Author
 create or alter procedure proc_addNewAuthor
+@idAuthor varchar(8),
 @nameAuthor nvarchar(30),
 @phoneNumber varchar(10)
 as
@@ -142,7 +144,7 @@ end
 go
 --Chỉnh sửa một Author
 create or alter procedure proc_updateAuthor
-@idAuthor int,
+@idAuthor varchar(8),
 @nameAuthor nvarchar(30),
 @phoneNumber varchar(10)
 as
@@ -154,7 +156,7 @@ end
 go
 --Xóa một Author
 create or alter procedure proc_DeleteAuthor
-@idAuthor int
+@idAuthor varchar(8)
 as
 begin
 	delete from dbo.AUTHOR
@@ -164,12 +166,13 @@ go
 --PROCEDURE THÊM, SỬA, XÓA BOOK
 --Thêm một Book
 create or alter procedure proc_addNewBook
+@idBook varchar(8),
 @nameBook nvarchar(20),
 @urlImage image,
 @amount int,
 @priceImport int,
 @priceExport int,
-@idPublisher int
+@idPublisher varchar(8)
 as
 begin
 	insert into dbo.BOOK
@@ -194,13 +197,13 @@ end
 go
 --Chỉnh sửa một Book
 create or alter procedure proc_updateBook
-@idBook int,
+@idBook varchar(8),
 @nameBook nvarchar(20),
 @urlImage image,
 @amount int,
 @priceImport int,
 @priceExport int,
-@idPublisher int
+@idPublisher varchar(8)
 as
 begin
 	update dbo.BOOK
@@ -210,7 +213,7 @@ end
 go
 --Xóa một Book
 create or alter procedure proc_DeleteBook
-@idBook int
+@idBook varchar(8)
 as
 begin
 	delete from dbo.BOOK
@@ -220,8 +223,8 @@ go
 --PROCEDURE THÊM, SỬA, XÓA BOOK_AUTHOR
 --Thêm tên tác giả cho sách
 create or alter procedure proc_addNewBookAuthor
-@idBook int,
-@idAuthor int
+@idBook varchar(8),
+@idAuthor varchar(8)
 as
 begin
 	insert into dbo.BOOK_AUTHOR
@@ -238,9 +241,9 @@ end
 go
 --Chỉnh sửa tên tác giả cho sách
 create or alter procedure proc_updateBookAuthor
-@idBook int,
-@idAuthor int,
-@idNewAuthor int 
+@idBook varchar(8),
+@idAuthor varchar(8),
+@idNewAuthor varchar(8) 
 as
 begin
 	update dbo.BOOK_AUTHOR
@@ -250,8 +253,8 @@ end
 go
 --Xóa bộ sách-tác giả
 create or alter procedure proc_deleteBookAuthor
-@idBook int,
-@idAuthor int
+@idBook varchar(8),
+@idAuthor varchar(8)
 as
 begin
 	delete from dbo.BOOK_AUTHOR
@@ -261,8 +264,8 @@ go
 --PROCEDURE THÊM, SỬA, XÓA BOOK_CATEGORY
 --Thêm thể loại cho sách
 create or alter procedure proc_addNewBookCategory
-@idBook int,
-@idCategory int
+@idBook varchar(8),
+@idCategory varchar(8)
 as
 begin
 	insert into dbo.BOOK_CATEGORY
@@ -279,10 +282,10 @@ end
 go
 --Chỉnh sửa thể loại cho sách
 create or alter procedure proc_updateBookCategory
-@idBook int,
-@idCategory int, 
-@idNewBook int,
-@idNewCategory int
+@idBook varchar(8),
+@idCategory varchar(8), 
+@idNewBook varchar(8),
+@idNewCategory varchar(8)
 as
 begin
 	if (@idNewCategory is null and @idNewBook is not null)
@@ -307,8 +310,8 @@ end
 go
 --Xóa bộ sách-thể loại
 create or alter procedure proc_deleteBookCategory
-@idBook int,
-@idCategory int
+@idBook varchar(8),
+@idCategory varchar(8)
 as
 begin
 	delete from dbo.BOOK_CATEGORY
@@ -318,6 +321,7 @@ go
 --PROCEDURE THÊM, SỬA, XÓA CATEGORY
 --Thêm một thể loại mới 
 create or alter procedure proc_addNewCategory
+@idCategory varchar(8),
 @nameCategory nvarchar(20),
 @describleCategory nvarchar(50)
 as
@@ -336,7 +340,7 @@ end
 go
 --Chỉnh sửa một thể loại
 create or alter procedure proc_updateCategory
-@idCategory int,
+@idCategory varchar(8),
 @nameCategory nvarchar(20),
 @describleCategory nvarchar(50)
 as
@@ -348,7 +352,7 @@ end
 go
 --Xóa một thể loại
 create or alter procedure proc_deleteCategory
-@idCategory int
+@idCategory varchar(8)
 as
 begin
 	delete from dbo.CATEGORY
@@ -358,14 +362,16 @@ go
 --PROCEDURE CUSTOMER
 --Thêm một Customer
 create or alter procedure proc_addNewCustomer
+@idCustomer varchar(8),
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
 @phoneNumber varchar(20),
-@idTypeCus int
+@idTypeCus varchar(8)
 as
 begin
 	insert into dbo.CUSTOMER
 		(
+	idCus,
 	nameCus,
 	addressCus,
 	phoneNumber,
@@ -373,6 +379,7 @@ begin
 		)
 	values
 		(
+	@idCustomer,
 	@nameCus,
 	@addressCus,
 	@phoneNumber,
@@ -382,11 +389,11 @@ end
 go
 --Chỉnh sửa một Customer
 create or alter procedure proc_updateCustomer
-@idCus int,
+@idCus varchar(8),
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
 @phoneNumber varchar(20),
-@idTypeCus int
+@idTypeCus varchar(8)
 as
 begin
 	update dbo.CUSTOMER
@@ -396,7 +403,7 @@ end
 go
 --Xóa một Customer
 create or alter procedure proc_deleteCustomer
-@idCus int
+@idCus varchar(8)
 as
 begin
 	delete from dbo.CUSTOMER
@@ -407,6 +414,7 @@ go
 --PROCEDURE EMPLOYEE
 --Thêm một Employee
 create or alter procedure proc_addNewEmployee
+@idEmployee varchar(8),
 @firstName nvarchar(10),
 @middleName nvarchar(10),
 @lastName nvarchar(10),
@@ -419,6 +427,7 @@ as
 begin
 	insert into dbo.EMPLOYEE
 		(
+	idEmployee,
 	firstName,
 	middleName,
 	lastName,
@@ -430,6 +439,7 @@ begin
 		)
 	values
 		(
+	@idEmployee,
 	@firstName,
 	@middleName,
 	@lastName,
@@ -443,7 +453,7 @@ end
 go
 --Chỉnh sửa một Employee
 create or alter procedure proc_updateEmployee
-@idEmployee int,
+@idEmployee varchar(8),
 @firstName nvarchar(10),
 @middleName nvarchar(10),
 @lastName nvarchar(10),
@@ -461,16 +471,17 @@ end
 go
 --Xóa một Employee
 create or alter procedure proc_deleteEmployee
-@idEmp int
+@idEmployee varchar(8)
 as
 begin
 	delete from dbo.EMPLOYEE
-	where dbo.EMPLOYEE.idEmployee=@idEmp
+	where dbo.EMPLOYEE.idEmployee=@idEmployee
 end
 go
 --PROCEDURE PUBLISHER
 --Thêm một Publisher
 create or alter procedure proc_addNewPublisher
+@idPublisher varchar(8),
 @namePublisher nvarchar(30),
 @addPublisher nvarchar(30),
 @phoneNumber varchar(10)
@@ -478,12 +489,14 @@ as
 begin
 	insert into dbo.PUBLISHER
 		(
+	idPublisher,
 	namePublisher,
 	addressPublisher,
 	phoneNumber
 		)
 	values
 		(
+	@idPublisher,
 	@namePublisher,
 	@addPublisher,
 	@phoneNumber
@@ -492,7 +505,7 @@ end
 go
 --Chỉnh sửa một Publisher
 create or alter procedure proc_updatePublisher
-@idPublisher int,
+@idPublisher varchar(8),
 @namePublisher nvarchar(30),
 @addPublisher nvarchar(30),
 @phoneNumber varchar(10)
@@ -505,7 +518,7 @@ end
 go
 --Xóa một Publisher
 create or alter procedure proc_deletePublisher
-@idPublisher int
+@idPublisher varchar(8)
 as
 begin
 	delete from dbo.PUBLISHER
@@ -515,6 +528,7 @@ go
 --PROCEDURE TYPECUSTOMER
 --Thêm một TypeCustomer
 create or alter procedure proc_addNewTypeCustomer
+@idTypeCustomer varchar(8),
 @nameTypeCus nvarchar(30),
 @pointMark int,
 @valueTypeCus int
@@ -522,12 +536,14 @@ as
 begin
 	insert into dbo.TYPECUSTOMER
 		(
+	idTypeCus,
 	nameTypeCus,
 	pointMark,
 	valueTypeCus
 		)
 	values
 		(
+	@idTypeCustomer,
 	@nameTypeCus,
 	@pointMark,
 	@valueTypeCus
@@ -536,7 +552,7 @@ end
 go
 --Chỉnh sửa một Type Customer
 create or alter procedure proc_updateTypeCustomer
-@idTypeCus int,
+@idTypeCus varchar(8),
 @nameTypeCus nvarchar(30),
 @pointMark int,
 @valueTypeCus int
@@ -549,7 +565,7 @@ end
 go
 --Xóa một TypeCustomer
 create or alter procedure proc_deleteTypeCustomer
-@idTypeCus int
+@idTypeCus varchar(8)
 as
 begin
 	delete from dbo.TYPECUSTOMER
@@ -559,6 +575,7 @@ go
 --PROCEDURE VOUCHER
 --Thêm một Voucher
 create or alter procedure proc_addNewVoucher
+@idVoucher varchar(8),
 @valueVoucher int,
 @nameOfEvent nvarchar(40),
 @dateStart date,
@@ -568,6 +585,7 @@ as
 begin
 	insert into dbo.VOUCHER
 		(
+	idVoucher,
 	valueVoucher,
 	nameOfEventVoucher,
 	dateStart,
@@ -576,6 +594,7 @@ begin
 		)
 	values
 		(
+	@idVoucher,
 	@valueVoucher,
 	@nameOfEvent,
 	@dateStart,
@@ -586,7 +605,7 @@ end
 go
 --Chỉnh sửa một Voucher
 create or alter procedure proc_updateVoucher
-@idVoucher int,
+@idVoucher varchar(8),
 @valueVoucher int,
 @nameOfEvent nvarchar(40),
 @dateStart date,
@@ -601,7 +620,7 @@ end
 go
 --Xóa một Voucher
 create or alter procedure proc_deleteVoucher
-@idVoucher int
+@idVoucher varchar(8)
 as
 begin
 	delete from dbo.VOUCHER
@@ -611,17 +630,20 @@ go
 --PROCEDURE THÊM SỬA XÓA BILLINPUT
 --Thêm một BillInput
 create or alter procedure proc_addNewBillInput
+@idBillInput varchar(8),
 @dateOfInput date,
-@idEmployee int
+@idEmployee varchar(8)
 as
 begin
 	insert into dbo.BILLINPUT
 		(
+	idBillInput,
 	dateOfInput,
 	idEmployee
 		)
 	values
 		(
+	@idBillInput,
 	@dateOfInput,
 	@idEmployee
 		)
@@ -629,10 +651,10 @@ end
 go
 --Sửa một BillInput
 create or alter procedure proc_updateBillInput
-@idBillInput int,
+@idBillInput varchar(8),
 @dateOfInput date,
 @total int,
-@idEmployee int
+@idEmployee varchar(8)
 as
 begin
 	update dbo.BILLINPUT
@@ -642,7 +664,7 @@ end
 go
 --Xóa một BillInput
 create or alter procedure proc_deleteBillInput
-@idBillInput int
+@idBillInput varchar(8)
 as
 begin
 	delete from dbo.BILLINPUT
@@ -651,7 +673,7 @@ end
 go
 --Xuất hóa đơn BillInput
 create or alter procedure proc_invoiceBillInput
-@idBillInput int
+@idBillInput varchar(8)
 as
 begin
 	if(dbo.func_checkInvoiceBillIn(@idBillInput)=0)
@@ -669,19 +691,22 @@ go
 --PROCEDURE THÊM SỬA XÓA BILLOUTPUT
 --Thêm một BillOutput
 create or alter procedure proc_addNewBillOutput
+@idBillOutput varchar(8),
 @dateOfOutput date,
-@idCus int,
-@idEmployee int
+@idCus varchar(8),
+@idEmployee varchar(8)
 as
 begin
 	insert into dbo.BILLOUTPUT
 		(
+	idBillOutPut,
 	dateOfBill,
 	idCus,
 	idEmployee
 		)
 	values
 		(
+	@idBillOutput,
 	@dateOfOutput,
 	@idCus,
 	@idEmployee
@@ -690,11 +715,11 @@ end
 go
 --Sửa một BillOutput
 create or alter procedure proc_updateBillOutput
-@idBillOutput int,
+@idBillOutput varchar(8),
 @dateOfBill date,
 @total int,
-@idCus int,
-@idEmployee int
+@idCus varchar(8),
+@idEmployee varchar(8)
 as
 begin
 	update dbo.BILLOUTPUT
@@ -704,7 +729,7 @@ end
 go
 --Xóa một BillOuput
 create or alter procedure proc_deleteBillOutput
-@idBillOutput int
+@idBillOutput varchar(8)
 as
 begin
 	delete from dbo.BILLOUTPUT
@@ -713,7 +738,7 @@ end
 go
 --Xuất hóa đơn BillOutput
 create or alter procedure proc_invoiceBillOutput
-@idBillOutput int
+@idBillOutput varchar(8)
 as
 begin
 	if(dbo.func_checkInvoiceBillOut(@idBillOutput)=0)
@@ -731,8 +756,8 @@ go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLINPUT
 --Thêm một BOOK_BILLINPUT
 create or alter procedure proc_addNewBookBillInput
-@idBillInput int,
-@idBook int,
+@idBillInput varchar(8),
+@idBook varchar(8),
 @amountInput int
 as
 begin
@@ -752,10 +777,10 @@ end
 go
 --Sửa một BOOK_BILLINPUT
 create or alter procedure proc_updateBookBillInput
-@idBillInput int,
-@idBook int,
-@idnewBillInput int,
-@idnewBook int,
+@idBillInput varchar(8),
+@idBook varchar(8),
+@idnewBillInput varchar(8),
+@idnewBook varchar(8),
 @amount int
 as
 begin
@@ -781,8 +806,8 @@ end
 go
 --Xóa một BOOK_BILLINPUT
 create or alter procedure proc_deleteBookBillInput
-@idBillInput int,
-@idBook int
+@idBillInput varchar(8),
+@idBook varchar(8)
 as
 begin
 	delete from dbo.BOOK_BILLINPUT
@@ -792,8 +817,8 @@ go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLOUTPUT
 --Thêm một BOOK_BILLOUTPUT
 create or alter procedure proc_addNewBookBillOutput
-@idBillOutput int,
-@idBook int
+@idBillOutput varchar(8),
+@idBook varchar(8)
 as
 begin
 	insert into dbo.BOOK_BILLOUTPUT
@@ -810,10 +835,10 @@ end
 go
 --Sửa một BOOK_BILLOUTPUT
 create or alter procedure proc_updateBookBillOutput
-@idBillOutput int,
-@idBook int,
-@idnewBillOutput int,
-@idnewBook int,
+@idBillOutput varchar(8),
+@idBook varchar(8),
+@idnewBillOutput varchar(8),
+@idnewBook varchar(8),
 @amount int
 as
 begin
@@ -839,13 +864,11 @@ end
 go
 --Xóa một BOOK_BILLOUTPUT
 create or alter procedure proc_deleteBookBillOutput
-@idBillOutput int,
-@idBook int
+@idBillOutput varchar(8),
+@idBook varchar(8)
 as
 begin
 	delete from dbo.BOOK_BILLOUTPUT
 	where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
 end
 go
-select * 
-from proc_deleteBookBillOutput
