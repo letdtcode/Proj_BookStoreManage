@@ -30,44 +30,45 @@ begin
 	end
 end
 go
+drop trigger trg_discountAndUpdateVoucher
 
 --Kiểm tra điều kiện tổng tiền được giảm không quá 50% giá trị đơn hàng và voucher phải còn hạn sử dụng thì mới áp dụng được
-create or alter trigger trg_discountAndUpdateVoucher
-on BILLOUTPUT
-for insert, update
-as
-begin
-	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit
-	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=dbo.func_totalPayBeforeDiscount(@idBillDiscount)
-	from inserted i
-	--Kiểm tra idVoucher có tồn tại 
-	if (not exists(select * from dbo.VOUCHER where @idVcher=dbo.VOUCHER.idVoucher))
-		begin
-			raiserror ('Voucher không tồn tại trong kho',16,1)
-			rollback transaction
-		end
+--create or alter trigger trg_discountAndUpdateVoucher
+--on BILLOUTPUT
+--for insert, update
+--as
+--begin
+--	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit
+--	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=dbo.func_totalPayBeforeDiscount(@idBillDiscount)
+--	from inserted i
+--	Kiểm tra idVoucher có tồn tại 
+--	if (@idVcher is not null and not exists(select * from dbo.VOUCHER where @idVcher=dbo.VOUCHER.idVoucher))
+--		begin
+--			raiserror ('Voucher không tồn tại trong kho',16,1)
+--			rollback transaction
+--		end
 
-	--Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill 
-	select @totalAfterDiscount=@totalBeforeDiscount-VOUCHER.valueVoucher
-	from dbo.VOUCHER
-	where VOUCHER.idVoucher=@idVcher
+--	Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill 
+--	select @totalAfterDiscount=@totalBeforeDiscount-VOUCHER.valueVoucher
+--	from dbo.VOUCHER
+--	where VOUCHER.idVoucher=@idVcher
 
-	if (@totalAfterDiscount <= (0.5*@totalBeforeDiscount))
-		begin
-			raiserror ('Voucher không thể áp dụng do vượt quá 50% giá trị hóa đơn',16,1)
-			rollback transaction
-		end
-	--Kiểm tra Voucher có còn hạn sử dụng 
-	select @checkBill=dbo.func_checkVoucherValidOrNot(VOUCHER.dateStart,VOUCHER.dateEnd,BILLOUTPUT.dateOfBill)
-	from dbo.BILLOUTPUT, dbo.VOUCHER
-	where BILLOUTPUT.idBillOutPut=@idBillDiscount and VOUCHER.idVoucher=@idVcher
-	if (@checkBill=0)
-		begin
-			raiserror ('Voucher đã hết hạn sử dụng',16,1)
-			rollback transaction
-		end
-end
-go
+--	if (@totalAfterDiscount <= (0.5*@totalBeforeDiscount))
+--		begin
+--			raiserror ('Voucher không thể áp dụng do vượt quá 50% giá trị hóa đơn',16,1)
+--			rollback transaction
+--		end
+--	Kiểm tra Voucher có còn hạn sử dụng 
+--	select @checkBill=dbo.func_checkVoucherValidOrNot(VOUCHER.dateStart,VOUCHER.dateEnd,BILLOUTPUT.dateOfBill)
+--	from dbo.BILLOUTPUT, dbo.VOUCHER
+--	where BILLOUTPUT.idBillOutPut=@idBillDiscount and VOUCHER.idVoucher=@idVcher
+--	if (@checkBill=0)
+--		begin
+--			raiserror ('Voucher đã hết hạn sử dụng',16,1)
+--			rollback transaction
+--		end
+--end
+--go
 --Kiểm tra số điện thoại tác giả 
 create or alter trigger trg_checkPhoneNumberOfAuthor
 on AUTHOR

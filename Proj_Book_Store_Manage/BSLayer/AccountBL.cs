@@ -25,7 +25,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewAccount(string idAccount, string nameAccount, string passWord, bool typeOfAcc, int idEmployee, ref string err)
+        public bool addNewAccount(string idAccount, string nameAccount, string passWord, bool typeOfAcc, string idEmployee, ref string err)
         {
             strSQL = "proc_addNewAccount";
             parameters = new List<SqlParameter>();
@@ -48,7 +48,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyAccount(string idAccount, string nameAccount, string password, bool typeOfAcc, int idEmployee, ref string err)
+        public bool modifyAccount(string idAccount, string nameAccount, string password, bool typeOfAcc, string idEmployee, ref string err)
         {
             strSQL = "proc_updateAccount";
             parameters = new List<SqlParameter>();

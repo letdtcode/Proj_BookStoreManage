@@ -39,10 +39,8 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvDetailReceiptImport = new System.Windows.Forms.DataGridView();
             this.lblName = new System.Windows.Forms.Label();
             this.lblNameEmployee = new System.Windows.Forms.Label();
-            this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbDetailReceiptImport = new System.Windows.Forms.GroupBox();
@@ -53,6 +51,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblID = new System.Windows.Forms.Label();
             this.lblAmount = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailReceiptImport)).BeginInit();
             this.gbDetailReceiptImport.SuspendLayout();
             this.SuspendLayout();
@@ -154,16 +154,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameEmployee.TabIndex = 6;
             this.lblNameEmployee.Text = "Nguyễn Đức Thành";
             // 
-            // btnReload
-            // 
-            this.btnReload.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Location = new System.Drawing.Point(797, 278);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(121, 53);
-            this.btnReload.TabIndex = 8;
-            this.btnReload.Text = "Tải lại";
-            this.btnReload.UseVisualStyleBackColor = true;
-            // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,16 +173,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEdit.TabIndex = 10;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(645, 278);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(121, 53);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
@@ -304,6 +284,26 @@ namespace Proj_Book_Store_Manage.UI
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
             // 
+            // btnReload
+            // 
+            this.btnReload.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Location = new System.Drawing.Point(797, 278);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(121, 53);
+            this.btnReload.TabIndex = 8;
+            this.btnReload.Text = "Tải lại";
+            this.btnReload.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(645, 278);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(121, 53);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // FormDetailReceiptImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -347,10 +347,8 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.DataGridView dgvDetailReceiptImport;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblNameEmployee;
-        private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbDetailReceiptImport;
@@ -361,5 +359,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblMoney;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

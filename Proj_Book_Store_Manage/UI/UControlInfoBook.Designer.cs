@@ -50,6 +50,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceExport = new System.Windows.Forms.Label();
             this.lblPublisher = new System.Windows.Forms.Label();
             this.lblPriceImport = new System.Windows.Forms.Label();
+            this.lblIDBook = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnUploadImg = new System.Windows.Forms.Button();
             this.ptbBook = new System.Windows.Forms.PictureBox();
@@ -71,8 +73,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDeleteCate = new System.Windows.Forms.Button();
             this.btnAddCate = new System.Windows.Forms.Button();
             this.lblNameCategory = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblIDBook = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             this.gbInfoBook.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -305,6 +305,28 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceImport.TabIndex = 1;
             this.lblPriceImport.Text = "Giá Nhập";
             // 
+            // lblIDBook
+            // 
+            this.lblIDBook.AutoSize = true;
+            this.lblIDBook.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDBook.Location = new System.Drawing.Point(101, 39);
+            this.lblIDBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDBook.Name = "lblIDBook";
+            this.lblIDBook.Size = new System.Drawing.Size(55, 21);
+            this.lblIDBook.TabIndex = 0;
+            this.lblIDBook.Text = "None";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 42);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ID Sách";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnUploadImg);
@@ -340,7 +362,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // dgvBook
             // 
-            this.dgvBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBook.Location = new System.Drawing.Point(18, 275);
             this.dgvBook.Name = "dgvBook";
@@ -540,28 +562,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameCategory.Size = new System.Drawing.Size(85, 19);
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID Sách";
-            // 
-            // lblIDBook
-            // 
-            this.lblIDBook.AutoSize = true;
-            this.lblIDBook.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDBook.Location = new System.Drawing.Point(101, 39);
-            this.lblIDBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDBook.Name = "lblIDBook";
-            this.lblIDBook.Size = new System.Drawing.Size(55, 21);
-            this.lblIDBook.TabIndex = 0;
-            this.lblIDBook.Text = "None";
             // 
             // UControlInfoBook
             // 

@@ -31,6 +31,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            this.lblID.Text = utl.createID("LKH");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -104,13 +105,13 @@ namespace Proj_Book_Store_Manage.UI
                     }
                     catch
                     {
-                        MessageBox.Show("Thông tin không hợp lệ");
+                        MessageBox.Show("Thông tin không hợp lệ","Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     }
                 }
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    typecustomer.modifyTypeCustomer(utl.IDCurrent, this.txtTypeCustomer.Text, int.Parse(this.txtPointMark.Text), int.Parse(this.txtValue.Text), ref err);
+                    typecustomer.modifyTypeCustomer(this.lblID.Text, this.txtTypeCustomer.Text, int.Parse(this.txtPointMark.Text), int.Parse(this.txtValue.Text), ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -136,7 +137,6 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            lblID.Text = "None";
             controls = new List<Control> { txtTypeCustomer, txtValue, txtPointMark };
             dtTypeCustomer = typecustomer.getDataTypeCustomer();
             dgvTypeCustomer.DataSource = dtTypeCustomer;

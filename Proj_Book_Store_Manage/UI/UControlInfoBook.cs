@@ -101,7 +101,7 @@ namespace Proj_Book_Store_Manage.UI
                     try
                     {
                         //imgBook = ImgToByteArray(ptbBook.Image);
-                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), int.Parse(this.cbIDPublisher.Text), ref err);
+                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm sách thành công !");
@@ -119,7 +119,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    book.modifyBook(utl.IDCurrent, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), int.Parse(this.cbIDPublisher.Text), ref err);
+                    book.modifyBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
                     LoadData();
                     if (err == "")
                     {
@@ -188,11 +188,18 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnUploadImg_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                ptbBook.Image = Image.FromFile(openFileDialog.FileName);
-                this.Text = openFileDialog.FileName;
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ptbBook.Image = Image.FromFile(openFileDialog.FileName);
+                    this.Text = openFileDialog.FileName;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không đúng định dạng ảnh !");
             }
         }
 

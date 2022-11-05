@@ -52,7 +52,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblIDEmployee = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -77,7 +76,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1072, 258);
+            this.panel1.Size = new System.Drawing.Size(1055, 258);
             this.panel1.TabIndex = 6;
             // 
             // gpSearch
@@ -137,13 +136,12 @@ namespace Proj_Book_Store_Manage.UI
             this.gbEmployee.Controls.Add(this.lblAddress);
             this.gbEmployee.Controls.Add(this.lblIDEmployee);
             this.gbEmployee.Controls.Add(this.label2);
-            this.gbEmployee.Controls.Add(this.label1);
             this.gbEmployee.Controls.Add(this.lblFirstName);
-            this.gbEmployee.Location = new System.Drawing.Point(30, 21);
+            this.gbEmployee.Location = new System.Drawing.Point(4, 21);
             this.gbEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.gbEmployee.Name = "gbEmployee";
             this.gbEmployee.Padding = new System.Windows.Forms.Padding(4);
-            this.gbEmployee.Size = new System.Drawing.Size(685, 233);
+            this.gbEmployee.Size = new System.Drawing.Size(711, 233);
             this.gbEmployee.TabIndex = 0;
             this.gbEmployee.TabStop = false;
             this.gbEmployee.Text = "Thông tin nhân viên";
@@ -162,21 +160,21 @@ namespace Proj_Book_Store_Manage.UI
             "Nam",
             "Nữ",
             "Khác"});
-            this.cbSex.Location = new System.Drawing.Point(106, 203);
+            this.cbSex.Location = new System.Drawing.Point(127, 203);
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(76, 24);
             this.cbSex.TabIndex = 3;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(106, 159);
+            this.txtLastName.Location = new System.Drawing.Point(127, 159);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(182, 22);
             this.txtLastName.TabIndex = 2;
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Location = new System.Drawing.Point(106, 110);
+            this.txtMiddleName.Location = new System.Drawing.Point(127, 110);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(182, 22);
             this.txtMiddleName.TabIndex = 2;
@@ -204,7 +202,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(106, 67);
+            this.txtFirstName.Location = new System.Drawing.Point(127, 67);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(182, 22);
             this.txtFirstName.TabIndex = 2;
@@ -308,17 +306,6 @@ namespace Proj_Book_Store_Manage.UI
             this.label2.TabIndex = 0;
             this.label2.Text = "ID Nhân viên";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(102, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Họ";
-            // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
@@ -419,7 +406,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnEdit);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Location = new System.Drawing.Point(900, 261);
+            this.panel2.Location = new System.Drawing.Point(891, 252);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(169, 383);
             this.panel2.TabIndex = 7;
@@ -431,7 +418,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.dgvEmployee);
             this.Controls.Add(this.panel2);
             this.Name = "UControlEmployee";
-            this.Size = new System.Drawing.Size(1072, 647);
+            this.Size = new System.Drawing.Size(1055, 629);
             this.Load += new System.EventHandler(this.UControlEmployee_Load);
             this.panel1.ResumeLayout(false);
             this.gpSearch.ResumeLayout(false);
@@ -478,6 +465,5 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblIDEmployee;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

@@ -33,6 +33,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            this.lblIDCustomer.Text = utl.createID("KH");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -95,7 +96,7 @@ namespace Proj_Book_Store_Manage.UI
                     try
                     {
                         this.lblIDCustomer.Text = utl.createID("KH");
-                        customer.addNewCustomer(this.lblIDCustomer.Text, this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, int.Parse(this.cbTypeCus.Text), ref err);
+                        customer.addNewCustomer(this.lblIDCustomer.Text, this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, this.cbTypeCus.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm thông tin khách hàng thành công !");
@@ -113,7 +114,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    customer.modifyCustomer(utl.IDCurrent, this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, int.Parse(this.cbTypeCus.Text), ref err);
+                    customer.modifyCustomer(this.lblIDCustomer.Text, this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, this.cbTypeCus.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {

@@ -127,8 +127,8 @@ go
 --View chi tiết hóa đơn xuất
 create or alter view view_DetailReceiptExport
 as
-select *
-from dbo.BOOK_BILLOUTPUT
+select BOOK.idBook as ID, BOOK.nameBook as N'Tên Sách', BOOK.amount as N'Số lượng', BOOK.priceExport as N'Giá'
+from dbo.BOOK
 go
 --View thông tin khách hàng
 create or alter view view_Customer

@@ -27,7 +27,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             return db.LoadData(nameView, CommandType.Text);
         }
         
-        public bool addNewCustomer(string idCustomer, string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
+        public bool addNewCustomer(string idCustomer, string nameCus, string addressCus, string phoneNumber, string idTypeCus, ref string err)
         {
             strSQL = "proc_addNewCustomer";
             parameters = new List<SqlParameter>();
@@ -49,7 +49,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyCustomer(string idCus, string nameCus, string addressCus, string phoneNumber, int idTypeCus, ref string err)
+        public bool modifyCustomer(string idCus, string nameCus, string addressCus, string phoneNumber, string idTypeCus, ref string err)
         {
             strSQL = "proc_updateCustomer";
             parameters = new List<SqlParameter>();

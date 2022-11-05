@@ -14,6 +14,7 @@ as
 begin
 	insert into dbo.ACCOUNT 
 		(
+	idAccount,
 	nameAccount,
 	password,
 	typeOfAcc,
@@ -21,6 +22,7 @@ begin
 		)
 	values
 		(
+	@idAccount,
 	@nameAccount,
 	@password,
 	@typeOfAcc,
@@ -181,6 +183,7 @@ as
 begin
 	insert into dbo.BOOK
 		(
+	idBook,
 	nameBook,
 	urlImage,
 	amount,
@@ -190,6 +193,7 @@ begin
 		)
 	values
 		(
+	@idBook,
 	@nameBook,
 	@urlImage,
 	@amount,
@@ -332,11 +336,13 @@ as
 begin
 	insert into dbo.CATEGORY
 		(
+	idCategory,
 	nameCategory,
 	describeCategory
 		)
 	values
 		(
+	@idCategory,
 	@nameCategory,
 	@describleCategory
 		)
@@ -657,12 +663,11 @@ go
 create or alter procedure proc_updateBillInput
 @idBillInput varchar(8),
 @dateOfInput date,
-@total int,
 @idEmployee varchar(8)
 as
 begin
 	update dbo.BILLINPUT
-	set dateOfInput=@dateOfInput, total=@total,idEmployee=@idEmployee
+	set dateOfInput=@dateOfInput,idEmployee=@idEmployee
 	where dbo.BILLINPUT.idBillInput=@idBillInput
 end
 go
@@ -721,13 +726,12 @@ go
 create or alter procedure proc_updateBillOutput
 @idBillOutput varchar(8),
 @dateOfBill date,
-@total int,
 @idCus varchar(8),
 @idEmployee varchar(8)
 as
 begin
 	update dbo.BILLOUTPUT
-	set dateOfBill=@dateOfBill, total=@total, idCus=@idCus, idEmployee=@idEmployee
+	set dateOfBill=@dateOfBill, idCus=@idCus, idEmployee=@idEmployee
 	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 end
 go

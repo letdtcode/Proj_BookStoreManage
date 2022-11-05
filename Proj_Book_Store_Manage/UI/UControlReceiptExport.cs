@@ -29,7 +29,6 @@ namespace Proj_Book_Store_Manage.UI
         public UControlReceiptExport()
         {
             InitializeComponent();
-            lblID.Text = "0";
             dtpReceiptExport.Format = DateTimePickerFormat.Custom;
             dtpReceiptExport.CustomFormat = "dd-MM-yyyy";
         }
@@ -111,7 +110,7 @@ namespace Proj_Book_Store_Manage.UI
                     receiptExport = new ReceiptExportBL();
                     try
                     {
-                        receiptExport.addNewReceiptExport(this.lblID.Text, this.dtpReceiptExport.Value.Date, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
+                        receiptExport.addNewReceiptExport(this.lblID.Text, this.dtpReceiptExport.Value.Date, this.cbIDCus.Text, this.cbIDEmp.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm hóa đơn thành công !");
@@ -129,11 +128,11 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    receiptExport.modifyReceiptExport(this.lblID.Text, this.dtpReceiptExport.Value.Date, receiptExport.TotalOfCurrent, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
+                    receiptExport.modifyReceiptExport(this.lblID.Text, this.dtpReceiptExport.Value.Date, this.cbIDCus.Text, this.cbIDEmp.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {
-                        MessageBox.Show("Sửa tài khoản thành công !");
+                        MessageBox.Show("Sửa hóa đơn thành công !");
                     }
                     else
                     {
@@ -185,7 +184,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvReceiptExport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
-            lblID.Text = utl.IDCurrent.ToString();
+            lblID.Text = utl.IDCurrent;
             dtpReceiptExport.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             lblTotal.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             cbIDCus.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[3].Value.ToString();

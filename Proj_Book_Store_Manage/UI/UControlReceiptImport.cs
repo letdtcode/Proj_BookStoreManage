@@ -66,7 +66,7 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (receiptImport.deleteReceiptImport(utl.IDCurrent, ref err) == true)
+                        if (receiptImport.deleteReceiptImport(this.lblIDBill.Text, ref err) == true)
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
@@ -102,7 +102,7 @@ namespace Proj_Book_Store_Manage.UI
                     receiptImport = new ReceiptImportBL();
                     try
                     {
-                        receiptImport.addNewReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, int.Parse(this.cbEmployee.Text), ref err); ;;
+                        receiptImport.addNewReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.cbEmployee.Text, ref err); ;;
                         if (err == "")
                         {
                             MessageBox.Show("Thêm hóa đơn nhập thành công !");
@@ -120,7 +120,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    receiptImport.modifyReceiptImport(utl.IDCurrent, this.dtpReceiptImport.Value.Date, int.Parse(this.cbEmployee.Text), receiptImport.TotalOfCurrent, ref err);
+                    receiptImport.modifyReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.cbEmployee.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {

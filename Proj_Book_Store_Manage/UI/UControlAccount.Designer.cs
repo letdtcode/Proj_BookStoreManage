@@ -47,11 +47,11 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmployee = new System.Windows.Forms.Label();
             this.lblTypeAcc = new System.Windows.Forms.Label();
             this.lblIDAcount = new System.Windows.Forms.Label();
-            this.lblIDAccount = new System.Windows.Forms.Label();
             this.lbl10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnShowResult = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.lblID = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuthor)).BeginInit();
             this.gbAccount.SuspendLayout();
@@ -188,6 +188,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbAccount
             // 
+            this.gbAccount.Controls.Add(this.lblID);
             this.gbAccount.Controls.Add(this.cbTypeAcc);
             this.gbAccount.Controls.Add(this.cbEmployee);
             this.gbAccount.Controls.Add(this.txtPassword);
@@ -196,10 +197,9 @@ namespace Proj_Book_Store_Manage.UI
             this.gbAccount.Controls.Add(this.lblTypeAcc);
             this.gbAccount.Controls.Add(this.lblPassword);
             this.gbAccount.Controls.Add(this.lblIDAcount);
-            this.gbAccount.Controls.Add(this.lblIDAccount);
             this.gbAccount.Controls.Add(this.lbl10);
             this.gbAccount.Controls.Add(this.lblUserName);
-            this.gbAccount.Location = new System.Drawing.Point(30, 21);
+            this.gbAccount.Location = new System.Drawing.Point(30, 19);
             this.gbAccount.Margin = new System.Windows.Forms.Padding(4);
             this.gbAccount.Name = "gbAccount";
             this.gbAccount.Padding = new System.Windows.Forms.Padding(4);
@@ -261,17 +261,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDAcount.Size = new System.Drawing.Size(0, 23);
             this.lblIDAcount.TabIndex = 0;
             // 
-            // lblIDAccount
-            // 
-            this.lblIDAccount.AutoSize = true;
-            this.lblIDAccount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDAccount.Location = new System.Drawing.Point(192, 54);
-            this.lblIDAccount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDAccount.Name = "lblIDAccount";
-            this.lblIDAccount.Size = new System.Drawing.Size(63, 23);
-            this.lblIDAccount.TabIndex = 0;
-            this.lblIDAccount.Text = "None";
-            // 
             // lbl10
             // 
             this.lbl10.AutoSize = true;
@@ -314,6 +303,16 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(184, 54);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(63, 23);
+            this.lblID.TabIndex = 5;
+            this.lblID.Text = "None";
             // 
             // UControlAccount
             // 
@@ -358,6 +357,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnShowResult;
         private System.Windows.Forms.Label lblIDAcount;
         private System.Windows.Forms.DataGridView dgvAuthor;
-        private System.Windows.Forms.Label lblIDAccount;
+        private System.Windows.Forms.Label lblID;
     }
 }
