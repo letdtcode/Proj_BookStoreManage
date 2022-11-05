@@ -47,6 +47,8 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvAuthor = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblIDAuthor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gpSearch.SuspendLayout();
             this.gbAuthor.SuspendLayout();
@@ -108,6 +110,8 @@ namespace Proj_Book_Store_Manage.UI
             this.gbAuthor.Controls.Add(this.txtPhoneNumber);
             this.gbAuthor.Controls.Add(this.txtNameAuthor);
             this.gbAuthor.Controls.Add(this.lblPhoneNumber);
+            this.gbAuthor.Controls.Add(this.label1);
+            this.gbAuthor.Controls.Add(this.lblIDAuthor);
             this.gbAuthor.Controls.Add(this.lblNameAuthor);
             this.gbAuthor.Location = new System.Drawing.Point(30, 21);
             this.gbAuthor.Margin = new System.Windows.Forms.Padding(4);
@@ -120,14 +124,14 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(165, 136);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(166, 158);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(247, 28);
             this.txtPhoneNumber.TabIndex = 2;
             // 
             // txtNameAuthor
             // 
-            this.txtNameAuthor.Location = new System.Drawing.Point(165, 54);
+            this.txtNameAuthor.Location = new System.Drawing.Point(166, 105);
             this.txtNameAuthor.Name = "txtNameAuthor";
             this.txtNameAuthor.Size = new System.Drawing.Size(247, 28);
             this.txtNameAuthor.TabIndex = 2;
@@ -136,7 +140,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(25, 136);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(26, 158);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
@@ -147,7 +151,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameAuthor.AutoSize = true;
             this.lblNameAuthor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameAuthor.Location = new System.Drawing.Point(25, 61);
+            this.lblNameAuthor.Location = new System.Drawing.Point(26, 112);
             this.lblNameAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameAuthor.Name = "lblNameAuthor";
             this.lblNameAuthor.Size = new System.Drawing.Size(119, 23);
@@ -249,6 +253,28 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvAuthor.TabIndex = 2;
             this.dgvAuthor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuthor_CellClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã Tác Giả:";
+            // 
+            // lblIDAuthor
+            // 
+            this.lblIDAuthor.AutoSize = true;
+            this.lblIDAuthor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDAuthor.Location = new System.Drawing.Point(162, 66);
+            this.lblIDAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDAuthor.Name = "lblIDAuthor";
+            this.lblIDAuthor.Size = new System.Drawing.Size(63, 23);
+            this.lblIDAuthor.TabIndex = 0;
+            this.lblIDAuthor.Text = "None";
+            // 
             // UControlAuthor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -292,5 +318,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.ComboBox cbAttributeSearch;
         private System.Windows.Forms.Label lblSearchBy;
         private System.Windows.Forms.DataGridView dgvAuthor;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblIDAuthor;
     }
 }

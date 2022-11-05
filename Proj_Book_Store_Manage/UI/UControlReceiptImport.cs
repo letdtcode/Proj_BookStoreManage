@@ -40,6 +40,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            this.lblIDBill.Text = utl.createID("HDN");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -101,7 +102,7 @@ namespace Proj_Book_Store_Manage.UI
                     receiptImport = new ReceiptImportBL();
                     try
                     {
-                        receiptImport.addNewReceiptImport(this.dtpReceiptImport.Value.Date, int.Parse(this.cbEmployee.Text), ref err);
+                        receiptImport.addNewReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, int.Parse(this.cbEmployee.Text), ref err); ;;
                         if (err == "")
                         {
                             MessageBox.Show("Thêm hóa đơn nhập thành công !");

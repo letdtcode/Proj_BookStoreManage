@@ -278,7 +278,7 @@ namespace Proj_Book_Store_Manage.UI
             // cbIDCus
             // 
             this.cbIDCus.FormattingEnabled = true;
-            this.cbIDCus.Location = new System.Drawing.Point(418, 128);
+            this.cbIDCus.Location = new System.Drawing.Point(418, 123);
             this.cbIDCus.Name = "cbIDCus";
             this.cbIDCus.Size = new System.Drawing.Size(121, 24);
             this.cbIDCus.TabIndex = 5;
@@ -381,13 +381,12 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnInvoice
             // 
-            this.btnInvoice.Location = new System.Drawing.Point(782, 223);
+            this.btnInvoice.Location = new System.Drawing.Point(796, 230);
             this.btnInvoice.Name = "btnInvoice";
             this.btnInvoice.Size = new System.Drawing.Size(101, 74);
             this.btnInvoice.TabIndex = 12;
             this.btnInvoice.Text = "Xuất hóa đơn";
             this.btnInvoice.UseVisualStyleBackColor = true;
-            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
             // UControlReceiptExport
             // 

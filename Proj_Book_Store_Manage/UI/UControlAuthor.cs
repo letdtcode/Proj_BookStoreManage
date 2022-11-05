@@ -45,6 +45,7 @@ namespace Proj_Book_Store_Manage.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             isAdd = true;
+            lblIDAuthor.Text = utl.createID("TG ");
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
             utl.SetEnableButton(new List<Button> { btnEdit, btnDelete }, false);
@@ -76,7 +77,8 @@ namespace Proj_Book_Store_Manage.UI
                     author = new AuthorBL();
                     try
                     {
-                        author.addNewAuthor(this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
+                        lblIDAuthor.Text = utl.createID("TG");
+                        author.addNewAuthor(this.lblIDAuthor.Text, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm tài khoản thành công !");
@@ -94,7 +96,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    author.modifyAuthor(utl.IDCurrent, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
+                    author.modifyAuthor(this.lblIDAuthor.Text, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -166,6 +168,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvAuthor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
+            this.lblIDAuthor.Text = utl.IDCurrent;
             txtNameAuthor.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtPhoneNumber.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[2].Value.ToString();
         }

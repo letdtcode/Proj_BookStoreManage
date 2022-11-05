@@ -71,9 +71,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameter = new SqlParameter("@nameBook", nameBook);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@nameBook", nameBook);
-            parameters.Add(parameter);
-
             parameter = new SqlParameter("@urlImage", imgString);
             parameters.Add(parameter);
 
@@ -130,14 +127,14 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public DataTable showCategory(int idBook, ref string err)
+/*        public DataTable showCategory(int idBook, ref string err)
         {
             SqlCommand cmd = new SqlCommand("Select * from func_getAllCategoryOfBook(@idBook)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBook", idBook);
             return db.ExecuteFunction(cmd, ref err);
-        }
-        public DataTable showAuthor(int idBook, ref string err)
+        }*/
+        public DataTable showAuthor(string idBook, ref string err)
         {
             SqlCommand cmd = new SqlCommand("Select * from func_getAllAuthorOfBook(@idBook)");
             cmd.CommandType = CommandType.Text;

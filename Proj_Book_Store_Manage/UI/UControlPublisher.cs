@@ -34,7 +34,7 @@ namespace Proj_Book_Store_Manage.UI
         {
             //int indexLastRow = dgvPublisher.Rows.GetLastRow(DataGridViewElementStates.None);
             //lblIDPublisher.Text = ((int)dgvPublisher.Rows[indexLastRow-1].Cells[0].Value + 1).ToString();
-            lblIDPublisher.Text = utl.createID("NXB ");
+            lblIDPublisher.Text = utl.createID("NXB");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -96,7 +96,7 @@ namespace Proj_Book_Store_Manage.UI
                     publisher = new PublisherBL();
                     try
                     {
-                        publisher.addNewPublisher(this.txtNamePublisher.Text, this.txtAddress.Text, this.txtPhoneNumber.Text, ref err);
+                        publisher.addNewPublisher(this.lblIDPublisher.Text, this.txtNamePublisher.Text, this.txtAddress.Text, this.txtPhoneNumber.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm tài khoản thành công !");
@@ -157,7 +157,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvPublisher_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
-            lblIDPublisher.Text = dgvPublisher.Rows[utl.rowCurrent].Cells[0].Value.ToString();
+            lblIDPublisher.Text = utl.IDCurrent;
             txtNamePublisher.Text = dgvPublisher.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtAddress.Text = dgvPublisher.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             txtPhoneNumber.Text = dgvPublisher.Rows[utl.rowCurrent].Cells[3].Value.ToString();

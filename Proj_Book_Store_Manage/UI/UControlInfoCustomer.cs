@@ -94,7 +94,8 @@ namespace Proj_Book_Store_Manage.UI
                     customer = new CustomerBL();
                     try
                     {
-                        customer.addNewCustomer(this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, int.Parse(this.cbTypeCus.Text), ref err);
+                        this.lblIDCustomer.Text = utl.createID("KH");
+                        customer.addNewCustomer(this.lblIDCustomer.Text, this.txtNameCustomer.Text, this.txtAddCus.Text, this.txtPhoneNumberCus.Text, int.Parse(this.cbTypeCus.Text), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm thông tin khách hàng thành công !");
@@ -162,6 +163,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
+            lblIDCustomer.Text = utl.IDCurrent;
             txtNameCustomer.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtAddCus.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             txtPhoneNumberCus.Text = dgvCustomer.Rows[utl.rowCurrent].Cells[3].Value.ToString();

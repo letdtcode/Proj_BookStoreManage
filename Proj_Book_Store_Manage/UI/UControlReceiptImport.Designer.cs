@@ -278,9 +278,9 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(612, 41);
+            this.gpSearch.Location = new System.Drawing.Point(631, 41);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(320, 130);
+            this.gpSearch.Size = new System.Drawing.Size(301, 130);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";

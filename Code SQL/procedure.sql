@@ -132,16 +132,20 @@ as
 begin
 	insert into dbo.AUTHOR
 		(
+	idAuthor,
 	nameAuthor,
 	phoneNumber
 		)
 	values
 		(
+	@idAuthor,
 	@nameAuthor,
 	@phoneNumber
 		)
 end
 go
+
+
 --Chỉnh sửa một Author
 create or alter procedure proc_updateAuthor
 @idAuthor varchar(8),

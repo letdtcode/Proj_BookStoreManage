@@ -25,7 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         BookBL book = new BookBL();
-        EmployeeBL employee = new EmployeeBL();
+        PublisherBL publisher = new PublisherBL();
         public UControlInfoBook()
         {
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            this.lblIDBook.Text = utl.createID("BK");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -100,7 +101,7 @@ namespace Proj_Book_Store_Manage.UI
                     try
                     {
                         //imgBook = ImgToByteArray(ptbBook.Image);
-                        book.addNewBook(this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), int.Parse(this.cbIDPublisher.Text), ref err);
+                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), int.Parse(this.cbIDPublisher.Text), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm sách thành công !");
@@ -201,16 +202,13 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            LoadDataIntoCbPublisher(employee.getAllIDEmployee());
+            LoadDataIntoCbPublisher(publisher.getAllIDPublisher());
             controls = new List<Control> { txtNameBook, txtAmount, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
             dtBook = book.getDataBook();
             //DataGridViewImageColumn
             dgvBook.DataSource = dtBook;
-            DataGridViewImageColumn imgCol = (DataGridViewImageColumn)dgvBook.Columns["Hình ảnh"];
-            imgCol.ImageLayout = DataGridViewImageCellLayout.Stretch;
-            //dgvBook.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             utl = new Utilities(controls, dgvBook);
-            //dgvBook.AutoResizeColumns();
+            dgvBook.AutoResizeColumns();
             utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
             utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
             utl.setEnableControl(false);
@@ -221,7 +219,8 @@ namespace Proj_Book_Store_Manage.UI
             err = "";
             utl.CellClick(btnCancel, btnDelete);
 
-            dgvCategory.DataSource = book.showCategory(utl.IDCurrent,ref err);
+            //dgvCategory.DataSource = book.sh(utl.IDCurrent,ref err);
+            lblIDBook.Text = utl.IDCurrent;
             dgvAuthor.DataSource = book.showAuthor(utl.IDCurrent, ref err);
             if (dgvBook.Rows[utl.rowCurrent].Cells[6].Value.ToString() == "")
                 ptbBook.Image = null;
@@ -233,12 +232,12 @@ namespace Proj_Book_Store_Manage.UI
             txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
             cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();
         }
-        private void LoadDataIntoCbPublisher(List<string> idPublisher)
+        private void LoadDataIntoCbPublisher(List<string> idPublishers)
         {
             cbIDPublisher.Items.Clear();
-            foreach (string idCus in idPublisher)
+            foreach (string idPublisher in idPublishers)
             {
-                cbIDPublisher.Items.Add(idCus);
+                cbIDPublisher.Items.Add(idPublisher);
             }
         }
     }

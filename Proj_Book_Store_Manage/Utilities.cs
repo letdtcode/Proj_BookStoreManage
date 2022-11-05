@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Proj_Book_Store_Manage
 {
@@ -13,14 +14,14 @@ namespace Proj_Book_Store_Manage
         private List<Control> controls;
         private DataGridView dgv = null;
         private static bool checkIDValid = false;
-        private int rowIDCurrentIndex;
+        private string rowIDCurrentIndex;
         private int rowCurrentIndex;
 
         public Utilities(List<Control> controls,DataGridView dgv)
         {
             Controls = new List<Control>(controls);
             this.dgv = dgv;
-            rowIDCurrentIndex = -1;
+            rowIDCurrentIndex = null;
             rowCurrentIndex = -1;
         }
         public bool CheckIDValid
@@ -29,7 +30,7 @@ namespace Proj_Book_Store_Manage
             set => checkIDValid = value;
         }
         public List<Control> Controls { get => controls; set => controls = value; }
-        public int IDCurrent
+        public string IDCurrent
         {
             get => rowIDCurrentIndex;
             //set => rowIDCurrentIndex = value;
@@ -49,7 +50,8 @@ namespace Proj_Book_Store_Manage
             }
             else
             {
-                numIDNext = (int)dgv.Rows[indexLastRow - 1].Cells[0].Value + 1;
+                string resultString = Regex.Match(dgv.Rows[indexLastRow - 1].Cells[0].Value.ToString(), @"\d+").Value;
+                numIDNext = int.Parse(resultString) + 1;
             }
             return codeMark+numIDNext.ToString();
         }
@@ -92,13 +94,13 @@ namespace Proj_Book_Store_Manage
             {
                 checkIDValid = false;
                 SetEnableButton(new List<Button>() { Cancel, Delete }, false);
-                rowIDCurrentIndex = -1;
+                rowIDCurrentIndex = null;
             }
             else
             {
                 checkIDValid = true;
                 SetEnableButton(new List<Button>() { Cancel, Delete }, true);
-                rowIDCurrentIndex = (int)dgv.Rows[rowCurrentIndex].Cells[0].Value;
+                rowIDCurrentIndex = dgv.Rows[rowCurrentIndex].Cells[0].Value.ToString();
             }
             /*rowCurrentIndex = dgv.SelectedCells[0].RowIndex;
             SetEnableButton(new List<Button>() { Cancel, Delete }, true);

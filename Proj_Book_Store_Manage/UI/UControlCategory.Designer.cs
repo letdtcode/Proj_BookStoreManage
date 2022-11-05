@@ -45,6 +45,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameCategory = new System.Windows.Forms.Label();
             this.gbCategory = new System.Windows.Forms.GroupBox();
             this.txtDescribe = new System.Windows.Forms.TextBox();
+            this.lblIDCategory = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvCategory = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gpSearch.SuspendLayout();
@@ -174,7 +176,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtNameCategory
             // 
-            this.txtNameCategory.Location = new System.Drawing.Point(165, 54);
+            this.txtNameCategory.Location = new System.Drawing.Point(166, 80);
             this.txtNameCategory.Name = "txtNameCategory";
             this.txtNameCategory.Size = new System.Drawing.Size(247, 22);
             this.txtNameCategory.TabIndex = 2;
@@ -183,7 +185,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblDescribe.AutoSize = true;
             this.lblDescribe.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescribe.Location = new System.Drawing.Point(25, 105);
+            this.lblDescribe.Location = new System.Drawing.Point(26, 117);
             this.lblDescribe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescribe.Name = "lblDescribe";
             this.lblDescribe.Size = new System.Drawing.Size(63, 23);
@@ -194,7 +196,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameCategory.AutoSize = true;
             this.lblNameCategory.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCategory.Location = new System.Drawing.Point(25, 61);
+            this.lblNameCategory.Location = new System.Drawing.Point(26, 82);
             this.lblNameCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCategory.Name = "lblNameCategory";
             this.lblNameCategory.Size = new System.Drawing.Size(118, 23);
@@ -206,6 +208,8 @@ namespace Proj_Book_Store_Manage.UI
             this.gbCategory.Controls.Add(this.txtDescribe);
             this.gbCategory.Controls.Add(this.txtNameCategory);
             this.gbCategory.Controls.Add(this.lblDescribe);
+            this.gbCategory.Controls.Add(this.lblIDCategory);
+            this.gbCategory.Controls.Add(this.label1);
             this.gbCategory.Controls.Add(this.lblNameCategory);
             this.gbCategory.Location = new System.Drawing.Point(30, 21);
             this.gbCategory.Margin = new System.Windows.Forms.Padding(4);
@@ -218,10 +222,32 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtDescribe
             // 
-            this.txtDescribe.Location = new System.Drawing.Point(165, 108);
+            this.txtDescribe.Location = new System.Drawing.Point(166, 120);
             this.txtDescribe.Name = "txtDescribe";
             this.txtDescribe.Size = new System.Drawing.Size(247, 22);
             this.txtDescribe.TabIndex = 2;
+            // 
+            // lblIDCategory
+            // 
+            this.lblIDCategory.AutoSize = true;
+            this.lblIDCategory.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDCategory.Location = new System.Drawing.Point(162, 37);
+            this.lblIDCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDCategory.Name = "lblIDCategory";
+            this.lblIDCategory.Size = new System.Drawing.Size(63, 23);
+            this.lblIDCategory.TabIndex = 0;
+            this.lblIDCategory.Text = "None";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã thể loại:";
             // 
             // dgvCategory
             // 
@@ -287,5 +313,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.TextBox txtDescribe;
         private System.Windows.Forms.DataGridView dgvCategory;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblIDCategory;
+        private System.Windows.Forms.Label label1;
     }
 }

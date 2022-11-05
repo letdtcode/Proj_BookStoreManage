@@ -94,7 +94,8 @@ namespace Proj_Book_Store_Manage.UI
                     employee = new EmployeeBL();
                     try
                     {
-                        employee.addNewEmployee(this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Text.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text,  this.dtpBirth.Value.Date, ref err);
+                        lblIDEmployee.Text = utl.createID("NV");
+                        employee.addNewEmployee(this.lblIDEmployee.Text, this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Text.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text,  this.dtpBirth.Value.Date, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm thông tin nhân viên thành công !");
@@ -112,7 +113,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    employee.modifyEmployee(utl.IDCurrent, this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Text.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text, this.dtpBirth.Value.Date, ref err);
+                    employee.modifyEmployee(this.lblIDEmployee.Text, this.txtFirstName.Text, this.txtMiddleName.Text, this.txtLastName.Text, this.cbSex.Text.ToString(), this.txtAddress.Text, this.txtPhoneNumber.Text, this.txtEmail.Text, this.dtpBirth.Value.Date, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -138,7 +139,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            lblID.Text = "None";
+            lblIDEmployee.Text = "None";
             controls = new List<Control> { txtFirstName, txtMiddleName, txtLastName, cbSex, txtAddress, txtPhoneNumber, txtEmail, dtpBirth };
             dtEmployee = employee.getDataEmployee();
             dgvEmployee.DataSource = dtEmployee;
@@ -162,7 +163,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
-            lblID.Text = dgvEmployee.Rows[utl.rowCurrent].Cells[0].Value.ToString();
+            lblIDEmployee.Text = utl.IDCurrent;
             txtFirstName.Text = dgvEmployee.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtMiddleName.Text = dgvEmployee.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             txtLastName.Text = dgvEmployee.Rows[utl.rowCurrent].Cells[3].Value.ToString();

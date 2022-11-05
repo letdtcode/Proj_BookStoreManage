@@ -53,6 +53,8 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblIDCustomer = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gpSearch.SuspendLayout();
             this.gbCustomer.SuspendLayout();
@@ -120,6 +122,8 @@ namespace Proj_Book_Store_Manage.UI
             this.gbCustomer.Controls.Add(this.lblPoint);
             this.gbCustomer.Controls.Add(this.lblPhoneNumber);
             this.gbCustomer.Controls.Add(this.lblAddress);
+            this.gbCustomer.Controls.Add(this.lblIDCustomer);
+            this.gbCustomer.Controls.Add(this.label1);
             this.gbCustomer.Controls.Add(this.lblNameCustomer);
             this.gbCustomer.Location = new System.Drawing.Point(17, 21);
             this.gbCustomer.Margin = new System.Windows.Forms.Padding(4);
@@ -133,28 +137,28 @@ namespace Proj_Book_Store_Manage.UI
             // cbTypeCus
             // 
             this.cbTypeCus.FormattingEnabled = true;
-            this.cbTypeCus.Location = new System.Drawing.Point(488, 65);
+            this.cbTypeCus.Location = new System.Drawing.Point(488, 103);
             this.cbTypeCus.Name = "cbTypeCus";
             this.cbTypeCus.Size = new System.Drawing.Size(121, 24);
             this.cbTypeCus.TabIndex = 3;
             // 
             // txtPhoneNumberCus
             // 
-            this.txtPhoneNumberCus.Location = new System.Drawing.Point(106, 103);
+            this.txtPhoneNumberCus.Location = new System.Drawing.Point(488, 27);
             this.txtPhoneNumberCus.Name = "txtPhoneNumberCus";
-            this.txtPhoneNumberCus.Size = new System.Drawing.Size(247, 22);
+            this.txtPhoneNumberCus.Size = new System.Drawing.Size(153, 22);
             this.txtPhoneNumberCus.TabIndex = 2;
             // 
             // txtAddCus
             // 
-            this.txtAddCus.Location = new System.Drawing.Point(106, 67);
+            this.txtAddCus.Location = new System.Drawing.Point(106, 105);
             this.txtAddCus.Name = "txtAddCus";
             this.txtAddCus.Size = new System.Drawing.Size(247, 22);
             this.txtAddCus.TabIndex = 2;
             // 
             // txtNameCustomer
             // 
-            this.txtNameCustomer.Location = new System.Drawing.Point(106, 29);
+            this.txtNameCustomer.Location = new System.Drawing.Point(106, 67);
             this.txtNameCustomer.Name = "txtNameCustomer";
             this.txtNameCustomer.Size = new System.Drawing.Size(247, 22);
             this.txtNameCustomer.TabIndex = 2;
@@ -163,7 +167,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblTypeCus.AutoSize = true;
             this.lblTypeCus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTypeCus.Location = new System.Drawing.Point(390, 67);
+            this.lblTypeCus.Location = new System.Drawing.Point(390, 105);
             this.lblTypeCus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTypeCus.Name = "lblTypeCus";
             this.lblTypeCus.Size = new System.Drawing.Size(76, 23);
@@ -174,7 +178,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPointCus.AutoSize = true;
             this.lblPointCus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointCus.Location = new System.Drawing.Point(537, 28);
+            this.lblPointCus.Location = new System.Drawing.Point(537, 66);
             this.lblPointCus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPointCus.Name = "lblPointCus";
             this.lblPointCus.Size = new System.Drawing.Size(21, 23);
@@ -185,7 +189,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPoint.AutoSize = true;
             this.lblPoint.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoint.Location = new System.Drawing.Point(390, 30);
+            this.lblPoint.Location = new System.Drawing.Point(390, 68);
             this.lblPoint.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPoint.Name = "lblPoint";
             this.lblPoint.Size = new System.Drawing.Size(139, 23);
@@ -196,7 +200,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(8, 102);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(390, 24);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
@@ -207,7 +211,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(8, 67);
+            this.lblAddress.Location = new System.Drawing.Point(8, 105);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(82, 23);
@@ -218,7 +222,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameCustomer.AutoSize = true;
             this.lblNameCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCustomer.Location = new System.Drawing.Point(8, 30);
+            this.lblNameCustomer.Location = new System.Drawing.Point(8, 68);
             this.lblNameCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCustomer.Name = "lblNameCustomer";
             this.lblNameCustomer.Size = new System.Drawing.Size(75, 23);
@@ -319,6 +323,28 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvCustomer.TabIndex = 8;
             this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã KH";
+            // 
+            // lblIDCustomer
+            // 
+            this.lblIDCustomer.AutoSize = true;
+            this.lblIDCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDCustomer.Location = new System.Drawing.Point(102, 27);
+            this.lblIDCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDCustomer.Name = "lblIDCustomer";
+            this.lblIDCustomer.Size = new System.Drawing.Size(63, 23);
+            this.lblIDCustomer.TabIndex = 0;
+            this.lblIDCustomer.Text = "None";
+            // 
             // UControlInfoCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -365,5 +391,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblPointCus;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label lblPhoneNumber;
+        private System.Windows.Forms.Label lblIDCustomer;
+        private System.Windows.Forms.Label label1;
     }
 }

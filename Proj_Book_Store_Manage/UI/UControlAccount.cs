@@ -99,7 +99,8 @@ namespace Proj_Book_Store_Manage.UI
                     account = new AccountBL();
                     try
                     {
-                        account.addNewAccount(this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
+                        lblIDAccount.Text = utl.createID("ACC");
+                        account.addNewAccount(lblIDAccount.Text, this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm tài khoản thành công !");
@@ -117,7 +118,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    account.modifyAccount(utl.IDCurrent, this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
+                    account.modifyAccount(lblIDAccount.Text, this.txtUserName.Text, this.txtPassword.Text, roleTemp, int.Parse(this.cbEmployee.SelectedItem.ToString()), ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -172,7 +173,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvAuthor_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel,btnDelete);
-            lblIDAcount.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[0].Value.ToString();
+            lblIDAcount.Text = utl.IDCurrent;
             txtUserName.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtPassword.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             cbTypeAcc.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[3].Value.ToString();

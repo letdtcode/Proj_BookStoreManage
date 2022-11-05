@@ -36,6 +36,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            this.lblID.Text = utl.createID("VC");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -97,7 +98,7 @@ namespace Proj_Book_Store_Manage.UI
                     voucher = new VoucherBL();
                     try
                     {
-                        voucher.addNewVoucher(int.Parse(this.txtValueVoucher.Text), this.txtEvent.Text, this.dtpDateStart.Value.Date, this.dtpDateEnd.Value.Date, int.Parse(this.txtAmount.Text), ref err);
+                        voucher.addNewVoucher(this.lblID.Text, int.Parse(this.txtValueVoucher.Text), this.txtEvent.Text, this.dtpDateStart.Value.Date, this.dtpDateEnd.Value.Date, int.Parse(this.txtAmount.Text), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm voucher thành công !");

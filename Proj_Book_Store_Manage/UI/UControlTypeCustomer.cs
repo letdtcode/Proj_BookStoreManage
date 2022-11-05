@@ -92,7 +92,7 @@ namespace Proj_Book_Store_Manage.UI
                     typecustomer = new TypeCustomerBL();
                     try
                     {
-                        typecustomer.addNewTypeCustomer(this.txtTypeCustomer.Text, int.Parse(this.txtPointMark.Text), int.Parse(this.txtValue.Text), ref err);
+                        typecustomer.addNewTypeCustomer(this.lblID.Text, this.txtTypeCustomer.Text, int.Parse(this.txtPointMark.Text), int.Parse(this.txtValue.Text), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm thông tin khách hàng thành công !");

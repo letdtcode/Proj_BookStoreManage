@@ -89,7 +89,8 @@ namespace Proj_Book_Store_Manage.UI
                     category = new CategoryBL();
                     try
                     {
-                        category.addNewCategory(this.txtNameCategory.Text, this.txtDescribe.Text, ref err);
+                        lblIDCategory.Text = utl.createID("TL");
+                        category.addNewCategory(this.lblIDCategory.Text, this.txtNameCategory.Text, this.txtDescribe.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm thể loại thành công !");
@@ -107,7 +108,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    category.modifyCategory(utl.IDCurrent, this.txtNameCategory.Text, this.txtDescribe.Text, ref err);
+                    category.modifyCategory(this.lblIDCategory.Text, this.txtNameCategory.Text, this.txtDescribe.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -155,6 +156,7 @@ namespace Proj_Book_Store_Manage.UI
         private void dgvCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             utl.CellClick(btnCancel, btnDelete);
+            lblIDCategory.Text = utl.IDCurrent;
             txtNameCategory.Text = dgvCategory.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtDescribe.Text = dgvCategory.Rows[utl.rowCurrent].Cells[2].Value.ToString();
         }
@@ -163,5 +165,6 @@ namespace Proj_Book_Store_Manage.UI
         {
             LoadData();
         }
+
     }
 }

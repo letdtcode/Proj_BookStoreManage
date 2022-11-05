@@ -49,6 +49,7 @@ namespace Proj_Book_Store_Manage.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(dtpReceiptExport.Value.ToShortDateString());
+            this.lblID.Text = utl.createID("HDX");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -110,7 +111,7 @@ namespace Proj_Book_Store_Manage.UI
                     receiptExport = new ReceiptExportBL();
                     try
                     {
-                        receiptExport.addNewReceiptExport(this.dtpReceiptExport.Value.Date, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
+                        receiptExport.addNewReceiptExport(this.lblID.Text, this.dtpReceiptExport.Value.Date, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm hóa đơn thành công !");
@@ -128,7 +129,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    receiptExport.modifyReceiptExport(utl.IDCurrent, this.dtpReceiptExport.Value.Date, receiptExport.TotalOfCurrent, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
+                    receiptExport.modifyReceiptExport(this.lblID.Text, this.dtpReceiptExport.Value.Date, receiptExport.TotalOfCurrent, int.Parse(this.cbIDCus.Text), int.Parse(this.cbIDEmp.Text), ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -192,10 +193,10 @@ namespace Proj_Book_Store_Manage.UI
             lblStt.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[5].Value.ToString();
         }
 
-        private void btnInvoice_Click(object sender, EventArgs e)
+        /*private void btnInvoice_Click(object sender, EventArgs e)
         {
             receiptExport.invoiceBill(utl.IDCurrent, ref err);
-        }
+        }*/
         private void LoadDataIntoCbCus(List<string> idCustomers)
         {
             cbIDCus.Items.Clear();

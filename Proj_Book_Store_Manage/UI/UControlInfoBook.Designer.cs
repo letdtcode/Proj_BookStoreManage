@@ -71,6 +71,8 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDeleteCate = new System.Windows.Forms.Button();
             this.btnAddCate = new System.Windows.Forms.Button();
             this.lblNameCategory = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblIDBook = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             this.gbInfoBook.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -189,7 +191,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtNameBook
             // 
-            this.txtNameBook.Location = new System.Drawing.Point(106, 38);
+            this.txtNameBook.Location = new System.Drawing.Point(106, 84);
             this.txtNameBook.Name = "txtNameBook";
             this.txtNameBook.Size = new System.Drawing.Size(147, 22);
             this.txtNameBook.TabIndex = 2;
@@ -198,7 +200,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(10, 83);
+            this.lblAmount.Location = new System.Drawing.Point(10, 129);
             this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(74, 21);
@@ -209,7 +211,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameBook.AutoSize = true;
             this.lblNameBook.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameBook.Location = new System.Drawing.Point(10, 39);
+            this.lblNameBook.Location = new System.Drawing.Point(10, 85);
             this.lblNameBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameBook.Name = "lblNameBook";
             this.lblNameBook.Size = new System.Drawing.Size(85, 21);
@@ -227,6 +229,8 @@ namespace Proj_Book_Store_Manage.UI
             this.gbInfoBook.Controls.Add(this.lblPublisher);
             this.gbInfoBook.Controls.Add(this.lblPriceImport);
             this.gbInfoBook.Controls.Add(this.lblAmount);
+            this.gbInfoBook.Controls.Add(this.lblIDBook);
+            this.gbInfoBook.Controls.Add(this.label1);
             this.gbInfoBook.Controls.Add(this.lblNameBook);
             this.gbInfoBook.Location = new System.Drawing.Point(4, 6);
             this.gbInfoBook.Margin = new System.Windows.Forms.Padding(4);
@@ -242,28 +246,28 @@ namespace Proj_Book_Store_Manage.UI
             this.cbIDPublisher.FormattingEnabled = true;
             this.cbIDPublisher.Items.AddRange(new object[] {
             "3"});
-            this.cbIDPublisher.Location = new System.Drawing.Point(105, 127);
+            this.cbIDPublisher.Location = new System.Drawing.Point(359, 39);
             this.cbIDPublisher.Name = "cbIDPublisher";
-            this.cbIDPublisher.Size = new System.Drawing.Size(121, 24);
+            this.cbIDPublisher.Size = new System.Drawing.Size(99, 24);
             this.cbIDPublisher.TabIndex = 3;
             // 
             // txtPriceExport
             // 
-            this.txtPriceExport.Location = new System.Drawing.Point(356, 111);
+            this.txtPriceExport.Location = new System.Drawing.Point(364, 131);
             this.txtPriceExport.Name = "txtPriceExport";
             this.txtPriceExport.Size = new System.Drawing.Size(87, 22);
             this.txtPriceExport.TabIndex = 2;
             // 
             // txtPriceImport
             // 
-            this.txtPriceImport.Location = new System.Drawing.Point(356, 49);
+            this.txtPriceImport.Location = new System.Drawing.Point(364, 86);
             this.txtPriceImport.Name = "txtPriceImport";
             this.txtPriceImport.Size = new System.Drawing.Size(87, 22);
             this.txtPriceImport.TabIndex = 2;
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(105, 84);
+            this.txtAmount.Location = new System.Drawing.Point(105, 130);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(147, 22);
             this.txtAmount.TabIndex = 2;
@@ -272,7 +276,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPriceExport.AutoSize = true;
             this.lblPriceExport.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPriceExport.Location = new System.Drawing.Point(260, 111);
+            this.lblPriceExport.Location = new System.Drawing.Point(268, 131);
             this.lblPriceExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceExport.Name = "lblPriceExport";
             this.lblPriceExport.Size = new System.Drawing.Size(77, 21);
@@ -283,7 +287,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPublisher.AutoSize = true;
             this.lblPublisher.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPublisher.Location = new System.Drawing.Point(10, 130);
+            this.lblPublisher.Location = new System.Drawing.Point(268, 39);
             this.lblPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPublisher.Name = "lblPublisher";
             this.lblPublisher.Size = new System.Drawing.Size(43, 21);
@@ -294,7 +298,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblPriceImport.AutoSize = true;
             this.lblPriceImport.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPriceImport.Location = new System.Drawing.Point(260, 51);
+            this.lblPriceImport.Location = new System.Drawing.Point(268, 88);
             this.lblPriceImport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceImport.Name = "lblPriceImport";
             this.lblPriceImport.Size = new System.Drawing.Size(89, 21);
@@ -537,6 +541,28 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 42);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ID Sách";
+            // 
+            // lblIDBook
+            // 
+            this.lblIDBook.AutoSize = true;
+            this.lblIDBook.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDBook.Location = new System.Drawing.Point(101, 39);
+            this.lblIDBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDBook.Name = "lblIDBook";
+            this.lblIDBook.Size = new System.Drawing.Size(55, 21);
+            this.lblIDBook.TabIndex = 0;
+            this.lblIDBook.Text = "None";
+            // 
             // UControlInfoBook
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -614,5 +640,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.ComboBox cbaddCategory;
         private System.Windows.Forms.Button btnEditAuthor;
         private System.Windows.Forms.Button btnEditCate;
+        private System.Windows.Forms.Label lblIDBook;
+        private System.Windows.Forms.Label label1;
     }
 }

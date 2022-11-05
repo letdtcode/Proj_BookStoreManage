@@ -50,7 +50,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
+            this.lblIDEmployee = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
@@ -135,7 +135,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbEmployee.Controls.Add(this.lblEmail);
             this.gbEmployee.Controls.Add(this.lblPhoneNumber);
             this.gbEmployee.Controls.Add(this.lblAddress);
-            this.gbEmployee.Controls.Add(this.lblID);
+            this.gbEmployee.Controls.Add(this.lblIDEmployee);
             this.gbEmployee.Controls.Add(this.label2);
             this.gbEmployee.Controls.Add(this.label1);
             this.gbEmployee.Controls.Add(this.lblFirstName);
@@ -286,16 +286,16 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Địa Chỉ";
             // 
-            // lblID
+            // lblIDEmployee
             // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(157, 30);
-            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(21, 23);
-            this.lblID.TabIndex = 0;
-            this.lblID.Text = "0";
+            this.lblIDEmployee.AutoSize = true;
+            this.lblIDEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDEmployee.Location = new System.Drawing.Point(157, 30);
+            this.lblIDEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDEmployee.Name = "lblIDEmployee";
+            this.lblIDEmployee.Size = new System.Drawing.Size(63, 23);
+            this.lblIDEmployee.TabIndex = 0;
+            this.lblIDEmployee.Text = "None";
             // 
             // label2
             // 
@@ -304,9 +304,9 @@ namespace Proj_Book_Store_Manage.UI
             this.label2.Location = new System.Drawing.Point(8, 30);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 23);
+            this.label2.Size = new System.Drawing.Size(136, 23);
             this.label2.TabIndex = 0;
-            this.label2.Text = "ID Nhân viên:";
+            this.label2.Text = "ID Nhân viên";
             // 
             // label1
             // 
@@ -476,7 +476,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Label lblIDEmployee;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
