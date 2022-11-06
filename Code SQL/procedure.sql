@@ -232,9 +232,11 @@ go
 --Thêm tên tác giả cho sách
 create or alter procedure proc_addNewBookAuthor
 @idBook varchar(8),
-@idAuthor varchar(8)
+@nameAuthor nvarchar(30)
 as
 begin
+	declare @idAuthor varchar(8)
+	select @idAuthor=dbo.func_getIDAuthor(@nameAuthor)
 	insert into dbo.BOOK_AUTHOR
 		(
 	idBook,
@@ -250,21 +252,27 @@ go
 --Chỉnh sửa tên tác giả cho sách
 create or alter procedure proc_updateBookAuthor
 @idBook varchar(8),
-@idAuthor varchar(8),
-@idNewAuthor varchar(8) 
+@nameAuthor nvarchar(30),
+@nameNewAuthor nvarchar(30) 
 as
 begin
+	declare @idAuthor varchar(8), @idNewAuthor varchar(8)
+	select @idAuthor=dbo.func_getIDAuthor(@nameAuthor), @idNewAuthor=dbo.func_getIDAuthor(@nameNewAuthor)
+
 	update dbo.BOOK_AUTHOR
 	set idAuthor=@idNewAuthor
-	where dbo.BOOK_AUTHOR.idBook=@idBook
+	where dbo.BOOK_AUTHOR.idAuthor=@idAuthor and dbo.BOOK_AUTHOR.idBook=@idBook
 end
 go
 --Xóa bộ sách-tác giả
 create or alter procedure proc_deleteBookAuthor
 @idBook varchar(8),
-@idAuthor varchar(8)
+@nameAuthor nvarchar(30)
 as
 begin
+	declare @idAuthor varchar(8)
+	select @idAuthor=dbo.func_getIDAuthor(@nameAuthor)
+
 	delete from dbo.BOOK_AUTHOR
 	where dbo.BOOK_AUTHOR.idBook=@idBook and dbo.BOOK_AUTHOR.idAuthor=@idAuthor
 end
@@ -273,9 +281,12 @@ go
 --Thêm thể loại cho sách
 create or alter procedure proc_addNewBookCategory
 @idBook varchar(8),
-@idCategory varchar(8)
+@nameCategory nvarchar(20)
 as
 begin
+	declare @idCategory varchar(8)
+	select @idCategory=dbo.func_getIDCategory(@nameCategory)
+
 	insert into dbo.BOOK_CATEGORY
 		(
 	idBook,
@@ -291,37 +302,27 @@ go
 --Chỉnh sửa thể loại cho sách
 create or alter procedure proc_updateBookCategory
 @idBook varchar(8),
-@idCategory varchar(8), 
-@idNewBook varchar(8),
-@idNewCategory varchar(8)
+@nameCategory nvarchar(20), 
+@nameNewCategory nvarchar(20)
 as
 begin
-	if (@idNewCategory is null and @idNewBook is not null)
-	begin
-		update dbo.BOOK_CATEGORY
-		set idBook=@idNewBook
-		where dbo.BOOK_CATEGORY.idCategory=@idCategory and dbo.BOOK_CATEGORY.idBook=@idBook
-	end
-	else if (@idNewBook is null and @idNewCategory is not null)
-	begin
-		update dbo.BOOK_CATEGORY
-		set idCategory=@idNewCategory
-		where dbo.BOOK_CATEGORY.idCategory=@idCategory and dbo.BOOK_CATEGORY.idBook=@idBook
-	end
-	else
-	begin
-		update dbo.BOOK_CATEGORY
-		set idBook=@idNewBook, idCategory=@idNewCategory
-		where dbo.BOOK_CATEGORY.idCategory=@idCategory and dbo.BOOK_CATEGORY.idBook=@idBook
-	end
+	declare @idCategory varchar(8), @idNewCategory varchar(8)
+	select @idCategory=dbo.func_getIDCategory(@nameCategory), @idNewCategory=dbo.func_getIDCategory(@nameNewCategory)
+
+	update dbo.BOOK_CATEGORY
+	set idCategory=@idNewCategory
+	where dbo.BOOK_CATEGORY.idCategory=@idCategory and dbo.BOOK_CATEGORY.idBook=@idBook
 end
 go
 --Xóa bộ sách-thể loại
 create or alter procedure proc_deleteBookCategory
 @idBook varchar(8),
-@idCategory varchar(8)
+@nameCategory nvarchar(20)
 as
 begin
+	declare @idCategory varchar(8)
+	select @idCategory=dbo.func_getIDCategory(@nameCategory)
+
 	delete from dbo.BOOK_CATEGORY
 	where dbo.BOOK_CATEGORY.idBook=@idBook and dbo.BOOK_CATEGORY.idCategory=@idCategory
 end

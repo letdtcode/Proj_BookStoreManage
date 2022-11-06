@@ -70,5 +70,16 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
+        public List<string> getAllNameAuthor()
+        {
+            List<string> dataNameAuthor = new List<string>();
+            DataTable dtAuthor = new DataTable();
+            dtAuthor = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtAuthor.Rows)
+            {
+                dataNameAuthor.Add(row[1].ToString());
+            }
+            return dataNameAuthor;
+        }
     }
 }

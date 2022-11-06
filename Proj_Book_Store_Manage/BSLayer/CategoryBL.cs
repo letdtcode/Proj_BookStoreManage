@@ -68,6 +68,17 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
+        public List<string> getAllNameCategory()
+        {
+            List<string> dataNameCategory = new List<string>();
+            DataTable dtCategory = new DataTable();
+            dtCategory = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtCategory.Rows)
+            {
+                dataNameCategory.Add(row[1].ToString());
+            }
+            return dataNameCategory;
+        }
         /*public DataTable searchAccount(int idAccount, string userName, string password, bool typeOfAcc, int idEmp, ref string err)
         {
             strSQL = "func_searchAccount";

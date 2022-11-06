@@ -51,6 +51,7 @@
     <Compile Include="BSLayer\BookBL.cs" />
     <Compile Include="BSLayer\CategoryBL.cs" />
     <Compile Include="BSLayer\CustomerBL.cs" />
+    <Compile Include="BSLayer\DetailReceiptExport.cs" />
     <Compile Include="BSLayer\EmployeeBL.cs" />
     <Compile Include="BSLayer\PublisherBL.cs" />
     <Compile Include="BSLayer\ReceiptExportBL.cs" />

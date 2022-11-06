@@ -17,6 +17,8 @@ namespace Proj_Book_Store_Manage.UI
     {
         private List<Control> controls = null;
         private DataTable dtBook = null;
+        private DataTable dtCateOfBook = null;
+        private DataTable dtAuthorOfBook = null;
         private Utilities utl = null;
         private string err = "";
         private DialogResult result;
@@ -26,6 +28,19 @@ namespace Proj_Book_Store_Manage.UI
         private bool isEdit = false;
         BookBL book = new BookBL();
         PublisherBL publisher = new PublisherBL();
+        AuthorBL author = new AuthorBL();
+        CategoryBL category = new CategoryBL();
+
+        //Category Of Book
+        private bool isAddCateOfBook = false;
+        private bool isEditCateOfBook = false;
+        private string nameCateCellClick = null;
+        
+
+        //Author Of Book
+        private bool isAddAuthorOfBook = false;
+        private bool isEditAuthorOfBook = false;
+        private string nameAuthorCellClick = null;
         public UControlInfoBook()
         {
             InitializeComponent();
@@ -33,6 +48,9 @@ namespace Proj_Book_Store_Manage.UI
 
         private void UControlInfoBook_Load(object sender, EventArgs e)
         {
+            LoadDataIntoCbPublisher(publisher.getAllIDPublisher());
+            LoadDataIntoCbCategory(category.getAllNameCategory());
+            LoadDataIntoCbAuthor(author.getAllNameAuthor());
             LoadData();
         }
 
@@ -156,34 +174,189 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAddCate_Click(object sender, EventArgs e)
         {
+            isAddCateOfBook = true;
+            isEditCateOfBook = false;
             cbaddCategory.Enabled = true;
-            btnSaveCate.Enabled = true;
+            btnSaveCate.Enabled = true; 
         }
 
         private void btnDeleteCate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes) ;
+                {
+                    if (book.deleteBookCategory(this.lblIDBook.Text, this.cbaddCategory.Text, ref err))
+                    {
+                        MessageBox.Show("Xóa thành công !");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xoá thất bại !");
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không thể xóa !");
+            }
+            finally
+            {
+                LoadDataCategory(this.lblIDBook.Text, ref err);
+            }
+        }
+        private void btnEditCate_Click(object sender, EventArgs e)
+        {
+            isAddCateOfBook = false;
+            isEditCateOfBook = true;
             cbaddCategory.Enabled = true;
             btnSaveCate.Enabled = true;
         }
 
         private void btnSaveCate_Click(object sender, EventArgs e)
         {
-            cbaddCategory.Enabled = false;
+            try
+            {
+                if (isAddCateOfBook)
+                {
+                    try
+                    {
+                        //imgBook = ImgToByteArray(ptbBook.Image);
+                        book.addNewBookCategory(this.lblIDBook.Text, this.cbaddCategory.Text, ref err);
+                        if (err == "")
+                        {
+                            MessageBox.Show("Thêm thể loại cho sách có mã "+utl.IDCurrent+" thành công !");
+                        }
+                        else
+                        {
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Thông tin không hợp lệ");
+                    }
+                }
+                else if (isEditCateOfBook)
+                {
+                    //account = new AccountBL()
+                    book.modifyBookCategory(this.lblIDBook.Text, this.nameCateCellClick, this.cbaddCategory.Text, ref err);
+                    LoadData();
+                    if (err == "")
+                    {
+                        MessageBox.Show("Sửa thể loại cho sách có mã " + this.lblIDBook.Text + " thành công !");
+                    }
+                    else
+                    {
+                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Đã có lỗi xảy ra !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isAddCateOfBook = false;
+                isEditCateOfBook = false;
+                cbaddCategory.Enabled = false;
+                LoadDataCategory(lblIDBook.Text, ref err);
+            }
         }
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
-
+            isAddAuthorOfBook = true;
+            isEditAuthorOfBook = false;
+            cbaddAuthor.Enabled = true;
+            btnSaveAuthor.Enabled = true;
         }
 
         private void btnDeleteAuthor_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes) ;
+                {
+                    if (book.deleteBookAuthor(this.lblIDBook.Text, this.cbaddAuthor.Text, ref err))
+                    {
+                        MessageBox.Show("Xóa thành công !");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xoá thất bại !");
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không thể xóa !");
+            }
+            finally
+            {
+                LoadDataAuthor(this.lblIDBook.Text, ref err);
+            }
         }
-
+        private void btnEditAuthor_Click(object sender, EventArgs e)
+        {
+            isAddAuthorOfBook = false;
+            isEditAuthorOfBook = true;
+            cbaddAuthor.Enabled = true;
+            btnSaveAuthor.Enabled = true;
+        }
         private void btnSaveAuthor_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (isAddAuthorOfBook)
+                {
+                    try
+                    {
+                        //imgBook = ImgToByteArray(ptbBook.Image);
+                        book.addNewBookAuthor(this.lblIDBook.Text, this.cbaddAuthor.Text, ref err);
+                        if (err == "")
+                        {
+                            MessageBox.Show("Thêm tác giả cho sách có mã " + utl.IDCurrent + " thành công !");
+                        }
+                        else
+                        {
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Thông tin không hợp lệ");
+                    }
+                }
+                else if (isEditAuthorOfBook)
+                {
+                    //account = new AccountBL()
+                    book.modifyBookAuthor(this.lblIDBook.Text, this.nameAuthorCellClick, this.cbaddAuthor.Text, ref err);
+                    LoadData();
+                    if (err == "")
+                    {
+                        MessageBox.Show("Sửa tác giả cho sách có mã " + this.lblIDBook.Text + " thành công !");
+                    }
+                    else
+                    {
+                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Đã có lỗi xảy ra !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                isAddAuthorOfBook = false;
+                isEditAuthorOfBook = false;
+                cbaddAuthor.Enabled = false;
+                LoadDataAuthor(lblIDBook.Text, ref err);
+            }
         }
 
         private void btnUploadImg_Click(object sender, EventArgs e)
@@ -203,13 +376,23 @@ namespace Proj_Book_Store_Manage.UI
             }
         }
 
-        private void LoadDataCategory(int idBook)
+        private void LoadDataCategory(string idBook, ref string err)
         {
-
+            cbaddCategory.Enabled = false;
+            dtCateOfBook = book.showCategory(idBook,ref err);
+            dgvCategory.DataSource = dtCateOfBook;
+            dgvCategory.AutoResizeColumns();
+        }
+        private void LoadDataAuthor(string idBook, ref string err)
+        {
+            cbaddAuthor.Enabled = false;
+            dtAuthorOfBook = book.showAuthor(idBook, ref err);
+            dgvAuthor.DataSource = dtAuthorOfBook;
+            dgvAuthor.AutoResizeColumns();
         }
         private void LoadData()
         {
-            LoadDataIntoCbPublisher(publisher.getAllIDPublisher());
+
             controls = new List<Control> { txtNameBook, txtAmount, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
             dtBook = book.getDataBook();
             //DataGridViewImageColumn
@@ -228,7 +411,7 @@ namespace Proj_Book_Store_Manage.UI
 
             //dgvCategory.DataSource = book.sh(utl.IDCurrent,ref err);
             lblIDBook.Text = utl.IDCurrent;
-            dgvAuthor.DataSource = book.showAuthor(utl.IDCurrent, ref err);
+            //dgvAuthor.DataSource = book.showAuthor(utl.IDCurrent, ref err);
             if (dgvBook.Rows[utl.rowCurrent].Cells[6].Value.ToString() == "")
                 ptbBook.Image = null;
             else
@@ -238,6 +421,8 @@ namespace Proj_Book_Store_Manage.UI
             txtPriceImport.Text = dgvBook.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
             cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();
+            LoadDataCategory(lblIDBook.Text.ToString(),ref err);
+            LoadDataAuthor(lblIDBook.Text.ToString(), ref err);
         }
         private void LoadDataIntoCbPublisher(List<string> idPublishers)
         {
@@ -246,6 +431,35 @@ namespace Proj_Book_Store_Manage.UI
             {
                 cbIDPublisher.Items.Add(idPublisher);
             }
+        }
+        private void LoadDataIntoCbCategory(List<string> nameCategorys)
+        {
+            cbaddCategory.Items.Clear();
+            foreach (string nameCategory in nameCategorys)
+            {
+                cbaddCategory.Items.Add(nameCategory);
+            }
+        }
+        private void LoadDataIntoCbAuthor(List<string> nameAuthors)
+        {
+            cbaddAuthor.Items.Clear();
+            foreach (string nameAuthor in nameAuthors)
+            {
+                cbaddAuthor.Items.Add(nameAuthor);
+            }
+        }
+        private void dgvCategory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowCateIndex = dgvCategory.CurrentCell.RowIndex;
+            this.nameCateCellClick = dgvCategory.Rows[rowCateIndex].Cells[0].Value.ToString();
+            this.cbaddCategory.Text = this.nameCateCellClick;
+        }
+
+        private void dgvAuthor_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowAuthorIndex = dgvAuthor.CurrentCell.RowIndex;
+            this.nameAuthorCellClick = dgvAuthor.Rows[rowAuthorIndex].Cells[0].Value.ToString();
+            this.cbaddAuthor.Text = this.nameAuthorCellClick;
         }
     }
 }

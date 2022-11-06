@@ -62,6 +62,7 @@ namespace Proj_Book_Store_Manage.DBLayer
             {
                 //MessageBox.Show(ex.Message.ToString());
                 error = ex.Message;
+                MessageBox.Show(error);
                 dt = null;
             }
             finally
