@@ -146,4 +146,45 @@ begin
 	return -1
 end
 go
---Các hàm bổ trợ để thuận tiện cho việc lấy dữ liệu qua lại các form
+--Check xem ID sách này có trong đơn hàng chưa. Trả về true nếu đã tồn tại trong đơn hàng, trả về false nếu chưa tồn tại
+create or alter function func_checkBookIsInBill(@idBill varchar(8), @idBook varchar(8))
+returns bit
+as
+begin
+	if exists(select * 
+				from dbo.BOOK_BILLOUTPUT 
+				where BOOK_BILLOUTPUT.idBillOutput=@idBill and BOOK_BILLOUTPUT.idBook=@idBook)
+			return 1
+	return 0		
+end
+go
+--Các hàm  liên quan đến xuất, nhập hóa đơn
+create or alter function func_getDataOfBillOutput(@idBill varchar(8))
+returns table
+as 
+	return ( select BOOK_BILLOUTPUT.idBook as N'ID', BOOK.nameBook as N'Tên Sách', BOOK_BILLOUTPUT.amountOutput as N'Số lượng'
+			from dbo.BOOK_BILLOUTPUT, dbo.BOOK
+			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK_BILLOUTPUT.idBook=BOOK.idBook )
+go
+--Hàm trả về tên khách hàng (đầu vào là mã Bill)
+create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
+returns varchar(30)
+begin
+return (select dbo.CUSTOMER.nameCus
+from dbo.CUSTOMER, dbo.BILLOUTPUT
+where dbo.CUSTOMER.idCus=dbo.BILLOUTPUT.idCus and dbo.BILLOUTPUT.idBillOutPut=@idBill)
+end
+go
+--Hàm trả về tên nhân viên (đầu vào là mã Bill)
+create or alter function func_getNameEmpOfBillOutPut(@idBill varchar(8))
+returns varchar(30)
+begin
+return (select CONCAT(dbo.EMPLOYEE.firstName,dbo.EMPLOYEE.middleName,dbo.EMPLOYEE.lastName)
+from dbo.EMPLOYEE, dbo.BILLOUTPUT
+where dbo.EMPLOYEE.idEmployee=dbo.BILLOUTPUT.idEmployee and dbo.BILLOUTPUT.idBillOutPut=@idBill)
+end
+go
+select dbo.func_getNameEmpOfBillOutPut('HDX1')
+go
+create or alter function func_cal
+

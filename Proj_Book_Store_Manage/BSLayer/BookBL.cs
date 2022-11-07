@@ -136,7 +136,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
         public DataTable showAuthor(string idBook, ref string err)
         {
-            SqlCommand cmd = new SqlCommand("Select * from func_getAllAuthorOfBook(@idBook)");
+            SqlCommand cmd = new SqlCommand("Select * from dbo.func_getAllAuthorOfBook(@idBook)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBook", idBook);
             return db.ExecuteFunction(cmd, ref err);

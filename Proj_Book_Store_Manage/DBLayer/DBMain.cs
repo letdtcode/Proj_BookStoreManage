@@ -16,18 +16,14 @@ namespace Proj_Book_Store_Manage.DBLayer
         private SqlCommand cmd = null;
         private SqlDataAdapter adapter = null;
         private DataTable dt = null;
-        //private string err = null;
-
-        //public string Err { get => err; set => err = value; }
 
         public DBMain()
         {
             conn = new SqlConnection(ConnStr);
             cmd = conn.CreateCommand();
-            dt = new DataTable();
-            //err = "";
-      
+            dt = new DataTable();     
         }
+        //Trả về Datatable để load dữ liệu lên form từ view
         public DataTable LoadData(string nameView, CommandType ct)
         {
             dt = new DataTable();
@@ -41,8 +37,8 @@ namespace Proj_Book_Store_Manage.DBLayer
             adapter = new SqlDataAdapter(cmm,conn);
             adapter.Fill(dt);
             return dt;
-            //conn.Close();
         }
+        //Trả về Datatable để thực thi function
         public DataTable ExecuteFunction(SqlCommand cmdFunction, ref string error)
         {
             error = "";
@@ -50,7 +46,6 @@ namespace Proj_Book_Store_Manage.DBLayer
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             conn.Open();
-            //cmd = new SqlCommand();
             cmd = cmdFunction;
             cmd.Connection = conn;
             try
@@ -71,6 +66,32 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return dt;
         }
+        public string ExecuteFunctionToString(SqlCommand cmdFunction, ref string error)
+        {
+            string valueReturn = null;
+            error = "";
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            conn.Open();
+            cmd = cmdFunction;
+            cmd.Connection = conn;
+            try
+            {
+                valueReturn = cmd.ExecuteScalar().ToString();
+            }
+            catch (SqlException ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+                error = ex.Message;
+                MessageBox.Show(error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return valueReturn;
+        }
+        //Trả về true, false thực thi procedure
         public bool ExecuteProcedure(string sqlProcedure, CommandType ct, List<SqlParameter> parameters, ref string error)
         {
             bool f = false;

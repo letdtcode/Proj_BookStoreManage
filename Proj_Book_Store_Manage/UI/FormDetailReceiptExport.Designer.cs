@@ -42,29 +42,28 @@ namespace Proj_Book_Store_Manage.UI
             this.txtAmountBook = new System.Windows.Forms.TextBox();
             this.lblBook = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.dgvListBook = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblAnnounce = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.lViewCart = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblNameBook = new System.Windows.Forms.Label();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NameBook = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnEdit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnDelete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
             this.lblIDBook = new System.Windows.Forms.Label();
+            this.lblNameBook = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvCart = new System.Windows.Forms.DataGridView();
+            this.idBook = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameBook = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblAnnounce = new System.Windows.Forms.Label();
             this.gbDetailReceiptExport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBook)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
             // lblID
@@ -203,36 +202,14 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(238, 301);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(121, 53);
-            this.btnEdit.TabIndex = 23;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(390, 301);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(121, 53);
-            this.btnDelete.TabIndex = 25;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(542, 301);
+            this.btnSave.Location = new System.Drawing.Point(249, 301);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(121, 53);
+            this.btnSave.Size = new System.Drawing.Size(149, 53);
             this.btnSave.TabIndex = 26;
-            this.btnSave.Text = "Lưu";
+            this.btnSave.Text = "Cập nhật";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -283,17 +260,6 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Size = new System.Drawing.Size(1307, 10);
             this.panel1.TabIndex = 16;
             // 
-            // lblAnnounce
-            // 
-            this.lblAnnounce.AutoSize = true;
-            this.lblAnnounce.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnnounce.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblAnnounce.Location = new System.Drawing.Point(487, 30);
-            this.lblAnnounce.Name = "lblAnnounce";
-            this.lblAnnounce.Size = new System.Drawing.Size(358, 39);
-            this.lblAnnounce.TabIndex = 15;
-            this.lblAnnounce.Text = "Chi Tiết Hóa Đơn Xuất";
-            // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
@@ -307,23 +273,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // lViewCart
-            // 
-            this.lViewCart.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID,
-            this.NameBook,
-            this.Price,
-            this.columnEdit,
-            this.columnDelete});
-            this.lViewCart.HideSelection = false;
-            this.lViewCart.Location = new System.Drawing.Point(787, 392);
-            this.lViewCart.Name = "lViewCart";
-            this.lViewCart.RightToLeftLayout = true;
-            this.lViewCart.Size = new System.Drawing.Size(504, 304);
-            this.lViewCart.TabIndex = 29;
-            this.lViewCart.UseCompatibleStateImageBehavior = false;
-            this.lViewCart.View = System.Windows.Forms.View.Details;
             // 
             // groupBox1
             // 
@@ -340,6 +289,16 @@ namespace Proj_Book_Store_Manage.UI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin sản phẩm";
             // 
+            // lblIDBook
+            // 
+            this.lblIDBook.AutoSize = true;
+            this.lblIDBook.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDBook.Location = new System.Drawing.Point(161, 23);
+            this.lblIDBook.Name = "lblIDBook";
+            this.lblIDBook.Size = new System.Drawing.Size(78, 30);
+            this.lblIDBook.TabIndex = 8;
+            this.lblIDBook.Text = "None";
+            // 
             // lblNameBook
             // 
             this.lblNameBook.AutoSize = true;
@@ -349,35 +308,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook.Size = new System.Drawing.Size(78, 30);
             this.lblNameBook.TabIndex = 8;
             this.lblNameBook.Text = "None";
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID Sách";
-            this.ID.Width = 64;
-            // 
-            // NameBook
-            // 
-            this.NameBook.Text = "Tên Sách";
-            this.NameBook.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NameBook.Width = 110;
-            // 
-            // Price
-            // 
-            this.Price.Text = "Số Lượng";
-            this.Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Price.Width = 87;
-            // 
-            // columnEdit
-            // 
-            this.columnEdit.Text = "Sửa";
-            this.columnEdit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnEdit.Width = 74;
-            // 
-            // columnDelete
-            // 
-            this.columnDelete.Text = "Xóa";
-            this.columnDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnDelete.Width = 61;
             // 
             // label1
             // 
@@ -389,28 +319,80 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.TabIndex = 5;
             this.label1.Text = "Mã Sách";
             // 
-            // lblIDBook
+            // dgvCart
             // 
-            this.lblIDBook.AutoSize = true;
-            this.lblIDBook.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDBook.Location = new System.Drawing.Point(161, 23);
-            this.lblIDBook.Name = "lblIDBook";
-            this.lblIDBook.Size = new System.Drawing.Size(78, 30);
-            this.lblIDBook.TabIndex = 8;
-            this.lblIDBook.Text = "None";
+            this.dgvCart.AllowUserToAddRows = false;
+            this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idBook,
+            this.nameBook,
+            this.amountColumn,
+            this.editColumn,
+            this.deleteColumn});
+            this.dgvCart.Location = new System.Drawing.Point(824, 392);
+            this.dgvCart.Name = "dgvCart";
+            this.dgvCart.RowHeadersWidth = 51;
+            this.dgvCart.RowTemplate.Height = 24;
+            this.dgvCart.Size = new System.Drawing.Size(449, 304);
+            this.dgvCart.TabIndex = 31;
+            this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
+            // 
+            // idBook
+            // 
+            this.idBook.HeaderText = "ID";
+            this.idBook.MinimumWidth = 6;
+            this.idBook.Name = "idBook";
+            this.idBook.Width = 125;
+            // 
+            // nameBook
+            // 
+            this.nameBook.HeaderText = "Tên Sách";
+            this.nameBook.MinimumWidth = 6;
+            this.nameBook.Name = "nameBook";
+            this.nameBook.Width = 125;
+            // 
+            // amountColumn
+            // 
+            this.amountColumn.HeaderText = "Số Lượng";
+            this.amountColumn.MinimumWidth = 6;
+            this.amountColumn.Name = "amountColumn";
+            this.amountColumn.Width = 125;
+            // 
+            // editColumn
+            // 
+            this.editColumn.HeaderText = "Edit";
+            this.editColumn.MinimumWidth = 6;
+            this.editColumn.Name = "editColumn";
+            this.editColumn.Width = 125;
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.HeaderText = "Delete";
+            this.deleteColumn.MinimumWidth = 6;
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.Width = 125;
+            // 
+            // lblAnnounce
+            // 
+            this.lblAnnounce.AutoSize = true;
+            this.lblAnnounce.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnnounce.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lblAnnounce.Location = new System.Drawing.Point(487, 30);
+            this.lblAnnounce.Name = "lblAnnounce";
+            this.lblAnnounce.Size = new System.Drawing.Size(358, 39);
+            this.lblAnnounce.TabIndex = 15;
+            this.lblAnnounce.Text = "Chi Tiết Hóa Đơn Xuất";
             // 
             // FormDetailReceiptExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1307, 731);
+            this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lViewCart);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gbDetailReceiptExport);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvListBook);
             this.Controls.Add(this.panel4);
@@ -428,6 +410,7 @@ namespace Proj_Book_Store_Manage.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBook)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,29 +426,27 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblIDReceipt;
         private System.Windows.Forms.Label lblNameEmployee;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView dgvListBook;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblAnnounce;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.Label lblNameCustomer;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblMoney;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.ListView lViewCart;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblNameBook;
-        private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader NameBook;
-        private System.Windows.Forms.ColumnHeader Price;
-        private System.Windows.Forms.ColumnHeader columnEdit;
-        private System.Windows.Forms.ColumnHeader columnDelete;
         private System.Windows.Forms.Label lblIDBook;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvCart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idBook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameBook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn editColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
+        private System.Windows.Forms.Label lblAnnounce;
     }
 }

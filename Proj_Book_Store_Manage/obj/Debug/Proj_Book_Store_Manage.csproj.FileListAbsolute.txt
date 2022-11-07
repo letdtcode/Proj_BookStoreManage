@@ -27,3 +27,4 @@ D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlInfoCustomer.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlTypeCustomer.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormSaleBook.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormEditDetailReceiptExport.resources

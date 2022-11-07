@@ -827,48 +827,36 @@ go
 --Thêm một BOOK_BILLOUTPUT
 create or alter procedure proc_addNewBookBillOutput
 @idBillOutput varchar(8),
-@idBook varchar(8)
+@idBook varchar(8),
+@amount int
 as
 begin
 	insert into dbo.BOOK_BILLOUTPUT
 		(
 	idBillOutput,
-	idBook
+	idBook,
+	amountOutput
 		)
 	values
 		(
 	@idBillOutput,
-	@idBook
+	@idBook,
+	@amount
 		)
 end
 go
+EXEC dbo.proc_addNewBookBillOutput @idBillOutput = 'HDX1', @idBook='BK1', @amount=200
 --Sửa một BOOK_BILLOUTPUT
 create or alter procedure proc_updateBookBillOutput
 @idBillOutput varchar(8),
 @idBook varchar(8),
-@idnewBillOutput varchar(8),
 @idnewBook varchar(8),
 @amount int
 as
 begin
-	if (@idnewBillOutput is null and @idnewBook is not null)
-	begin
-		update dbo.BOOK_BILLOUTPUT
-		set idBook=@idNewBook
-		where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
-	end
-	else if (@idNewBook is null and @idnewBillOutput is not null)
-	begin
-		update dbo.BOOK_BILLOUTPUT
-		set idBillOutput=@idnewBillOutput
-		where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
-	end
-	else
-	begin
-		update dbo.BOOK_BILLOUTPUT
-		set idBook=@idnewBook, idBillOutput=@idnewBillOutput
-		where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
-	end
+	update dbo.BOOK_BILLOUTPUT
+	set idBook=@idnewBook, amountOutput=@amount
+	where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
 end
 go
 --Xóa một BOOK_BILLOUTPUT

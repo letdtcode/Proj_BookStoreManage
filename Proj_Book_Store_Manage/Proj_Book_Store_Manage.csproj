@@ -83,6 +83,12 @@
     <Compile Include="UI\FormDetailReceiptImport.Designer.cs">
       <DependentUpon>FormDetailReceiptImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormEditDetailReceiptExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormEditDetailReceiptExport.Designer.cs">
+      <DependentUpon>FormEditDetailReceiptExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDetailReceiptImport.resx">
       <DependentUpon>FormDetailReceiptImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormEditDetailReceiptExport.resx">
+      <DependentUpon>FormEditDetailReceiptExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
