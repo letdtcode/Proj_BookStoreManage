@@ -70,6 +70,7 @@ drop trigger trg_discountAndUpdateVoucher
 --end
 --go
 --Kiểm tra số điện thoại tác giả 
+go
 create or alter trigger trg_checkPhoneNumberOfAuthor
 on AUTHOR
 for insert, update
@@ -138,4 +139,4 @@ begin
 	end
 end
 go
-insert into dbo.AUTHOR values ('Nguyễn Đức Thành','0345493128');
+
