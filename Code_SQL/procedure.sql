@@ -4,30 +4,35 @@ go
 
 --PROCEDURE THÊM, SỬA, XÓA ACCOUNT
 --Thêm một account mới
-create or alter procedure proc_addNewAccount
-@idAccount varchar(8),
-@nameAccount varchar(20),
-@password varchar(30),
-@typeOfAcc bit,
-@idEmployee varchar(8)
+create or alter procedure proc_addNewAccount (@idAccount varchar(8), @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee varchar(8))
 as
 begin
+	begin transaction addNewAcc
+	begin try
 	insert into dbo.ACCOUNT 
-		(
-	idAccount,
-	nameAccount,
-	password,
-	typeOfAcc,
-	idEmployee
-		)
+	(
+		idAccount,
+		nameAccount,
+		password,
+		typeOfAcc,
+		idEmployee
+	)
 	values
-		(
-	@idAccount,
-	@nameAccount,
-	@password,
-	@typeOfAcc,
-	@idEmployee
-		)
+	(
+		@idAccount,
+		@nameAccount,
+		@password,
+		@typeOfAcc,
+		@idEmployee
+	)
+	--tạo quyền cho user vừa thêm
+	exec proc_createUser @nameAccount, @password
+	commit transaction addNewAcc
+	end try
+	begin catch
+		print (error_message())
+		rollback transaction addNewAcc
+	end catch
 end
 go
 --Chỉnh sửa một Account
@@ -39,18 +44,44 @@ create or alter procedure proc_updateAccount
 @idEmployee varchar(8)
 as
 begin
-	update dbo.ACCOUNT
-	set ACCOUNT.nameAccount=@nameAccount, ACCOUNT.password=@password, ACCOUNT.typeOfAcc=@typeOfAcc, ACCOUNT.idEmployee=@idEmployee
-	where ACCOUNT.idAccount=@idAccount
+	begin transaction udpateAcc
+	begin try
+		exec proc_updateUser @nameAccount, @password
+		--Chỉ thay đổi mật khẩu
+		update dbo.ACCOUNT
+		set ACCOUNT.password=@password
+		where ACCOUNT.idAccount=@idAccount
+		commit transaction udpateAcc
+	end try
+	begin catch
+		print (error_message())
+		rollback transaction udpateAcc
+	end catch
 end
 go
+
 --Xóa một Account
-create or alter procedure proc_DeleteAccount
-@idAccount varchar(8)
+create or alter procedure proc_DeleteAccount (@idAccount varchar(8))
 as
 begin
-	delete from dbo.ACCOUNT
-	where dbo.ACCOUNT.idAccount=@idAccount
+	declare @username nvarchar (20)
+
+	set @username = (select ACCOUNT.nameAccount from ACCOUNT where idAccount = @idAccount)
+	begin transaction deleteAcc
+	begin try
+		-- Xóa user khỏi hệ thống
+
+		delete dbo.ACCOUNT
+		where dbo.ACCOUNT.idAccount=@idAccount
+
+		exec proc_deleteUser @username
+
+		commit transaction deleteAcc
+	end try
+	begin catch
+		--print error_message()
+		rollback transaction deleteAcc
+	end catch
 end
 go
 --Tìm kiếm account

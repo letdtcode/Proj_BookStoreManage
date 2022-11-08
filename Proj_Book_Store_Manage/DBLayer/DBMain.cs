@@ -11,7 +11,11 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        private string ConnStr = @"Data Source=DUCTHANH\SQLEXPRESS; Initial Catalog=BOOKSTOREMANAGE;Integrated Security=True";
+        public static string ServerName = "DESKTOP-MINHDUN";
+        public static string DatabaseName = "BOOKSTOREMANAGE";
+        public static string UserName= "";
+        public static string Password= "";
+        private string ConnStr = $@"Data Source={ServerName}; Initial Catalog={DatabaseName};User Id={UserName};Password={Password}";
         private SqlConnection conn = null;
         private SqlCommand cmd = null;
         private SqlDataAdapter adapter = null;
@@ -21,7 +25,8 @@ namespace Proj_Book_Store_Manage.DBLayer
         {
             conn = new SqlConnection(ConnStr);
             cmd = conn.CreateCommand();
-            dt = new DataTable();     
+            dt = new DataTable();
+            conn.Open();
         }
         //Trả về Datatable để load dữ liệu lên form từ view
         public DataTable LoadData(string nameView, CommandType ct)
