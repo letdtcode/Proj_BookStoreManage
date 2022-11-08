@@ -417,6 +417,7 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvAuthor.RowTemplate.Height = 24;
             this.dgvAuthor.Size = new System.Drawing.Size(211, 95);
             this.dgvAuthor.TabIndex = 0;
+            this.dgvAuthor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuthor_CellClick);
             // 
             // btnEditAuthor
             // 
@@ -427,7 +428,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEditAuthor.TabIndex = 1;
             this.btnEditAuthor.Text = "Sửa";
             this.btnEditAuthor.UseVisualStyleBackColor = true;
-            this.btnEditAuthor.Click += new System.EventHandler(this.btnSaveAuthor_Click);
+            this.btnEditAuthor.Click += new System.EventHandler(this.btnEditAuthor_Click);
             // 
             // btnSaveAuthor
             // 
@@ -507,6 +508,7 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvCategory.RowTemplate.Height = 24;
             this.dgvCategory.Size = new System.Drawing.Size(211, 92);
             this.dgvCategory.TabIndex = 0;
+            this.dgvCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategory_CellClick);
             // 
             // btnSaveCate
             // 
@@ -528,7 +530,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnEditCate.TabIndex = 1;
             this.btnEditCate.Text = "Sửa";
             this.btnEditCate.UseVisualStyleBackColor = true;
-            this.btnEditCate.Click += new System.EventHandler(this.btnDeleteCate_Click);
+            this.btnEditCate.Click += new System.EventHandler(this.btnEditCate_Click);
             // 
             // btnDeleteCate
             // 

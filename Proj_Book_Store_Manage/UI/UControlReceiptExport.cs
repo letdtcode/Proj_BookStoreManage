@@ -35,7 +35,7 @@ namespace Proj_Book_Store_Manage.UI
         
         private void btnDetailExportReceipt_Click(object sender, EventArgs e)
         {
-            FormDetailReceiptExport frm_DetailReceiptExport = new FormDetailReceiptExport();
+            FormDetailReceiptExport frm_DetailReceiptExport = new FormDetailReceiptExport(this.lblID.Text);
             frm_DetailReceiptExport.ShowDialog();
         }
 

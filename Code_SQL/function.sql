@@ -3,7 +3,7 @@ go
 
 -----------------------------------------Function phụ trợ--------------------------------------------------
 --Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào
-create or alter function func_totalPayBeforeDiscount(@idBill int)
+create or alter function func_totalPayBeforeDiscount(@idBill varchar(8))
 returns int
 as
 begin
@@ -43,7 +43,7 @@ end
 go
 --create or alter function func_returnIDValue(@
 --Tìm kiếm một Account
-create or alter function func_searchAccount(@idAcc int, @userName varchar(20), @password varchar(30), @typeAcc bit, @idEmp int)
+create or alter function func_searchAccount(@idAcc varchar(8), @userName varchar(20), @password varchar(30), @typeAcc bit, @idEmp varchar(8))
 returns table
 as
 	return ( select *
@@ -71,7 +71,7 @@ begin
 end
 go
 --Trả về danh sách các thể loại của sách
-create or alter function func_getAllCategoryOfBook(@idBook int)
+create or alter function func_getAllCategoryOfBook(@idBook varchar(8))
 returns table
 as 
 return (select distinct dbo.CATEGORY.nameCategory as TheLoai
@@ -79,7 +79,7 @@ from dbo.CATEGORY, dbo.BOOK_CATEGORY
 where dbo.BOOK_CATEGORY.idBook=@idBook and dbo.CATEGORY.idCategory=dbo.BOOK_CATEGORY.idCategory)
 go
 --Trả về danh sách các tác giả của sách
-create or alter function func_getAllAuthorOfBook(@idBook int)
+create or alter function func_getAllAuthorOfBook(@idBook varchar(8))
 returns table
 as 
 return (select distinct dbo.AUTHOR.nameAuthor as TacGia
@@ -88,8 +88,34 @@ where dbo.BOOK_AUTHOR.idBook=@idBook and dbo.AUTHOR.idAuthor=dbo.BOOK_AUTHOR.idA
 go
 select * from dbo.func_getAllAuthorOfBook(6)
 go
+--Trả về idCategory (Đầu vào là nameCategory)
+create or alter function func_getIDCategory(@nameCategory nvarchar(20))
+returns varchar(8)
+as
+begin
+	declare @idCategory varchar(8)
+	select @idCategory=CATEGORY.idCategory
+	from dbo.CATEGORY
+	where CATEGORY.nameCategory=@nameCategory
+
+	return @idCategory
+end
+go
+--Trả về idAuthor (Đầu vào là nameAuthor)
+create or alter function func_getIDAuthor(@nameAuthor nvarchar(30))
+returns varchar(8)
+as
+begin
+	declare @idAuthor varchar(8)
+	select @idAuthor=AUTHOR.idAuthor
+	from dbo.AUTHOR
+	where AUTHOR.nameAuthor=@nameAuthor
+
+	return @idAuthor
+end
+go
 --Kiểm tra trước khi thanh toán hóa đơn nhập
-create or alter function func_checkInvoiceBillIn(@idBill int)
+create or alter function func_checkInvoiceBillIn(@idBill varchar(8))
 returns integer
 as
 begin
@@ -105,7 +131,7 @@ begin
 end
 go
 --Kiểm tra trước khi thanh toán hóa đơn xuất
-create or alter function func_checkInvoiceBillOut(@idBill int)
+create or alter function func_checkInvoiceBillOut(@idBill varchar(8))
 returns integer
 as
 begin
@@ -120,4 +146,45 @@ begin
 	return -1
 end
 go
---Các hàm bổ trợ để thuận tiện cho việc lấy dữ liệu qua lại các form
+--Check xem ID sách này có trong đơn hàng chưa. Trả về true nếu đã tồn tại trong đơn hàng, trả về false nếu chưa tồn tại
+create or alter function func_checkBookIsInBill(@idBill varchar(8), @idBook varchar(8))
+returns bit
+as
+begin
+	if exists(select * 
+				from dbo.BOOK_BILLOUTPUT 
+				where BOOK_BILLOUTPUT.idBillOutput=@idBill and BOOK_BILLOUTPUT.idBook=@idBook)
+			return 1
+	return 0		
+end
+go
+--Các hàm  liên quan đến xuất, nhập hóa đơn
+create or alter function func_getDataOfBillOutput(@idBill varchar(8))
+returns table
+as 
+	return ( select BOOK_BILLOUTPUT.idBook as N'ID', BOOK.nameBook as N'Tên Sách', BOOK_BILLOUTPUT.amountOutput as N'Số lượng'
+			from dbo.BOOK_BILLOUTPUT, dbo.BOOK
+			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK_BILLOUTPUT.idBook=BOOK.idBook )
+go
+--Hàm trả về tên khách hàng (đầu vào là mã Bill)
+create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
+returns varchar(30)
+begin
+return (select dbo.CUSTOMER.nameCus
+from dbo.CUSTOMER, dbo.BILLOUTPUT
+where dbo.CUSTOMER.idCus=dbo.BILLOUTPUT.idCus and dbo.BILLOUTPUT.idBillOutPut=@idBill)
+end
+go
+--Hàm trả về tên nhân viên (đầu vào là mã Bill)
+create or alter function func_getNameEmpOfBillOutPut(@idBill varchar(8))
+returns varchar(30)
+begin
+return (select CONCAT(dbo.EMPLOYEE.firstName,dbo.EMPLOYEE.middleName,dbo.EMPLOYEE.lastName)
+from dbo.EMPLOYEE, dbo.BILLOUTPUT
+where dbo.EMPLOYEE.idEmployee=dbo.BILLOUTPUT.idEmployee and dbo.BILLOUTPUT.idBillOutPut=@idBill)
+end
+go
+select dbo.func_getNameEmpOfBillOutPut('HDX1')
+go
+create or alter function func_cal
+
