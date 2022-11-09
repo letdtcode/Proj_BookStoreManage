@@ -41,7 +41,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnVoucher_Click(object sender, EventArgs e)
         {
-            FormApplyVoucherForBill frm_VoucherForBill = new FormApplyVoucherForBill(this.lblID.Text);
+            FormApplyVoucherForBill frm_VoucherForBill = new FormApplyVoucherForBill();
             frm_VoucherForBill.ShowDialog();
         }
 

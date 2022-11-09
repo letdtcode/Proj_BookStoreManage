@@ -86,56 +86,5 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-
-
-        public bool updateBillMoney(int idBill,ref string err)
-        {
-            string strSql = "UpdateTotalMoney";
-
-
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBill", idBill);
-            parameters.Add(parameter);
-
-            return db.ExecuteProcedure(strSql, CommandType.StoredProcedure, parameters, ref err);
-        }
-
-        public DataTable searchBill(string id, ref string err)
-        {
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBill", id);
-            parameters.Add(parameter);
-
-            string strSQL = "GetBill";
-            return db.search(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }
-
-        public bool addVoucher(string idBill, string idVoucher, ref string err)
-        {
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBill", idBill);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idVoucher", idVoucher);
-            parameters.Add(parameter);
-
-            string strSql = "proc_addVoucher";
-            return db.ExecuteProcedure(strSql, CommandType.StoredProcedure, parameters, ref err);
-        }
-
-        public bool deleteVoucher(string idBill, ref string err)
-        {
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBill", idBill);
-            parameters.Add(parameter);
-
-            string strSql = "proc_removeVoucher";
-            return db.ExecuteProcedure(strSql, CommandType.StoredProcedure, parameters, ref err);
-        }
-
     }
 }
