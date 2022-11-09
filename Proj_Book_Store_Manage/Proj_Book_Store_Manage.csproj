@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,7 @@
     <Compile Include="BSLayer\AccountBL.cs" />
     <Compile Include="BSLayer\AuthorBL.cs" />
     <Compile Include="BSLayer\BookBL.cs" />
+    <Compile Include="BSLayer\CartBL.cs" />
     <Compile Include="BSLayer\CategoryBL.cs" />
     <Compile Include="BSLayer\CustomerBL.cs" />
     <Compile Include="BSLayer\DetailReceiptExport.cs" />

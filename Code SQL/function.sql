@@ -1,6 +1,5 @@
 ﻿use BOOKSTOREMANAGE
 go
-
 -----------------------------------------Function phụ trợ--------------------------------------------------
 --Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào
 create or alter function func_totalPayBeforeDiscount(@idBill varchar(8))
@@ -166,6 +165,7 @@ as
 			from dbo.BOOK_BILLOUTPUT, dbo.BOOK
 			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK_BILLOUTPUT.idBook=BOOK.idBook )
 go
+select * from dbo.func_getDataOfBillOutput(N'HDX1')
 --Hàm trả về tên khách hàng (đầu vào là mã Bill)
 create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
 returns varchar(30)
@@ -186,5 +186,33 @@ end
 go
 select dbo.func_getNameEmpOfBillOutPut('HDX1')
 go
-create or alter function func_cal
-
+--Hàm trả về giá bán của 1 loại sách, đầu vào là idBook
+create or alter function func_getPriceExportOfBook(@idBook varchar(8))
+returns int
+begin
+return (select dbo.BOOK.priceExport
+from dbo.BOOK
+where dbo.BOOK.idBook=@idBook)
+end
+go
+----------------------------------------------CHỨC NĂNG XEM CHI TIẾT ĐƠN HÀNG---------------
+create or alter function func_getNameBookById(@idBook varchar(8))
+returns varchar(20)
+begin
+return (select dbo.BOOK.nameBook
+from dbo.BOOK
+where dbo.BOOK.idBook=@idBook)
+end
+go
+select dbo.func_getNameBookById('BK2')
+go
+create or alter function func_getAmountBookById(@idBook varchar(8))
+returns int
+begin
+return (select dbo.BOOK.amount
+from dbo.BOOK
+where dbo.BOOK.idBook=@idBook)
+end
+go
+create or alter function func_
+go

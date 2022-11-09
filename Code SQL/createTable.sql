@@ -39,6 +39,10 @@ CONSTRAINT chk_amount CHECK (amount >= 0),
 CONSTRAINT chk_price CHECK (priceImport >= 0 and priceExport >= 0)
 )
 GO 
+alter table dbo.book
+add constraint df_amount
+default 0 for amount
+go
 
 CREATE TABLE [dbo].TYPECUSTOMER (
 idTypeCus varchar(8) NOT NULL,
@@ -112,7 +116,12 @@ CONSTRAINT fk_collect FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee),
 CONSTRAINT fk_Discount FOREIGN KEY (idVoucher) REFERENCES VOUCHER (idVoucher),
 )
 GO 
-
+alter table dbo.billoutput
+drop column 
+go
+alter table dbo.billoutput
+drop constraint DF__BILLOUTPU__total__3D5E1FD2
+go
 CREATE TABLE [dbo].ACCOUNT (
 idAccount varchar(8) NOT NULL,
 nameAccount varchar(20) NOT NULL unique,

@@ -91,6 +91,31 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return valueReturn;
         }
+        public int ExecuteFunctionToInt(SqlCommand cmdFunction, ref string error)
+        {
+            int valueReturn = -1;
+            error = "";
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            conn.Open();
+            cmd = cmdFunction;
+            cmd.Connection = conn;
+            try
+            {
+                valueReturn = int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            catch (SqlException ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+                error = ex.Message;
+                MessageBox.Show(error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return valueReturn;
+        }
         //Trả về true, false thực thi procedure
         public bool ExecuteProcedure(string sqlProcedure, CommandType ct, List<SqlParameter> parameters, ref string error)
         {

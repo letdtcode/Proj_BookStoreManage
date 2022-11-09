@@ -26,6 +26,8 @@ namespace Proj_Book_Store_Manage.UI
 
         private CustomerBL cus = new CustomerBL();
         private EmployeeBL employee = new EmployeeBL();
+
+        private CartBL cart = null;
         public UControlReceiptExport()
         {
             InitializeComponent();
@@ -48,55 +50,26 @@ namespace Proj_Book_Store_Manage.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(dtpReceiptExport.Value.ToShortDateString());
-            this.lblID.Text = utl.createID("HDX");
+            /*this.lblID.Text = utl.createID("HDX");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
             utl.SetEnableButton(new List<Button> { btnEdit, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
+            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);*/
+            string idBill = utl.createID("BILL");
+            cart = new CartBL();
+            FormDetailReceiptExport frmDetailReceiptExport = new FormDetailReceiptExport(idBill);
+            frmDetailReceiptExport.FormClosed += Edit_FormDetailReceiptExportClosed;
+            frmDetailReceiptExport.Show();
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void Edit_FormDetailReceiptExportClosed(object sender, FormClosedEventArgs e)
         {
-            isEdit = true;
-            //utl.SetNullForAllControl();
-            utl.setEnableControl(true);
-            utl.SetEnableButton(new List<Button> { btnAdd, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (utl.CheckIDValid is true)
-                {
-                    result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        if (receiptExport.deleteReceiptExport(utl.IDCurrent, ref err) == true)
-                        {
-                            MessageBox.Show("Xóa thành công !");
-                        }
-                        else
-                            MessageBox.Show("Xoá thất bại !");
-
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Không thể xóa !");
-            }
-            finally
-            {
-                LoadData();
-            }
+            LoadData();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 if (utl.checkAllControlIsFill() == false)
                 {
@@ -150,7 +123,7 @@ namespace Proj_Book_Store_Manage.UI
                 isEdit = false;
                 utl.SetNullForAllControl();
                 LoadData();
-            }
+            }*/
         }
         private void LoadData()
         {
@@ -162,7 +135,7 @@ namespace Proj_Book_Store_Manage.UI
             utl = new Utilities(controls, dgvReceiptExport);
             dgvReceiptExport.AutoResizeColumns();
             utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
-            utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
+            //utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
             utl.setEnableControl(false);
         }
 
@@ -183,13 +156,13 @@ namespace Proj_Book_Store_Manage.UI
 
         private void dgvReceiptExport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            utl.CellClick(btnCancel, btnDelete);
+           /* utl.CellClick(btnCancel, btnDelete);
             lblID.Text = utl.IDCurrent;
             dtpReceiptExport.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             lblTotal.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             cbIDCus.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             cbIDEmp.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[4].Value.ToString();
-            lblStt.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[5].Value.ToString();
+            lblStt.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[5].Value.ToString();*/
         }
 
         /*private void btnInvoice_Click(object sender, EventArgs e)
@@ -211,6 +184,11 @@ namespace Proj_Book_Store_Manage.UI
             {
                 cbIDEmp.Items.Add(idEmp);
             }
+        }
+
+        private void gbReceiptExport_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -39,8 +39,6 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblDateExport = new System.Windows.Forms.Label();
             this.dgvReceiptExport = new System.Windows.Forms.DataGridView();
@@ -57,7 +55,6 @@ namespace Proj_Book_Store_Manage.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.btnInvoice = new System.Windows.Forms.Button();
             this.gpSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptExport)).BeginInit();
@@ -125,7 +122,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(35, 244);
+            this.btnCancel.Location = new System.Drawing.Point(35, 156);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 43);
             this.btnCancel.TabIndex = 1;
@@ -137,8 +134,6 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.panel2.Controls.Add(this.btnReload);
             this.panel2.Controls.Add(this.btnAdd);
-            this.panel2.Controls.Add(this.btnDelete);
-            this.panel2.Controls.Add(this.btnEdit);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -150,7 +145,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnReload
             // 
             this.btnReload.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Location = new System.Drawing.Point(35, 301);
+            this.btnReload.Location = new System.Drawing.Point(35, 213);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(110, 43);
             this.btnReload.TabIndex = 1;
@@ -169,32 +164,10 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(35, 130);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 43);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(35, 73);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(110, 43);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(35, 187);
+            this.btnSave.Location = new System.Drawing.Point(35, 99);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 43);
             this.btnSave.TabIndex = 1;
@@ -274,6 +247,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.TabIndex = 0;
             this.gbReceiptExport.TabStop = false;
             this.gbReceiptExport.Text = "Thông tin bán sách";
+            this.gbReceiptExport.Enter += new System.EventHandler(this.gbReceiptExport_Enter);
             // 
             // cbIDCus
             // 
@@ -379,19 +353,9 @@ namespace Proj_Book_Store_Manage.UI
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "ID Bill:";
             // 
-            // btnInvoice
-            // 
-            this.btnInvoice.Location = new System.Drawing.Point(796, 230);
-            this.btnInvoice.Name = "btnInvoice";
-            this.btnInvoice.Size = new System.Drawing.Size(101, 74);
-            this.btnInvoice.TabIndex = 12;
-            this.btnInvoice.Text = "Xuất hóa đơn";
-            this.btnInvoice.UseVisualStyleBackColor = true;
-            // 
             // UControlReceiptExport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.btnInvoice);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvReceiptExport);
             this.Controls.Add(this.panel1);
@@ -421,8 +385,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblDateExport;
         private System.Windows.Forms.DataGridView dgvReceiptExport;
@@ -437,7 +399,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblStt;
-        private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.ComboBox cbIDCus;
         private System.Windows.Forms.ComboBox cbIDEmp;
     }

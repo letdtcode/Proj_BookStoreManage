@@ -42,15 +42,16 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblAnnounce = new System.Windows.Forms.Label();
+            this.lblInfoAmount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Teal;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(434, 0);
+            this.panel4.Location = new System.Drawing.Point(530, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 333);
+            this.panel4.Size = new System.Drawing.Size(10, 356);
             this.panel4.TabIndex = 6;
             // 
             // panel1
@@ -59,16 +60,16 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(434, 10);
+            this.panel1.Size = new System.Drawing.Size(530, 10);
             this.panel1.TabIndex = 7;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Teal;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 323);
+            this.panel2.Location = new System.Drawing.Point(0, 346);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(434, 10);
+            this.panel2.Size = new System.Drawing.Size(530, 10);
             this.panel2.TabIndex = 4;
             // 
             // panel3
@@ -77,7 +78,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 10);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 313);
+            this.panel3.Size = new System.Drawing.Size(10, 336);
             this.panel3.TabIndex = 8;
             // 
             // label1
@@ -122,9 +123,9 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(217, 214);
+            this.txtAmount.Location = new System.Drawing.Point(217, 215);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(139, 22);
+            this.txtAmount.Size = new System.Drawing.Size(213, 22);
             this.txtAmount.TabIndex = 9;
             // 
             // cbIDBook
@@ -132,13 +133,14 @@ namespace Proj_Book_Store_Manage.UI
             this.cbIDBook.FormattingEnabled = true;
             this.cbIDBook.Location = new System.Drawing.Point(217, 97);
             this.cbIDBook.Name = "cbIDBook";
-            this.cbIDBook.Size = new System.Drawing.Size(142, 24);
+            this.cbIDBook.Size = new System.Drawing.Size(213, 24);
             this.cbIDBook.TabIndex = 10;
+            this.cbIDBook.SelectedValueChanged += new System.EventHandler(this.cbIDBook_SelectedValueChanged);
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(155, 266);
+            this.btnSave.Location = new System.Drawing.Point(229, 263);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(111, 47);
             this.btnSave.TabIndex = 17;
@@ -149,7 +151,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(304, 266);
+            this.btnCancel.Location = new System.Drawing.Point(378, 263);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(111, 47);
             this.btnCancel.TabIndex = 18;
@@ -162,17 +164,27 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAnnounce.AutoSize = true;
             this.lblAnnounce.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnnounce.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblAnnounce.Location = new System.Drawing.Point(127, 31);
+            this.lblAnnounce.Location = new System.Drawing.Point(181, 30);
             this.lblAnnounce.Name = "lblAnnounce";
             this.lblAnnounce.Size = new System.Drawing.Size(176, 39);
             this.lblAnnounce.TabIndex = 16;
             this.lblAnnounce.Text = "HÓA ĐƠN";
             // 
+            // lblInfoAmount
+            // 
+            this.lblInfoAmount.AutoSize = true;
+            this.lblInfoAmount.Location = new System.Drawing.Point(44, 263);
+            this.lblInfoAmount.Name = "lblInfoAmount";
+            this.lblInfoAmount.Size = new System.Drawing.Size(163, 17);
+            this.lblInfoAmount.TabIndex = 19;
+            this.lblInfoAmount.Text = "Số lượng còn trong kho: ";
+            // 
             // FormEditDetailReceiptExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 333);
+            this.ClientSize = new System.Drawing.Size(540, 356);
+            this.Controls.Add(this.lblInfoAmount);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblAnnounce);
@@ -211,5 +223,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblAnnounce;
+        private System.Windows.Forms.Label lblInfoAmount;
     }
 }

@@ -20,17 +20,26 @@ begin
 
 	if(@dateOutput<@dateInput)
 		begin
-			print(N'Thời gian không hợp lệ')
+			raiserror('Thời gian không hợp lệ',16,1)
 			rollback transaction
+			--delete dbo.BOOK_BILLOUTPUT
+			--where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill
+			--delete dbo.BILLOUTPUT
+			--where dbo.BILLOUTPUT.idBillOutPut=@idBill
 		end
 	if (@numBookSold >= (select BOOK.amount from dbo.BOOK where @idBookSold=BOOK.idBook))
 	begin
-		print (N'Số lượng sách trong kho không đáp ứng đủ !')
+		raiserror('Số lượng sách trong kho không đáp ứng đủ !',16,1)
 		rollback transaction
+		--delete dbo.BOOK_BILLOUTPUT
+		--where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill
+		--delete dbo.BILLOUTPUT
+		--where dbo.BILLOUTPUT.idBillOutPut=@idBill
 	end
 end
 go
-drop trigger trg_discountAndUpdateVoucher
+insert into dbo.BILLOUTPUT values('BILL3','2002-12-23',400,'KH1','NV1','VC1')
+insert into dbo.BOOK_BILLOUTPUT values('BILL4','BK1',40)
 
 --Kiểm tra điều kiện tổng tiền được giảm không quá 50% giá trị đơn hàng và voucher phải còn hạn sử dụng thì mới áp dụng được
 --create or alter trigger trg_discountAndUpdateVoucher
