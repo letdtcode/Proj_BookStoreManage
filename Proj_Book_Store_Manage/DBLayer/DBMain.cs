@@ -132,5 +132,37 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return f;
         }
+
+        public DataTable search (string strSQL, CommandType ct, List<SqlParameter> parameters, ref string error)
+        {
+            error = "";
+            dt = new DataTable();
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+
+            try
+            {
+                conn.Open();
+                cmd.CommandText = strSQL;
+                cmd.CommandType = ct;
+                adapter = new SqlDataAdapter(cmd);
+
+                adapter.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                dt = null;
+            }
+             finally
+            {
+                conn.Close();
+            }
+            return dt;
+
+        }
     }
 }

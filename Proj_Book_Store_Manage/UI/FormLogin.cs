@@ -39,6 +39,7 @@ namespace Proj_Book_Store_Manage
                 {
                     frmDashBoard.ShowDialog();
                 }
+
             }
             catch(Exception ex)
             {
