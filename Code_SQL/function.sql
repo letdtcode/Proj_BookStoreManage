@@ -188,3 +188,70 @@ select dbo.func_getNameEmpOfBillOutPut('HDX1')
 go
 create or alter function func_cal
 
+
+
+
+
+----------------------------------------------------------Dũng thêm phần billoutput ()
+------------------------------------------------------------Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào----------------
+
+create or alter function func_totalPayBeforeDiscount(@idBill varchar(8))
+returns int
+as
+begin
+	declare @totalPrice int
+	set @totalPrice= (
+	select sum(priceExport*amountOutput)
+	from dbo.BOOK,dbo.BOOK_BILLOUTPUT
+	where BOOK.idBook=BOOK_BILLOUTPUT.idBook and @idBill=BOOK_BILLOUTPUT.idBillOutput)
+
+	if (@totalPrice is null)
+	begin
+		set @totalPrice = 0
+	end
+	return @totalPrice
+end
+go
+
+------------------------------------------------------------ Tính số tiền được giảm giá----------------------------------------------------------
+create or alter function fuc_discount(@idbill varchar(8))
+returns float
+as
+begin
+	declare @discountVoucher float, @discountCustomer float, @discount float
+	set @discountVoucher = (select valueVoucher from VOUCHER, BILLOUTPUT where idBillOutPut like @idbill and VOUCHER.idVoucher like BILLOUTPUT.idVoucher)
+	set @discountCustomer = (select valueTypeCus from BILLOUTPUT, CUSTOMER, TYPECUSTOMER where idBillOutPut like @idbill and BILLOUTPUT.idCus like CUSTOMER.idCus and 
+	CUSTOMER.idTypeCus like TYPECUSTOMER.idTypeCus)
+	if (@discountCustomer is null)
+	begin
+		set @discountCustomer = 0
+	end
+
+	set @discount = @discountCustomer + @discountVoucher
+
+
+	set @discount = (@discount/100)*  dbo.func_totalPayBeforeDiscount(@idbill)
+	return @discount
+end
+go
+
+------------------------------------------------------------Hàm tính tổng tiền hóa đơn hiện tại------------------------------------
+create or alter function func_totalPayCurrent(@idBill varchar(8))
+returns int
+as 
+begin
+	declare @totalPrice int, @discount float
+	set @discount = (
+		select valueVoucher from Voucher, BILLOUTPUT 
+		where idBillOutPut = @idBill and 
+			VOUCHER.idVoucher = BILLOUTPUT.idVoucher
+	)
+	if (@discount is NULL)
+	begin
+		set @discount = 0
+	end
+	set @totalPrice=dbo.func_totalPayBeforeDiscount(@idBill) - (Convert(float,@discount)/100)*dbo.func_totalPayBeforeDiscount(@idBill)
+	return @totalPrice
+end
+go
+
