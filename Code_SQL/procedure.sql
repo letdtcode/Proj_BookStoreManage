@@ -729,8 +729,6 @@ begin
 	end
 end
 go
-
-
 --PROCEDURE THÊM SỬA XÓA BILLOUTPUT
 --Thêm một BillOutput
 create or alter procedure proc_addNewBillOutput
@@ -817,7 +815,7 @@ begin
 		)
 end
 go
---Sửa một BOOK_BILLINPUT  (Không cần)
+--Sửa một BOOK_BILLINPUT
 create or alter procedure proc_updateBookBillInput
 @idBillInput varchar(8),
 @idBook varchar(8),
@@ -878,8 +876,8 @@ begin
 		)
 end
 go
---EXEC dbo.proc_addNewBookBillOutput @idBillOutput = 'HDX1', @idBook='BK1', @amount=200
---Sửa một BOOK_BILLOUTPUT (Không cần)
+EXEC dbo.proc_addNewBookBillOutput @idBillOutput = 'HDX1', @idBook='BK1', @amount=200
+--Sửa một BOOK_BILLOUTPUT
 create or alter procedure proc_updateBookBillOutput
 @idBillOutput varchar(8),
 @idBook varchar(8),
@@ -902,67 +900,3 @@ begin
 	where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
 end
 go
-
-------------------------------------------------------Dũng thêm---------------------------------------------------
--------BIILOUTPUT
-------Tìm kiếm hóa đơn
-create or alter proc GetBill (@idBill varchar(8))
-as
-begin
-	select idBillOutPut, nameCus, BILLOUTPUT.idEmployee, dateOfBill, idVoucher, total from BILLOUTPUT, CUSTOMER
-	where BILLOUTPUT.idCus = CUSTOMER.idCus and
-	idBillOutPut = @idBill
-end
-go
---------------------------------------- Cập nhật giá tiền phải trả trong bill-------------------------------------
-Create or alter proc UpdateTotalMoney (@idBill varchar(8))
-as
-begin
-	declare @totalMoney int
-	set @totalMoney = (select dbo.func_totalPayCurrent(@idBill))
-	update BILLOUTPUT set total = @totalMoney where idBillOutPut = @idBill
-end
-go
-
-
----------------------------------------- Thêm vào giỏ hàng-------------------------------------
-Create or alter proc AddBookToCart(@idBill varchar(8), @idBook varchar(8), @amount int)
-as
-begin
-	Insert into BOOK_BILLOUTPUT values (@idBill, @idBook, @amount)
-	exec UpdateTotalMoney @idBill
-end
-go
-
------------------------------------------ Cập nhật số lượng sách trong giỏ hàng------------------------------------------
-Create or alter proc UpdateAmountBookInCart (@idBill varchar(8), @idBook varchar(8), @amount int)
-as
-begin
-	update BOOK_BILLOUTPUT set amountOutput = @amount
-	where idBillOutput = @idBill and idBook = @idBook
-	
-	exec UpdateTotalMoney @idBill
-end
-go
-
------------------------------------------------Áp dụng voucher------------------------------------------
-Create or alter proc proc_addVoucher (@idBill varchar(8), @idVoucher varchar(8))
-as
-begin
-	update BILLOUTPUT set idVoucher = @idVoucher where idBillOutPut = @idBill
-	exec UpdateTotalMoney @idBill
-	print N'Đã Áp Dụng Voucher Thành Công'
-end
-go
-
--------------------------------------------- Bỏ áp dụng voucher ------------------------------------------
-Create or alter proc proc_removeVoucher(@idBill varchar(8))
-as
-begin
-	update BILLOUTPUT set idVoucher = null where idBillOutPut = @idBill
-	exec UpdateTotalMoney @idBill
-	print N'Đã gỡ bỏ Voucher Thành Công'
-end
-go
-
-
