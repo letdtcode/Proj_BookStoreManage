@@ -25,9 +25,9 @@ namespace Proj_Book_Store_Manage
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            using (FormDashBoard frmDashBoard = new FormDashBoard())
+            using (FormSelectUsing frmSelectUsing = new FormSelectUsing())
             {
-                frmDashBoard.ShowDialog();
+                frmSelectUsing.ShowDialog();
             }
         }
     }

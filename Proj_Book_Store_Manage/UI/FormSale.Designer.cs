@@ -1,7 +1,7 @@
 ﻿
 namespace Proj_Book_Store_Manage.UI
 {
-    partial class FormDetailReceiptExport
+    partial class FormSale
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblID = new System.Windows.Forms.Label();
             this.lblAmount = new System.Windows.Forms.Label();
             this.gbDetailReceiptExport = new System.Windows.Forms.GroupBox();
+            this.cbIdEmployee = new System.Windows.Forms.ComboBox();
+            this.cbIdCustomer = new System.Windows.Forms.ComboBox();
             this.dtpReceiptExport = new System.Windows.Forms.DateTimePicker();
             this.lblDateExport = new System.Windows.Forms.Label();
             this.lblVoucher = new System.Windows.Forms.Label();
@@ -56,15 +58,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameBookColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountBookColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblAnnounce = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cbIdCustomer = new System.Windows.Forms.ComboBox();
-            this.cbIdEmployee = new System.Windows.Forms.ComboBox();
             this.gbDetailReceiptExport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBook)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -112,6 +107,22 @@ namespace Proj_Book_Store_Manage.UI
             this.gbDetailReceiptExport.TabIndex = 27;
             this.gbDetailReceiptExport.TabStop = false;
             this.gbDetailReceiptExport.Text = "Thông tin đơn hàng";
+            // 
+            // cbIdEmployee
+            // 
+            this.cbIdEmployee.FormattingEnabled = true;
+            this.cbIdEmployee.Location = new System.Drawing.Point(564, 40);
+            this.cbIdEmployee.Name = "cbIdEmployee";
+            this.cbIdEmployee.Size = new System.Drawing.Size(121, 29);
+            this.cbIdEmployee.TabIndex = 37;
+            // 
+            // cbIdCustomer
+            // 
+            this.cbIdCustomer.FormattingEnabled = true;
+            this.cbIdCustomer.Location = new System.Drawing.Point(553, 85);
+            this.cbIdCustomer.Name = "cbIdCustomer";
+            this.cbIdCustomer.Size = new System.Drawing.Size(121, 29);
+            this.cbIdCustomer.TabIndex = 36;
             // 
             // dtpReceiptExport
             // 
@@ -349,12 +360,6 @@ namespace Proj_Book_Store_Manage.UI
             // dgvCart
             // 
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idColumn,
-            this.nameBookColumn,
-            this.amountBookColumn,
-            this.editColumn,
-            this.deleteColumn});
             this.dgvCart.Location = new System.Drawing.Point(817, 392);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
@@ -362,41 +367,6 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvCart.Size = new System.Drawing.Size(456, 304);
             this.dgvCart.TabIndex = 31;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
-            // 
-            // idColumn
-            // 
-            this.idColumn.HeaderText = "ID";
-            this.idColumn.MinimumWidth = 6;
-            this.idColumn.Name = "idColumn";
-            this.idColumn.Width = 125;
-            // 
-            // nameBookColumn
-            // 
-            this.nameBookColumn.HeaderText = "Tên sách";
-            this.nameBookColumn.MinimumWidth = 6;
-            this.nameBookColumn.Name = "nameBookColumn";
-            this.nameBookColumn.Width = 125;
-            // 
-            // amountBookColumn
-            // 
-            this.amountBookColumn.HeaderText = "Số lượng";
-            this.amountBookColumn.MinimumWidth = 6;
-            this.amountBookColumn.Name = "amountBookColumn";
-            this.amountBookColumn.Width = 125;
-            // 
-            // editColumn
-            // 
-            this.editColumn.HeaderText = "Sửa";
-            this.editColumn.MinimumWidth = 6;
-            this.editColumn.Name = "editColumn";
-            this.editColumn.Width = 125;
-            // 
-            // deleteColumn
-            // 
-            this.deleteColumn.HeaderText = "Xóa";
-            this.deleteColumn.MinimumWidth = 6;
-            this.deleteColumn.Name = "deleteColumn";
-            this.deleteColumn.Width = 125;
             // 
             // lblAnnounce
             // 
@@ -420,23 +390,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // cbIdCustomer
-            // 
-            this.cbIdCustomer.FormattingEnabled = true;
-            this.cbIdCustomer.Location = new System.Drawing.Point(553, 85);
-            this.cbIdCustomer.Name = "cbIdCustomer";
-            this.cbIdCustomer.Size = new System.Drawing.Size(121, 29);
-            this.cbIdCustomer.TabIndex = 36;
-            // 
-            // cbIdEmployee
-            // 
-            this.cbIdEmployee.FormattingEnabled = true;
-            this.cbIdEmployee.Location = new System.Drawing.Point(564, 40);
-            this.cbIdEmployee.Name = "cbIdEmployee";
-            this.cbIdEmployee.Size = new System.Drawing.Size(121, 29);
-            this.cbIdEmployee.TabIndex = 37;
-            // 
-            // FormDetailReceiptExport
+            // FormSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -455,9 +409,9 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblAnnounce);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormDetailReceiptExport";
+            this.Name = "FormSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormDetailReceiptExport";
+            this.Text = "FormSale";
             this.Load += new System.EventHandler(this.FormDetailReceiptExport_Load);
             this.gbDetailReceiptExport.ResumeLayout(false);
             this.gbDetailReceiptExport.PerformLayout();
@@ -498,11 +452,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblVoucher;
         private System.Windows.Forms.ComboBox cbIdVoucher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameBookColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountBookColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn editColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
         private System.Windows.Forms.DateTimePicker dtpReceiptExport;
         private System.Windows.Forms.Label lblDateExport;
         private System.Windows.Forms.ComboBox cbIdEmployee;

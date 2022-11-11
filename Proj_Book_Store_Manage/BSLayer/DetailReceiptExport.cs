@@ -66,7 +66,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        /*public bool modifyDetailReceiptExport(string idBillOutput, string idBook, string idnewBook, int amount, ref string err)
+        public bool modifyDetailReceiptExport(string idBillOutput, string idBook, string idnewBook, int amount, ref string err)
         {
             strSQL = "proc_updateBookBillOutput";
             parameters = new List<SqlParameter>();
@@ -97,6 +97,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }*/
+        }
     }
 }

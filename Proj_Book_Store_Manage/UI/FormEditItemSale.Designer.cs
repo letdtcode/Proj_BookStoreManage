@@ -1,7 +1,7 @@
 ﻿
 namespace Proj_Book_Store_Manage.UI
 {
-    partial class FormEditDetailReceiptExport
+    partial class FormEditItemSale
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,6 @@ namespace Proj_Book_Store_Manage.UI
             this.cbIDBook = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblAnnounce = new System.Windows.Forms.Label();
             this.lblInfoAmount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -159,27 +158,16 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // lblAnnounce
-            // 
-            this.lblAnnounce.AutoSize = true;
-            this.lblAnnounce.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnnounce.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblAnnounce.Location = new System.Drawing.Point(181, 30);
-            this.lblAnnounce.Name = "lblAnnounce";
-            this.lblAnnounce.Size = new System.Drawing.Size(176, 39);
-            this.lblAnnounce.TabIndex = 16;
-            this.lblAnnounce.Text = "HÓA ĐƠN";
-            // 
             // lblInfoAmount
             // 
             this.lblInfoAmount.AutoSize = true;
-            this.lblInfoAmount.Location = new System.Drawing.Point(44, 263);
+            this.lblInfoAmount.Location = new System.Drawing.Point(16, 263);
             this.lblInfoAmount.Name = "lblInfoAmount";
             this.lblInfoAmount.Size = new System.Drawing.Size(163, 17);
             this.lblInfoAmount.TabIndex = 19;
             this.lblInfoAmount.Text = "Số lượng còn trong kho: ";
             // 
-            // FormEditDetailReceiptExport
+            // FormEditItemSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,7 +175,6 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.lblInfoAmount);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.lblAnnounce);
             this.Controls.Add(this.cbIDBook);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.label3);
@@ -199,7 +186,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormEditDetailReceiptExport";
+            this.Name = "FormEditItemSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditDetailReceiptExport";
             this.Load += new System.EventHandler(this.FormEditDetailReceiptExport_Load);
@@ -222,7 +209,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.ComboBox cbIDBook;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblAnnounce;
         private System.Windows.Forms.Label lblInfoAmount;
     }
 }

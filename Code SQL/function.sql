@@ -195,7 +195,7 @@ from dbo.BOOK
 where dbo.BOOK.idBook=@idBook)
 end
 go
-----------------------------------------------CHỨC NĂNG XEM CHI TIẾT ĐƠN HÀNG---------------
+----------------------------------------------CHỨC NĂNG XEM CHI TIẾT ĐƠN HÀNG XUất---------------
 create or alter function func_getNameBookById(@idBook varchar(8))
 returns varchar(20)
 begin
@@ -214,5 +214,24 @@ from dbo.BOOK
 where dbo.BOOK.idBook=@idBook)
 end
 go
-create or alter function func_
+--Tính tổng tiền hóa đơn xuất
+create or alter function func_returnToTalOfBillOutput(@idBill varchar(8))
+returns int
+begin
+if not exists(select * from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
+return 0
+return (select sum(Q.TotalBook) 
+	from (select dbo.BOOK_BILLOUTPUT.amountOutput*dbo.BOOK.priceExport as TotalBook from dbo.BOOK_BILLOUTPUT, dbo.BOOK where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK.idBook=dbo.BOOK_BILLOUTPUT.idBook) as Q)
+end
+go
+Select dbo.func_returnToTalOfBillOutput('BILL1')
+--Tính tổng tiền hóa đơn nhập
+create or alter function func_returnToTalOfBillInput(@idBill varchar(8))
+returns int
+begin
+return (select sum(Q.TotalBook) 
+	from (select dbo.BOOK_BILLINPUT.amountInput*dbo.BOOK.priceImport as TotalBook from dbo.BOOK_BILLINPUT, dbo.BOOK where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK.idBook=dbo.BOOK_BILLINPUT.idBook) as Q)
+end
+go
+
 go

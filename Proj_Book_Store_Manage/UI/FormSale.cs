@@ -11,10 +11,10 @@ using Proj_Book_Store_Manage.BSLayer;
 
 namespace Proj_Book_Store_Manage.UI
 {
-    public partial class FormDetailReceiptExport : Form
+    public partial class FormSale : Form
     {
         private DataTable dtListBook = null;
-        //private DataTable dtListIemOfBill = null;
+        private DataTable dtListIemOfBill = null;
         private string err = "";
 
         DetailReceiptExport detailReceiptExport = null;
@@ -27,92 +27,58 @@ namespace Proj_Book_Store_Manage.UI
         List<Control> controls = null;
         private DialogResult result;
 
-        public FormDetailReceiptExport(string idBill)
+        public FormSale(string idBill)
         {
             InitializeComponent();
             detailReceiptExport = new DetailReceiptExport(idBill);
             receiptExport = new ReceiptExportBL();
-            cart = new CartBL();
+            cart = new CartBL(idBill);
             voucher = new VoucherBL();
             controls = new List<Control> { dtpReceiptExport, cbIdEmployee, cbIdCustomer, cbIdVoucher };
             utl = new Utilities(controls, dgvListBook);
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            int index = -1;
-            bool isExist = false;
-            try
+            cart.addNewItemIntoCart(this.lblIDBook.Text, int.Parse(this.txtAmountBook.Text.ToString()), ref err);
+            if (err == "")
             {
-                if (cart.IdBooks.Count == 0)
-                {
-                    cart.addNewItemIntoCart(this.lblIDBook.Text, this.lblNameBook.Text, int.Parse(this.txtAmountBook.Text.ToString()));
-                    LoadDataCartIntoDgv();
-                    return;
-                }
-                foreach (string idBook in cart.IdBooks)
-                {
-                    if (idBook == this.lblIDBook.Text.ToString())
-                    {
-                        isExist = true;
-                        index = cart.IdBooks.IndexOf(idBook);
-                        break;
-                    }
-                }
-                if (isExist == true)
-                {
-                    cart.editItemInCart(this.lblIDBook.Text, this.lblIDBook.Text, int.Parse(this.txtAmountBook.Text.ToString()) + cart.AmountBooks[index]);
-                }
-                else
-                {
-                    cart.addNewItemIntoCart(this.lblIDBook.Text, this.lblNameBook.Text, int.Parse(this.txtAmountBook.Text.ToString()));
-                }
-                LoadDataCartIntoDgv();
+                MessageBox.Show("Thành công");
             }
-            catch
+            else
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(err);
             }
-            
+            ReloadAllData();
         }
-
+        private bool checkFill()
+        {
+            if (this.cbIdCustomer.Text.ToString() == "" || this.cbIdEmployee.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
+                return false;
+            return true;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if (checkFill())
             {
-                if (utl.checkAllControlIsFill() == false)
-                {
-                    result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                //Tạo hóa đơn
-                receiptExport.addNewReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, int.Parse(this.lblTotal.Text.ToString()), this.cbIdCustomer.Text.ToString(), this.cbIdEmployee.Text.ToString(), this.cbIdVoucher.Text.ToString(), ref err);
-                //Thêm dữ liệu item xuống db
-                int indexOfIdBook = -1;
-                foreach(string idBook in cart.IdBooks)
-                {
-                    indexOfIdBook = cart.IdBooks.IndexOf(idBook);
-                    detailReceiptExport.addNewDetailReceiptExport(idBook, cart.AmountBooks[indexOfIdBook], ref err);
-                }
-                if (err == "")
-                {
-                    MessageBox.Show("Đơn hàng đã được tạo !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Đã có lỗi xảy ra !");
-            }
+                receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.cbIdEmployee.Text, this.cbIdVoucher.Text, ref err);
+                this.Close();
+            }    
+            else
+                result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Dữ liệu sẽ không được cập nhật. Bạn có chắc chắn muốn thoát không ?", "Warnning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+                receiptExport.deleteReceiptExport(this.lblIDReceipt.Text, ref err);
+                this.Close();
+            }
+            else
+            {
+                return;
+            }
         }
-
         private void LoadDataBook()
         {
  
@@ -124,7 +90,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void FormDetailReceiptExport_Load(object sender, EventArgs e)
         {
-            LoadDataBook();
+            ReloadAllData();
             LoadDataIntoCbVoucher(voucher.getAllIdVoucher());
             LoadDataIntoCbCustomer(customer.getAllIDCustomer());
             LoadDataIntoCbEmployee(employee.getAllIDEmployee());
@@ -136,28 +102,28 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[0].Value.ToString();
             this.lblNameBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[1].Value.ToString();
         }
-        private void addItemIntoBill(string idBook, string nameBook, int amount)
+        /*private void addItemIntoBill(string idBook, string nameBook, int amount)
         {
             cart.addNewItemIntoCart(idBook, nameBook, amount);
             LoadDataCartIntoDgv();
-        }
+        }*/
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-           
+
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 3)
             {
                 try
                 {
-                    FormEditDetailReceiptExport frmEditDetailReceiptExport = new FormEditDetailReceiptExport(cart, senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    frmEditDetailReceiptExport.FormClosed += Edit_FormClosed;
-                    frmEditDetailReceiptExport.Show();
+                    FormEditItemSale frmEditItemSale = new FormEditItemSale(cart, senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString(),int.Parse(senderGrid.Rows[e.RowIndex].Cells[2].Value.ToString()));
+                    frmEditItemSale.FormClosed += Edit_FormClosed;
+                    frmEditItemSale.Show();
                 }
                 catch
                 {
                     MessageBox.Show("Dữ liệu không tồn tại");
                 }
-                
+
             }
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex == 4)
             {
@@ -166,28 +132,29 @@ namespace Proj_Book_Store_Manage.UI
                     DialogResult result = MessageBox.Show("Xác nhận xóa khỏi đơn hàng", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        cart.deleteItemInCart(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-                        LoadDataCartIntoDgv();
+                        cart.deleteItemInCart(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString(),ref err);
+                        ReloadAllData();
                     }
                 }
                 catch
                 {
                     MessageBox.Show("Dữ liệu không tồn tại");
                 }
-                
+
             }
-    
+
         }
 
         private void Edit_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoadDataCartIntoDgv();
+            ReloadAllData();
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Dữ liệu sẽ không được cập nhật. Bạn có chắc chắn muốn thoát không ?", "Warnning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
+                receiptExport.deleteReceiptExport(this.lblIDReceipt.Text, ref err);
                 this.Close();
             }
             else
@@ -197,23 +164,24 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadDataCartIntoDgv()
         {
-            
-            int index = -1;
-            dgvCart.Rows.Clear();
-            foreach (string idBook in cart.IdBooks)
-            {
-                DataGridViewRow dgvRow = (DataGridViewRow)dgvCart.Rows[0].Clone();
-                index = cart.IdBooks.IndexOf(idBook);
-                
-                int indexLastRow = dgvCart.Rows.GetLastRow(DataGridViewElementStates.None);
-                if (indexLastRow == -1)
-                    indexLastRow = 0;
-                dgvRow.Cells[0].Value = idBook.ToString();
-                dgvRow.Cells[1].Value = cart.NameBooks[index].ToString();
-                dgvRow.Cells[2].Value = cart.AmountBooks[index].ToString();
-                dgvCart.Rows.Add(dgvRow);
-            }
-            this.lblTotal.Text = cart.TotalBill.ToString();
+            dtListIemOfBill = cart.getDataItemOfBill();
+            dgvCart.Columns.Clear();
+            dgvCart.DataSource = dtListIemOfBill;
+            DataGridViewButtonColumn editColumn = new DataGridViewButtonColumn();
+            editColumn.Name = "editColumn";
+            editColumn.HeaderText = "Edit";
+            dgvCart.Columns.Add(editColumn);
+
+            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+            deleteColumn.Name = "deleteColumn";
+            deleteColumn.HeaderText = "Delete";
+            dgvCart.Columns.Add(deleteColumn);
+        }
+        private void ReloadAllData()
+        {
+            LoadDataBook();
+            LoadDataCartIntoDgv();
+            this.lblTotal.Text = cart.getTotalCurrentOfBill(ref err).ToString();
         }
         private void LoadDataIntoCbVoucher(List<string> idVouchers)
         {

@@ -11,37 +11,27 @@ using Proj_Book_Store_Manage.BSLayer;
 
 namespace Proj_Book_Store_Manage.UI
 {
-    public partial class FormEditDetailReceiptExport : Form
+    public partial class FormEditItemSale : Form
     {
         CartBL cart = null;
-        string idBook;
+        private string idBook = null;
+        private int amount;
         BookBL book = null;
         string err = null;
 
-        public FormEditDetailReceiptExport(CartBL cart, string idBook)
+        public FormEditItemSale(CartBL cart, string idBook, int amount)
         {
             InitializeComponent();
             this.cart = cart;
             this.idBook = idBook;
+            this.amount = amount;
             this.book = new BookBL();
         }
         private void FormEditDetailReceiptExport_Load(object sender, EventArgs e)
         {
-            //this.lblAnnounce.Text = IdBill;
-            /*this.cbIDBook.Text = dgv.Rows[rowIndex].Cells[0].Value.ToString();
-            this.lblNameBook.Text = dgv.Rows[rowIndex].Cells[1].Value.ToString();
-            this.txtAmount.Text = dgv.Rows[rowIndex].Cells[2].Value.ToString();*/
-            int index = -1;
-            foreach(string idBook in cart.IdBooks)
-            {
-                if (this.idBook == idBook)
-                {
-                    index = cart.IdBooks.IndexOf(idBook);
-                    break;
-                }
-            }
             this.cbIDBook.Text = idBook;
-            this.lblNameBook.Text = cart.NameBooks[index].ToString();
+            this.lblNameBook.Text = book.getNameBook(idBook, ref err).ToString();
+            int index = -1;
             this.lblInfoAmount.Text = "Số lượng sách còn trong kho: " + book.getAmountBook(idBook, ref err).ToString();
             loadDataIDBook();
         }
@@ -55,15 +45,20 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            /*this.IdBook = this.cbIDBook.Text;
-            this.NameBook = this.lblNameBook.Text;
-            this.AmountBook = int.Parse(this.txtAmount.Text.ToString());*/
             editValue();
             this.Close();
         }
         private void editValue()
         {
-            cart.editItemInCart(this.cbIDBook.Text, this.cbIDBook.Text, int.Parse(this.txtAmount.Text.ToString()));
+            cart.modifyItemInCart(this.idBook, this.cbIDBook.Text, this.amount, int.Parse(this.txtAmount.Text.ToString()), ref err);
+            if (err == "")
+            {
+                MessageBox.Show("Cập nhật thành công");
+            }
+            else
+            {
+                MessageBox.Show(err);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

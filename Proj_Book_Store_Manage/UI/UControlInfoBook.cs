@@ -185,7 +185,7 @@ namespace Proj_Book_Store_Manage.UI
             try
             {
                 result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes) ;
+                if (result == DialogResult.Yes)
                 {
                     if (book.deleteBookCategory(this.lblIDBook.Text, this.cbaddCategory.Text, ref err))
                     {
@@ -279,7 +279,7 @@ namespace Proj_Book_Store_Manage.UI
             try
             {
                 result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes) ;
+                if (result == DialogResult.Yes)
                 {
                     if (book.deleteBookAuthor(this.lblIDBook.Text, this.cbaddAuthor.Text, ref err))
                     {

@@ -14,78 +14,85 @@ namespace Proj_Book_Store_Manage.BSLayer
 {
     public class CartBL
     {
-        private List<string> idBooks = null;
-        private List<string> nameBooks = null;
-        private List<int> amountBooks = null;
-        private int totalBill = 0;
-        private BookBL book = null;
-        private string err = null;
-        public CartBL()
+        private DBMain db = null;
+        SqlParameter parameter;
+        List<SqlParameter> parameters;
+        string strSQL = "";
+        private string idBill = null;
+        private string err = "";
+        public CartBL(string idBill)
         {
-            
-            IdBooks = new List<string>();
-            NameBooks = new List<string>();
-            AmountBooks = new List<int>();
-            book = new BookBL();
+            this.IdBill = idBill;
+            db = new DBMain();
         }
 
-        public List<string> IdBooks { get => idBooks; set => idBooks = value; }
-        public List<string> NameBooks { get => nameBooks; set => nameBooks = value; }
-        public List<int> AmountBooks { get => amountBooks; set => amountBooks = value; }
-        public int TotalBill { get => totalBill; set => totalBill = value; }
+        public string IdBill { get => idBill; set => idBill = value; }
 
-        public void addNewItemIntoCart(string idBook, string nameBook, int amountBook)
+        public DataTable getDataItemOfBill()
         {
-            IdBooks.Add(idBook);
-            NameBooks.Add(nameBook);
-            AmountBooks.Add(amountBook);
-            totalInCart();
+            SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillOutput(@idBill)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBill", IdBill);
+            return db.ExecuteFunction(cmd, ref err);
+        }
+        public bool addNewItemIntoCart(string idBook, int amountBook, ref string err)
+        {
+            strSQL = "proc_addNewBookBillOutput";
+            parameters = new List<SqlParameter>();
 
+            parameter = new SqlParameter("@idBillOutput", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@amount", amountBook);
+            parameters.Add(parameter);
+
+            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public void editItemInCart(string idOldBook, string idNewBook, int amount)
+        public int getTotalCurrentOfBill(ref string err)
         {
-            int index = -1;
-            string nameNewBook = book.getNameBook(idNewBook, ref err);
-            foreach(string id in idBooks)
-            {
-                if (id == idOldBook)
-                {
-                    index = idBooks.IndexOf(id);
-                    id.Replace(idOldBook, idNewBook);
-                }
-            }
-            amountBooks[index] = amount;
-            nameBooks[index] = nameNewBook;
-            totalInCart();
+            SqlCommand cmd = new SqlCommand("Select dbo.func_returnToTalOfBillOutput(@idBill)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBill", idBill);
+            return db.ExecuteFunctionToInt(cmd, ref err);
         }
-        public void deleteItemInCart(string idBook)
+        public bool deleteItemInCart(string idBook, ref string err)
         {
-            int index = -1;
-            foreach (string id in idBooks)
-            {
-                if (id == idBook)
-                {
-                    index = idBooks.IndexOf(id);
-                }
-            }
-            idBooks.Remove(idBook);
-            nameBooks.RemoveAt(index);
-            amountBooks.RemoveAt(index);
-            totalInCart();
+            strSQL = "proc_deleteBookBillOutput";
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBillOutput", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public void totalInCart()
+        public bool modifyItemInCart(string idBook, string idNewBook, int amountBook, int amountNewBook, ref string err)
         {
-            totalBill = 0; 
-            int index = -1;
-            if (!idBooks.Any())
-            {
-                return;
-            }
-            foreach(string idBook in idBooks)
-            {
-                index = idBook.IndexOf(idBook);
-                totalBill += (book.getPriceExportOfBook(idBook, ref err) * amountBooks[index]);
-            }
+            strSQL = "proc_updateBookBillOutput";
+            parameters = new List<SqlParameter>();
+
+            parameter = new SqlParameter("@idBillOutput", idBill);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idBook", idBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@idnewBook", idNewBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@amountBook", amountBook);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@amountNewBook", amountNewBook);
+            parameters.Add(parameter);
+
+            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
     }
 }
+

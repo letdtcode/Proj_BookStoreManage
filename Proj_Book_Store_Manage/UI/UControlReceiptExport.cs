@@ -31,13 +31,11 @@ namespace Proj_Book_Store_Manage.UI
         public UControlReceiptExport()
         {
             InitializeComponent();
-            dtpReceiptExport.Format = DateTimePickerFormat.Custom;
-            dtpReceiptExport.CustomFormat = "dd-MM-yyyy";
         }
         
         private void btnDetailExportReceipt_Click(object sender, EventArgs e)
         {
-            FormDetailReceiptExport frm_DetailReceiptExport = new FormDetailReceiptExport(this.lblID.Text);
+            FormSale frm_DetailReceiptExport = new FormSale(this.lblID.Text);
             frm_DetailReceiptExport.ShowDialog();
         }
 
@@ -49,18 +47,12 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(dtpReceiptExport.Value.ToShortDateString());
-            /*this.lblID.Text = utl.createID("HDX");
-            isAdd = true;
-            utl.SetNullForAllControl();
-            utl.setEnableControl(true);
-            utl.SetEnableButton(new List<Button> { btnEdit, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);*/
             string idBill = utl.createID("BILL");
-            cart = new CartBL();
-            FormDetailReceiptExport frmDetailReceiptExport = new FormDetailReceiptExport(idBill);
-            frmDetailReceiptExport.FormClosed += Edit_FormDetailReceiptExportClosed;
-            frmDetailReceiptExport.Show();
+            cart = new CartBL(idBill);
+            receiptExport.addNewReceiptExport(idBill, ref err);
+            FormSale frmSale = new FormSale(idBill);
+            frmSale.FormClosed += Edit_FormDetailReceiptExportClosed;
+            frmSale.Show();
         }
         private void Edit_FormDetailReceiptExportClosed(object sender, FormClosedEventArgs e)
         {
@@ -127,16 +119,11 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            LoadDataIntoCbCus(cus.getAllIDCustomer());
-            LoadDataIntoCbEmployee(employee.getAllIDEmployee());
-            controls = new List<Control> { dtpReceiptExport, cbIDEmp, cbIDCus };
             dtReceiptExport = receiptExport.getDataReceiptExport();
             dgvReceiptExport.DataSource = dtReceiptExport;
-            utl = new Utilities(controls, dgvReceiptExport);
+            utl = new Utilities(dgvReceiptExport);
             dgvReceiptExport.AutoResizeColumns();
-            utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
-            //utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
-            utl.setEnableControl(false);
+            utl.SetEnableButton(new List<Button>() { btnDetailExportReceipt }, false);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -156,36 +143,22 @@ namespace Proj_Book_Store_Manage.UI
 
         private void dgvReceiptExport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           /* utl.CellClick(btnCancel, btnDelete);
-            lblID.Text = utl.IDCurrent;
-            dtpReceiptExport.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[1].Value.ToString();
-            lblTotal.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
-            cbIDCus.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
-            cbIDEmp.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[4].Value.ToString();
-            lblStt.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[5].Value.ToString();*/
-        }
-
-        /*private void btnInvoice_Click(object sender, EventArgs e)
-        {
-            receiptExport.invoiceBill(utl.IDCurrent, ref err);
-        }*/
-        private void LoadDataIntoCbCus(List<string> idCustomers)
-        {
-            cbIDCus.Items.Clear();
-            foreach(string idCus in idCustomers)
+            try
             {
-                cbIDCus.Items.Add(idCus);
+                utl.CellClick(btnDetailExportReceipt);
+                this.lblID.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[0].Value.ToString();
+                string dt = DateTime.Parse(dgvReceiptExport.Rows[utl.rowCurrent].Cells[1].Value.ToString()).ToString("dd/MM/yyyy");
+                this.lblDateBill.Text = dt;
+                this.lblTotal.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
+                this.lblIdCustomer.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
+                this.lblIDEmployee.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[4].Value.ToString();
             }
-        }
-        private void LoadDataIntoCbEmployee(List<string> idEmployee)
-        {
-            cbIDEmp.Items.Clear();
-            foreach (string idEmp in idEmployee)
+            catch
             {
-                cbIDEmp.Items.Add(idEmp);
+                result = MessageBox.Show("Hóa đơn này không có giá trị ! Vui lòng chọn hóa đơn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
         }
-
         private void gbReceiptExport_Enter(object sender, EventArgs e)
         {
 

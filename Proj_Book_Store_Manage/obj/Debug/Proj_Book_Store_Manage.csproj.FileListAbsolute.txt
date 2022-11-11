@@ -17,7 +17,6 @@ D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlPublisher.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlVoucher.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlBookOverview.resources
-D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptExport.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptImport.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlReceiptExport.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlReceiptImport.resources
@@ -26,5 +25,7 @@ D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlCustomerOverview.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlInfoCustomer.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.UControlTypeCustomer.resources
-D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormSaleBook.resources
-D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormEditDetailReceiptExport.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormSale.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormSelectUsing.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormImportBook.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormEditItemSale.resources

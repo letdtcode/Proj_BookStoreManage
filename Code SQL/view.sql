@@ -112,6 +112,7 @@ as
 select *
 from dbo.BILLINPUT
 go
+select * from dbo.view_ReceiptImport
 --View chi tiết hóa đơn nhập
 create or alter view view_DetailReceiptImport
 as
@@ -136,6 +137,7 @@ select BOOK_BILLOUTPUT.idBook as ID, BOOK_BILLOUTPUT.nameBook as N'Tên Sách', 
 from dbo.BOOK_BILLOUTPUT, dbo.BOOK
 where dbo.BOOK_BILLOUTPUT.idBook
 go
+
 --View thông tin khách hàng
 create or alter view view_Customer
 as

@@ -116,11 +116,26 @@ CONSTRAINT fk_collect FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee),
 CONSTRAINT fk_Discount FOREIGN KEY (idVoucher) REFERENCES VOUCHER (idVoucher),
 )
 GO 
+alter table dbo.BILLOUTPUT
+add constraint df_total
+default 0 for total
+go
+alter table dbo.BILLOUTPUT
+alter column dateOfBill date null
+go
 alter table dbo.billoutput
 drop column 
 go
 alter table dbo.billoutput
 drop constraint DF__BILLOUTPU__total__3D5E1FD2
+go
+delete from dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL10'
+go
+delete from dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutput='BILL10'
+go
+
 go
 CREATE TABLE [dbo].ACCOUNT (
 idAccount varchar(8) NOT NULL,
@@ -173,7 +188,6 @@ idBillInput varchar(8) NOT NULL,
 dateOfInput date NULL,
 total int NOT NULL DEFAULT 0,
 idEmployee varchar(8) NULL,
-sttus bit default 0,
 
 CONSTRAINT pk_billinput PRIMARY KEY (idBillInput),
 CONSTRAINT fk_employee_checkin FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee)
