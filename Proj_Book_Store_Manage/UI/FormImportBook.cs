@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Proj_Book_Store_Manage.UI
 {
-    public partial class FormSaleBook : Form
+    public partial class FormImportBook : Form
     {
-        public FormSaleBook()
+        public FormImportBook()
         {
             InitializeComponent();
         }
+
+       
     }
 }

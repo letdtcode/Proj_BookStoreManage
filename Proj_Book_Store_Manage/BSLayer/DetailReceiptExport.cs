@@ -23,7 +23,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         public DetailReceiptExport(string idBill)
         {
             db = new DBMain();
-            this.IdBill = idBill;
+            this.idBill = idBill;
         }
         public DataTable getDataBook()
         {
@@ -50,12 +50,12 @@ namespace Proj_Book_Store_Manage.BSLayer
             cmd.Parameters.AddWithValue("@idBill", IdBill);
             return db.ExecuteFunctionToString(cmd, ref err);
         }
-        public bool addNewDetailReceiptExport(string idBillOutput, string idBook, int amount, ref string err)
+        public bool addNewDetailReceiptExport(string idBook, int amount, ref string err)
         {
             strSQL = "proc_addNewBookBillOutput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idBillOutput", idBillOutput);
+            parameter = new SqlParameter("@idBillOutput", idBill);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idBook", idBook);

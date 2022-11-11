@@ -23,10 +23,18 @@ namespace Proj_Book_Store_Manage.DBLayer
 
         public DBMain()
         {
-            conn = new SqlConnection(ConnStr);
-            cmd = conn.CreateCommand();
-            dt = new DataTable();
-            conn.Open();
+
+            try
+            {
+                conn = new SqlConnection(ConnStr);
+                cmd = conn.CreateCommand();
+                dt = new DataTable();
+                conn.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Trả về Datatable để load dữ liệu lên form từ view
         public DataTable LoadData(string nameView, CommandType ct)
@@ -96,6 +104,31 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return valueReturn;
         }
+        public int ExecuteFunctionToInt(SqlCommand cmdFunction, ref string error)
+        {
+            int valueReturn = -1;
+            error = "";
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            conn.Open();
+            cmd = cmdFunction;
+            cmd.Connection = conn;
+            try
+            {
+                valueReturn = int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            catch (SqlException ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+                error = ex.Message;
+                MessageBox.Show(error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return valueReturn;
+        }
         //Trả về true, false thực thi procedure
         public bool ExecuteProcedure(string sqlProcedure, CommandType ct, List<SqlParameter> parameters, ref string error)
         {
@@ -131,38 +164,6 @@ namespace Proj_Book_Store_Manage.DBLayer
                 conn.Close();
             }
             return f;
-        }
-
-        public DataTable search (string strSQL, CommandType ct, List<SqlParameter> parameters, ref string error)
-        {
-            error = "";
-            dt = new DataTable();
-            if (conn.State == ConnectionState.Open)
-            {
-                conn.Close();
-            }
-
-            try
-            {
-                conn.Open();
-                cmd.CommandText = strSQL;
-                cmd.CommandType = ct;
-                adapter = new SqlDataAdapter(cmd);
-
-                adapter.Fill(dt);
-
-            }
-            catch (Exception ex)
-            {
-                error = ex.Message;
-                dt = null;
-            }
-             finally
-            {
-                conn.Close();
-            }
-            return dt;
-
         }
     }
 }

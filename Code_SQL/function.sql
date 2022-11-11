@@ -1,6 +1,6 @@
-﻿use BOOKSTOREMANAGE
+﻿
+use BOOKSTOREMANAGE
 go
-
 -----------------------------------------Function phụ trợ--------------------------------------------------
 --Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào
 create or alter function func_totalPayBeforeDiscount(@idBill varchar(8))
@@ -166,6 +166,7 @@ as
 			from dbo.BOOK_BILLOUTPUT, dbo.BOOK
 			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK_BILLOUTPUT.idBook=BOOK.idBook )
 go
+select * from dbo.func_getDataOfBillOutput(N'HDX1')
 --Hàm trả về tên khách hàng (đầu vào là mã Bill)
 create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
 returns varchar(30)
@@ -186,72 +187,76 @@ end
 go
 select dbo.func_getNameEmpOfBillOutPut('HDX1')
 go
-create or alter function func_cal
-
-
-
-
-
-----------------------------------------------------------Dũng thêm phần billoutput ()
-------------------------------------------------------------Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào----------------
-
-create or alter function func_totalPayBeforeDiscount(@idBill varchar(8))
+--Hàm trả về giá bán của 1 loại sách, đầu vào là idBook
+create or alter function func_getPriceExportOfBook(@idBook varchar(8))
 returns int
-as
 begin
-	declare @totalPrice int
-	set @totalPrice= (
-	select sum(priceExport*amountOutput)
-	from dbo.BOOK,dbo.BOOK_BILLOUTPUT
-	where BOOK.idBook=BOOK_BILLOUTPUT.idBook and @idBill=BOOK_BILLOUTPUT.idBillOutput)
-
-	if (@totalPrice is null)
-	begin
-		set @totalPrice = 0
-	end
-	return @totalPrice
+return (select dbo.BOOK.priceExport
+from dbo.BOOK
+where dbo.BOOK.idBook=@idBook)
+end
+go
+----------------------------------------------CHỨC NĂNG XEM CHI TIẾT ĐƠN HÀNG XUất---------------
+create or alter function func_getNameBookById(@idBook varchar(8))
+returns varchar(20)
+begin
+return (select dbo.BOOK.nameBook
+from dbo.BOOK
+where dbo.BOOK.idBook=@idBook)
+end
+go
+select dbo.func_getNameBookById('BK2')
+go
+create or alter function func_getAmountBookById(@idBook varchar(8))
+returns int
+begin
+return (select dbo.BOOK.amount
+from dbo.BOOK
+where dbo.BOOK.idBook=@idBook)
+end
+go
+--Tính tổng tiền hóa đơn xuất
+create or alter function func_returnToTalOfBillOutput(@idBill varchar(8))
+returns int
+begin
+if not exists(select * from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
+return 0
+return (select sum(Q.TotalBook) 
+	from (select dbo.BOOK_BILLOUTPUT.amountOutput*dbo.BOOK.priceExport as TotalBook from dbo.BOOK_BILLOUTPUT, dbo.BOOK where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK.idBook=dbo.BOOK_BILLOUTPUT.idBook) as Q)
+end
+go
+Select dbo.func_returnToTalOfBillOutput('BILL1')
+--Tính tổng tiền hóa đơn nhập
+create or alter function func_returnToTalOfBillInput(@idBill varchar(8))
+returns int
+begin
+return (select sum(Q.TotalBook) 
+	from (select dbo.BOOK_BILLINPUT.amountInput*dbo.BOOK.priceImport as TotalBook from dbo.BOOK_BILLINPUT, dbo.BOOK where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK.idBook=dbo.BOOK_BILLINPUT.idBook) as Q)
 end
 go
 
------------------------------------------------------------- Tính số tiền được giảm giá----------------------------------------------------------
-create or alter function fuc_discount(@idbill varchar(8))
-returns float
-as
-begin
-	declare @discountVoucher float, @discountCustomer float, @discount float
-	set @discountVoucher = (select valueVoucher from VOUCHER, BILLOUTPUT where idBillOutPut like @idbill and VOUCHER.idVoucher like BILLOUTPUT.idVoucher)
-	set @discountCustomer = (select valueTypeCus from BILLOUTPUT, CUSTOMER, TYPECUSTOMER where idBillOutPut like @idbill and BILLOUTPUT.idCus like CUSTOMER.idCus and 
-	CUSTOMER.idTypeCus like TYPECUSTOMER.idTypeCus)
-	if (@discountCustomer is null)
-	begin
-		set @discountCustomer = 0
-	end
-
-	set @discount = @discountCustomer + @discountVoucher
-
-
-	set @discount = (@discount/100)*  dbo.func_totalPayBeforeDiscount(@idbill)
-	return @discount
-end
 go
-
-------------------------------------------------------------Hàm tính tổng tiền hóa đơn hiện tại------------------------------------
-create or alter function func_totalPayCurrent(@idBill varchar(8))
-returns int
-as 
-begin
-	declare @totalPrice int, @discount float
-	set @discount = (
-		select valueVoucher from Voucher, BILLOUTPUT 
-		where idBillOutPut = @idBill and 
-			VOUCHER.idVoucher = BILLOUTPUT.idVoucher
+----------------------------------------------Dũng thêm-------------------------------------------
+---Hàm trả về mã nhân viên, tên nhân viên khi đăng nhập
+create or alter function func_getIdEmployee (@user varchar(20), @password varchar(30))
+returns @table table (
+	idEmp varchar(8),
+	nameEmp nvarchar (40)
 	)
-	if (@discount is NULL)
-	begin
-		set @discount = 0
-	end
-	set @totalPrice=dbo.func_totalPayBeforeDiscount(@idBill) - (Convert(float,@discount)/100)*dbo.func_totalPayBeforeDiscount(@idBill)
-	return @totalPrice
+as
+begin
+	declare @idEmp varchar(8), @firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), @name nvarchar (40)
+	select @idEmp = ACCOUNT.idEmployee,
+	@middleName = middleName,
+	@firstName = firstName,
+	@lastName = lastName from ACCOUNT, EMPLOYEE 
+	where  nameAccount=@user and
+			password = @password and
+			ACCOUNT.idEmployee = EMPLOYEE.idEmployee
+
+			
+	set @name = @firstName + ' ' + @middleName + ' ' + @lastName
+	insert into @table values (@idEmp, @name)
+	return
 end
 go
-
