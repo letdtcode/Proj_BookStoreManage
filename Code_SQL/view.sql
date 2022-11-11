@@ -8,8 +8,9 @@ select PUBLISHER.idPublisher,namePublisher, count(idBook) as  amountTitle,sum(am
 from BOOK, PUBLISHER
 where BOOK.idPublisher= PUBLISHER.idPublisher
 group by PUBLISHER.idPublisher, namePublisher
+go
 
-select * from view_book_publisher
+--select * from view_book_publisher
 
 --2.Thống kê mã sách, tên sách kèm số lượng đã bán của mỗi sách
 create view view_Book_BillOutput
@@ -19,7 +20,7 @@ from BOOK,BILLOUTPUT,BOOK_BILLOUTPUT
 where BOOK.idBook= BOOK_BILLOUTPUT.idBook and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
 group by Book.idBook, nameBook
 
-select * from view_Book_BillOutput
+--select * from view_Book_BillOutput
 go
 
 --3.	Xuất thông tin về khách hàng bao gồm : mã khách hàng, tên , địa chỉ, số điện thoại, loại khách hàng và số lượng sách đã mua
@@ -36,7 +37,7 @@ where CUSTOMER.idTypeCus = TYPECUSTOMER.idTypeCus
 group by CUSTOMER.idCus, CUSTOMER.nameCus,
 		CUSTOMER.addressCus, CUSTOMER.phoneNumber, nameTypeCus
 
-select * from view_customer_bookOutput
+--select * from view_customer_bookOutput
 go
 
 --4.	Thống kê doanh thu theo từng ngày:
@@ -46,26 +47,26 @@ select dateOfBill, sum(total) as revenue
 from BILLOUTPUT
 group by dateOfBill
 
-select * from view_Revenue_BillOutput
+--select * from view_Revenue_BillOutput
 go
 
 --5.	Xem chi tiết hóa đơn bao gồm: mã hóa đơn, ngày xuất đơn, tên nhân viên, tên khách hàng,loại khách hàng, tên sách, số lượng mua, giá bán của sách, tổng tiền một loại sách, voucher được áp dụng ( cho toàn hóa đơn)
-create view view_detail_BillOutPut
-as
-select BILLOUTPUT.idBillOutPut, firstName + middleName + lastName as nameEm, 
-	CUSTOMER.nameCus,nameTypeCus,BOOK.idBook, nameBook, priceExport, amountOutput, 
-	priceExport*amountOutput*valueVoucher/100 as totalPrice, valueVoucher, dateOfBill
-from BILLOUTPUT, BOOK, VOUCHER, CUSTOMER, EMPLOYEE,BOOK_BILLOUTPUT, TYPECUSTOMER, DISCOUNT
-where BILLOUTPUT.idCus= CUSTOMER.idCus and
-	  BILLOUTPUT.idEmployee= EMPLOYEE.idEmployee and
-	  BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput and
-	  BOOK_BILLOUTPUT.idBook= BOOK.idBook and
-	  CUSTOMER.idTypeCus= TYPECUSTOMER.idTypeCus and
-	  VOUCHER.idVoucher= DISCOUNT.idVoucher and
-	  DISCOUNT.idBill = BILLOUTPUT.idBillOutPut
+--create view view_detail_BillOutPut
+--as
+--select BILLOUTPUT.idBillOutPut, firstName + middleName + lastName as nameEm, 
+--	CUSTOMER.nameCus,nameTypeCus,BOOK.idBook, nameBook, priceExport, amountOutput, 
+--	priceExport*amountOutput*valueVoucher/100 as totalPrice, valueVoucher, dateOfBill
+--from BILLOUTPUT, BOOK, VOUCHER, CUSTOMER, EMPLOYEE,BOOK_BILLOUTPUT, TYPECUSTOMER, DISCOUNT
+--where BILLOUTPUT.idCus= CUSTOMER.idCus and
+--	  BILLOUTPUT.idEmployee= EMPLOYEE.idEmployee and
+--	  BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput and
+--	  BOOK_BILLOUTPUT.idBook= BOOK.idBook and
+--	  CUSTOMER.idTypeCus= TYPECUSTOMER.idTypeCus and
+--	  VOUCHER.idVoucher= DISCOUNT.idVoucher and
+--	  DISCOUNT.idBill = BILLOUTPUT.idBillOutPut
 
-select * from view_detail_BillOutPut
-go
+----select * from view_detail_BillOutPut
+--go
 ------------------------------View-------------------------------------------
 --View tác giả
 create or alter view view_Author
@@ -106,6 +107,7 @@ go
 select *
 from dbo.view_Account
 go
+
 --View hóa đơn nhập
 create or alter view view_ReceiptImport
 as

@@ -42,6 +42,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.gbAccount = new System.Windows.Forms.GroupBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.cbTypeAcc = new System.Windows.Forms.ComboBox();
             this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.lblEmployee = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnShowResult = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuthor)).BeginInit();
             this.gbAccount.SuspendLayout();
@@ -85,7 +85,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(35, 25);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 43);
@@ -96,7 +96,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnDelete
             // 
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(35, 139);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 43);
@@ -107,7 +107,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnEdit
             // 
-            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(35, 82);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(110, 43);
@@ -118,7 +118,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(35, 196);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 43);
@@ -129,7 +129,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(35, 253);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 43);
@@ -152,37 +152,39 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtPassword
             // 
+            this.txtPassword.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(188, 175);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(247, 22);
+            this.txtPassword.Size = new System.Drawing.Size(247, 26);
             this.txtPassword.TabIndex = 2;
             // 
             // txtUserName
             // 
+            this.txtUserName.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(188, 114);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(247, 22);
+            this.txtUserName.Size = new System.Drawing.Size(247, 26);
             this.txtUserName.TabIndex = 2;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.Location = new System.Drawing.Point(21, 174);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(94, 23);
+            this.lblPassword.Size = new System.Drawing.Size(97, 23);
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Mật Khẩu";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Location = new System.Drawing.Point(21, 113);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(160, 23);
+            this.lblUserName.Size = new System.Drawing.Size(150, 23);
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Tên Đăng Nhập";
             // 
@@ -199,6 +201,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbAccount.Controls.Add(this.lblIDAcount);
             this.gbAccount.Controls.Add(this.lbl10);
             this.gbAccount.Controls.Add(this.lblUserName);
+            this.gbAccount.Font = new System.Drawing.Font("Century", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAccount.Location = new System.Drawing.Point(30, 19);
             this.gbAccount.Margin = new System.Windows.Forms.Padding(4);
             this.gbAccount.Name = "gbAccount";
@@ -208,46 +211,58 @@ namespace Proj_Book_Store_Manage.UI
             this.gbAccount.TabStop = false;
             this.gbAccount.Text = "Thông tin tác giả";
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(184, 54);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(57, 23);
+            this.lblID.TabIndex = 5;
+            this.lblID.Text = "None";
+            // 
             // cbTypeAcc
             // 
+            this.cbTypeAcc.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTypeAcc.FormattingEnabled = true;
             this.cbTypeAcc.Items.AddRange(new object[] {
             "Admin",
             "Nhân Viên"});
             this.cbTypeAcc.Location = new System.Drawing.Point(653, 77);
             this.cbTypeAcc.Name = "cbTypeAcc";
-            this.cbTypeAcc.Size = new System.Drawing.Size(136, 24);
+            this.cbTypeAcc.Size = new System.Drawing.Size(136, 26);
             this.cbTypeAcc.TabIndex = 4;
             // 
             // cbEmployee
             // 
+            this.cbEmployee.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEmployee.FormattingEnabled = true;
             this.cbEmployee.Items.AddRange(new object[] {
             "1"});
             this.cbEmployee.Location = new System.Drawing.Point(653, 123);
             this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(136, 24);
+            this.cbEmployee.Size = new System.Drawing.Size(136, 26);
             this.cbEmployee.TabIndex = 3;
             // 
             // lblEmployee
             // 
             this.lblEmployee.AutoSize = true;
-            this.lblEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmployee.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployee.Location = new System.Drawing.Point(497, 125);
             this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(112, 23);
+            this.lblEmployee.Size = new System.Drawing.Size(107, 23);
             this.lblEmployee.TabIndex = 1;
             this.lblEmployee.Text = "Nhân Viên";
             // 
             // lblTypeAcc
             // 
             this.lblTypeAcc.AutoSize = true;
-            this.lblTypeAcc.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTypeAcc.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTypeAcc.Location = new System.Drawing.Point(497, 79);
             this.lblTypeAcc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTypeAcc.Name = "lblTypeAcc";
-            this.lblTypeAcc.Size = new System.Drawing.Size(139, 23);
+            this.lblTypeAcc.Size = new System.Drawing.Size(146, 23);
             this.lblTypeAcc.TabIndex = 1;
             this.lblTypeAcc.Text = "Loại Tài Khoản";
             // 
@@ -258,17 +273,17 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDAcount.Location = new System.Drawing.Point(184, 54);
             this.lblIDAcount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIDAcount.Name = "lblIDAcount";
-            this.lblIDAcount.Size = new System.Drawing.Size(0, 23);
+            this.lblIDAcount.Size = new System.Drawing.Size(0, 21);
             this.lblIDAcount.TabIndex = 0;
             // 
             // lbl10
             // 
             this.lbl10.AutoSize = true;
-            this.lbl10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl10.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl10.Location = new System.Drawing.Point(21, 54);
             this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl10.Name = "lbl10";
-            this.lbl10.Size = new System.Drawing.Size(121, 23);
+            this.lbl10.Size = new System.Drawing.Size(109, 23);
             this.lbl10.TabIndex = 0;
             this.lbl10.Text = "ID Account";
             // 
@@ -286,6 +301,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnShowResult
             // 
+            this.btnShowResult.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowResult.Location = new System.Drawing.Point(927, 178);
             this.btnShowResult.Name = "btnShowResult";
             this.btnShowResult.Size = new System.Drawing.Size(84, 40);
@@ -296,6 +312,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Location = new System.Drawing.Point(927, 92);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(84, 45);
@@ -303,16 +320,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(184, 54);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(63, 23);
-            this.lblID.TabIndex = 5;
-            this.lblID.Text = "None";
             // 
             // UControlAccount
             // 

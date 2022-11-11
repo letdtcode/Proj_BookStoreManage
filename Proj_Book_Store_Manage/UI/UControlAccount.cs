@@ -25,7 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isEdit = false;
         AccountBL account = new AccountBL();
         EmployeeBL employee = new EmployeeBL();
-        private bool roleTemp;
+        private int roleTemp;
         public UControlAccount()
         {
             InitializeComponent();
@@ -85,9 +85,9 @@ namespace Proj_Book_Store_Manage.UI
             try
             {
                 if (cbTypeAcc.Text == "Admin")
-                    roleTemp = true;
+                    roleTemp = 1;
                 else
-                    roleTemp = false;
+                    roleTemp = 0;
                 if (utl.checkAllControlIsFill() == false)
                 {
                     result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
