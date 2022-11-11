@@ -29,19 +29,10 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void FormEditDetailReceiptExport_Load(object sender, EventArgs e)
         {
-            this.cbIDBook.Text = idBook;
+            this.lblIdBook.Text = idBook;
             this.lblNameBook.Text = book.getNameBook(idBook, ref err).ToString();
             int index = -1;
             this.lblInfoAmount.Text = "Số lượng sách còn trong kho: " + book.getAmountBook(idBook, ref err).ToString();
-            loadDataIDBook();
-        }
-        private void loadDataIDBook()
-        {
-            cbIDBook.Items.Clear();
-            foreach(string idBook in book.getAllIdBook())
-            {
-                cbIDBook.Items.Add(idBook);
-            }
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -50,7 +41,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void editValue()
         {
-            cart.modifyItemInCart(this.idBook, this.cbIDBook.Text, this.amount, int.Parse(this.txtAmount.Text.ToString()), ref err);
+            cart.modifyItemInCart(this.idBook,this.amount, int.Parse(this.nnrAmount.Text.ToString()), ref err);
             if (err == "")
             {
                 MessageBox.Show("Cập nhật thành công");

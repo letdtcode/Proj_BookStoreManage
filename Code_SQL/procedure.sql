@@ -878,6 +878,7 @@ begin
 	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 end
 go
+
 --Xác nhận hủy một hóa đơn đang thêm
 create or alter procedure proc_cancelBillExport
 @idBill varchar(8)
@@ -906,7 +907,6 @@ end
 create or alter procedure proc_updateBookBillOutput
 @idBillOutput varchar(8),
 @idBook varchar(8),
-@idnewBook varchar(8),
 @amountBook int,
 @amountNewBook int
 as
@@ -915,17 +915,14 @@ begin
 		begin try
 			--Cập nhật lại thông tin trong giỏ hàng
 			update dbo.BOOK_BILLOUTPUT
-			set idBook=@idnewBook, amountOutput=@amountNewBook
+			set amountOutput=@amountNewBook
 			where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
 
 			--Cập nhật lại số lượng sách trong kho
 			update dbo.BOOK
-			set dbo.BOOK.amount=dbo.BOOK.amount+@amountBook
+			set dbo.BOOK.amount=dbo.BOOK.amount+@amountBook-@amountNewBook
 			where dbo.BOOK.idBook=@idBook
-	 
-			update dbo.BOOK
-			set dbo.BOOK.amount=dbo.BOOK.amount-@amountNewBook
-			where dbo.BOOK.idBook=@idnewBook
+
 			commit transaction
 		end try
 	begin catch

@@ -71,7 +71,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyItemInCart(string idBook, string idNewBook, int amountBook, int amountNewBook, ref string err)
+        public bool modifyItemInCart(string idBook, int amountBook, int amountNewBook, ref string err)
         {
             strSQL = "proc_updateBookBillOutput";
             parameters = new List<SqlParameter>();
@@ -80,9 +80,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idBook", idBook);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idnewBook", idNewBook);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@amountBook", amountBook);

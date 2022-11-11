@@ -30,14 +30,12 @@ namespace Proj_Book_Store_Manage
         {
             using (FormSelectUsing frmSelectUsing = new FormSelectUsing())
             {
-
                 try
                 {
-
                     DBMain.UserName = this.txtUserName.Text.ToString().Trim();
                     DBMain.Password = this.txtPassword.Text.ToString().Trim();
                     DBMain dBMain = new DBMain();
-                    frmSelectUsing.ShowDialog();
+                    //frmSelectUsing.ShowDialog();
                     using (FormDashBoard frmDashBoard = new FormDashBoard())
                     {
                   
