@@ -15,6 +15,8 @@ namespace Proj_Book_Store_Manage.UI
         public FormDashBoard()
         {
             InitializeComponent();
+            this.lblNameEmployee.Text = frmLogin.nameEmp;
+            this.lblRole.Text = frmLogin.idRole;
         }
 
         private void FormDashBoard_Load(object sender, EventArgs e)

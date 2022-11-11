@@ -57,19 +57,20 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (typecustomer.deleteTypeCustomer(utl.IDCurrent, ref err) == true)
+                        typecustomer.deleteTypeCustomer(utl.IDCurrent, ref err);
+                        if ( err == "")
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
                         else
-                            MessageBox.Show("Xoá thất bại !");
+                            MessageBox.Show(err);
 
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể xóa !");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -103,9 +104,9 @@ namespace Proj_Book_Store_Manage.UI
                             MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Thông tin không hợp lệ","Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     }
                 }
                 else if (isEdit)

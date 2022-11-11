@@ -1,4 +1,5 @@
-﻿use BOOKSTOREMANAGE
+﻿
+use BOOKSTOREMANAGE
 go
 -----------------------------------------Function phụ trợ--------------------------------------------------
 --Hàm tính tổng tiền hóa đơn khi chưa áp dụng bất cứ voucher nào
@@ -234,4 +235,31 @@ return (select sum(Q.TotalBook)
 end
 go
 
+go
+----------------------------------------------Dũng thêm-------------------------------------------
+---Hàm trả về mã nhân viên, tên nhân viên khi đăng nhập
+create or alter function func_getIdEmployee (@user varchar(20), @password varchar(30))
+returns @table table (
+	idEmp varchar(8),
+	nameEmp nvarchar (40),
+	idRole bit
+	)
+as
+begin
+	declare @idEmp varchar(8), @firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), @name nvarchar (40), @idRole bit
+	select @idEmp = ACCOUNT.idEmployee,
+	@middleName = middleName,
+	@firstName = firstName,
+	@lastName = lastName,
+	@idRole = typeOfAcc
+	from ACCOUNT, EMPLOYEE 
+	where  nameAccount=@user and
+			password = @password and
+			ACCOUNT.idEmployee = EMPLOYEE.idEmployee
+
+			
+	set @name = @firstName + ' ' + @middleName + ' ' + @lastName
+	insert into @table values (@idEmp, @name, @idRole)
+	return
+end
 go

@@ -15,6 +15,7 @@ namespace Proj_Book_Store_Manage.UI
         public FormDetailReceiptImport()
         {
             InitializeComponent();
+            this.lblNameEmployee.Text = frmLogin.nameEmp;
         }
 
         private void btnExit_MouseEnter(object sender, EventArgs e)

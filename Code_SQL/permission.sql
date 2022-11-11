@@ -17,19 +17,43 @@ begin
 	else if(@role = 0) 
 	begin
 		--cấp quyền vào các bảng
-		set @state = 'grant select, update, delete, insert, control to '+ @user
+		set @state = 'grant select, update, delete, insert to '+ @user
+		exec (@state)
+		set @state = 'grant exec to '+ @user
 		exec (@state)
 		-- cấm quyền vào account
-		set @state = 'deny control, select, update, insert, delete on object::ACCOUNT To ' + @user
-		exec (@state)
-		-- cấm quyền vào nhân viên
-		set @state = 'deny control, select, update, insert, delete on object::EMPLOYEE To ' + @user
+		set @state = 'deny select, update, insert, delete on object::ACCOUNT To ' + @user
 		exec (@state)
 		-- cấm quyền xem account
-		set @state = 'deny control, select, update, insert, delete on object::view_Account to ' + @user
+		set @state = 'deny select, update, insert, delete on object::view_Account to ' + @user
+		exec (@state)
+		-- cấm quyền thêm account
+		set @state = 'deny exec on object::proc_addNewAccount to ' + @user
+		exec (@state)
+		-- cấm quyền chỉnh sửa account
+		set @state = 'deny exec on object::proc_updateAccount to ' + @user
+		exec (@state)
+		-- cấm quyền xóa account
+		set @state = 'deny exec on object::proc_DeleteAccount to ' + @user
+		exec (@state)
+		-- cấm quyền tìm kiếm account
+		set @state = 'deny select, update, insert, delete on object::func_searchAccount to ' + @user
+		exec (@state)
+
+		-- cấm quyền vào nhân viên
+		set @state = 'deny select, update, insert, delete on object::EMPLOYEE To ' + @user
 		exec (@state)
 		--cấm quyền xem nhân viên
-		set @state = 'deny control, select, update, insert, delete on object::view_Employee to ' + @user
+		set @state = 'deny select, update, insert, delete on object::view_Employee to ' + @user
+		exec (@state)
+		-- Cấm quyền thêm nhân viên
+		set @state = 'deny exec on object::proc_addNewEmployee to ' + @user
+		exec (@state)
+		-- Cấm quyền sửa nhân viên
+		set @state = 'deny exec on object::proc_updateEmployee to ' + @user
+		exec (@state)
+		-- Cấm quyền xóa nhân viên
+		set @state = 'deny exec on object::proc_deleteEmployee to ' + @user
 		exec (@state)
 		
 		print N'Đã gán quyền user'
