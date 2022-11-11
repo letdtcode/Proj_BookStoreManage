@@ -17,6 +17,9 @@ namespace Proj_Book_Store_Manage.UI
             InitializeComponent();
         }
 
-       
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

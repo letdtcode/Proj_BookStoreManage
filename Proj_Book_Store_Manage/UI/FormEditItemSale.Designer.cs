@@ -37,11 +37,13 @@ namespace Proj_Book_Store_Manage.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblNameBook = new System.Windows.Forms.Label();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.cbIDBook = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblInfoAmount = new System.Windows.Forms.Label();
+            this.nnrAmount = new System.Windows.Forms.NumericUpDown();
+            this.lblIdBook = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nnrAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -120,22 +122,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook.TabIndex = 8;
             this.lblNameBook.Text = "Tên sách";
             // 
-            // txtAmount
-            // 
-            this.txtAmount.Location = new System.Drawing.Point(217, 215);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(213, 22);
-            this.txtAmount.TabIndex = 9;
-            // 
-            // cbIDBook
-            // 
-            this.cbIDBook.FormattingEnabled = true;
-            this.cbIDBook.Location = new System.Drawing.Point(217, 97);
-            this.cbIDBook.Name = "cbIDBook";
-            this.cbIDBook.Size = new System.Drawing.Size(213, 24);
-            this.cbIDBook.TabIndex = 10;
-            this.cbIDBook.SelectedValueChanged += new System.EventHandler(this.cbIDBook_SelectedValueChanged);
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -167,16 +153,45 @@ namespace Proj_Book_Store_Manage.UI
             this.lblInfoAmount.TabIndex = 19;
             this.lblInfoAmount.Text = "Số lượng còn trong kho: ";
             // 
+            // nnrAmount
+            // 
+            this.nnrAmount.Location = new System.Drawing.Point(217, 215);
+            this.nnrAmount.Name = "nnrAmount";
+            this.nnrAmount.Size = new System.Drawing.Size(120, 22);
+            this.nnrAmount.TabIndex = 20;
+            // 
+            // lblIdBook
+            // 
+            this.lblIdBook.AutoSize = true;
+            this.lblIdBook.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdBook.Location = new System.Drawing.Point(212, 91);
+            this.lblIdBook.Name = "lblIdBook";
+            this.lblIdBook.Size = new System.Drawing.Size(78, 30);
+            this.lblIdBook.TabIndex = 21;
+            this.lblIdBook.Text = "None";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.HotPink;
+            this.label4.Location = new System.Drawing.Point(155, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(261, 37);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "UPDATE AMOUNT";
+            // 
             // FormEditItemSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 356);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblIdBook);
+            this.Controls.Add(this.nnrAmount);
             this.Controls.Add(this.lblInfoAmount);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cbIDBook);
-            this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblNameBook);
@@ -190,6 +205,7 @@ namespace Proj_Book_Store_Manage.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditDetailReceiptExport";
             this.Load += new System.EventHandler(this.FormEditDetailReceiptExport_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nnrAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,10 +221,11 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblNameBook;
-        private System.Windows.Forms.TextBox txtAmount;
-        private System.Windows.Forms.ComboBox cbIDBook;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblInfoAmount;
+        private System.Windows.Forms.NumericUpDown nnrAmount;
+        private System.Windows.Forms.Label lblIdBook;
+        private System.Windows.Forms.Label label4;
     }
 }

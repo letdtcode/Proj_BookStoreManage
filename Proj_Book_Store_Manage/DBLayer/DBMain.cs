@@ -23,7 +23,6 @@ namespace Proj_Book_Store_Manage.DBLayer
 
         public DBMain()
         {
-
             try
             {
                 conn = new SqlConnection(ConnStr);
