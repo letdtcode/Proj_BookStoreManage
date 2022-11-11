@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proj_Book_Store_Manage.BSLayer;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace Proj_Book_Store_Manage.UI
 {

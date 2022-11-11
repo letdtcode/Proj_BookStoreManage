@@ -226,6 +226,38 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
+        public List<string> getAllIdBook()
+        {
+            List<string> dataIdBook = new List<string>();
+            DataTable dtBook = new DataTable();
+            dtBook = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtBook.Rows)
+            {
+                dataIdBook.Add(row[0].ToString());
+            }
+            return dataIdBook;
+        }
+        public string getNameBook(string idBook, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("select dbo.func_getNameBookById(@idBook)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBook", idBook);
+            return db.ExecuteFunctionToString(cmd, ref err);
+        }
+        public int getAmountBook(string idBook, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("select dbo.func_getAmountBookById(@idBook)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBook", idBook);
+            return db.ExecuteFunctionToInt(cmd, ref err);
+        }
+        public int getPriceExportOfBook(string idBook, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("select dbo.func_getPriceExportOfBook(@idBook)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBook", idBook);
+            return db.ExecuteFunctionToInt(cmd, ref err);
+        }
         /*public DataTable addNewCateForBook(int idBook, int nameBook, ref string err)
         {
             strSQL = "proc_addNewBookCategory";

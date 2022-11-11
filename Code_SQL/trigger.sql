@@ -2,35 +2,48 @@
 go
 --------------------------------------------TRIGGER-----------------------------------------
 --Kiểm tra trả về lỗi nếu ngày xuất hóa đơn trước ngày nhập sách về và kiểm tra số lượng sách trong hóa đơn phải còn trong kho thì mới được bán
-create or alter trigger trg_checkDateBillOut
-on BOOK_BILLOUTPUT
-for insert, update
+drop trigger trg_checkDateBillOut
+go
+create or alter trigger trg_checkInsertCart
+on dbo.BOOK_BILLOUTPUT
+for insert
 as
 begin	
-	declare @dateOutput date, @idBill varchar(8), @dateInput date, @numBookSold int, @idBookSold varchar(8)
-	select @dateOutput=(select BILLOUTPUT.dateOfBill from dbo.BILLOUTPUT where BILLOUTPUT.idBillOutPut=i.idBillOutput),
-	@idBill=i.idBillOutput,
-	@numBookSold=i.amountOutput,
-	@idBookSold=i.idBook
+	declare @numBookSold int, @numBookRemain int, @idBook varchar(8)
+	select @numBookSold=i.amountOutput, @idBook=i.idBook
 	from inserted i
-
-	select @dateInput=BILLINPUT.dateOfInput
-	from dbo.BOOK_BILLOUTPUT,dbo.BOOK_BILLINPUT,dbo.BILLINPUT
-	where @idBill=BOOK_BILLOUTPUT.idBillOutput and BOOK_BILLOUTPUT.idBook=BOOK_BILLINPUT.idBook and BOOK_BILLINPUT.idBillInput=BILLINPUT.idBillInput
-
-	if(@dateOutput<@dateInput)
-		begin
-			print(N'Thời gian không hợp lệ')
-			rollback transaction
-		end
-	if (@numBookSold >= (select BOOK.amount from dbo.BOOK where @idBookSold=BOOK.idBook))
+	
+	set @numBookRemain=(select dbo.BOOK.amount from dbo.BOOK where dbo.BOOK.idBook=@idBook)
+	if (@numBookSold > @numBookRemain)
 	begin
-		print (N'Số lượng sách trong kho không đáp ứng đủ !')
+		raiserror('Số lượng sách trong kho không đáp ứng đủ !',16,1)
 		rollback transaction
 	end
 end
 go
-drop trigger trg_discountAndUpdateVoucher
+create or alter trigger trg_checkUpdateCart
+on dbo.BOOK_BILLOUTPUT
+for update
+as
+begin	
+	declare @numBookSold int, @numBookRemain int, @numBookDelete int, @idBookInsert varchar(8), @idBookDelete varchar(8)
+	select @numBookSold=i.amountOutput,@numBookDelete=d.amountOutput, @idBookInsert=i.idBook,@idBookDelete=d.idBook
+	from inserted i, deleted d
+
+	if(charindex(@idBookInsert,@idBookDelete)>=0)
+		set @numBookRemain=((select BOOK.amount from dbo.BOOK where @idBookInsert=BOOK.idBook)+@numBookDelete)
+	else
+		set @numBookRemain=(select BOOK.amount from dbo.BOOK where @idBookInsert=BOOK.idBook)
+	if (@numBookSold > @numBookRemain)
+	begin
+		raiserror('Số lượng sách trong kho không đáp ứng đủ !',16,1)
+		rollback transaction
+	end
+end
+go
+insert into dbo.BILLOUTPUT(idBillOutPut) values('BILL1')
+go
+insert into dbo.BOOK_BILLOUTPUT(idBillOutput,idBook,amountOutput) values('BILL1','BK2',2)
 
 --Kiểm tra điều kiện tổng tiền được giảm không quá 50% giá trị đơn hàng và voucher phải còn hạn sử dụng thì mới áp dụng được
 --create or alter trigger trg_discountAndUpdateVoucher

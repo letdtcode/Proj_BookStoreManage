@@ -24,6 +24,12 @@ namespace Proj_Book_Store_Manage
             rowIDCurrentIndex = null;
             rowCurrentIndex = -1;
         }
+        public Utilities(DataGridView dgv)
+        {
+            this.dgv = dgv;
+            rowIDCurrentIndex = null;
+            rowCurrentIndex = -1;
+        }
         public bool CheckIDValid
         {
             get => checkIDValid;
@@ -105,6 +111,23 @@ namespace Proj_Book_Store_Manage
             /*rowCurrentIndex = dgv.SelectedCells[0].RowIndex;
             SetEnableButton(new List<Button>() { Cancel, Delete }, true);
             rowIDCurrentIndex = (int)dgv.Rows[rowCurrentIndex].Cells[0].Value;*/
+        }
+        public void CellClick(Button DetailReceipt)
+        {
+            rowCurrentIndex = dgv.SelectedCells[0].RowIndex;
+
+            if (rowCurrentIndex > dgv.RowCount - 2)
+            {
+                checkIDValid = false;
+                SetEnableButton(new List<Button>() { DetailReceipt }, false);
+                rowIDCurrentIndex = null;
+            }
+            else
+            {
+                checkIDValid = true;
+                SetEnableButton(new List<Button>() { DetailReceipt }, true);
+                rowIDCurrentIndex = dgv.Rows[rowCurrentIndex].Cells[0].Value.ToString();
+            }
         }
         public bool checkAllControlIsFill()
         {

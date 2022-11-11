@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,7 @@
     <Compile Include="BSLayer\AccountBL.cs" />
     <Compile Include="BSLayer\AuthorBL.cs" />
     <Compile Include="BSLayer\BookBL.cs" />
+    <Compile Include="BSLayer\CartBL.cs" />
     <Compile Include="BSLayer\CategoryBL.cs" />
     <Compile Include="BSLayer\CustomerBL.cs" />
     <Compile Include="BSLayer\DetailReceiptExport.cs" />
@@ -71,11 +73,17 @@
     <Compile Include="UI\FormDashBoard.Designer.cs">
       <DependentUpon>FormDashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormDetailReceiptExport.cs">
+    <Compile Include="UI\FormImportBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormDetailReceiptExport.Designer.cs">
-      <DependentUpon>FormDetailReceiptExport.cs</DependentUpon>
+    <Compile Include="UI\FormImportBook.Designer.cs">
+      <DependentUpon>FormImportBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormSale.Designer.cs">
+      <DependentUpon>FormSale.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormDetailReceiptImport.cs">
       <SubType>Form</SubType>
@@ -83,11 +91,11 @@
     <Compile Include="UI\FormDetailReceiptImport.Designer.cs">
       <DependentUpon>FormDetailReceiptImport.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormEditDetailReceiptExport.cs">
+    <Compile Include="UI\FormEditItemSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormEditDetailReceiptExport.Designer.cs">
-      <DependentUpon>FormEditDetailReceiptExport.cs</DependentUpon>
+    <Compile Include="UI\FormEditItemSale.Designer.cs">
+      <DependentUpon>FormEditItemSale.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormLogin.cs">
       <SubType>Form</SubType>
@@ -97,11 +105,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\FormSaleBook.cs">
+    <Compile Include="UI\FormSelectUsing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormSaleBook.Designer.cs">
-      <DependentUpon>FormSaleBook.cs</DependentUpon>
+    <Compile Include="UI\FormSelectUsing.Designer.cs">
+      <DependentUpon>FormSelectUsing.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UControlAccount.cs">
       <SubType>UserControl</SubType>
@@ -194,14 +202,17 @@
     <EmbeddedResource Include="UI\FormDashBoard.resx">
       <DependentUpon>FormDashBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormDetailReceiptExport.resx">
-      <DependentUpon>FormDetailReceiptExport.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormImportBook.resx">
+      <DependentUpon>FormImportBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSale.resx">
+      <DependentUpon>FormSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDetailReceiptImport.resx">
       <DependentUpon>FormDetailReceiptImport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormEditDetailReceiptExport.resx">
-      <DependentUpon>FormEditDetailReceiptExport.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormEditItemSale.resx">
+      <DependentUpon>FormEditItemSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -215,8 +226,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\FormSaleBook.resx">
-      <DependentUpon>FormSaleBook.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormSelectUsing.resx">
+      <DependentUpon>FormSelectUsing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UControlAccount.resx">
       <DependentUpon>UControlAccount.cs</DependentUpon>

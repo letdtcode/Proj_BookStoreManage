@@ -28,21 +28,26 @@ namespace Proj_Book_Store_Manage
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
-            try
+            using (FormSelectUsing frmSelectUsing = new FormSelectUsing())
             {
 
-                DBMain.UserName = this.txtUserName.Text.ToString().Trim();
-                DBMain.Password = this.txtPassword.Text.ToString().Trim();
-                DBMain dBMain = new DBMain();
-                using (FormDashBoard frmDashBoard = new FormDashBoard())
+                try
                 {
-                    frmDashBoard.ShowDialog();
+
+                    DBMain.UserName = this.txtUserName.Text.ToString().Trim();
+                    DBMain.Password = this.txtPassword.Text.ToString().Trim();
+                    DBMain dBMain = new DBMain();
+                    frmSelectUsing.ShowDialog();
+                    using (FormDashBoard frmDashBoard = new FormDashBoard())
+                    {
+                  
+                        frmDashBoard.ShowDialog();
+                    }
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

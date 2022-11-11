@@ -84,77 +84,6 @@ begin
 	end catch
 end
 go
---Tìm kiếm account
---create or alter procedure proc_searchAccount
---@idAccount varchar(8),
---@userName varchar(20),
---@password varchar(30),
---@typeAcc bit,
---@idEmployee varchar(8)
---as
---begin
---select * 
---from dbo.ACCOUNT
---where 
-
---end
---go
---CHưa
--- Đổi mật khẩu account
---create or alter procedure proc_changepassAcc
---@acc_name varchar(30),
---@password_old varchar(30),
---@password_new varchar(30),
---@password_confirm varchar(30)
---as
---begin 
---	declare @acc_passwd varchar(30), @status varchar(150)
---	if exists(select *from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name and ACCOUNT.pass = @password_old)
---	begin 
---		if(@password_old != @password_new)
---		begin 
---			if(@password_new = @password_confirm)
---			begin
---				update dbo.ACCOUNT set ACCOUNT.pass=@password_new
---				where ACCOUNT.nameAccount = @acc_name
---				set @status = 'Thay đổi mật khẩu thành công!!'
---			end
---			else
---			begin
---				set @status = 'Xác nhận mật khẩu không chính xác!!'
---			end
---		end
---		else
---		begin
---			set @status = 'New password must be different from the old password'
---		end
---	end
---	else
---	begin
---		set @status = 'Mật khẩu không chính xác!'
---	end
---	select @status as status
-
---end
---go
-----Kiểm tra đăng nhập
---create or alter procedure proc_checklogin
---@acc_name varchar(30),
---@password varchar(30)
---as
---begin
---	declare @status nvarchar(50), @role varchar(30)
---	if exists (select * from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name and ACCOUNT.pass = @password)
---	begin
---		set @role = (select typeOfAcc from dbo.ACCOUNT where ACCOUNT.nameAccount = @acc_name)
---		set @status = 'Đăng nhập thành công!';
---	end
---	else
---		set @status = 'Sai thông tin đăng nhập!!';
---	select @status as status, @role as role
---end
---go
-
 --PROCEDURE THÊM, SỬA, XÓA AUTHOR
 --Thêm một Author
 create or alter procedure proc_addNewAuthor
@@ -177,8 +106,6 @@ begin
 		)
 end
 go
-
-
 --Chỉnh sửa một Author
 create or alter procedure proc_updateAuthor
 @idAuthor varchar(8),
@@ -206,7 +133,6 @@ create or alter procedure proc_addNewBook
 @idBook varchar(8),
 @nameBook nvarchar(20),
 @urlImage image,
-@amount int,
 @priceImport int,
 @priceExport int,
 @idPublisher varchar(8)
@@ -217,7 +143,6 @@ begin
 	idBook,
 	nameBook,
 	urlImage,
-	amount,
 	priceImport,
 	priceExport,
 	idPublisher
@@ -227,7 +152,6 @@ begin
 	@idBook,
 	@nameBook,
 	@urlImage,
-	@amount,
 	@priceImport,
 	@priceExport,
 	@idPublisher
@@ -239,14 +163,13 @@ create or alter procedure proc_updateBook
 @idBook varchar(8),
 @nameBook nvarchar(20),
 @urlImage image,
-@amount int,
 @priceImport int,
 @priceExport int,
 @idPublisher varchar(8)
 as
 begin
 	update dbo.BOOK
-	set BOOK.nameBook=@nameBook, BOOK.urlImage=@urlImage, BOOK.amount=@amount, BOOK.priceImport=@priceImport, BOOK.priceExport=@priceExport, BOOK.idPublisher=@idPublisher
+	set BOOK.nameBook=@nameBook, BOOK.urlImage=@urlImage, BOOK.priceImport=@priceImport, BOOK.priceExport=@priceExport, BOOK.idPublisher=@idPublisher
 	where dbo.BOOK.idBook=@idBook
 end
 go
@@ -672,127 +595,137 @@ go
 --PROCEDURE THÊM SỬA XÓA BILLINPUT
 --Thêm một BillInput
 create or alter procedure proc_addNewBillInput
-@idBillInput varchar(8),
-@dateOfInput date,
-@idEmployee varchar(8)
+@idBillInput varchar(8)
 as
 begin
 	insert into dbo.BILLINPUT
 		(
-	idBillInput,
-	dateOfInput,
-	idEmployee
+	idBillInput
 		)
 	values
 		(
-	@idBillInput,
-	@dateOfInput,
-	@idEmployee
+	@idBillInput
 		)
 end
 go
---Sửa một BillInput
-create or alter procedure proc_updateBillInput
+----Sửa một BillInput
+--create or alter procedure proc_updateBillInput
+--@idBillInput varchar(8),
+--@dateOfInput date,
+--@idEmployee varchar(8)
+--as
+--begin
+--	update dbo.BILLINPUT
+--	set dateOfInput=@dateOfInput,idEmployee=@idEmployee
+--	where dbo.BILLINPUT.idBillInput=@idBillInput
+--end
+--go
+----Xóa một BillInput
+--create or alter procedure proc_deleteBillInput
+--@idBillInput varchar(8)
+--as
+--begin
+--	delete from dbo.BILLINPUT
+--	where dbo.BILLINPUT.idBillInput=@idBillInput
+--end
+--go
+--Xuất hóa đơn BillInput
+create or alter procedure proc_confirmBillImport
 @idBillInput varchar(8),
-@dateOfInput date,
+@dateOfBill date,
 @idEmployee varchar(8)
 as
 begin
-	update dbo.BILLINPUT
-	set dateOfInput=@dateOfInput,idEmployee=@idEmployee
+	declare @totalOfBill int
+
+	select @totalOfBill=dbo.BILLINPUT.total
+	from dbo.BILLINPUT
 	where dbo.BILLINPUT.idBillInput=@idBillInput
-end
-go
---Xóa một BillInput
-create or alter procedure proc_deleteBillInput
-@idBillInput varchar(8)
-as
-begin
-	delete from dbo.BILLINPUT
-	where dbo.BILLINPUT.idBillInput=@idBillInput
-end
-go
---Xuất hóa đơn BillInput
-create or alter procedure proc_invoiceBillInput
-@idBillInput varchar(8)
-as
-begin
-	if(dbo.func_checkInvoiceBillIn(@idBillInput)=0)
-		raiserror(N'Hóa đơn đã được xuất!',16,1)
-	else if(dbo.func_checkInvoiceBillIn(@idBillInput)=-1)
-		raiserror(N'Tổng tiền hóa đơn phải lớn hơn 0',16,1)
-	else
+
+	if(@totalOfBill<=0)
 	begin
-			update dbo.BILLINPUT
-			set dbo.BILLINPUT.sttus=1
+			delete from dbo.BILLINPUT
 			where dbo.BILLINPUT.idBillInput=@idBillInput
+			return;
 	end
+	update dbo.BILLINPUT
+	set dateOfInput=@dateOfBill, idEmployee=@idEmployee
+	where dbo.BILLINPUT.idBillInput=@idBillInput
 end
 go
 --PROCEDURE THÊM SỬA XÓA BILLOUTPUT
 --Thêm một BillOutput
 create or alter procedure proc_addNewBillOutput
-@idBillOutput varchar(8),
-@dateOfOutput date,
-@idCus varchar(8),
-@idEmployee varchar(8)
+@idBillOutput varchar(8)
 as
 begin
 	insert into dbo.BILLOUTPUT
 		(
-	idBillOutPut,
-	dateOfBill,
-	idCus,
-	idEmployee
+	idBillOutPut
 		)
 	values
 		(
-	@idBillOutput,
-	@dateOfOutput,
-	@idCus,
-	@idEmployee
+	@idBillOutput
 		)
 end
 go
---Sửa một BillOutput
-create or alter procedure proc_updateBillOutput
-@idBillOutput varchar(8),
-@dateOfBill date,
-@idCus varchar(8),
-@idEmployee varchar(8)
-as
-begin
-	update dbo.BILLOUTPUT
-	set dateOfBill=@dateOfBill, idCus=@idCus, idEmployee=@idEmployee
-	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-end
-go
---Xóa một BillOuput
-create or alter procedure proc_deleteBillOutput
-@idBillOutput varchar(8)
-as
-begin
-	delete from dbo.BILLOUTPUT
-	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-end
-go
+DELETE FROM dbo.Billoutput WHERE idBilloutput='BILL4';
+----Sửa một BillOutput
+--create or alter procedure proc_updateBillOutput
+--@idBillOutput varchar(8),
+--@dateOfBill date,
+--@total int,
+--@idCus varchar(8),
+--@idEmployee varchar(8),
+--@sttus bit,
+--@idVoucher varchar(8)
+--as
+--begin
+--	update dbo.BILLOUTPUT
+--	set dateOfBill=@dateOfBill, total=@total, idCus=@idCus, idEmployee=@idEmployee, sttus=@sttus, idVoucher=@idVoucher
+--	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+--end
+--go
+----Xóa một BillOuput
+--create or alter procedure proc_deleteBillOutput
+--@idBillOutput varchar(8)
+--as
+--begin
+--	begin transaction
+
+--	declare @stt bit
+--	select @stt=sttus
+--	from dbo.BILLOUTPUT
+--	if(@stt=0)
+--	begin
+--		delete from dbo.BILLOUTPUT
+--		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+--		commit transaction
+--	end
+--	else
+--		begin
+--			raiserror('Hóa đơn đã xuất không thể xóa',16,1)
+--			rollback transaction
+--		end
+--end
+--go
 --Xuất hóa đơn BillOutput
-create or alter procedure proc_invoiceBillOutput
-@idBillOutput varchar(8)
-as
-begin
-	if(dbo.func_checkInvoiceBillOut(@idBillOutput)=0)
-		raiserror(N'Hóa đơn đã được xuất!',16,1)
-	else if(dbo.func_checkInvoiceBillOut(@idBillOutput)=-1)
-		raiserror(N'Tổng tiền hóa đơn phải lớn hơn 0',16,1)
-	else
-	begin
-			update dbo.BILLOUTPUT
-			set dbo.BILLOUTPUT.sttus=1
-			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-	end
-end
-go
+--create or alter procedure proc_invoiceBillOutput
+--@idBillOutput varchar(8)
+--as
+--begin
+--	if(dbo.func_checkInvoiceBillOut(@idBillOutput)=0)
+--		raiserror(N'Hóa đơn đã được xuất!',16,1)
+--	else if(dbo.func_checkInvoiceBillOut(@idBillOutput)=-1)
+--		raiserror(N'Tổng tiền hóa đơn phải lớn hơn 0',16,1)
+--	else
+--	begin
+--			update dbo.BILLOUTPUT
+--			set dbo.BILLOUTPUT.sttus=1
+--			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+--	end
+--end
+--go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLINPUT
 --Thêm một BOOK_BILLINPUT
 create or alter procedure proc_addNewBookBillInput
@@ -801,18 +734,37 @@ create or alter procedure proc_addNewBookBillInput
 @amountInput int
 as
 begin
-	insert into dbo.BOOK_BILLINPUT
-		(
-	idBillInput,
-	idBook,
-	amountInput
-		)
-	values
-		(
-	@idBillInput,
-	@idBook,
-	@amountInput
-		)
+	begin transaction
+	begin try
+		insert into dbo.BOOK_BILLINPUT
+			(
+		idBillInput,
+		idBook,
+		amountInput
+			)
+		values
+			(
+		@idBillInput,
+		@idBook,
+		@amountInput
+			)
+		--Cập nhật lại số lượng sách trong cửa hàng
+		update dbo.BOOK
+		set dbo.BOOK.amount=dbo.BOOK.amount+@amountInput
+		where dbo.BOOK.idBook=@idBook
+
+		--Cập nhật tổng tiền hóa đơn
+		declare @totalBill int 
+		select @totalBill=dbo.func_returnToTalOfBillInput(@idBillInput)
+
+		update dbo.BILLINPUT
+		set dbo.BILLINPUT.total=@totalBill
+		where dbo.BILLINPUT.idBillInput=@idBillInput
+	commit transaction
+	end try
+	begin catch
+		rollback transaction
+	end catch
 end
 go
 --Sửa một BOOK_BILLINPUT
@@ -855,39 +807,131 @@ begin
 end
 go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLOUTPUT
---Thêm một BOOK_BILLOUTPUT
+--Thêm sản phẩm vào hóa đơn
 create or alter procedure proc_addNewBookBillOutput
 @idBillOutput varchar(8),
 @idBook varchar(8),
 @amount int
 as
 begin
-	insert into dbo.BOOK_BILLOUTPUT
-		(
-	idBillOutput,
-	idBook,
-	amountOutput
-		)
-	values
-		(
-	@idBillOutput,
-	@idBook,
-	@amount
-		)
+		--Thêm item vào bảng (amount đảm bảo thỏa ràng buộc do đã có trigger)
+		if(exists(select * from dbo.BOOK_BILLOUTPUT 
+						where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook))
+				begin
+					update dbo.BOOK_BILLOUTPUT
+					set amountOutput=amountOutput+@amount
+					where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
+				end
+		else
+			begin
+				insert into dbo.BOOK_BILLOUTPUT
+				(
+				idBillOutput,
+				idBook,
+				amountOutput
+				)
+				values
+				(
+				@idBillOutput,
+				@idBook,
+				@amount
+				)
+			end
+		--Cập nhật lại số lượng sách trong giỏ hảng
+		update dbo.BOOK
+		set dbo.BOOK.amount=dbo.BOOK.amount-@amount
+		where dbo.BOOK.idBook=@idBook
+
+		--Cập nhật tổng tiền hóa đơn
+		declare @totalBill int 
+		select @totalBill=dbo.func_returnToTalOfBillOutput(@idBillOutput)
+
+		update dbo.BILLOUTPUT
+		set dbo.BILLOUTPUT.total=@totalBill
+		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 end
 go
-EXEC dbo.proc_addNewBookBillOutput @idBillOutput = 'HDX1', @idBook='BK1', @amount=200
+--Xác nhận xuất hóa đơn
+create or alter procedure proc_confirmBillExport
+@idBillOutput varchar(8),
+@dateTimeOfBill date,
+@idCus varchar(8),
+@idEmp varchar(8),
+@idVoucher varchar(8)
+as
+begin
+	declare @totalOfBill int
+
+	select @totalOfBill=dbo.BILLOUTPUT.total
+	from dbo.BILLOUTPUT
+	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+
+	if(@totalOfBill<=0)
+	begin
+			delete from dbo.BILLOUTPUT
+			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+			return;
+	end
+
+	update dbo.BILLOUTPUT
+	set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher
+	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+end
+go
+--Xác nhận hủy một hóa đơn đang thêm
+create or alter procedure proc_cancelBillExport
+@idBill varchar(8)
+as 
+begin
+	--Duyệt qua từng idBook trong hóa đơn
+	declare @idBook varchar(8)
+	declare item cursor for (select dbo.BOOK_BILLOUTPUT.idBook from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
+	open item
+	fetch next from item into @idBook
+	while @@FETCH_STATUS=0
+	begin
+		execute proc_deleteBookBillOutput @idBill, @idBook
+		fetch next from item into @idBook
+	end
+	close item
+	deallocate item
+
+	--Xóa hóa đơn đó
+	delete from dbo.BILLOUTPUT
+	where dbo.BILLOUTPUT.idBillOutPut=@idBill
+end
+
+
 --Sửa một BOOK_BILLOUTPUT
 create or alter procedure proc_updateBookBillOutput
 @idBillOutput varchar(8),
 @idBook varchar(8),
 @idnewBook varchar(8),
-@amount int
+@amountBook int,
+@amountNewBook int
 as
 begin
-	update dbo.BOOK_BILLOUTPUT
-	set idBook=@idnewBook, amountOutput=@amount
-	where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
+	begin transaction
+		begin try
+			--Cập nhật lại thông tin trong giỏ hàng
+			update dbo.BOOK_BILLOUTPUT
+			set idBook=@idnewBook, amountOutput=@amountNewBook
+			where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
+
+			--Cập nhật lại số lượng sách trong kho
+			update dbo.BOOK
+			set dbo.BOOK.amount=dbo.BOOK.amount+@amountBook
+			where dbo.BOOK.idBook=@idBook
+	 
+			update dbo.BOOK
+			set dbo.BOOK.amount=dbo.BOOK.amount-@amountNewBook
+			where dbo.BOOK.idBook=@idnewBook
+			commit transaction
+		end try
+	begin catch
+		raiserror('Đã có lỗi xảy ra. Vui lòng thử lại',16,1)
+		rollback transaction
+	end catch
 end
 go
 --Xóa một BOOK_BILLOUTPUT
@@ -896,7 +940,84 @@ create or alter procedure proc_deleteBookBillOutput
 @idBook varchar(8)
 as
 begin
+	--Lấy ra số lượng sách có trong hóa đơn
+	declare @amountBook int
+
+	select @amountBook=dbo.BOOK_BILLOUTPUT.amountOutput
+	from dbo.BOOK_BILLOUTPUT
+	where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
+	--Xóa sách đó trong hóa đơn
 	delete from dbo.BOOK_BILLOUTPUT
 	where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
+	--Cập nhật lại số lượng trong kho
+	update dbo.BOOK
+	set dbo.BOOK.amount=dbo.BOOK.amount+@amountBook
+	where dbo.BOOK.idBook=@idBook
 end
 go
+insert into dbo.BILLOUTPUT(idBillOutPut) values ('BILL1')
+go
+insert into dbo.BOOK_BILLOUTPUT (idBillOutput,idBook,amountOutput) values ('BILL1','BK1',200)
+
+
+---------------------------------------------
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL1'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL1'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL2'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL2'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL3'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL3'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL4'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL4'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL5'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL5'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL6'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL6'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL7'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL7'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL8'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL8'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL9'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL9'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL10'
+go
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='BILL10'
+

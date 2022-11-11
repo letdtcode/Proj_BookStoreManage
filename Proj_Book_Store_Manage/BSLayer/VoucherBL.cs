@@ -86,5 +86,16 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
+        public List<string> getAllIdVoucher()
+        {
+            List<string> dataIdVoucher = new List<string>();
+            DataTable dtVoucher = new DataTable();
+            dtVoucher = db.LoadData(nameView, CommandType.Text);
+            foreach (DataRow row in dtVoucher.Rows)
+            {
+                dataIdVoucher.Add(row[0].ToString());
+            }
+            return dataIdVoucher;
+        }
     }
 }

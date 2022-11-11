@@ -1,7 +1,7 @@
 ﻿
 namespace Proj_Book_Store_Manage.UI
 {
-    partial class FormDetailReceiptExport
+    partial class FormSale
     {
         /// <summary>
         /// Required designer variable.
@@ -32,13 +32,17 @@ namespace Proj_Book_Store_Manage.UI
             this.lblID = new System.Windows.Forms.Label();
             this.lblAmount = new System.Windows.Forms.Label();
             this.gbDetailReceiptExport = new System.Windows.Forms.GroupBox();
+            this.cbIdEmployee = new System.Windows.Forms.ComboBox();
+            this.cbIdCustomer = new System.Windows.Forms.ComboBox();
+            this.dtpReceiptExport = new System.Windows.Forms.DateTimePicker();
+            this.lblDateExport = new System.Windows.Forms.Label();
+            this.lblVoucher = new System.Windows.Forms.Label();
+            this.cbIdVoucher = new System.Windows.Forms.ComboBox();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblIDReceipt = new System.Windows.Forms.Label();
             this.lblMoney = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.lblNameCustomer = new System.Windows.Forms.Label();
-            this.lblNameEmployee = new System.Windows.Forms.Label();
             this.txtAmountBook = new System.Windows.Forms.TextBox();
             this.lblBook = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -54,12 +58,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.idBook = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameBook = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblAnnounce = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.gbDetailReceiptExport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListBook)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,27 +88,85 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbDetailReceiptExport
             // 
+            this.gbDetailReceiptExport.Controls.Add(this.cbIdEmployee);
+            this.gbDetailReceiptExport.Controls.Add(this.cbIdCustomer);
+            this.gbDetailReceiptExport.Controls.Add(this.dtpReceiptExport);
+            this.gbDetailReceiptExport.Controls.Add(this.lblDateExport);
+            this.gbDetailReceiptExport.Controls.Add(this.lblVoucher);
+            this.gbDetailReceiptExport.Controls.Add(this.cbIdVoucher);
             this.gbDetailReceiptExport.Controls.Add(this.lblID);
             this.gbDetailReceiptExport.Controls.Add(this.lblCustomer);
             this.gbDetailReceiptExport.Controls.Add(this.lblName);
             this.gbDetailReceiptExport.Controls.Add(this.lblIDReceipt);
             this.gbDetailReceiptExport.Controls.Add(this.lblMoney);
             this.gbDetailReceiptExport.Controls.Add(this.lblTotal);
-            this.gbDetailReceiptExport.Controls.Add(this.lblNameCustomer);
-            this.gbDetailReceiptExport.Controls.Add(this.lblNameEmployee);
             this.gbDetailReceiptExport.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDetailReceiptExport.Location = new System.Drawing.Point(47, 88);
             this.gbDetailReceiptExport.Name = "gbDetailReceiptExport";
-            this.gbDetailReceiptExport.Size = new System.Drawing.Size(723, 167);
+            this.gbDetailReceiptExport.Size = new System.Drawing.Size(756, 230);
             this.gbDetailReceiptExport.TabIndex = 27;
             this.gbDetailReceiptExport.TabStop = false;
             this.gbDetailReceiptExport.Text = "Thông tin đơn hàng";
+            // 
+            // cbIdEmployee
+            // 
+            this.cbIdEmployee.FormattingEnabled = true;
+            this.cbIdEmployee.Location = new System.Drawing.Point(564, 40);
+            this.cbIdEmployee.Name = "cbIdEmployee";
+            this.cbIdEmployee.Size = new System.Drawing.Size(121, 29);
+            this.cbIdEmployee.TabIndex = 37;
+            // 
+            // cbIdCustomer
+            // 
+            this.cbIdCustomer.FormattingEnabled = true;
+            this.cbIdCustomer.Location = new System.Drawing.Point(553, 85);
+            this.cbIdCustomer.Name = "cbIdCustomer";
+            this.cbIdCustomer.Size = new System.Drawing.Size(121, 29);
+            this.cbIdCustomer.TabIndex = 36;
+            // 
+            // dtpReceiptExport
+            // 
+            this.dtpReceiptExport.Location = new System.Drawing.Point(198, 124);
+            this.dtpReceiptExport.Name = "dtpReceiptExport";
+            this.dtpReceiptExport.Size = new System.Drawing.Size(176, 28);
+            this.dtpReceiptExport.TabIndex = 35;
+            // 
+            // lblDateExport
+            // 
+            this.lblDateExport.AutoSize = true;
+            this.lblDateExport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateExport.Location = new System.Drawing.Point(16, 123);
+            this.lblDateExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDateExport.Name = "lblDateExport";
+            this.lblDateExport.Size = new System.Drawing.Size(161, 23);
+            this.lblDateExport.TabIndex = 34;
+            this.lblDateExport.Text = "Ngày Bán Sách";
+            // 
+            // lblVoucher
+            // 
+            this.lblVoucher.AutoSize = true;
+            this.lblVoucher.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVoucher.Location = new System.Drawing.Point(379, 182);
+            this.lblVoucher.Name = "lblVoucher";
+            this.lblVoucher.Size = new System.Drawing.Size(115, 30);
+            this.lblVoucher.TabIndex = 33;
+            this.lblVoucher.Text = "Voucher";
+            // 
+            // cbIdVoucher
+            // 
+            this.cbIdVoucher.FormattingEnabled = true;
+            this.cbIdVoucher.Items.AddRange(new object[] {
+            "Không áp dụng"});
+            this.cbIdVoucher.Location = new System.Drawing.Point(553, 185);
+            this.cbIdVoucher.Name = "cbIdVoucher";
+            this.cbIdVoucher.Size = new System.Drawing.Size(163, 29);
+            this.cbIdVoucher.TabIndex = 32;
             // 
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(277, 115);
+            this.lblCustomer.Location = new System.Drawing.Point(379, 85);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(159, 30);
             this.lblCustomer.TabIndex = 5;
@@ -118,7 +176,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(277, 37);
+            this.lblName.Location = new System.Drawing.Point(379, 37);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(138, 30);
             this.lblName.TabIndex = 5;
@@ -138,7 +196,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblMoney.AutoSize = true;
             this.lblMoney.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMoney.Location = new System.Drawing.Point(6, 116);
+            this.lblMoney.Location = new System.Drawing.Point(15, 182);
             this.lblMoney.Name = "lblMoney";
             this.lblMoney.Size = new System.Drawing.Size(119, 30);
             this.lblMoney.TabIndex = 5;
@@ -148,31 +206,11 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(138, 116);
+            this.lblTotal.Location = new System.Drawing.Point(147, 182);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(26, 30);
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Text = "0";
-            // 
-            // lblNameCustomer
-            // 
-            this.lblNameCustomer.AutoSize = true;
-            this.lblNameCustomer.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCustomer.Location = new System.Drawing.Point(449, 115);
-            this.lblNameCustomer.Name = "lblNameCustomer";
-            this.lblNameCustomer.Size = new System.Drawing.Size(238, 30);
-            this.lblNameCustomer.TabIndex = 6;
-            this.lblNameCustomer.Text = "Nguyễn Đức Thành";
-            // 
-            // lblNameEmployee
-            // 
-            this.lblNameEmployee.AutoSize = true;
-            this.lblNameEmployee.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameEmployee.Location = new System.Drawing.Point(448, 37);
-            this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(238, 30);
-            this.lblNameEmployee.TabIndex = 6;
-            this.lblNameEmployee.Text = "Nguyễn Đức Thành";
             // 
             // txtAmountBook
             // 
@@ -194,7 +232,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(86, 301);
+            this.btnAdd.Location = new System.Drawing.Point(708, 324);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(121, 53);
             this.btnAdd.TabIndex = 22;
@@ -205,11 +243,11 @@ namespace Proj_Book_Store_Manage.UI
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(249, 301);
+            this.btnSave.Location = new System.Drawing.Point(883, 324);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(149, 53);
+            this.btnSave.Size = new System.Drawing.Size(182, 53);
             this.btnSave.TabIndex = 26;
-            this.btnSave.Text = "Cập nhật";
+            this.btnSave.Text = "Xuất hóa đơn";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -321,56 +359,14 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // dgvCart
             // 
-            this.dgvCart.AllowUserToAddRows = false;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idBook,
-            this.nameBook,
-            this.amountColumn,
-            this.editColumn,
-            this.deleteColumn});
-            this.dgvCart.Location = new System.Drawing.Point(824, 392);
+            this.dgvCart.Location = new System.Drawing.Point(817, 392);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 24;
-            this.dgvCart.Size = new System.Drawing.Size(449, 304);
+            this.dgvCart.Size = new System.Drawing.Size(456, 304);
             this.dgvCart.TabIndex = 31;
             this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
-            // 
-            // idBook
-            // 
-            this.idBook.HeaderText = "ID";
-            this.idBook.MinimumWidth = 6;
-            this.idBook.Name = "idBook";
-            this.idBook.Width = 125;
-            // 
-            // nameBook
-            // 
-            this.nameBook.HeaderText = "Tên Sách";
-            this.nameBook.MinimumWidth = 6;
-            this.nameBook.Name = "nameBook";
-            this.nameBook.Width = 125;
-            // 
-            // amountColumn
-            // 
-            this.amountColumn.HeaderText = "Số Lượng";
-            this.amountColumn.MinimumWidth = 6;
-            this.amountColumn.Name = "amountColumn";
-            this.amountColumn.Width = 125;
-            // 
-            // editColumn
-            // 
-            this.editColumn.HeaderText = "Edit";
-            this.editColumn.MinimumWidth = 6;
-            this.editColumn.Name = "editColumn";
-            this.editColumn.Width = 125;
-            // 
-            // deleteColumn
-            // 
-            this.deleteColumn.HeaderText = "Delete";
-            this.deleteColumn.MinimumWidth = 6;
-            this.deleteColumn.Name = "deleteColumn";
-            this.deleteColumn.Width = 125;
             // 
             // lblAnnounce
             // 
@@ -383,7 +379,18 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAnnounce.TabIndex = 15;
             this.lblAnnounce.Text = "Chi Tiết Hóa Đơn Xuất";
             // 
-            // FormDetailReceiptExport
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(1123, 324);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(128, 53);
+            this.btnCancel.TabIndex = 26;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // FormSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -393,6 +400,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gbDetailReceiptExport);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvListBook);
             this.Controls.Add(this.panel4);
@@ -401,9 +409,9 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblAnnounce);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormDetailReceiptExport";
+            this.Name = "FormSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormDetailReceiptExport";
+            this.Text = "FormSale";
             this.Load += new System.EventHandler(this.FormDetailReceiptExport_Load);
             this.gbDetailReceiptExport.ResumeLayout(false);
             this.gbDetailReceiptExport.PerformLayout();
@@ -424,7 +432,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblBook;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblIDReceipt;
-        private System.Windows.Forms.Label lblNameEmployee;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView dgvListBook;
@@ -433,7 +440,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblCustomer;
-        private System.Windows.Forms.Label lblNameCustomer;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblMoney;
         private System.Windows.Forms.Button btnExit;
@@ -442,11 +448,13 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblIDBook;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvCart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idBook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameBook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn editColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
         private System.Windows.Forms.Label lblAnnounce;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblVoucher;
+        private System.Windows.Forms.ComboBox cbIdVoucher;
+        private System.Windows.Forms.DateTimePicker dtpReceiptExport;
+        private System.Windows.Forms.Label lblDateExport;
+        private System.Windows.Forms.ComboBox cbIdEmployee;
+        private System.Windows.Forms.ComboBox cbIdCustomer;
     }
 }
