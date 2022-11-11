@@ -34,8 +34,9 @@ namespace Proj_Book_Store_Manage.UI
             receiptExport = new ReceiptExportBL();
             cart = new CartBL(idBill);
             voucher = new VoucherBL();
-            controls = new List<Control> { dtpReceiptExport, cbIdEmployee, cbIdCustomer, cbIdVoucher };
+            controls = new List<Control> { dtpReceiptExport, cbIdCustomer, cbIdVoucher };
             utl = new Utilities(controls, dgvListBook);
+            this.lbIdEmployee.Text = frmLogin.idEmp;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -52,7 +53,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private bool checkFill()
         {
-            if (this.cbIdCustomer.Text.ToString() == "" || this.cbIdEmployee.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
+            if (this.cbIdCustomer.Text.ToString() == "" || this.lbIdEmployee.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
                 return false;
             return true;
         }
@@ -60,7 +61,7 @@ namespace Proj_Book_Store_Manage.UI
         {
             if (checkFill())
             {
-                receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.cbIdEmployee.Text, this.cbIdVoucher.Text, ref err);
+                receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.lbIdEmployee.Text, this.cbIdVoucher.Text, ref err);
                 this.Close();
             }    
             else
@@ -93,7 +94,6 @@ namespace Proj_Book_Store_Manage.UI
             ReloadAllData();
             LoadDataIntoCbVoucher(voucher.getAllIdVoucher());
             LoadDataIntoCbCustomer(customer.getAllIDCustomer());
-            LoadDataIntoCbEmployee(employee.getAllIDEmployee());
         }
 
         private void dgvListBook_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -197,14 +197,6 @@ namespace Proj_Book_Store_Manage.UI
             foreach (string idCustomer in idCustomers)
             {
                 cbIdCustomer.Items.Add(idCustomer);
-            }
-        }
-        private void LoadDataIntoCbEmployee(List<string> idEmployees)
-        {
-            cbIdEmployee.Items.Clear();
-            foreach (string idEmployee in idEmployees)
-            {
-                cbIdEmployee.Items.Add(idEmployee);
             }
         }
     }

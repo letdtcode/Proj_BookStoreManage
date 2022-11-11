@@ -31,6 +31,7 @@ namespace Proj_Book_Store_Manage.UI
         public UControlReceiptExport()
         {
             InitializeComponent();
+            this.lblIDEmployee.Text = frmLogin.idEmp;
         }
         
         private void btnDetailExportReceipt_Click(object sender, EventArgs e)

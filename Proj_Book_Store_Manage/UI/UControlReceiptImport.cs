@@ -25,11 +25,13 @@ namespace Proj_Book_Store_Manage.UI
         private bool isEdit = false;
         ReceiptImportBL receiptImport = new ReceiptImportBL();
         private EmployeeBL emp = new EmployeeBL();
+        
         public UControlReceiptImport()
         {
             InitializeComponent();
             dtpReceiptImport.Format = DateTimePickerFormat.Custom;
             dtpReceiptImport.CustomFormat = "dd-MM-yyyy";
+            this.lbIdEmployee.Text = frmLogin.idEmp;
         }
 
         private void btnDetailImportReceipt_Click(object sender, EventArgs e)
@@ -102,7 +104,7 @@ namespace Proj_Book_Store_Manage.UI
                     receiptImport = new ReceiptImportBL();
                     try
                     {
-                        receiptImport.addNewReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.cbEmployee.Text, ref err); ;;
+                        receiptImport.addNewReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.lbIdEmployee.Text, ref err); ;;
                         if (err == "")
                         {
                             MessageBox.Show("Thêm hóa đơn nhập thành công !");
@@ -120,7 +122,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    receiptImport.modifyReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.cbEmployee.Text, ref err);
+                    receiptImport.modifyReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.lbIdEmployee.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -161,7 +163,6 @@ namespace Proj_Book_Store_Manage.UI
             lblIDBill.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[0].Value.ToString();
             dtpReceiptImport.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             lblTotal.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
-            cbEmployee.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             lblStt.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[4].Value.ToString();
         }
 
@@ -172,8 +173,7 @@ namespace Proj_Book_Store_Manage.UI
         private void LoadData()
         {
             lblIDBill.Text = "None";
-            LoadDataIntoCbEmp(emp.getAllIDEmployee());
-            controls = new List<Control> { dtpReceiptImport, cbEmployee };
+            controls = new List<Control> { dtpReceiptImport };
             dtReceiptImport = receiptImport.getDataReceiptImport();
             dgvReceiptImport.DataSource = dtReceiptImport;
             utl = new Utilities(controls, dgvReceiptImport);
@@ -181,14 +181,6 @@ namespace Proj_Book_Store_Manage.UI
             utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
             utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
             utl.setEnableControl(false);
-        }
-        private void LoadDataIntoCbEmp(List<string> idEmps)
-        {
-            cbEmployee.Items.Clear();
-            foreach (string idEmp in idEmps)
-            {
-                cbEmployee.Items.Add(idEmp);
-            }
         }
     }
 }

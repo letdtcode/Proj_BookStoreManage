@@ -72,7 +72,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 792);
+            this.panel1.Size = new System.Drawing.Size(222, 749);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -210,7 +210,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.Location = new System.Drawing.Point(97, 161);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 23);
+            this.label1.Size = new System.Drawing.Size(58, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
@@ -256,7 +256,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblInfo.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.Location = new System.Drawing.Point(262, 31);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(468, 39);
+            this.lblInfo.Size = new System.Drawing.Size(391, 32);
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "QUẢN LÝ DỮ LIỆU NHÀ SÁCH";
             // 
@@ -280,9 +280,9 @@ namespace Proj_Book_Store_Manage.UI
             this.lblRole.ForeColor = System.Drawing.Color.Black;
             this.lblRole.Location = new System.Drawing.Point(537, 18);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(74, 23);
+            this.lblRole.Size = new System.Drawing.Size(51, 19);
             this.lblRole.TabIndex = 3;
-            this.lblRole.Text = "Admin";
+            this.lblRole.Text = "None";
             // 
             // lblNameEmployee
             // 
@@ -290,9 +290,9 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameEmployee.ForeColor = System.Drawing.Color.Black;
             this.lblNameEmployee.Location = new System.Drawing.Point(160, 18);
             this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(191, 23);
+            this.lblNameEmployee.Size = new System.Drawing.Size(51, 19);
             this.lblNameEmployee.TabIndex = 2;
-            this.lblNameEmployee.Text = "Nguyễn Đức Thành";
+            this.lblNameEmployee.Text = "None";
             // 
             // label3
             // 
@@ -300,7 +300,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(465, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 23);
+            this.label3.Size = new System.Drawing.Size(50, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Role :";
             // 
@@ -310,7 +310,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(50, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 23);
+            this.label2.Size = new System.Drawing.Size(83, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "Welcome";
             // 
@@ -327,10 +327,10 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // FormDashBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1294, 792);
+            this.ClientSize = new System.Drawing.Size(1294, 749);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);

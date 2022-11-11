@@ -23,17 +23,9 @@ namespace Proj_Book_Store_Manage.DBLayer
 
         public DBMain()
         {
-            try
-            {
                 conn = new SqlConnection(ConnStr);
                 cmd = conn.CreateCommand();
                 dt = new DataTable();
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
         //Trả về Datatable để load dữ liệu lên form từ view
         public DataTable LoadData(string nameView, CommandType ct)

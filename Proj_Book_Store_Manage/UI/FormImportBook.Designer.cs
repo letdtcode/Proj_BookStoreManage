@@ -32,7 +32,6 @@ namespace Proj_Book_Store_Manage.UI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblIdBill = new System.Windows.Forms.Label();
             this.lblTotalBill = new System.Windows.Forms.Label();
-            this.cbIdEmployee = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAddItem = new System.Windows.Forms.Button();
             this.btnInvoiceBill = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lbIdEmployee = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListItemImport)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -56,9 +56,9 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbIdEmployee);
             this.groupBox1.Controls.Add(this.lblIdBill);
             this.groupBox1.Controls.Add(this.lblTotalBill);
-            this.groupBox1.Controls.Add(this.cbIdEmployee);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -76,7 +76,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIdBill.AutoSize = true;
             this.lblIdBill.Location = new System.Drawing.Point(145, 59);
             this.lblIdBill.Name = "lblIdBill";
-            this.lblIdBill.Size = new System.Drawing.Size(46, 17);
+            this.lblIdBill.Size = new System.Drawing.Size(35, 13);
             this.lblIdBill.TabIndex = 8;
             this.lblIdBill.Text = "label6";
             // 
@@ -85,24 +85,16 @@ namespace Proj_Book_Store_Manage.UI
             this.lblTotalBill.AutoSize = true;
             this.lblTotalBill.Location = new System.Drawing.Point(520, 128);
             this.lblTotalBill.Name = "lblTotalBill";
-            this.lblTotalBill.Size = new System.Drawing.Size(16, 17);
+            this.lblTotalBill.Size = new System.Drawing.Size(13, 13);
             this.lblTotalBill.TabIndex = 7;
             this.lblTotalBill.Text = "0";
-            // 
-            // cbIdEmployee
-            // 
-            this.cbIdEmployee.FormattingEnabled = true;
-            this.cbIdEmployee.Location = new System.Drawing.Point(523, 59);
-            this.cbIdEmployee.Name = "cbIdEmployee";
-            this.cbIdEmployee.Size = new System.Drawing.Size(121, 24);
-            this.cbIdEmployee.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(385, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 17);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Mã nhân viên";
             // 
@@ -111,7 +103,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(406, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 17);
+            this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Tổng tiền ";
             // 
@@ -120,7 +112,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 128);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 17);
+            this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Ngày nhập sách";
             // 
@@ -128,7 +120,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.dtpDateImport.Location = new System.Drawing.Point(145, 128);
             this.dtpDateImport.Name = "dtpDateImport";
-            this.dtpDateImport.Size = new System.Drawing.Size(200, 22);
+            this.dtpDateImport.Size = new System.Drawing.Size(200, 20);
             this.dtpDateImport.TabIndex = 1;
             // 
             // label1
@@ -136,7 +128,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(26, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã hóa đơn";
             // 
@@ -170,7 +162,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook.AutoSize = true;
             this.lblNameBook.Location = new System.Drawing.Point(105, 91);
             this.lblNameBook.Name = "lblNameBook";
-            this.lblNameBook.Size = new System.Drawing.Size(42, 17);
+            this.lblNameBook.Size = new System.Drawing.Size(33, 13);
             this.lblNameBook.TabIndex = 3;
             this.lblNameBook.Text = "None";
             // 
@@ -178,7 +170,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtAmountBook.Location = new System.Drawing.Point(105, 131);
             this.txtAmountBook.Name = "txtAmountBook";
-            this.txtAmountBook.Size = new System.Drawing.Size(100, 22);
+            this.txtAmountBook.Size = new System.Drawing.Size(100, 20);
             this.txtAmountBook.TabIndex = 2;
             // 
             // cbIdBook
@@ -186,7 +178,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbIdBook.FormattingEnabled = true;
             this.cbIdBook.Location = new System.Drawing.Point(108, 43);
             this.cbIdBook.Name = "cbIdBook";
-            this.cbIdBook.Size = new System.Drawing.Size(121, 24);
+            this.cbIdBook.Size = new System.Drawing.Size(121, 21);
             this.cbIdBook.TabIndex = 1;
             // 
             // label7
@@ -194,7 +186,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 137);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 17);
+            this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Số lượng";
             // 
@@ -203,7 +195,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 93);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
+            this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Tên sách";
             // 
@@ -212,7 +204,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 46);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 17);
+            this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Mã sách";
             // 
@@ -244,6 +236,15 @@ namespace Proj_Book_Store_Manage.UI
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // lbIdEmployee
+            // 
+            this.lbIdEmployee.AutoSize = true;
+            this.lbIdEmployee.Location = new System.Drawing.Point(498, 68);
+            this.lbIdEmployee.Name = "lbIdEmployee";
+            this.lbIdEmployee.Size = new System.Drawing.Size(33, 13);
+            this.lbIdEmployee.TabIndex = 9;
+            this.lbIdEmployee.Text = "None";
+            // 
             // FormImportBook
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -271,7 +272,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblIdBill;
         private System.Windows.Forms.Label lblTotalBill;
-        private System.Windows.Forms.ComboBox cbIdEmployee;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -288,5 +288,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Button btnInvoiceBill;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lbIdEmployee;
     }
 }

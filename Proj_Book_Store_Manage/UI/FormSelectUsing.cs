@@ -33,5 +33,10 @@ namespace Proj_Book_Store_Manage.UI
             /*FormSale frmSale = new FormSale();
             frmSale.Show();*/
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

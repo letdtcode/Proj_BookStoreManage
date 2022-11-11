@@ -1,5 +1,5 @@
 ﻿
-namespace Proj_Book_Store_Manage
+namespace Proj_Book_Store_Manage.UI
 {
     partial class frmLogin
     {
@@ -155,6 +155,7 @@ namespace Proj_Book_Store_Manage
             this.txtPassword.TabIndex = 5;
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 

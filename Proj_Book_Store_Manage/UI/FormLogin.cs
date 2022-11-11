@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Proj_Book_Store_Manage.UI;
-using Proj_Book_Store_Manage.DBLayer;
-namespace Proj_Book_Store_Manage
+using Proj_Book_Store_Manage.BSLayer;
+
+namespace Proj_Book_Store_Manage.UI
 {
     public partial class frmLogin : Form
     {
-        
+        public static string idEmp { get; set; }
+        public static string nameEmp { get; set; }
+        public static string idRole { get; set; }
+        LoginBL login;
+
+        string err;
         public frmLogin()
         {
             InitializeComponent();
@@ -32,15 +37,19 @@ namespace Proj_Book_Store_Manage
             {
                 try
                 {
-                    DBMain.UserName = this.txtUserName.Text.ToString().Trim();
-                    DBMain.Password = this.txtPassword.Text.ToString().Trim();
-                    DBMain dBMain = new DBMain();
-                    //frmSelectUsing.ShowDialog();
-                    using (FormDashBoard frmDashBoard = new FormDashBoard())
-                    {
-                  
-                        frmDashBoard.ShowDialog();
-                    }
+                    string user = txtUserName.Text.ToString().Trim();
+                    string password = txtPassword.Text.ToString().Trim();
+                    //Tạo kết nối với DB
+                    login = new LoginBL(user, password);
+                    //Lấy dữ liệu của nhân viên đổ vào DataTable
+                    DataTable dt = login.login(user, password, ref err);
+                    //Lấy thông tin từ dt
+                    setInformationEmployee(dt);
+                    frmSelectUsing.ShowDialog();
+                    //using (FormDashBoard frmDashBoard = new FormDashBoard())
+                    //{
+                    //    frmDashBoard.ShowDialog();
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -48,6 +57,15 @@ namespace Proj_Book_Store_Manage
                 }
             }
         }
+
+        void setInformationEmployee (DataTable dt)
+        {
+            idEmp = dt.Rows[0][0].ToString();
+            nameEmp = dt.Rows[0][1].ToString();
+            if (dt.Rows[0][2].ToString() == "false")
+                idRole = "Nhân Viên";
+            idRole = "Quản Lý";
+        }    
 
         private void ptbPassInvisible_Click(object sender, EventArgs e)
         {
@@ -123,6 +141,14 @@ namespace Proj_Book_Store_Manage
             {
                 this.txtUserName.Text = "Username";
             }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click (sender, e);
+            }    
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Proj_Book_Store_Manage.UI
         public FormImportBook()
         {
             InitializeComponent();
+            this.lbIdEmployee.Text = frmLogin.idEmp;
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
