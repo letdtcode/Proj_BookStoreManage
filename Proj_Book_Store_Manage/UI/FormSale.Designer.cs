@@ -103,7 +103,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbDetailReceiptExport.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDetailReceiptExport.Location = new System.Drawing.Point(47, 88);
             this.gbDetailReceiptExport.Name = "gbDetailReceiptExport";
-            this.gbDetailReceiptExport.Size = new System.Drawing.Size(756, 230);
+            this.gbDetailReceiptExport.Size = new System.Drawing.Size(729, 230);
             this.gbDetailReceiptExport.TabIndex = 27;
             this.gbDetailReceiptExport.TabStop = false;
             this.gbDetailReceiptExport.Text = "Thông tin đơn hàng";

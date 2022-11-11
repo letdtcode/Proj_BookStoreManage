@@ -224,6 +224,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAddItem.TabIndex = 3;
             this.btnAddItem.Text = "Thêm";
             this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnInvoiceBill
             // 
