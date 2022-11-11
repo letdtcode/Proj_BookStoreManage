@@ -29,6 +29,7 @@ namespace Proj_Book_Store_Manage.UI
             InitializeComponent();
             dtpBirth.Format = DateTimePickerFormat.Custom;
             dtpBirth.CustomFormat = "dd-MM-yyyy";
+            LoadData();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -30,6 +30,7 @@ namespace Proj_Book_Store_Manage.UI
         {
             InitializeComponent();
             lblIDAcount.Enabled = false;
+            LoadData();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -60,19 +61,20 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (account.deleteAccount(this.lblID.Text, ref err) == true)
+                        account.deleteAccount(this.lblID.Text, ref err);
+                        if (err == "")
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
                         else
-                            MessageBox.Show("Xoá thất bại !");
+                            MessageBox.Show(err);
                         
                     }
                 }             
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể xóa !");
+                MessageBox.Show(ex.Message);
             }
             finally
             {

@@ -48,18 +48,26 @@ namespace Proj_Book_Store_Manage
         }
         public string createID(string codeMark)
         {
-            int numIDNext = 0;
-            int indexLastRow = dgv.Rows.GetLastRow(DataGridViewElementStates.None);
-            if (indexLastRow == 0)
+            try
             {
-                numIDNext = 1;
+                int numIDNext = 0;
+                int indexLastRow = dgv.Rows.GetLastRow(DataGridViewElementStates.None);
+                if (indexLastRow == 0)
+                {
+                    numIDNext = 1;
+                }
+                else
+                {
+                    string resultString = Regex.Match(dgv.Rows[indexLastRow - 1].Cells[0].Value.ToString(), @"\d+").Value;
+                    numIDNext = int.Parse(resultString) + 1;
+                }
+                return codeMark + numIDNext.ToString();
             }
-            else
+            catch(Exception ex)
             {
-                string resultString = Regex.Match(dgv.Rows[indexLastRow - 1].Cells[0].Value.ToString(), @"\d+").Value;
-                numIDNext = int.Parse(resultString) + 1;
+                MessageBox.Show(ex.Message);
+                return null;
             }
-            return codeMark+numIDNext.ToString();
         }
 
         public void setEnableControl(bool b)
