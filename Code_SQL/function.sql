@@ -158,15 +158,24 @@ begin
 	return 0		
 end
 go
---Các hàm  liên quan đến xuất, nhập hóa đơn
-create or alter function func_getDataOfBillOutput(@idBill varchar(8))
+--Lấy thông tin chi tiết hóa đơn xuất
+create or alter function func_getDataOfBillExport(@idBill varchar(8))
 returns table
 as 
 	return ( select BOOK_BILLOUTPUT.idBook as N'ID', BOOK.nameBook as N'Tên Sách', BOOK_BILLOUTPUT.amountOutput as N'Số lượng'
 			from dbo.BOOK_BILLOUTPUT, dbo.BOOK
 			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK_BILLOUTPUT.idBook=BOOK.idBook )
 go
-select * from dbo.func_getDataOfBillOutput(N'HDX1')
+--Lấy thông tin chi tiết hóa đơn nhập
+create or alter function func_getDataOfBillImport(@idBill varchar(8))
+returns table
+as 
+	return ( select BOOK_BILLINPUT.idBook as N'ID', BOOK.nameBook as N'Tên Sách', BOOK_BILLINPUT.amountInput as N'Số lượng'
+			from dbo.BOOK_BILLINPUT, dbo.BOOK
+			where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK_BILLINPUT.idBook=BOOK.idBook )
+go
+select * from dbo.func_getDataOfBillImport('HDN3')
+-----
 --Hàm trả về tên khách hàng (đầu vào là mã Bill)
 create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
 returns varchar(30)
@@ -197,6 +206,7 @@ where dbo.BOOK.idBook=@idBook)
 end
 go
 ----------------------------------------------CHỨC NĂNG XEM CHI TIẾT ĐƠN HÀNG XUất---------------
+--Trả về tên sách
 create or alter function func_getNameBookById(@idBook varchar(8))
 returns varchar(20)
 begin
@@ -205,8 +215,7 @@ from dbo.BOOK
 where dbo.BOOK.idBook=@idBook)
 end
 go
-select dbo.func_getNameBookById('BK2')
-go
+--Trả về số lượng sách trong kho
 create or alter function func_getAmountBookById(@idBook varchar(8))
 returns int
 begin
@@ -227,14 +236,17 @@ end
 go
 Select dbo.func_returnToTalOfBillOutput('BILL1')
 --Tính tổng tiền hóa đơn nhập
+--thiếu điều kiện nên null (note)
 create or alter function func_returnToTalOfBillInput(@idBill varchar(8))
 returns int
 begin
+if not exists(select * from dbo.BOOK_BILLINPUT where dbo.BOOK_BILLINPUT.idBillInput=@idBill)
+return 0
 return (select sum(Q.TotalBook) 
 	from (select dbo.BOOK_BILLINPUT.amountInput*dbo.BOOK.priceImport as TotalBook from dbo.BOOK_BILLINPUT, dbo.BOOK where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK.idBook=dbo.BOOK_BILLINPUT.idBook) as Q)
 end
 go
-
+select dbo.func_returnToTalOfBillInput('HDN3')
 go
 ----------------------------------------------Dũng thêm-------------------------------------------
 ---Hàm trả về mã nhân viên, tên nhân viên khi đăng nhập

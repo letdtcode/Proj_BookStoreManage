@@ -17,7 +17,7 @@ namespace Proj_Book_Store_Manage.UI
         private DataTable dtListIemOfBill = null;
         private string err = "";
 
-        DetailReceiptExport detailReceiptExport = null;
+/*        DetailReceiptExport detailReceiptExport = null;*/
         ReceiptExportBL receiptExport = null;
         CartBL cart = null;
         VoucherBL voucher = null;
@@ -30,13 +30,14 @@ namespace Proj_Book_Store_Manage.UI
         public FormSale(string idBill)
         {
             InitializeComponent();
-            detailReceiptExport = new DetailReceiptExport(idBill);
+/*            detailReceiptExport = new DetailReceiptExport(idBill);*/
             receiptExport = new ReceiptExportBL();
             cart = new CartBL(idBill);
             voucher = new VoucherBL();
             controls = new List<Control> { dtpReceiptExport, cbIdCustomer, cbIdVoucher };
             utl = new Utilities(controls, dgvListBook);
             this.lbIdEmployee.Text = frmLogin.idEmp;
+            this.lblIDReceipt.Text = idBill;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -53,7 +54,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private bool checkFill()
         {
-            if (this.cbIdCustomer.Text.ToString() == "" || this.lbIdEmployee.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
+            if (this.cbIdCustomer.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
                 return false;
             return true;
         }
@@ -82,9 +83,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadDataBook()
         {
- 
-            this.lblIDReceipt.Text = detailReceiptExport.IdBill;
-            dtListBook = detailReceiptExport.getDataBook();
+            dtListBook = cart.getDataBook();
             dgvListBook.DataSource = dtListBook;
             dgvListBook.AutoResizeColumns();
         }
@@ -102,11 +101,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[0].Value.ToString();
             this.lblNameBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[1].Value.ToString();
         }
-        /*private void addItemIntoBill(string idBook, string nameBook, int amount)
-        {
-            cart.addNewItemIntoCart(idBook, nameBook, amount);
-            LoadDataCartIntoDgv();
-        }*/
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;

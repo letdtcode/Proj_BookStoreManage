@@ -112,7 +112,6 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             catch (SqlException ex)
             {
-                //MessageBox.Show(ex.Message.ToString());
                 error = ex.Message;
                 MessageBox.Show(error);
             }

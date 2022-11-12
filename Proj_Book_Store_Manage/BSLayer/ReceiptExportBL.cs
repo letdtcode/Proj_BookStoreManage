@@ -28,6 +28,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
+        public DataTable getDataDetailReceiptExport(string idBillOutput, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("Select * from dbo.func_getDataOfBillExport(@idBill)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBill", idBillOutput);
+            return db.ExecuteFunction(cmd, ref err);
+        }
         public bool addNewReceiptExport(string idBillOutput, ref string err)
         {
             strSQL = "proc_addNewBillOutput ";
@@ -60,34 +67,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        /*public bool modifyReceiptExport(string idBillOutput, DateTime dateOfBill, int total, string idCus, string idEmployee, int sttus, string idVoucher, ref string err)
-        {
-            strSQL = "proc_updateBillOutput";
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBillOutput", idBillOutput);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@dateOfBill", dateOfBill);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@total", total);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idCus", idCus);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idEmployee", idEmployee);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@sttus", sttus);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idVoucher", idVoucher);
-            parameters.Add(parameter);
-
-            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }*/
+        
         public bool deleteReceiptExport(string idBillOutput, ref string err)
         {
             strSQL = "proc_cancelBillExport";
