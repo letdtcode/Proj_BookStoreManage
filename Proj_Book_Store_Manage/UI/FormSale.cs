@@ -53,7 +53,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private bool checkFill()
         {
-            if (this.cbIdCustomer.Text.ToString() == "" || this.lbIdEmployee.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
+            if (this.cbIdCustomer.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
                 return false;
             return true;
         }
@@ -102,11 +102,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[0].Value.ToString();
             this.lblNameBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[1].Value.ToString();
         }
-        /*private void addItemIntoBill(string idBook, string nameBook, int amount)
-        {
-            cart.addNewItemIntoCart(idBook, nameBook, amount);
-            LoadDataCartIntoDgv();
-        }*/
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;

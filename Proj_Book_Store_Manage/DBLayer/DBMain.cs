@@ -11,7 +11,7 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        public static string ServerName = "DESKTOP-MINHDUN";
+        public static string ServerName = "DUCTHANH\\SQLEXPRESS";
         public static string DatabaseName = "BOOKSTOREMANAGE";
         public static string UserName= "";
         public static string Password= "";
@@ -106,6 +106,7 @@ namespace Proj_Book_Store_Manage.DBLayer
             cmd.Connection = conn;
             try
             {
+                MessageBox.Show(cmd.ExecuteScalar().ToString());
                 valueReturn = int.Parse(cmd.ExecuteScalar().ToString());
             }
             catch (SqlException ex)
