@@ -112,6 +112,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label2.Size = new System.Drawing.Size(156, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "ĐĂNG NHẬP";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtUserName
             // 

@@ -98,15 +98,13 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        /*public bool invoiceBill(int idBillOutput, ref string err)
+        public DataTable searchReceiptExport(string id, ref string err)
         {
-            strSQL = "proc_invoiceBillOutput";
-            parameters = new List<SqlParameter>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = $"select * from dbo.func_searchReceiptExport('{id}')";
+            cmd.CommandType = CommandType.Text;
 
-            parameter = new SqlParameter("@idBillOutput", idBillOutput);
-            parameters.Add(parameter);
-
-            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }*/
+            return db.ExecuteFunction(cmd, ref err);
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace Proj_Book_Store_Manage.UI
         private void InitializeComponent()
         {
             this.gbReceiptImport = new System.Windows.Forms.GroupBox();
+            this.lbIdEmployee = new System.Windows.Forms.Label();
             this.dtpReceiptImport = new System.Windows.Forms.DateTimePicker();
             this.lblIDBill = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvReceiptImport = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDetailImportReceipt = new System.Windows.Forms.Button();
-            this.lbIdEmployee = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.gbReceiptImport.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gpSearch.SuspendLayout();
@@ -81,6 +82,17 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptImport.TabIndex = 0;
             this.gbReceiptImport.TabStop = false;
             this.gbReceiptImport.Text = "Thông tin nhập sách";
+            // 
+            // lbIdEmployee
+            // 
+            this.lbIdEmployee.AutoSize = true;
+            this.lbIdEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIdEmployee.Location = new System.Drawing.Point(352, 109);
+            this.lbIdEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbIdEmployee.Name = "lbIdEmployee";
+            this.lbIdEmployee.Size = new System.Drawing.Size(19, 21);
+            this.lbIdEmployee.TabIndex = 4;
+            this.lbIdEmployee.Text = "0";
             // 
             // dtpReceiptImport
             // 
@@ -260,35 +272,36 @@ namespace Proj_Book_Store_Manage.UI
             // cbAttributeSearch
             // 
             this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(157, 26);
+            this.cbAttributeSearch.Location = new System.Drawing.Point(20, 61);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 21);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(275, 21);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // gpSearch
             // 
+            this.gpSearch.Controls.Add(this.btnSearch);
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(631, 41);
+            this.gpSearch.Location = new System.Drawing.Point(631, 21);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(301, 130);
+            this.gpSearch.Size = new System.Drawing.Size(301, 179);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(54, 67);
+            this.txtSearch.Location = new System.Drawing.Point(20, 100);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 20);
+            this.txtSearch.Size = new System.Drawing.Size(159, 20);
             this.txtSearch.TabIndex = 2;
             // 
             // lblSearchBy
             // 
             this.lblSearchBy.AutoSize = true;
             this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(16, 27);
+            this.lblSearchBy.Location = new System.Drawing.Point(16, 36);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
             this.lblSearchBy.Size = new System.Drawing.Size(91, 21);
@@ -331,16 +344,16 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDetailImportReceipt.UseVisualStyleBackColor = false;
             this.btnDetailImportReceipt.Click += new System.EventHandler(this.btnDetailImportReceipt_Click);
             // 
-            // lbIdEmployee
+            // btnSearch
             // 
-            this.lbIdEmployee.AutoSize = true;
-            this.lbIdEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdEmployee.Location = new System.Drawing.Point(352, 109);
-            this.lbIdEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbIdEmployee.Name = "lbIdEmployee";
-            this.lbIdEmployee.Size = new System.Drawing.Size(19, 21);
-            this.lbIdEmployee.TabIndex = 4;
-            this.lbIdEmployee.Text = "0";
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(185, 129);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(110, 43);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // UControlReceiptImport
             // 
@@ -389,5 +402,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblIDBill;
         private System.Windows.Forms.Label lbl10;
         private System.Windows.Forms.Label lbIdEmployee;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -25,13 +25,14 @@ namespace Proj_Book_Store_Manage.UI
         private bool isEdit = false;
         ReceiptImportBL receiptImport = new ReceiptImportBL();
         private EmployeeBL emp = new EmployeeBL();
-        
+        List<string> param;
         public UControlReceiptImport()
         {
             InitializeComponent();
             dtpReceiptImport.Format = DateTimePickerFormat.Custom;
             dtpReceiptImport.CustomFormat = "dd-MM-yyyy";
             this.lbIdEmployee.Text = frmLogin.idEmp;
+            createAttributeComBoBox();
         }
 
         private void btnDetailImportReceipt_Click(object sender, EventArgs e)
@@ -183,5 +184,44 @@ namespace Proj_Book_Store_Manage.UI
             utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
             utl.setEnableControl(false);
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id;
+            id = getParameter();
+            try
+            {
+                receiptImport = new ReceiptImportBL();
+                dtReceiptImport = receiptImport.searchReceiptImport(id, ref err);
+                dgvReceiptImport.DataSource = dtReceiptImport;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Receipt Import");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        string getParameter()
+        {
+            string id;
+            if (cbAttributeSearch.Text == "Id Receipt Import")
+            {
+                id = this.txtSearch.Text.Trim();
+            }
+
+            else
+            {
+                id = null;
+            }
+            return (id);
+        }
+
     }
 }

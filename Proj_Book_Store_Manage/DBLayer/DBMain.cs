@@ -70,6 +70,8 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return dt;
         }
+
+        //dư -- có thể xóa
         public string ExecuteFunctionToString(SqlCommand cmdFunction, ref string error)
         {
             string valueReturn = null;
