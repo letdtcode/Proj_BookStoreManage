@@ -17,7 +17,7 @@ namespace Proj_Book_Store_Manage.UI
         private DataTable dtListIemOfBill = null;
         private string err = "";
 
-        DetailReceiptExport detailReceiptExport = null;
+/*        DetailReceiptExport detailReceiptExport = null;*/
         ReceiptExportBL receiptExport = null;
         CartBL cart = null;
         VoucherBL voucher = null;
@@ -30,13 +30,14 @@ namespace Proj_Book_Store_Manage.UI
         public FormSale(string idBill)
         {
             InitializeComponent();
-            detailReceiptExport = new DetailReceiptExport(idBill);
+/*            detailReceiptExport = new DetailReceiptExport(idBill);*/
             receiptExport = new ReceiptExportBL();
             cart = new CartBL(idBill);
             voucher = new VoucherBL();
             controls = new List<Control> { dtpReceiptExport, cbIdCustomer, cbIdVoucher };
             utl = new Utilities(controls, dgvListBook);
             this.lbIdEmployee.Text = frmLogin.idEmp;
+            this.lblIDReceipt.Text = idBill;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -82,9 +83,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadDataBook()
         {
- 
-            this.lblIDReceipt.Text = detailReceiptExport.IdBill;
-            dtListBook = detailReceiptExport.getDataBook();
+            dtListBook = cart.getDataBook();
             dgvListBook.DataSource = dtListBook;
             dgvListBook.AutoResizeColumns();
         }

@@ -78,7 +78,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lbIdEmployee.AutoSize = true;
             this.lbIdEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIdEmployee.Location = new System.Drawing.Point(352, 109);
+            this.lbIdEmployee.Location = new System.Drawing.Point(372, 88);
             this.lbIdEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbIdEmployee.Name = "lbIdEmployee";
             this.lbIdEmployee.Size = new System.Drawing.Size(21, 23);
@@ -87,7 +87,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // dtpReceiptImport
             // 
-            this.dtpReceiptImport.Location = new System.Drawing.Point(356, 58);
+            this.dtpReceiptImport.Location = new System.Drawing.Point(367, 38);
             this.dtpReceiptImport.Name = "dtpReceiptImport";
             this.dtpReceiptImport.Size = new System.Drawing.Size(200, 22);
             this.dtpReceiptImport.TabIndex = 3;
@@ -140,7 +140,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblEmployee.AutoSize = true;
             this.lblEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployee.Location = new System.Drawing.Point(175, 109);
+            this.lblEmployee.Location = new System.Drawing.Point(186, 87);
             this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(149, 23);
@@ -151,7 +151,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblDateImport.AutoSize = true;
             this.lblDateImport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateImport.Location = new System.Drawing.Point(175, 58);
+            this.lblDateImport.Location = new System.Drawing.Point(186, 36);
             this.lblDateImport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateImport.Name = "lblDateImport";
             this.lblDateImport.Size = new System.Drawing.Size(174, 23);

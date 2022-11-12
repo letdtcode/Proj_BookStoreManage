@@ -29,7 +29,7 @@ namespace Proj_Book_Store_Manage.UI
         
         private void btnDetailExportReceipt_Click(object sender, EventArgs e)
         {
-            FormSale frm_DetailReceiptExport = new FormSale(this.lblID.Text);
+            FormDetailReceiptExport frm_DetailReceiptExport = new FormDetailReceiptExport(this.lblID.Text,this.lblIDEmployee.Text,this.lblIdCustomer.Text, this.lblDateBill.Text, this.lblIdVoucher.Text, int.Parse(this.lblTotal.Text.ToString()));
             frm_DetailReceiptExport.ShowDialog();
         }
         private void btnAdd_Click(object sender, EventArgs e)

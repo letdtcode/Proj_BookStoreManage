@@ -174,6 +174,7 @@ as
 			from dbo.BOOK_BILLINPUT, dbo.BOOK
 			where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK_BILLINPUT.idBook=BOOK.idBook )
 go
+select * from dbo.func_getDataOfBillImport('HDN3')
 -----
 --Hàm trả về tên khách hàng (đầu vào là mã Bill)
 create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
@@ -239,6 +240,8 @@ Select dbo.func_returnToTalOfBillOutput('BILL1')
 create or alter function func_returnToTalOfBillInput(@idBill varchar(8))
 returns int
 begin
+if not exists(select * from dbo.BOOK_BILLINPUT where dbo.BOOK_BILLINPUT.idBillInput=@idBill)
+return 0
 return (select sum(Q.TotalBook) 
 	from (select dbo.BOOK_BILLINPUT.amountInput*dbo.BOOK.priceImport as TotalBook from dbo.BOOK_BILLINPUT, dbo.BOOK where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK.idBook=dbo.BOOK_BILLINPUT.idBook) as Q)
 end

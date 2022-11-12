@@ -37,7 +37,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblDateExport = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.dgvReceiptExport = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbReceiptExport = new System.Windows.Forms.GroupBox();
@@ -50,6 +50,8 @@ namespace Proj_Book_Store_Manage.UI
             this.lblTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblIdVoucher = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptExport)).BeginInit();
@@ -139,16 +141,16 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lblDateExport
+            // label10
             // 
-            this.lblDateExport.AutoSize = true;
-            this.lblDateExport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateExport.Location = new System.Drawing.Point(236, 32);
-            this.lblDateExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateExport.Name = "lblDateExport";
-            this.lblDateExport.Size = new System.Drawing.Size(161, 23);
-            this.lblDateExport.TabIndex = 0;
-            this.lblDateExport.Text = "Ngày Bán Sách";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(236, 32);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(161, 23);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Ngày Bán Sách";
             // 
             // dgvReceiptExport
             // 
@@ -178,6 +180,8 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbReceiptExport
             // 
+            this.gbReceiptExport.Controls.Add(this.lblIdVoucher);
+            this.gbReceiptExport.Controls.Add(this.label2);
             this.gbReceiptExport.Controls.Add(this.lblDateBill);
             this.gbReceiptExport.Controls.Add(this.lblIdCustomer);
             this.gbReceiptExport.Controls.Add(this.lblIDEmployee);
@@ -187,7 +191,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.Controls.Add(this.lblTotal);
             this.gbReceiptExport.Controls.Add(this.label1);
             this.gbReceiptExport.Controls.Add(this.lbl1);
-            this.gbReceiptExport.Controls.Add(this.lblDateExport);
+            this.gbReceiptExport.Controls.Add(this.label10);
             this.gbReceiptExport.Location = new System.Drawing.Point(16, 16);
             this.gbReceiptExport.Margin = new System.Windows.Forms.Padding(4);
             this.gbReceiptExport.Name = "gbReceiptExport";
@@ -290,6 +294,24 @@ namespace Proj_Book_Store_Manage.UI
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "ID Bill:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Voucher";
+            // 
+            // lblIdVoucher
+            // 
+            this.lblIdVoucher.AutoSize = true;
+            this.lblIdVoucher.Location = new System.Drawing.Point(96, 135);
+            this.lblIdVoucher.Name = "lblIdVoucher";
+            this.lblIdVoucher.Size = new System.Drawing.Size(42, 17);
+            this.lblIdVoucher.TabIndex = 8;
+            this.lblIdVoucher.Text = "None";
+            // 
             // UControlReceiptExport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -320,7 +342,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblDateExport;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvReceiptExport;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbReceiptExport;
@@ -333,5 +355,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblIdCustomer;
         private System.Windows.Forms.Label lblIDEmployee;
         private System.Windows.Forms.Label lblDateBill;
+        private System.Windows.Forms.Label lblIdVoucher;
+        private System.Windows.Forms.Label label2;
     }
 }

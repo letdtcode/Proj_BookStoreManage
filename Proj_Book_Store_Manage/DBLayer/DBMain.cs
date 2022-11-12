@@ -106,12 +106,10 @@ namespace Proj_Book_Store_Manage.DBLayer
             cmd.Connection = conn;
             try
             {
-                MessageBox.Show(cmd.ExecuteScalar().ToString());
                 valueReturn = int.Parse(cmd.ExecuteScalar().ToString());
             }
             catch (SqlException ex)
             {
-                //MessageBox.Show(ex.Message.ToString());
                 error = ex.Message;
                 MessageBox.Show(error);
             }

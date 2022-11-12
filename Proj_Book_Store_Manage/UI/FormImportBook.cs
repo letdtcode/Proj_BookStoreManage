@@ -150,7 +150,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void cbIdBook_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string idBook = cbIdBook.SelectedValue.ToString();
+            string idBook = cbIdBook.Text.ToString();
             this.lblNameBook.Text = book.getNameBook(idBook, ref err);
         }
     }

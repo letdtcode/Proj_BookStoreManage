@@ -20,6 +20,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         string strSQL = "";
         private string idBill = null;
         private string err = "";
+        String nameView = "view_GetAllBookForSale";
         public CartBL(string idBill)
         {
             this.IdBill = idBill;
@@ -27,7 +28,10 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
 
         public string IdBill { get => idBill; set => idBill = value; }
-
+        public DataTable getDataBook()
+        {
+            return db.LoadData(nameView, CommandType.Text);
+        }
         public DataTable getDataItemOfBill()
         {
             SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillExport(@idBill)");
