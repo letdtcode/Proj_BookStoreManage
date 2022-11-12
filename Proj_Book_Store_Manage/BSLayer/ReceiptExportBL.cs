@@ -28,6 +28,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
+        public DataTable getDataDetailReceiptExport(string idBillOutput, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("Select * from dbo.func_getDataOfBillExport(@idBill)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBill", idBillOutput);
+            return db.ExecuteFunction(cmd, ref err);
+        }
         public bool addNewReceiptExport(string idBillOutput, ref string err)
         {
             strSQL = "proc_addNewBillOutput ";

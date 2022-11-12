@@ -53,7 +53,6 @@
     <Compile Include="BSLayer\CartBL.cs" />
     <Compile Include="BSLayer\CategoryBL.cs" />
     <Compile Include="BSLayer\CustomerBL.cs" />
-    <Compile Include="BSLayer\DetailReceiptExport.cs" />
     <Compile Include="BSLayer\ImportBooksBL.cs" />
     <Compile Include="BSLayer\EmployeeBL.cs" />
     <Compile Include="BSLayer\LoginBL.cs" />
@@ -74,6 +73,12 @@
     </Compile>
     <Compile Include="UI\FormDashBoard.Designer.cs">
       <DependentUpon>FormDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormDetailReceiptExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormDetailReceiptExport.Designer.cs">
+      <DependentUpon>FormDetailReceiptExport.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormEditItemImportBooks.cs">
       <SubType>Form</SubType>
@@ -209,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDashBoard.resx">
       <DependentUpon>FormDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormDetailReceiptExport.resx">
+      <DependentUpon>FormDetailReceiptExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormEditItemImportBooks.resx">
       <DependentUpon>FormEditItemImportBooks.cs</DependentUpon>

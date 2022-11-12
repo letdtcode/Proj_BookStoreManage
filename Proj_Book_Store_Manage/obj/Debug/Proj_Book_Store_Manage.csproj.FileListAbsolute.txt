@@ -4,6 +4,8 @@ D:\BookStoreManageUpdate\Proj_Book_Store_Manage\bin\Debug\Proj_Book_Store_Manage
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.AssemblyReference.cache
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormApplyVoucherForBill.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDashBoard.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptExport.resources
+D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormEditItemImportBooks.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormImportBook.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormSale.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptImport.resources
@@ -29,4 +31,3 @@ D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.CoreCompileInputs.cache
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.exe
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.pdb
-D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormEditItemImportBooks.resources

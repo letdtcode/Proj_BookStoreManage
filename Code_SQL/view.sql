@@ -113,32 +113,32 @@ create or alter view view_ReceiptImport
 as
 select *
 from dbo.BILLINPUT
-go
-select * from dbo.view_ReceiptImport
---View chi tiết hóa đơn nhập
-create or alter view view_DetailReceiptImport
-as
-select *
-from dbo.BOOK_BILLINPUT
-go
+go 
+
+----View chi tiết hóa đơn nhập
+--create or alter view view_DetailReceiptImport
+--as
+--select *
+--from dbo.BOOK_BILLINPUT
+--go
 --View hóa đơn xuất
 create or alter view view_ReceiptExport
 as
 select *
 from dbo.BILLOUTPUT
 go
---View chi tiết hóa đơn xuất
+--View lấy danh sách sách để show lên sale
 create or alter view view_GetAllBookForSale
 as
 select BOOK.idBook as ID, BOOK.nameBook as N'Tên Sách', BOOK.amount as N'Số lượng', BOOK.priceExport as N'Giá'
 from dbo.BOOK
 go
-create or alter view view_getDataOfBillOutput
-as
-select BOOK_BILLOUTPUT.idBook as ID, BOOK_BILLOUTPUT.nameBook as N'Tên Sách', BOOK_BILLOUTPUT.amount as N'Số lượng'
-from dbo.BOOK_BILLOUTPUT, dbo.BOOK
-where dbo.BOOK_BILLOUTPUT.idBook
-go
+--create or alter view view_getDataOfBillOutput
+--as
+--select BOOK_BILLOUTPUT.idBook as ID, BOOK_BILLOUTPUT.nameBook as N'Tên Sách', BOOK_BILLOUTPUT.amount as N'Số lượng'
+--from dbo.BOOK_BILLOUTPUT, dbo.BOOK
+--where dbo.BOOK_BILLOUTPUT.idBook
+--go
 
 --View thông tin khách hàng
 create or alter view view_Customer
