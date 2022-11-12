@@ -56,7 +56,7 @@ create or alter proc GetBook
 as
 begin
 	
-	select A.idBook, nameBook, nameAuthor, nameCategory, namePublisher, priceExport, amount from 
+	select A.idBook, nameBook, name, nameCategory, namePublisher, priceExport, amount from 
 	(select BOOK.idBook, BOOK.nameBook, STRING_AGG(nameCategory, ' - ') as nameCategory, namePublisher, BOOK.priceExport, BOOK.amount from BOOK, BOOK_CATEGORY, CATEGORY, PUBLISHER
 	where	BOOK.idPublisher = PUBLISHER.idPublisher and
 			Book.idBook = BOOK_CATEGORY.idBook and 
@@ -262,4 +262,109 @@ begin
 	insert into @table values (@idEmp, @name, @idRole)
 	return
 end
+go
+
+
+------- Hàm tìm kiếm account
+Create or alter function func_searchAccount (@idAccount varchar (8), @username varchar(20))
+returns table
+as
+	return (select * from ACCOUNT 
+			where nameAccount = @username or
+					idAccount = @idAccount)
+go
+
+--- Hàm tìm kiếm author
+Create or alter function func_searchAuthor (@idAuthor varchar(8), @nameAuthor nvarchar(30))
+returns table
+as
+	return (
+		select * from AUTHOR
+		where idAuthor = @idAuthor or
+				nameAuthor = @nameAuthor
+	)
+go
+---Hàm tìm kiếm thể loại
+create or alter function func_searchCategory (@idCategory varchar(8), @nameCategory nvarchar(20))
+returns table
+as
+	return (
+		select * from CATEGORY
+		where idCategory = @idCategory or
+				nameCategory = @nameCategory
+	)
+go
+-- Hàm tìm kiếm Nhân viên
+Create or alter function func_searchEmployee (@idEmployee varchar(8), @nameEmployee nvarchar (40))
+returns table
+as
+	return (
+		select idEmployee, firstName, middleName, lastName, sex, addEmp, phoneNumber, email, yearOfBirth
+		from EMPLOYEE
+		where idEmployee = @idEmployee or
+				(firstName + ' ' + middleName + ' '+lastName = @nameEmployee)
+	)
+go
+
+
+--- Hàm tìm kiếm sách
+--Hàm tìm kiếm khách hàng
+Create or alter function func_searchCustomer (@idCustomer varchar (8), @nameCustomer varchar(40))
+returns table
+as
+	return (
+		select * from CUSTOMER
+		where idCus =@idCustomer or
+				nameCus = @nameCustomer
+	)
+go
+
+--- Hàm tìm kiếm nhà xuất bản
+Create or alter function func_searchPublisher (@idPublisher varchar(8), @namePublisher varchar(80))
+returns table
+as
+	return (
+		select * from PUBLISHER
+		where idPublisher =@idPublisher or
+				namePublisher = @namePublisher
+	)
+go
+
+--- Hàm tìm kiếm hóa đơn xuất
+Create or alter function func_searchReceiptExport (@idBill varchar(8))
+returns table
+as
+	return (
+		select * from BILLOUTPUT where idBillOutPut = @idBill
+	)
+go
+
+--- Hàm tìm kiếm voucher
+Create or alter function func_searchVoucher(@idVoucher varchar(8))
+returns table
+as
+	return (
+		select * from VOUCHER where idVoucher = @idVoucher
+	)
+go
+
+
+--- Hàm Tìm kiếm loại khách hàng
+Create or alter function func_searchTypeCustomer(@id varchar(8), @name nvarchar(30))
+returns table
+as
+	return (
+		select * from TYPECUSTOMER
+		where idTypeCus = @id or
+				nameTypeCus = nameTypeCus
+	)
+go
+
+--- Hàm tìm kiếm hóa đơn Nhập hàng
+Create or alter function func_searchReceiptImport(@idBill varchar(8))
+returns table
+as
+	return (
+		select * from BILLINPUT where idBillInput = @idBill
+	)
 go
