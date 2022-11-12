@@ -9,10 +9,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-
 namespace Proj_Book_Store_Manage.BSLayer
 {
-    public class CartBL
+    public class ImportBooksBL
     {
         private DBMain db = null;
         SqlParameter parameter;
@@ -20,9 +19,9 @@ namespace Proj_Book_Store_Manage.BSLayer
         string strSQL = "";
         private string idBill = null;
         private string err = "";
-        public CartBL(string idBill)
+        public ImportBooksBL(string idBill)
         {
-            this.IdBill = idBill;
+            this.idBill = idBill;
             db = new DBMain();
         }
 
@@ -30,40 +29,40 @@ namespace Proj_Book_Store_Manage.BSLayer
 
         public DataTable getDataItemOfBill()
         {
-            SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillExport(@idBill)");
+            SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillImport(@idBill)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBill", IdBill);
             return db.ExecuteFunction(cmd, ref err);
         }
-        public bool addNewItemIntoCart(string idBook, int amountBook, ref string err)
+        public bool addNewItemIntoWarehouse(string idBook, int amount, ref string err)
         {
-            strSQL = "proc_addNewBookBillOutput";
+            strSQL = "proc_addNewBookBillInput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idBillOutput", idBill);
+            parameter = new SqlParameter("@idBillInput", idBill);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idBook", idBook);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@amount", amountBook);
+            parameter = new SqlParameter("@amountInput", amount);
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
         public int getTotalCurrentOfBill(ref string err)
         {
-            SqlCommand cmd = new SqlCommand("Select dbo.func_returnToTalOfBillOutput(@idBill)");
+            SqlCommand cmd = new SqlCommand("Select dbo.func_returnToTalOfBillInput(@idBill)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBill", idBill);
             return db.ExecuteFunctionToInt(cmd, ref err);
         }
-        public bool deleteItemInCart(string idBook, ref string err)
+        public bool deleteItemInCart(string @idBook, ref string err)
         {
-            strSQL = "proc_deleteBookBillOutput";
+            strSQL = "proc_deleteBookBillInput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idBillOutput", idBill);
+            parameter = new SqlParameter("@idBillInput", idBill);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idBook", idBook);
@@ -73,10 +72,10 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
         public bool modifyItemInCart(string idBook, int amountBook, int amountNewBook, ref string err)
         {
-            strSQL = "proc_updateBookBillOutput";
+            strSQL = "proc_updateBookBillInput";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idBillOutput", idBill);
+            parameter = new SqlParameter("@idBillImport", idBill);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idBook", idBook);
@@ -92,4 +91,3 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
     }
 }
-

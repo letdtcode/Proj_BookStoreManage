@@ -60,34 +60,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        /*public bool modifyReceiptExport(string idBillOutput, DateTime dateOfBill, int total, string idCus, string idEmployee, int sttus, string idVoucher, ref string err)
-        {
-            strSQL = "proc_updateBillOutput";
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBillOutput", idBillOutput);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@dateOfBill", dateOfBill);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@total", total);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idCus", idCus);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idEmployee", idEmployee);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@sttus", sttus);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idVoucher", idVoucher);
-            parameters.Add(parameter);
-
-            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }*/
+        
         public bool deleteReceiptExport(string idBillOutput, ref string err)
         {
             strSQL = "proc_cancelBillExport";
@@ -98,15 +71,5 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        /*public bool invoiceBill(int idBillOutput, ref string err)
-        {
-            strSQL = "proc_invoiceBillOutput";
-            parameters = new List<SqlParameter>();
-
-            parameter = new SqlParameter("@idBillOutput", idBillOutput);
-            parameters.Add(parameter);
-
-            return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
-        }*/
     }
 }

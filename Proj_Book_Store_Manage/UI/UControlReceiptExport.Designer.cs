@@ -73,7 +73,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtSearch.Location = new System.Drawing.Point(54, 67);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 20);
+            this.txtSearch.Size = new System.Drawing.Size(224, 22);
             this.txtSearch.TabIndex = 2;
             // 
             // lblSearchBy
@@ -83,7 +83,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblSearchBy.Location = new System.Drawing.Point(16, 27);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(91, 21);
+            this.lblSearchBy.Size = new System.Drawing.Size(106, 23);
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "Thuộc tính";
             // 
@@ -104,7 +104,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbAttributeSearch.FormattingEnabled = true;
             this.cbAttributeSearch.Location = new System.Drawing.Point(157, 26);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 21);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // panel2
@@ -146,7 +146,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblDateExport.Location = new System.Drawing.Point(236, 32);
             this.lblDateExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateExport.Name = "lblDateExport";
-            this.lblDateExport.Size = new System.Drawing.Size(129, 21);
+            this.lblDateExport.Size = new System.Drawing.Size(161, 23);
             this.lblDateExport.TabIndex = 0;
             this.lblDateExport.Text = "Ngày Bán Sách";
             // 
@@ -196,14 +196,13 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.TabIndex = 0;
             this.gbReceiptExport.TabStop = false;
             this.gbReceiptExport.Text = "Thông tin bán sách";
-            this.gbReceiptExport.Enter += new System.EventHandler(this.gbReceiptExport_Enter);
             // 
             // lblDateBill
             // 
             this.lblDateBill.AutoSize = true;
             this.lblDateBill.Location = new System.Drawing.Point(425, 38);
             this.lblDateBill.Name = "lblDateBill";
-            this.lblDateBill.Size = new System.Drawing.Size(35, 13);
+            this.lblDateBill.Size = new System.Drawing.Size(46, 17);
             this.lblDateBill.TabIndex = 6;
             this.lblDateBill.Text = "label2";
             // 
@@ -212,16 +211,16 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIdCustomer.AutoSize = true;
             this.lblIdCustomer.Location = new System.Drawing.Point(415, 89);
             this.lblIdCustomer.Name = "lblIdCustomer";
-            this.lblIdCustomer.Size = new System.Drawing.Size(33, 13);
+            this.lblIdCustomer.Size = new System.Drawing.Size(42, 17);
             this.lblIdCustomer.TabIndex = 5;
             this.lblIdCustomer.Text = "None";
             // 
             // lblIDEmployee
             // 
             this.lblIDEmployee.AutoSize = true;
-            this.lblIDEmployee.Location = new System.Drawing.Point(149, 91);
+            this.lblIDEmployee.Location = new System.Drawing.Point(164, 83);
             this.lblIDEmployee.Name = "lblIDEmployee";
-            this.lblIDEmployee.Size = new System.Drawing.Size(33, 13);
+            this.lblIDEmployee.Size = new System.Drawing.Size(42, 17);
             this.lblIDEmployee.TabIndex = 4;
             this.lblIDEmployee.Text = "None";
             // 
@@ -232,7 +231,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblCustomer.Location = new System.Drawing.Point(236, 83);
             this.lblCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(137, 21);
+            this.lblCustomer.Size = new System.Drawing.Size(169, 23);
             this.lblCustomer.TabIndex = 1;
             this.lblCustomer.Text = "Mã Khách Hàng";
             // 
@@ -243,7 +242,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmployee.Location = new System.Drawing.Point(8, 83);
             this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(121, 21);
+            this.lblEmployee.Size = new System.Drawing.Size(149, 23);
             this.lblEmployee.TabIndex = 1;
             this.lblEmployee.Text = "Mã Nhân Viên";
             // 
@@ -254,7 +253,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblID.Location = new System.Drawing.Point(92, 32);
             this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(19, 21);
+            this.lblID.Size = new System.Drawing.Size(21, 23);
             this.lblID.TabIndex = 0;
             this.lblID.Text = "0";
             // 
@@ -265,7 +264,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblTotal.Location = new System.Drawing.Point(344, 135);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(19, 21);
+            this.lblTotal.Size = new System.Drawing.Size(21, 23);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "0";
             // 
@@ -276,7 +275,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.Location = new System.Drawing.Point(236, 135);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 21);
+            this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tổng tiền: ";
             // 
@@ -287,7 +286,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lbl1.Location = new System.Drawing.Point(8, 32);
             this.lbl1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(53, 21);
+            this.lbl1.Size = new System.Drawing.Size(65, 23);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "ID Bill:";
             // 
