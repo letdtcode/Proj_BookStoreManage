@@ -11,7 +11,7 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        public static string ServerName = "DUCTHANH\\SQLEXPRESS";
+        public static string ServerName = "DESKTOP-MINHDUN";
         public static string DatabaseName = "BOOKSTOREMANAGE";
         public static string UserName= "";
         public static string Password= "";
@@ -70,6 +70,8 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return dt;
         }
+
+        //dư -- có thể xóa
         public string ExecuteFunctionToString(SqlCommand cmdFunction, ref string error)
         {
             string valueReturn = null;

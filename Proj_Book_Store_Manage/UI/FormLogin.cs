@@ -62,9 +62,10 @@ namespace Proj_Book_Store_Manage.UI
         {
             idEmp = dt.Rows[0][0].ToString();
             nameEmp = dt.Rows[0][1].ToString();
-            if (dt.Rows[0][2].ToString() == "false")
+            if (dt.Rows[0][2].ToString() == "False")
                 idRole = "Nhân Viên";
-            idRole = "Quản Lý";
+            else
+                idRole = "Quản Lý";
         }    
 
         private void ptbPassInvisible_Click(object sender, EventArgs e)

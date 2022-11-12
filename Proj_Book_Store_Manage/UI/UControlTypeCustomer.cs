@@ -24,9 +24,11 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         TypeCustomerBL typecustomer = new TypeCustomerBL();
+        List<string> param;
         public UControlTypeCustomer()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -172,5 +174,51 @@ namespace Proj_Book_Store_Manage.UI
             txtValue.Text = dgvTypeCustomer.Rows[utl.rowCurrent].Cells[3].Value.ToString();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameAuthor;
+            (id, nameAuthor) = getParameter();
+
+            try
+            {
+                typecustomer = new TypeCustomerBL();
+                dtTypeCustomer = typecustomer.searchTypeCustomer(id, nameAuthor, ref err);
+                dgvTypeCustomer.DataSource = dtTypeCustomer;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Type Customer");
+            param.Add("Name Type Customer");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string) getParameter()
+        {
+            string id, nameTypeCus;
+            if (cbAttributeSearch.Text == "Id Type Customer")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameTypeCus = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Type Customer")
+            {
+                id = null;
+                nameTypeCus = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                nameTypeCus = null;
+            }
+            return (id, nameTypeCus);
+        }
     }
 }

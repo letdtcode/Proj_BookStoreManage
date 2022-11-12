@@ -20,6 +20,8 @@ namespace Proj_Book_Store_Manage.UI
         private string err="";
         private DialogResult result;
 
+        List<string> param;
+
         //false là chế độ sửa, true là chế độ thêm
         private bool isAdd = false;
         private bool isEdit = false;
@@ -31,6 +33,9 @@ namespace Proj_Book_Store_Manage.UI
             InitializeComponent();
             lblIDAcount.Enabled = false;
             LoadData();
+            createAttributeComBoBox();
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -202,6 +207,53 @@ namespace Proj_Book_Store_Manage.UI
             {
                 cbEmployee.Items.Add(idCus);
             }
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            string id, username;
+            (id, username) = getParameter();
+
+            try
+            {
+                account = new AccountBL();
+                dtAccount= account.searchAccount(id, username, ref err);
+                dgvAuthor.DataSource = dtAccount;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox ()
+        {
+            param = new List<string>();
+            param.Add("Id Account");
+            param.Add("Name Account");
+            this.cbAttribute.DataSource = param;
+        }
+
+        (string, string) getParameter ()
+        {
+            string id, username;
+            if (cbAttribute.Text == "Id Account")
+            {
+                id = this.txtInput.Text.Trim();
+                username = null;
+            }    
+
+            else if (cbAttribute.Text == "Name Account")
+            {
+                id = null;
+                username = this.txtInput.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                username = null;
+            }
+            return (id, username);
         }
     }
 }

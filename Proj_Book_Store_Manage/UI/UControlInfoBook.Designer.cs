@@ -32,6 +32,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gpSearch = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -87,40 +88,53 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(63, 110);
+            this.txtSearch.Location = new System.Drawing.Point(33, 85);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 22);
+            this.txtSearch.Size = new System.Drawing.Size(224, 20);
             this.txtSearch.TabIndex = 2;
             // 
             // lblSearchBy
             // 
             this.lblSearchBy.AutoSize = true;
             this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(23, 49);
+            this.lblSearchBy.Location = new System.Drawing.Point(7, 16);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(93, 21);
+            this.lblSearchBy.Size = new System.Drawing.Size(79, 19);
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "Thuộc tính";
             // 
             // gpSearch
             // 
+            this.gpSearch.Controls.Add(this.btnSearch);
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
             this.gpSearch.Location = new System.Drawing.Point(486, 6);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(293, 153);
+            this.gpSearch.Size = new System.Drawing.Size(293, 168);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(107, 109);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(87, 53);
+            this.btnSearch.TabIndex = 8;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // cbAttributeSearch
             // 
+            this.cbAttributeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(132, 46);
+            this.cbAttributeSearch.Location = new System.Drawing.Point(11, 43);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(246, 21);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // btnReload
@@ -193,7 +207,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtNameBook.Location = new System.Drawing.Point(106, 84);
             this.txtNameBook.Name = "txtNameBook";
-            this.txtNameBook.Size = new System.Drawing.Size(147, 22);
+            this.txtNameBook.Size = new System.Drawing.Size(147, 20);
             this.txtNameBook.TabIndex = 2;
             // 
             // lblAmount
@@ -203,7 +217,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAmount.Location = new System.Drawing.Point(10, 129);
             this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(74, 21);
+            this.lblAmount.Size = new System.Drawing.Size(65, 19);
             this.lblAmount.TabIndex = 1;
             this.lblAmount.Text = "Số lượng";
             // 
@@ -214,7 +228,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook.Location = new System.Drawing.Point(10, 85);
             this.lblNameBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameBook.Name = "lblNameBook";
-            this.lblNameBook.Size = new System.Drawing.Size(85, 21);
+            this.lblNameBook.Size = new System.Drawing.Size(71, 19);
             this.lblNameBook.TabIndex = 0;
             this.lblNameBook.Text = "Tên Sách";
             // 
@@ -248,28 +262,28 @@ namespace Proj_Book_Store_Manage.UI
             "3"});
             this.cbIDPublisher.Location = new System.Drawing.Point(359, 39);
             this.cbIDPublisher.Name = "cbIDPublisher";
-            this.cbIDPublisher.Size = new System.Drawing.Size(99, 24);
+            this.cbIDPublisher.Size = new System.Drawing.Size(99, 21);
             this.cbIDPublisher.TabIndex = 3;
             // 
             // txtPriceExport
             // 
             this.txtPriceExport.Location = new System.Drawing.Point(364, 131);
             this.txtPriceExport.Name = "txtPriceExport";
-            this.txtPriceExport.Size = new System.Drawing.Size(87, 22);
+            this.txtPriceExport.Size = new System.Drawing.Size(87, 20);
             this.txtPriceExport.TabIndex = 2;
             // 
             // txtPriceImport
             // 
             this.txtPriceImport.Location = new System.Drawing.Point(364, 86);
             this.txtPriceImport.Name = "txtPriceImport";
-            this.txtPriceImport.Size = new System.Drawing.Size(87, 22);
+            this.txtPriceImport.Size = new System.Drawing.Size(87, 20);
             this.txtPriceImport.TabIndex = 2;
             // 
             // txtAmount
             // 
             this.txtAmount.Location = new System.Drawing.Point(105, 130);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(147, 22);
+            this.txtAmount.Size = new System.Drawing.Size(147, 20);
             this.txtAmount.TabIndex = 2;
             // 
             // lblPriceExport
@@ -279,7 +293,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceExport.Location = new System.Drawing.Point(268, 131);
             this.lblPriceExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceExport.Name = "lblPriceExport";
-            this.lblPriceExport.Size = new System.Drawing.Size(77, 21);
+            this.lblPriceExport.Size = new System.Drawing.Size(65, 19);
             this.lblPriceExport.TabIndex = 1;
             this.lblPriceExport.Text = "Giá Bán";
             // 
@@ -290,7 +304,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPublisher.Location = new System.Drawing.Point(268, 39);
             this.lblPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPublisher.Name = "lblPublisher";
-            this.lblPublisher.Size = new System.Drawing.Size(43, 21);
+            this.lblPublisher.Size = new System.Drawing.Size(36, 19);
             this.lblPublisher.TabIndex = 1;
             this.lblPublisher.Text = "NXB";
             // 
@@ -301,7 +315,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceImport.Location = new System.Drawing.Point(268, 88);
             this.lblPriceImport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceImport.Name = "lblPriceImport";
-            this.lblPriceImport.Size = new System.Drawing.Size(89, 21);
+            this.lblPriceImport.Size = new System.Drawing.Size(75, 19);
             this.lblPriceImport.TabIndex = 1;
             this.lblPriceImport.Text = "Giá Nhập";
             // 
@@ -312,7 +326,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDBook.Location = new System.Drawing.Point(101, 39);
             this.lblIDBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIDBook.Name = "lblIDBook";
-            this.lblIDBook.Size = new System.Drawing.Size(55, 21);
+            this.lblIDBook.Size = new System.Drawing.Size(46, 19);
             this.lblIDBook.TabIndex = 0;
             this.lblIDBook.Text = "None";
             // 
@@ -323,7 +337,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Sách";
             // 
@@ -404,7 +418,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbaddAuthor.FormattingEnabled = true;
             this.cbaddAuthor.Location = new System.Drawing.Point(210, 33);
             this.cbaddAuthor.Name = "cbaddAuthor";
-            this.cbaddAuthor.Size = new System.Drawing.Size(121, 24);
+            this.cbaddAuthor.Size = new System.Drawing.Size(121, 21);
             this.cbaddAuthor.TabIndex = 2;
             // 
             // dgvAuthor
@@ -470,7 +484,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameAuthor.Location = new System.Drawing.Point(101, 33);
             this.lblNameAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameAuthor.Name = "lblNameAuthor";
-            this.lblNameAuthor.Size = new System.Drawing.Size(87, 19);
+            this.lblNameAuthor.Size = new System.Drawing.Size(71, 16);
             this.lblNameAuthor.TabIndex = 0;
             this.lblNameAuthor.Text = "Tên Tác Giả";
             // 
@@ -495,7 +509,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbaddCategory.FormattingEnabled = true;
             this.cbaddCategory.Location = new System.Drawing.Point(210, 28);
             this.cbaddCategory.Name = "cbaddCategory";
-            this.cbaddCategory.Size = new System.Drawing.Size(121, 24);
+            this.cbaddCategory.Size = new System.Drawing.Size(121, 21);
             this.cbaddCategory.TabIndex = 2;
             // 
             // dgvCategory
@@ -561,7 +575,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameCategory.Location = new System.Drawing.Point(101, 33);
             this.lblNameCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCategory.Name = "lblNameCategory";
-            this.lblNameCategory.Size = new System.Drawing.Size(85, 19);
+            this.lblNameCategory.Size = new System.Drawing.Size(69, 16);
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
             // 
@@ -644,5 +658,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Button btnEditCate;
         private System.Windows.Forms.Label lblIDBook;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

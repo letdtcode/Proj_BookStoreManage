@@ -43,14 +43,15 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPointMark = new System.Windows.Forms.Label();
             this.txtPointMark = new System.Windows.Forms.TextBox();
             this.gbTypeCustomer = new System.Windows.Forms.GroupBox();
+            this.lblID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblNameTypeCus = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gpSearch = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTypeCustomer)).BeginInit();
             this.gbTypeCustomer.SuspendLayout();
@@ -62,7 +63,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtValue.Location = new System.Drawing.Point(523, 94);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(162, 22);
+            this.txtValue.Size = new System.Drawing.Size(162, 20);
             this.txtValue.TabIndex = 2;
             // 
             // lblValueType
@@ -72,7 +73,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblValueType.Location = new System.Drawing.Point(353, 92);
             this.lblValueType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValueType.Name = "lblValueType";
-            this.lblValueType.Size = new System.Drawing.Size(166, 23);
+            this.lblValueType.Size = new System.Drawing.Size(141, 21);
             this.lblValueType.TabIndex = 1;
             this.lblValueType.Text = "Giá trị chiết khấu";
             // 
@@ -172,7 +173,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtTypeCustomer.Location = new System.Drawing.Point(139, 98);
             this.txtTypeCustomer.Name = "txtTypeCustomer";
-            this.txtTypeCustomer.Size = new System.Drawing.Size(146, 22);
+            this.txtTypeCustomer.Size = new System.Drawing.Size(146, 20);
             this.txtTypeCustomer.TabIndex = 2;
             // 
             // lblPointMark
@@ -182,7 +183,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPointMark.Location = new System.Drawing.Point(353, 57);
             this.lblPointMark.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPointMark.Name = "lblPointMark";
-            this.lblPointMark.Size = new System.Drawing.Size(102, 23);
+            this.lblPointMark.Size = new System.Drawing.Size(88, 21);
             this.lblPointMark.TabIndex = 1;
             this.lblPointMark.Text = "Điểm Mốc";
             // 
@@ -190,7 +191,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.txtPointMark.Location = new System.Drawing.Point(523, 58);
             this.txtPointMark.Name = "txtPointMark";
-            this.txtPointMark.Size = new System.Drawing.Size(162, 22);
+            this.txtPointMark.Size = new System.Drawing.Size(162, 20);
             this.txtPointMark.TabIndex = 2;
             // 
             // gbTypeCustomer
@@ -212,6 +213,28 @@ namespace Proj_Book_Store_Manage.UI
             this.gbTypeCustomer.TabStop = false;
             this.gbTypeCustomer.Text = "Thông tin loại khách hàng";
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(135, 59);
+            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(19, 21);
+            this.lblID.TabIndex = 0;
+            this.lblID.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 57);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ID Loại KH:";
+            // 
             // lblNameTypeCus
             // 
             this.lblNameTypeCus.AutoSize = true;
@@ -219,44 +242,45 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameTypeCus.Location = new System.Drawing.Point(8, 98);
             this.lblNameTypeCus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameTypeCus.Name = "lblNameTypeCus";
-            this.lblNameTypeCus.Size = new System.Drawing.Size(115, 23);
+            this.lblNameTypeCus.Size = new System.Drawing.Size(95, 21);
             this.lblNameTypeCus.TabIndex = 0;
             this.lblNameTypeCus.Text = "Tên Loại KH";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(47, 83);
+            this.txtSearch.Location = new System.Drawing.Point(6, 67);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 22);
+            this.txtSearch.Size = new System.Drawing.Size(281, 20);
             this.txtSearch.TabIndex = 2;
             // 
             // cbAttributeSearch
             // 
             this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(138, 27);
+            this.cbAttributeSearch.Location = new System.Drawing.Point(6, 40);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(281, 21);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // lblSearchBy
             // 
             this.lblSearchBy.AutoSize = true;
             this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(7, 30);
+            this.lblSearchBy.Location = new System.Drawing.Point(2, 16);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(106, 23);
+            this.lblSearchBy.Size = new System.Drawing.Size(91, 21);
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "Thuộc tính";
             // 
             // gpSearch
             // 
+            this.gpSearch.Controls.Add(this.btnSearch);
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
-            this.gpSearch.Location = new System.Drawing.Point(762, 33);
+            this.gpSearch.Location = new System.Drawing.Point(762, 21);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(293, 125);
+            this.gpSearch.Size = new System.Drawing.Size(293, 147);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
@@ -272,27 +296,16 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Size = new System.Drawing.Size(1072, 193);
             this.panel1.TabIndex = 9;
             // 
-            // label1
+            // btnSearch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 57);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID Loại KH:";
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(135, 59);
-            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(21, 23);
-            this.lblID.TabIndex = 0;
-            this.lblID.Text = "0";
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(174, 102);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(113, 39);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // UControlTypeCustomer
             // 
@@ -338,5 +351,6 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

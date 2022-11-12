@@ -38,5 +38,10 @@ namespace Proj_Book_Store_Manage.UI
         {
             this.Close();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

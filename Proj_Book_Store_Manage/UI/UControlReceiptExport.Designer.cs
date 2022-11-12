@@ -1,5 +1,4 @@
-﻿
-namespace Proj_Book_Store_Manage.UI
+﻿namespace Proj_Book_Store_Manage.UI
 {
     partial class UControlReceiptExport
     {

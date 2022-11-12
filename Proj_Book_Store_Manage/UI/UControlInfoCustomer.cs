@@ -26,9 +26,11 @@ namespace Proj_Book_Store_Manage.UI
         CustomerBL customer = new CustomerBL();
         private TypeCustomerBL typeCus = new TypeCustomerBL();
 
+        List<string> param;
         public UControlInfoCustomer()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -183,6 +185,53 @@ namespace Proj_Book_Store_Manage.UI
             {
                 cbTypeCus.Items.Add(nameTypeCustomer);
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            string id, nameEmployee;
+            (id, nameEmployee) = getParameter();
+            try
+            {
+                customer = new CustomerBL();
+                dtCustomer = customer.searchCustomer(id, nameEmployee, ref err);
+                dgvCustomer.DataSource = dtCustomer;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Customer");
+            param.Add("Name Customer");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string) getParameter()
+        {
+            string id, nameCus;
+            if (cbAttributeSearch.Text == "Id Customer")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameCus = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Customer")
+            {
+                id = null;
+                nameCus = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                nameCus = null;
+            }
+            return (id, nameCus);
         }
     }
 }

@@ -20,11 +20,16 @@ namespace Proj_Book_Store_Manage.UI
         ReceiptExportBL receiptExport = null;
 
         private CartBL cart = null;
+        List<string> param;
         public UControlReceiptExport()
         {
             InitializeComponent();
             this.lblIDEmployee.Text = frmLogin.idEmp;
+
+            createAttributeComBoBox();
+
             receiptExport = new ReceiptExportBL();
+
         }
         
         private void btnDetailExportReceipt_Click(object sender, EventArgs e)
@@ -79,6 +84,47 @@ namespace Proj_Book_Store_Manage.UI
             {
                 result = MessageBox.Show("Hóa đơn này không có giá trị ! Vui lòng chọn hóa đơn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }      
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id;
+            id= getParameter();
+            try
+            {
+                receiptExport = new ReceiptExportBL();
+                dtReceiptExport = receiptExport.searchReceiptExport(id, ref err);
+                dgvReceiptExport.DataSource = dtReceiptExport;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Bill");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        string getParameter()
+        {
+            string id;
+            if (cbAttributeSearch.Text == "Id Bill")
+            {
+                id = this.txtSearch.Text.Trim();
+            }
+
+            else if (cbAttributeSearch.Text == "Name Customer")
+            {
+                id = null;
+            }
+            else
+            {
+                id = null;
+            }
+            return (id);
         }
     }
 }
