@@ -215,5 +215,10 @@ namespace Proj_Book_Store_Manage.UI
             }
             return (id, username);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
