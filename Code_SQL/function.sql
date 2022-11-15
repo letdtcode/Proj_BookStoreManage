@@ -2,7 +2,7 @@
 go
 -----------------------------------------Function phụ trợ--------------------------------------------------
 --Hàm kiểm tra voucher còn trong thời gian sử dụng hay không và 
-create or alter function func_checkVoucherValidOrNot(@dateStart date,@dateEnd date,@dateCurrent date)
+create or alter function func_checkVoucherValidOrNot(@dateStart date, @dateEnd date, @dateCurrent date)
 returns bit
 as
 begin
@@ -29,15 +29,19 @@ end
 go
 
 --Tìm kiếm một Account
-create or alter function func_searchAccount(@idAcc varchar(8), @userName varchar(20), @password varchar(30), @typeAcc bit, @idEmp varchar(8))
+create or alter function func_searchAccount(@idAcc int, @userName varchar(20), @password varchar(30), @typeAcc bit, @idEmp int)
 returns table
 as
 	return ( select *
 	from dbo.ACCOUNT
-	where ACCOUNT.idAccount=@idAcc and ACCOUNT.nameAccount like @userName+'%' and ACCOUNT.password like @password+'%' and ACCOUNT.typeOfAcc = typeOfAcc and ACCOUNT.idEmployee=@idEmp )
+	where ACCOUNT.idAccount=@idAcc and
+			ACCOUNT.nameAccount like @userName+'%' and 
+			ACCOUNT.password like @password+'%' and 
+			ACCOUNT.typeOfAcc = typeOfAcc and 
+			ACCOUNT.idEmployee=@idEmp )
 go
 --Trả về danh sách các thể loại của sách
-create or alter function func_getAllCategoryOfBook(@idBook varchar(8))
+create or alter function func_getAllCategoryOfBook(@idBook int)
 returns table
 as 
 return (select distinct dbo.CATEGORY.nameCategory as TheLoai
@@ -45,7 +49,7 @@ from dbo.CATEGORY, dbo.BOOK_CATEGORY
 where dbo.BOOK_CATEGORY.idBook=@idBook and dbo.CATEGORY.idCategory=dbo.BOOK_CATEGORY.idCategory)
 go
 --Trả về danh sách các tác giả của sách
-create or alter function func_getAllAuthorOfBook(@idBook varchar(8))
+create or alter function func_getAllAuthorOfBook(@idBook int)
 returns table
 as 
 return (select distinct dbo.AUTHOR.nameAuthor as TacGia
@@ -55,10 +59,10 @@ go
 
 --Trả về idCategory (Đầu vào là nameCategory)
 create or alter function func_getIDCategory(@nameCategory nvarchar(20))
-returns varchar(8)
+returns int
 as
 begin
-	declare @idCategory varchar(8)
+	declare @idCategory int
 	select @idCategory=CATEGORY.idCategory
 	from dbo.CATEGORY
 	where CATEGORY.nameCategory=@nameCategory
@@ -68,10 +72,10 @@ end
 go
 --Trả về idAuthor (Đầu vào là nameAuthor)
 create or alter function func_getIDAuthor(@nameAuthor nvarchar(30))
-returns varchar(8)
+returns int
 as
 begin
-	declare @idAuthor varchar(8)
+	declare @idAuthor int
 	select @idAuthor=AUTHOR.idAuthor
 	from dbo.AUTHOR
 	where AUTHOR.nameAuthor=@nameAuthor
@@ -81,7 +85,7 @@ end
 go
 
 --Check xem ID sách này có trong đơn hàng chưa. Trả về true nếu đã tồn tại trong đơn hàng, trả về false nếu chưa tồn tại
-create or alter function func_checkBookIsInBill(@idBill varchar(8), @idBook varchar(8))
+create or alter function func_checkBookIsInBill(@idBill int, @idBook int)
 returns bit
 as
 begin
@@ -93,7 +97,7 @@ begin
 end
 go
 --Lấy thông tin chi tiết hóa đơn xuất
-create or alter function func_getDataOfBillExport(@idBill varchar(8))
+create or alter function func_getDataOfBillExport(@idBill int)
 returns table
 as 
 	return ( select BOOK_BILLOUTPUT.idBook as N'ID', BOOK.nameBook as N'Tên Sách', BOOK_BILLOUTPUT.amountOutput as N'Số lượng'
@@ -101,7 +105,7 @@ as
 			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill and dbo.BOOK_BILLOUTPUT.idBook=BOOK.idBook )
 go
 --Lấy thông tin chi tiết hóa đơn nhập
-create or alter function func_getDataOfBillImport(@idBill varchar(8))
+create or alter function func_getDataOfBillImport(@idBill int)
 returns table
 as 
 	return ( select BOOK_BILLINPUT.idBook as N'ID', BOOK.nameBook as N'Tên Sách', BOOK_BILLINPUT.amountInput as N'Số lượng'
@@ -110,7 +114,7 @@ as
 go
 
 --Hàm trả về tên khách hàng (đầu vào là mã Bill)
-create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8))
+create or alter function func_getNameCusOfBillOutPut(@idBill int)
 returns varchar(30)
 begin
 	return (select dbo.CUSTOMER.nameCus
@@ -119,7 +123,7 @@ begin
 end
 go
 --Hàm trả về tên nhân viên (đầu vào là mã Bill)
-create or alter function func_getNameEmpOfBillOutPut(@idBill varchar(8))
+create or alter function func_getNameEmpOfBillOutPut(@idBill int)
 returns varchar(30)
 begin
 	return (select CONCAT(dbo.EMPLOYEE.firstName,dbo.EMPLOYEE.middleName,dbo.EMPLOYEE.lastName)
@@ -130,7 +134,7 @@ go
 
 ----------------------------------------------CHỨC NĂNG XEM CHI TIẾT ĐƠN HÀNG XUất---------------
 --Trả về tên sách
-create or alter function func_getNameBookById(@idBook varchar(8))
+create or alter function func_getNameBookById(@idBook int)
 returns varchar(20)
 begin
 	return (select dbo.BOOK.nameBook
@@ -139,7 +143,7 @@ begin
 end
 go
 --Trả về số lượng sách trong kho
-create or alter function func_getAmountBookById(@idBook varchar(8))
+create or alter function func_getAmountBookById(@idBook int)
 returns int
 begin
 	return (select dbo.BOOK.amount
@@ -148,7 +152,7 @@ begin
 end
 go
 --Tính tổng tiền hóa đơn xuất
-create or alter function func_returnToTalOfBillOutput(@idBill varchar(8))
+create or alter function func_returnToTalOfBillOutput(@idBill int)
 returns int
 begin
 	if not exists(select * from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
@@ -158,7 +162,7 @@ begin
 end
 go
 --Tính tổng tiền hóa đơn nhập
-create or alter function func_returnToTalOfBillInput(@idBill varchar(8))
+create or alter function func_returnToTalOfBillInput(@idBill int)
 returns int
 begin
 	if not exists(select * from dbo.BOOK_BILLINPUT where dbo.BOOK_BILLINPUT.idBillInput=@idBill)
@@ -171,13 +175,13 @@ go
 ---Hàm trả về mã nhân viên, tên nhân viên khi đăng nhập
 create or alter function func_getIdEmployee (@user varchar(20), @password varchar(30))
 returns @table table (
-	idEmp varchar(8),
+	idEmp int,
 	nameEmp nvarchar (40),
 	idRole bit
 	)
 as
 begin
-	declare @idEmp varchar(8), @firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), @name nvarchar (40), @idRole bit
+	declare @idEmp int, @firstName nvarchar(10), @middleName nvarchar(10), @lastName nvarchar (10), @name nvarchar (40), @idRole bit
 	select @idEmp = ACCOUNT.idEmployee,
 	@middleName = middleName,
 	@firstName = firstName,
@@ -195,7 +199,7 @@ begin
 end
 go
 --Hàm trả về giá trị phần trăm giảm của thẻ VIP
-create or alter function func_getValueDiscountOfTypeCustomer(@idCustomer varchar(8))
+create or alter function func_getValueDiscountOfTypeCustomer(@idCustomer int)
 returns int
 as
 begin
@@ -207,7 +211,7 @@ begin
 end
 go
 ------- Hàm tìm kiếm account
-Create or alter function func_searchAccount (@idAccount varchar (8), @username varchar(20))
+Create or alter function func_searchAccount (@idAccount int, @username varchar(20))
 returns table
 as
 	return (select * from ACCOUNT 
@@ -216,7 +220,7 @@ as
 go
 
 --- Hàm tìm kiếm author
-Create or alter function func_searchAuthor (@idAuthor varchar(8), @nameAuthor nvarchar(30))
+Create or alter function func_searchAuthor (@idAuthor int, @nameAuthor nvarchar(30))
 returns table
 as
 	return (
@@ -226,7 +230,7 @@ as
 	)
 go
 ---Hàm tìm kiếm thể loại
-create or alter function func_searchCategory (@idCategory varchar(8), @nameCategory nvarchar(20))
+create or alter function func_searchCategory (@idCategory int, @nameCategory nvarchar(20))
 returns table
 as
 	return (
@@ -236,7 +240,7 @@ as
 	)
 go
 -- Hàm tìm kiếm Nhân viên
-Create or alter function func_searchEmployee (@idEmployee varchar(8), @nameEmployee nvarchar (40))
+Create or alter function func_searchEmployee (@idEmployee int, @nameEmployee nvarchar (40))
 returns table
 as
 	return (
@@ -250,7 +254,7 @@ go
 
 --- Hàm tìm kiếm sách
 --Hàm tìm kiếm khách hàng
-Create or alter function func_searchCustomer (@idCustomer varchar (8), @nameCustomer nvarchar(40))
+Create or alter function func_searchCustomer (@idCustomer int, @nameCustomer nvarchar(40))
 returns table
 as
 	return (
@@ -261,7 +265,7 @@ as
 go
 
 --- Hàm tìm kiếm nhà xuất bản
-Create or alter function func_searchPublisher (@idPublisher varchar(8), @namePublisher nvarchar(80))
+Create or alter function func_searchPublisher (@idPublisher int, @namePublisher nvarchar(80))
 returns table
 as
 	return (
@@ -271,9 +275,8 @@ as
 	)
 go
 
-select * from dbo.func_searchPublisher(null,N'Nhà xuất bản trẻ')
 --- Hàm tìm kiếm hóa đơn xuất
-Create or alter function func_searchReceiptExport (@idBill varchar(8))
+Create or alter function func_searchReceiptExport (@idBill int)
 returns table
 as
 	return (
@@ -282,7 +285,7 @@ as
 go
 
 --- Hàm tìm kiếm voucher
-Create or alter function func_searchVoucher(@idVoucher varchar(8))
+Create or alter function func_searchVoucher(@idVoucher int)
 returns table
 as
 	return (
@@ -292,7 +295,7 @@ go
 
 
 --- Hàm Tìm kiếm loại khách hàng
-Create or alter function func_searchTypeCustomer(@id varchar(8), @name nvarchar(30))
+Create or alter function func_searchTypeCustomer(@id int, @name nvarchar(30))
 returns table
 as
 	return (
@@ -303,7 +306,7 @@ as
 go
 
 --- Hàm tìm kiếm hóa đơn Nhập hàng
-Create or alter function func_searchReceiptImport(@idBill varchar(8))
+Create or alter function func_searchReceiptImport(@idBill int)
 returns table
 as
 	return (
