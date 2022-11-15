@@ -1,10 +1,9 @@
 ﻿use BOOKSTOREMANAGE
 go
 -----------------------------PROCEDURE-------------------------
-exec proc_addNewAccount 'ACC1','dthanh123','abcd1234',1,'NV1'
 --PROCEDURE THÊM, SỬA, XÓA ACCOUNT
 --Thêm một account mới
-create or alter procedure proc_addNewAccount (@idAccount varchar(8), @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee varchar(8))
+create or alter procedure proc_addNewAccount (@idAccount int, @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee int)
 as
 begin
 	begin transaction addNewAcc
@@ -37,7 +36,7 @@ end
 go
 --Chỉnh sửa một Account
 create or alter procedure proc_updateAccount
-@idAccount varchar(8),
+@idAccount int,
 @nameAccount varchar(20),
 @password varchar(30)
 as
@@ -59,7 +58,7 @@ end
 go
 
 --Xóa một Account
-create or alter procedure proc_DeleteAccount (@idAccount varchar(8))
+create or alter procedure proc_DeleteAccount (@idAccount int)
 as
 begin
 	declare @username nvarchar (20)
@@ -83,7 +82,7 @@ go
 --PROCEDURE THÊM, SỬA, XÓA AUTHOR
 --Thêm một Author
 create or alter procedure proc_addNewAuthor
-@idAuthor varchar(8),
+@idAuthor int,
 @nameAuthor nvarchar(30),
 @phoneNumber varchar(10)
 as
@@ -104,7 +103,7 @@ end
 go
 --Chỉnh sửa một Author
 create or alter procedure proc_updateAuthor
-@idAuthor varchar(8),
+@idAuthor int,
 @nameAuthor nvarchar(30),
 @phoneNumber varchar(10)
 as
@@ -116,7 +115,7 @@ end
 go
 --Xóa một Author
 create or alter procedure proc_DeleteAuthor
-@idAuthor varchar(8)
+@idAuthor int
 as
 begin
 	delete from dbo.AUTHOR
@@ -126,12 +125,12 @@ go
 --PROCEDURE THÊM, SỬA, XÓA BOOK
 --Thêm một Book
 create or alter procedure proc_addNewBook
-@idBook varchar(8),
+@idBook int,
 @nameBook nvarchar(20),
 @urlImage image,
 @priceImport int,
 @priceExport int,
-@idPublisher varchar(8)
+@idPublisher int
 as
 begin
 	insert into dbo.BOOK
@@ -156,12 +155,12 @@ end
 go
 --Chỉnh sửa một Book
 create or alter procedure proc_updateBook
-@idBook varchar(8),
+@idBook int,
 @nameBook nvarchar(20),
 @urlImage image,
 @priceImport int,
 @priceExport int,
-@idPublisher varchar(8)
+@idPublisher int
 as
 begin
 	update dbo.BOOK
@@ -171,7 +170,7 @@ end
 go
 --Xóa một Book
 create or alter procedure proc_DeleteBook
-@idBook varchar(8)
+@idBook int
 as
 begin
 	delete from dbo.BOOK
@@ -181,11 +180,11 @@ go
 --PROCEDURE THÊM, SỬA, XÓA BOOK_AUTHOR
 --Thêm tên tác giả cho sách
 create or alter procedure proc_addNewBookAuthor
-@idBook varchar(8),
+@idBook int,
 @nameAuthor nvarchar(30)
 as
 begin
-	declare @idAuthor varchar(8)
+	declare @idAuthor int
 	select @idAuthor=dbo.func_getIDAuthor(@nameAuthor)
 	insert into dbo.BOOK_AUTHOR
 		(
@@ -201,12 +200,12 @@ end
 go
 --Chỉnh sửa tên tác giả cho sách
 create or alter procedure proc_updateBookAuthor
-@idBook varchar(8),
+@idBook int,
 @nameAuthor nvarchar(30),
 @nameNewAuthor nvarchar(30) 
 as
 begin
-	declare @idAuthor varchar(8), @idNewAuthor varchar(8)
+	declare @idAuthor int, @idNewAuthor int
 	select @idAuthor=dbo.func_getIDAuthor(@nameAuthor), @idNewAuthor=dbo.func_getIDAuthor(@nameNewAuthor)
 
 	update dbo.BOOK_AUTHOR
@@ -216,11 +215,11 @@ end
 go
 --Xóa bộ sách-tác giả
 create or alter procedure proc_deleteBookAuthor
-@idBook varchar(8),
+@idBook int,
 @nameAuthor nvarchar(30)
 as
 begin
-	declare @idAuthor varchar(8)
+	declare @idAuthor int
 	select @idAuthor=dbo.func_getIDAuthor(@nameAuthor)
 
 	delete from dbo.BOOK_AUTHOR
@@ -230,11 +229,11 @@ go
 --PROCEDURE THÊM, SỬA, XÓA BOOK_CATEGORY
 --Thêm thể loại cho sách
 create or alter procedure proc_addNewBookCategory
-@idBook varchar(8),
+@idBook int,
 @nameCategory nvarchar(20)
 as
 begin
-	declare @idCategory varchar(8)
+	declare @idCategory int
 	select @idCategory=dbo.func_getIDCategory(@nameCategory)
 
 	insert into dbo.BOOK_CATEGORY
@@ -251,12 +250,12 @@ end
 go
 --Chỉnh sửa thể loại cho sách
 create or alter procedure proc_updateBookCategory
-@idBook varchar(8),
+@idBook int,
 @nameCategory nvarchar(20), 
 @nameNewCategory nvarchar(20)
 as
 begin
-	declare @idCategory varchar(8), @idNewCategory varchar(8)
+	declare @idCategory int, @idNewCategory int
 	select @idCategory=dbo.func_getIDCategory(@nameCategory), @idNewCategory=dbo.func_getIDCategory(@nameNewCategory)
 
 	update dbo.BOOK_CATEGORY
@@ -266,11 +265,11 @@ end
 go
 --Xóa bộ sách-thể loại
 create or alter procedure proc_deleteBookCategory
-@idBook varchar(8),
+@idBook int,
 @nameCategory nvarchar(20)
 as
 begin
-	declare @idCategory varchar(8)
+	declare @idCategory int
 	select @idCategory=dbo.func_getIDCategory(@nameCategory)
 
 	delete from dbo.BOOK_CATEGORY
@@ -280,7 +279,7 @@ go
 --PROCEDURE THÊM, SỬA, XÓA CATEGORY
 --Thêm một thể loại mới 
 create or alter procedure proc_addNewCategory
-@idCategory varchar(8),
+@idCategory int,
 @nameCategory nvarchar(20),
 @describleCategory nvarchar(50)
 as
@@ -301,7 +300,7 @@ end
 go
 --Chỉnh sửa một thể loại
 create or alter procedure proc_updateCategory
-@idCategory varchar(8),
+@idCategory int,
 @nameCategory nvarchar(20),
 @describleCategory nvarchar(50)
 as
@@ -313,7 +312,7 @@ end
 go
 --Xóa một thể loại
 create or alter procedure proc_deleteCategory
-@idCategory varchar(8)
+@idCategory int
 as
 begin
 	delete from dbo.CATEGORY
@@ -323,11 +322,11 @@ go
 --PROCEDURE CUSTOMER
 --Thêm một Customer
 create or alter procedure proc_addNewCustomer
-@idCustomer varchar(8),
+@idCustomer int,
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
 @phoneNumber varchar(20),
-@idTypeCus varchar(8)
+@idTypeCus int
 as
 begin
 	insert into dbo.CUSTOMER
@@ -350,7 +349,7 @@ end
 go
 --Chỉnh sửa một Customer
 create or alter procedure proc_updateCustomer
-@idCus varchar(8),
+@idCus int,
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
 @phoneNumber varchar(20)
@@ -363,7 +362,7 @@ end
 go
 --Xóa một Customer
 create or alter procedure proc_deleteCustomer
-@idCus varchar(8)
+@idCus int
 as
 begin
 	delete from dbo.CUSTOMER
@@ -374,7 +373,7 @@ go
 --PROCEDURE EMPLOYEE
 --Thêm một Employee
 create or alter procedure proc_addNewEmployee
-@idEmployee varchar(8),
+@idEmployee int,
 @firstName nvarchar(10),
 @middleName nvarchar(10),
 @lastName nvarchar(10),
@@ -413,7 +412,7 @@ end
 go
 --Chỉnh sửa một Employee
 create or alter procedure proc_updateEmployee
-@idEmployee varchar(8),
+@idEmployee int,
 @firstName nvarchar(10),
 @middleName nvarchar(10),
 @lastName nvarchar(10),
@@ -431,7 +430,7 @@ end
 go
 --Xóa một Employee
 create or alter procedure proc_deleteEmployee
-@idEmployee varchar(8)
+@idEmployee int
 as
 begin
 	delete from dbo.EMPLOYEE
@@ -441,7 +440,7 @@ go
 --PROCEDURE PUBLISHER
 --Thêm một Publisher
 create or alter procedure proc_addNewPublisher
-@idPublisher varchar(8),
+@idPublisher int,
 @namePublisher nvarchar(30),
 @addPublisher nvarchar(30),
 @phoneNumber varchar(10)
@@ -465,7 +464,7 @@ end
 go
 --Chỉnh sửa một Publisher
 create or alter procedure proc_updatePublisher
-@idPublisher varchar(8),
+@idPublisher int,
 @namePublisher nvarchar(30),
 @addPublisher nvarchar(30),
 @phoneNumber varchar(10)
@@ -478,7 +477,7 @@ end
 go
 --Xóa một Publisher
 create or alter procedure proc_deletePublisher
-@idPublisher varchar(8)
+@idPublisher int
 as
 begin
 	delete from dbo.PUBLISHER
@@ -488,7 +487,7 @@ go
 --PROCEDURE TYPECUSTOMER
 --Thêm một TypeCustomer
 create or alter procedure proc_addNewTypeCustomer
-@idTypeCustomer varchar(8),
+@idTypeCustomer int,
 @nameTypeCus nvarchar(30),
 @pointMark int,
 @valueTypeCus int
@@ -512,7 +511,7 @@ end
 go
 --Chỉnh sửa một Type Customer
 create or alter procedure proc_updateTypeCustomer
-@idTypeCus varchar(8),
+@idTypeCus int,
 @nameTypeCus nvarchar(30),
 @pointMark int,
 @valueTypeCus int
@@ -525,7 +524,7 @@ end
 go
 --Xóa một TypeCustomer
 create or alter procedure proc_deleteTypeCustomer
-@idTypeCus varchar(8)
+@idTypeCus int
 as
 begin
 	delete from dbo.TYPECUSTOMER
@@ -535,7 +534,7 @@ go
 --PROCEDURE VOUCHER
 --Thêm một Voucher
 create or alter procedure proc_addNewVoucher
-@idVoucher varchar(8),
+@idVoucher int,
 @valueVoucher int,
 @nameOfEvent nvarchar(40),
 @dateStart date,
@@ -565,7 +564,7 @@ end
 go
 --Chỉnh sửa một Voucher
 create or alter procedure proc_updateVoucher
-@idVoucher varchar(8),
+@idVoucher int,
 @valueVoucher int,
 @nameOfEvent nvarchar(40),
 @dateStart date,
@@ -580,7 +579,7 @@ end
 go
 --Xóa một Voucher
 create or alter procedure proc_deleteVoucher
-@idVoucher varchar(8)
+@idVoucher int
 as
 begin
 	delete from dbo.VOUCHER
@@ -590,7 +589,7 @@ go
 --PROCEDURE THÊM SỬA XÓA BILLINPUT
 --Thêm một BillInput
 create or alter procedure proc_addNewBillInput
-@idBillInput varchar(8)
+@idBillInput int
 as
 begin
 	insert into dbo.BILLINPUT
@@ -606,8 +605,8 @@ go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLINPUT
 --Thêm một item vào đơn hàng nhập
 create or alter procedure proc_addNewBookBillInput
-@idBillInput varchar(8),
-@idBook varchar(8),
+@idBillInput int,
+@idBook int,
 @amountInput int
 as
 begin
@@ -647,8 +646,8 @@ end
 go
 --Sửa số lượng item trong hóa đơn
 create or alter procedure proc_updateBookBillInput
-@idBillImport varchar(8),
-@idBook varchar(8),
+@idBillImport int,
+@idBook int,
 @amountBook int,
 @amountNewBook int
 as
@@ -675,8 +674,8 @@ end
 go
 --Xóa một item trong hóa đơn
 create or alter procedure proc_deleteBookBillInput
-@idBillInput varchar(8),
-@idBook varchar(8)
+@idBillInput int,
+@idBook int
 as
 begin
 	--Lấy ra số lượng sách có trong hóa đơn
@@ -696,9 +695,9 @@ end
 go
 --Xác nhận xuất hóa đơn nhập
 create or alter procedure proc_confirmBillImport
-@idBillInput varchar(8),
+@idBillInput int,
 @dateTimeOfBill date,
-@idEmp varchar(8)
+@idEmp int
 as
 begin
 	declare @totalOfBill int
@@ -722,11 +721,11 @@ go
 
 --Xác nhận hủy một hóa đơn đang thêm
 create or alter procedure proc_cancelBillImport
-@idBill varchar(8)
+@idBill int
 as 
 begin
 	--Duyệt qua từng idBook trong hóa đơn
-	declare @idBook varchar(8)
+	declare @idBook int
 	declare item cursor for (select dbo.BOOK_BILLINPUT.idBook from dbo.BOOK_BILLINPUT where dbo.BOOK_BILLINPUT.idBillInput=@idBill)
 	open item
 	fetch next from item into @idBook
@@ -747,7 +746,7 @@ go
 --PROCEDURE THÊM SỬA XÓA BILLOUTPUT
 --Thêm một BillOutput
 create or alter procedure proc_addNewBillOutput
-@idBillOutput varchar(8)
+@idBillOutput int
 as
 begin
 	insert into dbo.BILLOUTPUT
@@ -764,8 +763,8 @@ go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLOUTPUT
 --Thêm sản phẩm vào hóa đơn xuất
 create or alter procedure proc_addNewBookBillOutput
-@idBillOutput varchar(8),
-@idBook varchar(8),
+@idBillOutput int,
+@idBook int,
 @amount int
 as
 begin
@@ -809,10 +808,10 @@ go
 --Cập nhật lại loại khách hàng sau mỗi đơn hàng
 create or alter procedure proc_updateTypeCusForCus
 @amountBooksBought int,
-@idCus varchar(8)
+@idCus int
 as
 begin
-	declare @idTypeCus varchar(8), @pointMark int, @maxPointValue int
+	declare @idTypeCus int, @pointMark int, @maxPointValue int
 	set @maxPointValue=0
 	declare point cursor for select dbo.TYPECUSTOMER.pointMark from dbo.TYPECUSTOMER order by pointMark ASC
 	open point
@@ -835,14 +834,20 @@ begin
 	where dbo.CUSTOMER.idCus=@idCus
 end
 go
+<<<<<<< HEAD
 
 --Xác nhận xuất hóa đơn
+=======
+--exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
+--exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
+----Xác nhận xuất hóa đơn
+>>>>>>> cc427f870627160de414df4ffdb7fedf096a27f0
 create or alter procedure proc_confirmBillExport
-@idBillOutput varchar(8),
+@idBillOutput int,
 @dateTimeOfBill date,
-@idCus varchar(8),
-@idEmp varchar(8),
-@idVoucher varchar(8)=null
+@idCus int,
+@idEmp int,
+@idVoucher int=null
 as
 begin
 	begin try
@@ -914,8 +919,8 @@ end
 go
 --Xóa một item trong hóa đơn
 create or alter procedure proc_deleteBookBillOutput
-@idBillOutput varchar(8),
-@idBook varchar(8)
+@idBillOutput int,
+@idBook int
 as
 begin
 	--Lấy ra số lượng sách có trong hóa đơn
@@ -936,11 +941,11 @@ go
 
 --Xác nhận hủy một hóa đơn đang thêm
 create or alter procedure proc_cancelBillExport
-@idBill varchar(8)
+@idBill int
 as 
 begin
 	--Duyệt qua từng idBook trong hóa đơn
-	declare @idBook varchar(8)
+	declare @idBook int
 	declare item cursor for (select dbo.BOOK_BILLOUTPUT.idBook from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
 	open item
 	fetch next from item into @idBook
@@ -959,8 +964,8 @@ end
 go
 --Sửa số lượng item trong hóa đơn
 create or alter procedure proc_updateBookBillOutput
-@idBillOutput varchar(8),
-@idBook varchar(8),
+@idBillOutput int,
+@idBook int,
 @amountBook int,
 @amountNewBook int
 as
@@ -985,3 +990,95 @@ begin
 	end catch
 end
 go
+<<<<<<< HEAD
+=======
+
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX1'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX1'
+
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX2'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX2'
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX3'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX3'
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX4'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX4'
+
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX5'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX5'
+
+--go
+
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX7'
+
+--go
+---Procedure show doanh thu trong khoảng begin end---
+create or alter proc sp_ShowRevenue
+@begin date , @end date
+as
+begin
+	select convert(date,dateOfBill) as dateOfBill, sum(total) as total
+	from BILLOUTPUT where dateOfBill between @begin and @end
+	group by convert(date,dateOfBill)
+end
+exec sp_ShowRevenue @begin ='2022-06-01' ,@end ='2022-11-01'
+
+----Procedure show top 5 sản phẩm bán chạy nhất trong khoảng begin end-----
+create or alter proc sp_ShowTop5Book
+@begin date , @end date
+as
+begin
+	select top 5 BOOK.nameBook, sum(BOOK_BILLOUTPUT.amountOutput) as amountOutput
+	from BOOK_BILLOUTPUT, BOOK, BILLOUTPUT
+	where BOOK_BILLOUTPUT.idBook= BOOK.idBook
+		and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
+		and dateOfBill between @begin and @end
+	group by BOOK.nameBook 
+	order by amountOutput desc
+end
+exec sp_ShowTop5Book @begin ='2022-06-01' ,@end ='2022-11-01'
+-------Tổng quan về tổng doanh thu trong khoảng thời gian--------
+create or alter proc sp_Overview_Revenue
+@begin date, @end date
+as
+begin
+	select sum(total) 
+	from BILLOUTPUT 
+	where dateOfBill between @begin and @end
+end
+------Tổng quan về số hóa đơn trong khoảng thời gian----------
+create or alter proc sp_Overview_AmountBillOutput
+@begin date, @end date
+as
+begin
+	select count(*) 
+	from BILLOUTPUT 
+	where dateOfBill between @begin and @end
+end
+-----Tổng quan về số sách bán được trong khoảng thời gian--------
+create or alter proc sp_Overview_AmountBookBillOutput
+@begin date, @end date
+as
+begin
+	select sum(amountOutput) 
+	from BOOK_BILLOUTPUT, BILLOUTPUT,BOOK
+	where BOOK_BILLOUTPUT.idBook= BOOK.idBook
+	and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
+	and dateOfBill between @begin and @end
+end

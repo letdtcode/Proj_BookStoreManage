@@ -164,3 +164,4 @@ as
 select *
 from dbo.VOUCHER
 go
+
