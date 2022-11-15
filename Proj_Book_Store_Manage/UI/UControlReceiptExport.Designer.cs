@@ -40,6 +40,8 @@
             this.dgvReceiptExport = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbReceiptExport = new System.Windows.Forms.GroupBox();
+            this.lblIdVoucher = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblDateBill = new System.Windows.Forms.Label();
             this.lblIdCustomer = new System.Windows.Forms.Label();
             this.lblIDEmployee = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblIdVoucher = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptExport)).BeginInit();
@@ -144,7 +144,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(236, 32);
+            this.label10.Location = new System.Drawing.Point(298, 32);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(161, 23);
@@ -156,7 +156,7 @@
             this.dgvReceiptExport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvReceiptExport.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvReceiptExport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReceiptExport.Location = new System.Drawing.Point(42, 240);
+            this.dgvReceiptExport.Location = new System.Drawing.Point(70, 240);
             this.dgvReceiptExport.Name = "dgvReceiptExport";
             this.dgvReceiptExport.ReadOnly = true;
             this.dgvReceiptExport.RowHeadersWidth = 51;
@@ -200,30 +200,53 @@
             this.gbReceiptExport.TabStop = false;
             this.gbReceiptExport.Text = "Thông tin bán sách";
             // 
+            // lblIdVoucher
+            // 
+            this.lblIdVoucher.AutoSize = true;
+            this.lblIdVoucher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdVoucher.Location = new System.Drawing.Point(130, 129);
+            this.lblIdVoucher.Name = "lblIdVoucher";
+            this.lblIdVoucher.Size = new System.Drawing.Size(63, 23);
+            this.lblIdVoucher.TabIndex = 8;
+            this.lblIdVoucher.Text = "None";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 23);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Voucher";
+            // 
             // lblDateBill
             // 
             this.lblDateBill.AutoSize = true;
-            this.lblDateBill.Location = new System.Drawing.Point(425, 38);
+            this.lblDateBill.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateBill.Location = new System.Drawing.Point(477, 32);
             this.lblDateBill.Name = "lblDateBill";
-            this.lblDateBill.Size = new System.Drawing.Size(46, 17);
+            this.lblDateBill.Size = new System.Drawing.Size(72, 23);
             this.lblDateBill.TabIndex = 6;
             this.lblDateBill.Text = "label2";
             // 
             // lblIdCustomer
             // 
             this.lblIdCustomer.AutoSize = true;
-            this.lblIdCustomer.Location = new System.Drawing.Point(415, 89);
+            this.lblIdCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdCustomer.Location = new System.Drawing.Point(486, 84);
             this.lblIdCustomer.Name = "lblIdCustomer";
-            this.lblIdCustomer.Size = new System.Drawing.Size(42, 17);
+            this.lblIdCustomer.Size = new System.Drawing.Size(63, 23);
             this.lblIdCustomer.TabIndex = 5;
             this.lblIdCustomer.Text = "None";
             // 
             // lblIDEmployee
             // 
             this.lblIDEmployee.AutoSize = true;
-            this.lblIDEmployee.Location = new System.Drawing.Point(164, 83);
+            this.lblIDEmployee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDEmployee.Location = new System.Drawing.Point(164, 81);
             this.lblIDEmployee.Name = "lblIDEmployee";
-            this.lblIDEmployee.Size = new System.Drawing.Size(42, 17);
+            this.lblIDEmployee.Size = new System.Drawing.Size(63, 23);
             this.lblIDEmployee.TabIndex = 4;
             this.lblIDEmployee.Text = "None";
             // 
@@ -231,7 +254,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(236, 83);
+            this.lblCustomer.Location = new System.Drawing.Point(298, 83);
             this.lblCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(169, 23);
@@ -264,7 +287,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(344, 135);
+            this.lblTotal.Location = new System.Drawing.Point(406, 135);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(21, 23);
@@ -275,7 +298,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(236, 135);
+            this.label1.Location = new System.Drawing.Point(298, 135);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
@@ -292,24 +315,6 @@
             this.lbl1.Size = new System.Drawing.Size(65, 23);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "ID Bill:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Voucher";
-            // 
-            // lblIdVoucher
-            // 
-            this.lblIdVoucher.AutoSize = true;
-            this.lblIdVoucher.Location = new System.Drawing.Point(96, 135);
-            this.lblIdVoucher.Name = "lblIdVoucher";
-            this.lblIdVoucher.Size = new System.Drawing.Size(42, 17);
-            this.lblIdVoucher.TabIndex = 8;
-            this.lblIdVoucher.Text = "None";
             // 
             // UControlReceiptExport
             // 

@@ -104,7 +104,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblIDReceipt.AutoSize = true;
             this.lblIDReceipt.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDReceipt.Location = new System.Drawing.Point(177, 39);
+            this.lblIDReceipt.Location = new System.Drawing.Point(178, 39);
             this.lblIDReceipt.Name = "lblIDReceipt";
             this.lblIDReceipt.Size = new System.Drawing.Size(26, 30);
             this.lblIDReceipt.TabIndex = 6;
@@ -125,7 +125,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 92);
+            this.label11.Location = new System.Drawing.Point(6, 118);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(138, 30);
             this.label11.TabIndex = 5;
@@ -135,7 +135,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblIdEmployee.AutoSize = true;
             this.lblIdEmployee.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdEmployee.Location = new System.Drawing.Point(177, 92);
+            this.lblIdEmployee.Location = new System.Drawing.Point(178, 118);
             this.lblIdEmployee.Name = "lblIdEmployee";
             this.lblIdEmployee.Size = new System.Drawing.Size(78, 30);
             this.lblIdEmployee.TabIndex = 6;
@@ -156,7 +156,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbDetailReceiptImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbDetailReceiptImport.Name = "gbDetailReceiptImport";
             this.gbDetailReceiptImport.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbDetailReceiptImport.Size = new System.Drawing.Size(835, 188);
+            this.gbDetailReceiptImport.Size = new System.Drawing.Size(803, 188);
             this.gbDetailReceiptImport.TabIndex = 14;
             this.gbDetailReceiptImport.TabStop = false;
             this.gbDetailReceiptImport.Text = "Thông tin hóa đơn nhập";
@@ -164,18 +164,20 @@ namespace Proj_Book_Store_Manage.UI
             // lblDateBillImport
             // 
             this.lblDateBillImport.AutoSize = true;
-            this.lblDateBillImport.Location = new System.Drawing.Point(684, 48);
+            this.lblDateBillImport.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateBillImport.Location = new System.Drawing.Point(660, 48);
             this.lblDateBillImport.Name = "lblDateBillImport";
-            this.lblDateBillImport.Size = new System.Drawing.Size(55, 21);
+            this.lblDateBillImport.Size = new System.Drawing.Size(78, 30);
             this.lblDateBillImport.TabIndex = 21;
             this.lblDateBillImport.Text = "None";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(446, 48);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(406, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 21);
+            this.label1.Size = new System.Drawing.Size(237, 30);
             this.label1.TabIndex = 20;
             this.label1.Text = "Ngày xuất hóa đơn";
             // 
@@ -183,7 +185,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(602, 93);
+            this.lblTotal.Location = new System.Drawing.Point(563, 118);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(26, 30);
             this.lblTotal.TabIndex = 15;
@@ -193,7 +195,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lbl13.AutoSize = true;
             this.lbl13.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl13.Location = new System.Drawing.Point(463, 92);
+            this.lbl13.Location = new System.Drawing.Point(407, 118);
             this.lbl13.Name = "lbl13";
             this.lbl13.Size = new System.Drawing.Size(119, 30);
             this.lbl13.TabIndex = 16;
@@ -226,8 +228,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // FormDetailReceiptImport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(960, 702);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gbDetailReceiptImport);

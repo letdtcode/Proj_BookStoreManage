@@ -28,9 +28,8 @@ namespace Proj_Book_Store_Manage.UI
         public UControlReceiptImport()
         {
             InitializeComponent();
-            dtpReceiptImport.Format = DateTimePickerFormat.Custom;
-            dtpReceiptImport.CustomFormat = "dd-MM-yyyy";
-            this.lbIdEmployee.Text = frmLogin.idEmp;
+            this.lblDateBill.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            this.lbIIdEmployee.Text = frmLogin.idEmp;
             createAttributeComBoBox();
             receiptImport = new ReceiptImportBL();
             utl = new Utilities(dgvReceiptImport);
@@ -38,7 +37,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnDetailImportReceipt_Click(object sender, EventArgs e)
         {
-            FormDetailReceiptImport frm_DetailReceiptImport = new FormDetailReceiptImport(this.lblIDBill.Text,this.lblEmployee.Text,this.lblDateImport.Text,int.Parse(this.lblTotal.Text.ToString()));
+            FormDetailReceiptImport frm_DetailReceiptImport = new FormDetailReceiptImport(this.lblIDBill.Text,this.lbIIdEmployee.Text,this.lblDateBill.Text,int.Parse(this.lblTotal.Text.ToString()));
             frm_DetailReceiptImport.ShowDialog();
         }
 
@@ -104,9 +103,9 @@ namespace Proj_Book_Store_Manage.UI
                 this.lblIDBill.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[0].Value.ToString();
 
                 string dt = DateTime.Parse(dgvReceiptImport.Rows[utl.rowCurrent].Cells[1].Value.ToString()).ToString("dd/MM/yyyy");
-                this.dtpReceiptImport.Text = dt;
+                this.lblDateBill.Text = dt;
                 this.lblTotal.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[2].Value.ToString();      
-                this.lbIdEmployee.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
+                this.lbIIdEmployee.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             }
             catch
             {

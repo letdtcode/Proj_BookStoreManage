@@ -1,5 +1,4 @@
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.csproj.AssemblyReference.cache
-D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormApplyVoucherForBill.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormDetailReceiptExport.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormEditItemImportBooks.resources
 D:\BookStoreManageUpdate\Proj_Book_Store_Manage\obj\Debug\Proj_Book_Store_Manage.UI.FormImportBook.resources

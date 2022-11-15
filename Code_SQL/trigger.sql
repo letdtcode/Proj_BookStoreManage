@@ -46,9 +46,9 @@ on dbo.BILLOUTPUT
 for update
 as
 begin
-	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit, @idCustomer varchar(8)
-	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=i.total, @idCustomer=i.idCus
-	from inserted i
+	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit, @idCustomer varchar(8), @amountVoucher int
+	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=d.total, @idCustomer=i.idCus, @totalAfterDiscount=i.total
+	from inserted i, deleted d
 	--Kiểm tra idVoucher có tồn tại 
 	if (@idVcher is not null and not exists(select * from dbo.VOUCHER where @idVcher=dbo.VOUCHER.idVoucher))
 		begin
@@ -56,16 +56,21 @@ begin
 			rollback transaction
 		end
 	if(@idVcher is not null)
-	begin
-		--Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill 
-		set @totalBeforeDiscount=@totalBeforeDiscount-(@totalBeforeDiscount*dbo.func_getValueDiscountOfTypeCustomer(@idCustomer))/100
-		select @totalAfterDiscount=@totalBeforeDiscount-VOUCHER.valueVoucher
+	begin	
+		--Lấy số lượng voucher hiện tại
+		select @amountVoucher=dbo.VOUCHER.amount
 		from dbo.VOUCHER
-		where VOUCHER.idVoucher=@idVcher
-
+		where dbo.VOUCHER.idVoucher=@idVcher
+		--Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill 
 		if (@totalAfterDiscount <= (0.5*@totalBeforeDiscount))
 			begin
-				raiserror (N'Voucher không thể áp dụng cho đơn hàng này',16,1)
+				raiserror ('Voucher không thể áp dụng cho đơn hàng này',16,1)
+				rollback transaction
+			end
+		--Kiểm tra voucher có còn trong kho hay không
+		if(@amountVoucher<=0)
+			begin
+				raiserror ('Voucher đã hết số lượng áp dụng!',16,1)
 				rollback transaction
 			end
 		--Kiểm tra Voucher có còn hạn sử dụng 
