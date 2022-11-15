@@ -79,10 +79,6 @@ namespace Proj_Book_Store_Manage.UI
                 this.lblTotal.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
                 this.lblIdCustomer.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
                 this.lblIDEmployee.Text = dgvReceiptExport.Rows[utl.rowCurrent].Cells[4].Value.ToString();
-                string idVoucher = dgvReceiptExport.Rows[utl.rowCurrent].Cells[5].Value.ToString();
-                if (idVoucher == "")
-                    idVoucher = "Không áp dụng";
-                this.lblIdVoucher.Text = idVoucher.ToString();
             }
             catch
             {

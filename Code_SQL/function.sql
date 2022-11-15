@@ -14,6 +14,7 @@ begin
 	return 1
 end
 go
+go
 --Hàm kiểm tra số điện thoại đúng định dạng (đúng 10 chữ số và có số 0 đầu tiên)
 create or alter function func_checkPhone(@phoneNumber varchar(20))
 returns bit

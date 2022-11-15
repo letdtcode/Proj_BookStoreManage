@@ -64,6 +64,12 @@
     <Compile Include="BSLayer\TypeCustomerBL.cs" />
     <Compile Include="BSLayer\VoucherBL.cs" />
     <Compile Include="DBLayer\DBMain.cs" />
+    <Compile Include="UI\FormApplyVoucherForBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormApplyVoucherForBill.Designer.cs">
+      <DependentUpon>FormApplyVoucherForBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
       <DependentUpon>UControlVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="UI\FormApplyVoucherForBill.resx">
+      <DependentUpon>FormApplyVoucherForBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDashBoard.resx">
       <DependentUpon>FormDashBoard.cs</DependentUpon>
     </EmbeddedResource>

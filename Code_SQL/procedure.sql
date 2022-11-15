@@ -835,7 +835,12 @@ begin
 end
 go
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
+exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
+>>>>>>> parent of 936aff6 (fix bug)
 --Xác nhận xuất hóa đơn
 =======
 --exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
@@ -850,71 +855,48 @@ create or alter procedure proc_confirmBillExport
 @idVoucher int=null
 as
 begin
-	begin try
-		begin transaction
-			declare @totalOfBill int, @discountOfVoucher int, @discountOfTypeCus int, @amountVoucherCurrent int
+	declare @totalOfBill int, @discountOfVoucher int, @discountOfTypeCus int
 
-			--Lấy ra giá trị hóa đơn và giá trị chiết khấu
-			select @totalOfBill=dbo.BILLOUTPUT.total
-			from dbo.BILLOUTPUT
-			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput 
+	--Lấy ra giá trị hóa đơn và giá trị chiết khấu
+	select @totalOfBill=dbo.BILLOUTPUT.total
+	from dbo.BILLOUTPUT
+	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput 
 
-			--Lấy giá trị chiết khấu của loại khách hàng
-			set @discountOfTypeCus=dbo.func_getValueDiscountOfTypeCustomer(@idCus)
+	--Lấy giá trị chiết khấu của loại khách hàng
+	set @discountOfTypeCus=dbo.func_getValueDiscountOfTypeCustomer(@idCus)
 
-			--Tính giá trị chiết khấu voucher nếu có
-			if(@idVoucher is not null)
-			begin
-				select @discountOfVoucher=dbo.VOUCHER.valueVoucher, @amountVoucherCurrent=dbo.VOUCHER.amount
-				from dbo.VOUCHER
-				where dbo.VOUCHER.idVoucher=@idVoucher
-			end
-			else
-				set @discountOfVoucher=0
-			--Tính tiền giá trị hóa đơn hiện tại
-			set @totalOfBill=@totalOfBill-((@discountOfTypeCus*@totalOfBill)/100)
-			set @totalOfBill=@totalOfBill-@discountOfVoucher
+	--Tính giá trị chiết khấu voucher nếu có
+	if(@idVoucher is not null)
+	begin
+		select @discountOfVoucher=dbo.VOUCHER.valueVoucher
+		from dbo.VOUCHER
+		where dbo.VOUCHER.idVoucher=@idVoucher
+	end
+	else
+		set @discountOfVoucher=0
+	--Tính tiền giá trị hóa đơn hiện tại
+	set @totalOfBill=@totalOfBill-((@discountOfTypeCus*@totalOfBill)/100)
+	set @totalOfBill=@totalOfBill-@discountOfVoucher
 
-			--Nếu tiền hóa đơn bé hơn hoặc bằng 0 thì hủy bỏ hóa đơn đó
-			if(@totalOfBill<=0)
-			begin
-					raiserror('Hóa đơn không hợp lệ',16,1)
-					delete from dbo.BILLOUTPUT
-					where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-					return;
-			end
-
-			--Cập nhật hóa đơn vào bảng
-			update dbo.BILLOUTPUT
-			set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher, total=@totalOfBill
+	--Nếu tiền hóa đơn bé hơn hoặc bằng 0 thì hủy bỏ hóa đơn đó
+	if(@totalOfBill<=0)
+	begin
+			raiserror('Hóa đơn không hợp lệ',16,1)
+			delete from dbo.BILLOUTPUT
 			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-			--Cập nhật lại số lượng voucher trong kho
-			if(@idVoucher is not null)
-			begin
-				if(@amountVoucherCurrent>0)
-				begin
-					update dbo.VOUCHER
-					set dbo.VOUCHER.amount=@amountVoucherCurrent-1
-					where dbo.VOUCHER.idVoucher=@idVoucher
-				end
-				else
-				begin
-					update dbo.VOUCHER
-					set dbo.VOUCHER.amount=0
-					where dbo.VOUCHER.idVoucher=@idVoucher
-				end
-			end
-			--Cập lại điểm tích lũy và Type cho khách hàng
-			declare @amountBookInBill int, @amountBookTotal int
-			select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
-			set @amountBookTotal=@amountBookInBill+(select dbo.CUSTOMER.pointCus from dbo.CUSTOMER where dbo.CUSTOMER.idCus=@idCus)
-			exec proc_updateTypeCusForCus @amountBooksBought=@amountBookTotal, @idCus=@idCus
-			commit transaction
-	end try
-	begin catch
-		raiserror('Đã có lỗi xảy ra',16,1)
-		rollback transaction
-	end catch
+			return;
+	end
+
+	--Cập nhật hóa đơn vào bảng
+	update dbo.BILLOUTPUT
+	set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher, total=@totalOfBill
+	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+	
+	--Cập lại điểm tích lũy và Type cho khách hàng
+	declare @amountBookInBill int, @amountBookTotal int
+	select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
+	select @amountBookTotal=@amountBookInBill+(select dbo.CUSTOMER.pointCus from dbo.CUSTOMER where dbo.CUSTOMER.idCus=@idCus)
+	exec proc_updateTypeCusForCus @amountBooksBought=@amountBookTotal, @idCus=@idCus
 end
 go
 --Xóa một item trong hóa đơn
@@ -990,6 +972,7 @@ begin
 	end catch
 end
 go
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -1082,3 +1065,40 @@ begin
 	and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
 	and dateOfBill between @begin and @end
 end
+=======
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX1'
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='HDX1'
+
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX2'
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='HDX2'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX3'
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='HDX3'
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX4'
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='HDX4'
+
+go
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX5'
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='HDX5'
+
+go
+
+delete dbo.BOOK_BILLOUTPUT
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
+delete dbo.BILLOUTPUT
+where dbo.BILLOUTPUT.idBillOutPut='HDX7'
+
+go
+>>>>>>> parent of 936aff6 (fix bug)
