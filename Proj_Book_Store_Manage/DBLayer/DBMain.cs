@@ -11,7 +11,7 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        public static string ServerName = "ADMIN-PC\\SQLEXPRESS";
+        public static string ServerName = "DESKTOP-MINHDUN";
         public static string DatabaseName = "BOOKSTOREMANAGE";
         public static string UserName= "";
         public static string Password= "";

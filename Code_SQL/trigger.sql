@@ -129,6 +129,11 @@ begin
 		end
 end
 go
+
+
+
+---------------------------------------------------Dũng thêm ------------------------------------------------------------
+
 --Điều kiện giá bán phải lớn hơn giá nhập
 create or alter trigger trg_checkPriceOfBook
 on BOOK
@@ -147,3 +152,36 @@ begin
 end
 go
 
+--------------------------------Voucher--------------------------
+--kiểm tra value phải nhỏ hơn hoặc = 100 và  lớn hơn 0
+Create or alter trigger trg_checkValueVoucher on VOUCHER
+for insert, update
+as
+begin
+	declare @value int
+	select @value = i.valueVoucher from inserted i
+
+	if (@value <= 0 or @value >100)
+	begin
+		print N'Nhập giá trị value không chính xác. Value nằm trong khoảng từ 0 -> 100'
+		rollback transaction
+	end
+end
+go
+-- Kiểm tra dateStart phải < dateEnd
+Create or alter trigger trg_checkDateVoucher on Voucher
+for insert, update
+as
+begin
+	declare @dateStart date, @dateEnd date
+	select @dateStart = i.dateStart, @dateEnd = i.dateEnd
+	from inserted i
+
+	if (@dateStart > @dateEnd)
+	begin
+		print N'Ngày bắt đầu và kết thúc không hợp lệ'
+		rollback transaction
+	end
+
+end
+go
