@@ -1,7 +1,7 @@
 ﻿use BOOKSTOREMANAGE
 go
 -----------------------------------------Function phụ trợ--------------------------------------------------
---Hàm kiểm tra voucher còn trong thời gian sử dụng hay không
+--Hàm kiểm tra voucher còn trong thời gian sử dụng hay không và 
 create or alter function func_checkVoucherValidOrNot(@dateStart date,@dateEnd date,@dateCurrent date)
 returns bit
 as
@@ -250,7 +250,7 @@ go
 
 --- Hàm tìm kiếm sách
 --Hàm tìm kiếm khách hàng
-Create or alter function func_searchCustomer (@idCustomer varchar (8), @nameCustomer varchar(40))
+Create or alter function func_searchCustomer (@idCustomer varchar (8), @nameCustomer nvarchar(40))
 returns table
 as
 	return (
@@ -261,7 +261,7 @@ as
 go
 
 --- Hàm tìm kiếm nhà xuất bản
-Create or alter function func_searchPublisher (@idPublisher varchar(8), @namePublisher varchar(80))
+Create or alter function func_searchPublisher (@idPublisher varchar(8), @namePublisher nvarchar(80))
 returns table
 as
 	return (
@@ -271,6 +271,7 @@ as
 	)
 go
 
+select * from dbo.func_searchPublisher(null,N'Nhà xuất bản trẻ')
 --- Hàm tìm kiếm hóa đơn xuất
 Create or alter function func_searchReceiptExport (@idBill varchar(8))
 returns table

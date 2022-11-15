@@ -89,7 +89,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         public DataTable searchPublisher(string id, string username, ref string err)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = $"select * from dbo.func_searchPublisher('{id}', '{username}')";
+            cmd.CommandText = $"select * from dbo.func_searchPublisher('{id}', N'{username}')";
             cmd.CommandType = CommandType.Text;
 
             return db.ExecuteFunction(cmd, ref err);

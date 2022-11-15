@@ -65,7 +65,7 @@ begin
 
 		if (@totalAfterDiscount <= (0.5*@totalBeforeDiscount))
 			begin
-				raiserror ('Voucher không thể áp dụng do vượt quá 50% giá trị hóa đơn',16,1)
+				raiserror (N'Voucher không thể áp dụng cho đơn hàng này',16,1)
 				rollback transaction
 			end
 		--Kiểm tra Voucher có còn hạn sử dụng 
