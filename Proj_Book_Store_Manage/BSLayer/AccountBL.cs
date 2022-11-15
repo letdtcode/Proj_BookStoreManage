@@ -30,6 +30,9 @@ namespace Proj_Book_Store_Manage.BSLayer
             strSQL = "proc_addNewAccount";
             parameters = new List<SqlParameter>();
 
+            parameter = new SqlParameter("@idAccount", idAccount);
+            parameters.Add(parameter);
+
             parameter = new SqlParameter("@nameAccount", nameAccount);
             parameters.Add(parameter);
 
