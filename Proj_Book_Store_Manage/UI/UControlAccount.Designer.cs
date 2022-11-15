@@ -155,7 +155,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtPassword.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(188, 175);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(247, 26);
+            this.txtPassword.Size = new System.Drawing.Size(247, 30);
             this.txtPassword.TabIndex = 2;
             // 
             // txtUserName
@@ -163,7 +163,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtUserName.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(188, 114);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(247, 26);
+            this.txtUserName.Size = new System.Drawing.Size(247, 30);
             this.txtUserName.TabIndex = 2;
             // 
             // lblPassword
@@ -173,7 +173,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPassword.Location = new System.Drawing.Point(21, 174);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(97, 23);
+            this.lblPassword.Size = new System.Drawing.Size(124, 28);
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Mật Khẩu";
             // 
@@ -184,7 +184,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblUserName.Location = new System.Drawing.Point(21, 113);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(150, 23);
+            this.lblUserName.Size = new System.Drawing.Size(190, 28);
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Tên Đăng Nhập";
             // 
@@ -217,7 +217,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblID.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(184, 54);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(57, 23);
+            this.lblID.Size = new System.Drawing.Size(71, 28);
             this.lblID.TabIndex = 5;
             this.lblID.Text = "None";
             // 
@@ -228,9 +228,9 @@ namespace Proj_Book_Store_Manage.UI
             this.cbTypeAcc.Items.AddRange(new object[] {
             "Admin",
             "Nhân Viên"});
-            this.cbTypeAcc.Location = new System.Drawing.Point(653, 77);
+            this.cbTypeAcc.Location = new System.Drawing.Point(688, 76);
             this.cbTypeAcc.Name = "cbTypeAcc";
-            this.cbTypeAcc.Size = new System.Drawing.Size(136, 26);
+            this.cbTypeAcc.Size = new System.Drawing.Size(136, 31);
             this.cbTypeAcc.TabIndex = 4;
             // 
             // cbEmployee
@@ -239,9 +239,9 @@ namespace Proj_Book_Store_Manage.UI
             this.cbEmployee.FormattingEnabled = true;
             this.cbEmployee.Items.AddRange(new object[] {
             "1"});
-            this.cbEmployee.Location = new System.Drawing.Point(653, 123);
+            this.cbEmployee.Location = new System.Drawing.Point(688, 122);
             this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(136, 26);
+            this.cbEmployee.Size = new System.Drawing.Size(136, 31);
             this.cbEmployee.TabIndex = 3;
             // 
             // lblEmployee
@@ -251,7 +251,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblEmployee.Location = new System.Drawing.Point(497, 125);
             this.lblEmployee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(107, 23);
+            this.lblEmployee.Size = new System.Drawing.Size(134, 28);
             this.lblEmployee.TabIndex = 1;
             this.lblEmployee.Text = "Nhân Viên";
             // 
@@ -262,7 +262,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblTypeAcc.Location = new System.Drawing.Point(497, 79);
             this.lblTypeAcc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTypeAcc.Name = "lblTypeAcc";
-            this.lblTypeAcc.Size = new System.Drawing.Size(146, 23);
+            this.lblTypeAcc.Size = new System.Drawing.Size(184, 28);
             this.lblTypeAcc.TabIndex = 1;
             this.lblTypeAcc.Text = "Loại Tài Khoản";
             // 
@@ -273,7 +273,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDAcount.Location = new System.Drawing.Point(184, 54);
             this.lblIDAcount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIDAcount.Name = "lblIDAcount";
-            this.lblIDAcount.Size = new System.Drawing.Size(0, 21);
+            this.lblIDAcount.Size = new System.Drawing.Size(0, 23);
             this.lblIDAcount.TabIndex = 0;
             // 
             // lbl10
@@ -283,7 +283,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lbl10.Location = new System.Drawing.Point(21, 54);
             this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl10.Name = "lbl10";
-            this.lbl10.Size = new System.Drawing.Size(109, 23);
+            this.lbl10.Size = new System.Drawing.Size(138, 28);
             this.lbl10.TabIndex = 0;
             this.lbl10.Text = "ID Account";
             // 

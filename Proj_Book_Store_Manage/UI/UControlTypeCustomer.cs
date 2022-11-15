@@ -31,7 +31,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.lblID.Text = utl.createID("LKH");
+            this.lblID.Text = utl.createID("VIP");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);

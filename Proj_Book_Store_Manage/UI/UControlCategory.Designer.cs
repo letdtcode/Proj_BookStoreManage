@@ -103,9 +103,9 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(866, 184);
+            this.panel2.Location = new System.Drawing.Point(849, 184);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(206, 397);
+            this.panel2.Size = new System.Drawing.Size(206, 379);
             this.panel2.TabIndex = 4;
             // 
             // btnReload
@@ -269,7 +269,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1072, 184);
+            this.panel1.Size = new System.Drawing.Size(1055, 184);
             this.panel1.TabIndex = 3;
             // 
             // UControlCategory
@@ -280,7 +280,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.dgvCategory);
             this.Controls.Add(this.panel1);
             this.Name = "UControlCategory";
-            this.Size = new System.Drawing.Size(1072, 581);
+            this.Size = new System.Drawing.Size(1055, 563);
             this.Load += new System.EventHandler(this.UControlCategory_Load);
             this.gpSearch.ResumeLayout(false);
             this.gpSearch.PerformLayout();

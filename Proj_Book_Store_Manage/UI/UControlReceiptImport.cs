@@ -40,7 +40,7 @@ namespace Proj_Book_Store_Manage.UI
         {
             string idBill = utl.createID("HDN");
             receiptImport.addNewReceiptImport(idBill, ref err);
-            importBook = new ImportBooksBL(idBill);      
+            //importBook = new ImportBooksBL(idBill);      
             
             FormImportBook frmImportBook = new FormImportBook(idBill);
             frmImportBook.FormClosed += Edit_FormImportBookClosed;

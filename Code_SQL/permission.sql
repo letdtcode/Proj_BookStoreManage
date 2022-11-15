@@ -104,7 +104,6 @@ begin
 end
 go
 
-
 Create or alter proc proc_updateUser (@user varchar (20), @newPass varchar(30), @oldPass varchar)
 as
 begin 
@@ -113,3 +112,12 @@ begin
 	exec (@state)
 end
 go
+
+create role adminRole
+go
+
+go
+grant select, insert, delete, update on ACCOUNT to adminRole
+go
+grant create role to adminRole
+

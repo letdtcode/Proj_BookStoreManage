@@ -38,6 +38,8 @@ namespace Proj_Book_Store_Manage.UI
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtNameAuthor = new System.Windows.Forms.TextBox();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblIDAuthor = new System.Windows.Forms.Label();
             this.lblNameAuthor = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnReload = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvAuthor = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblIDAuthor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gpSearch.SuspendLayout();
             this.gbAuthor.SuspendLayout();
@@ -64,7 +64,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1072, 227);
+            this.panel1.Size = new System.Drawing.Size(1055, 227);
             this.panel1.TabIndex = 0;
             // 
             // gpSearch
@@ -146,6 +146,28 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
             this.lblPhoneNumber.TabIndex = 1;
             this.lblPhoneNumber.Text = "SĐT";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã Tác Giả:";
+            // 
+            // lblIDAuthor
+            // 
+            this.lblIDAuthor.AutoSize = true;
+            this.lblIDAuthor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDAuthor.Location = new System.Drawing.Point(162, 66);
+            this.lblIDAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDAuthor.Name = "lblIDAuthor";
+            this.lblIDAuthor.Size = new System.Drawing.Size(63, 23);
+            this.lblIDAuthor.TabIndex = 0;
+            this.lblIDAuthor.Text = "None";
             // 
             // lblNameAuthor
             // 
@@ -233,9 +255,9 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(903, 227);
+            this.panel2.Location = new System.Drawing.Point(886, 227);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(169, 354);
+            this.panel2.Size = new System.Drawing.Size(169, 336);
             this.panel2.TabIndex = 1;
             // 
             // dgvAuthor
@@ -253,28 +275,6 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvAuthor.TabIndex = 2;
             this.dgvAuthor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuthor_CellClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 66);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã Tác Giả:";
-            // 
-            // lblIDAuthor
-            // 
-            this.lblIDAuthor.AutoSize = true;
-            this.lblIDAuthor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDAuthor.Location = new System.Drawing.Point(162, 66);
-            this.lblIDAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDAuthor.Name = "lblIDAuthor";
-            this.lblIDAuthor.Size = new System.Drawing.Size(63, 23);
-            this.lblIDAuthor.TabIndex = 0;
-            this.lblIDAuthor.Text = "None";
-            // 
             // UControlAuthor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -285,7 +285,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UControlAuthor";
-            this.Size = new System.Drawing.Size(1072, 581);
+            this.Size = new System.Drawing.Size(1055, 563);
             this.Load += new System.EventHandler(this.UControlAuthor_Load);
             this.panel1.ResumeLayout(false);
             this.gpSearch.ResumeLayout(false);

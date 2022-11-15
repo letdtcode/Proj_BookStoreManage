@@ -4,7 +4,7 @@ use BOOKSTOREMANAGE
 go
 CREATE TABLE [dbo].AUTHOR (
 idAuthor varchar(8) NOT NULL,
-nameAuthor nvarchar(30) NOT NULL,
+nameAuthor nvarchar(30) NOT NULL unique,
 phoneNumber varchar(10) NULL
 
 CONSTRAINT pk_author PRIMARY KEY (idAuthor)
@@ -27,22 +27,17 @@ CREATE TABLE [dbo].BOOK (
 idBook varchar(8) NOT NULL,
 nameBook nvarchar(20) NOT NULL,
 urlImage image NULL,
-amount int NULL,
+amount int not null default 0,
 priceImport int NULL,
 priceExport int NULL,
 idPublisher varchar(8) NULL
 
 CONSTRAINT pk_book PRIMARY KEY (idBook),
 CONSTRAINT fk_Publisher FOREIGN KEY (idPublisher) REFERENCES PUBLISHER (idPublisher),
-
 CONSTRAINT chk_amount CHECK (amount >= 0),
 CONSTRAINT chk_price CHECK (priceImport >= 0 and priceExport >= 0)
 )
 GO 
-alter table dbo.book
-add constraint df_amount
-default 0 for amount
-go
 
 CREATE TABLE [dbo].TYPECUSTOMER (
 idTypeCus varchar(8) NOT NULL,
@@ -50,7 +45,9 @@ nameTypeCus nvarchar(30) NOT NULL,
 pointMark int NULL,
 valueTypeCus int NULL
 
-CONSTRAINT pk_typeCus PRIMARY KEY (idTypeCus)
+CONSTRAINT pk_typeCus PRIMARY KEY (idTypeCus),
+CONSTRAINT chk_pointMark CHECK (pointMark >= 0),
+CONSTRAINT chk_valueTypeCus CHECK (valueTypeCus >= 0 and valueTypeCus < 100)
 )
 GO
 
@@ -64,7 +61,8 @@ idTypeCus varchar(8) NULL
 
 CONSTRAINT pk_customer PRIMARY KEY (idCus),
 CONSTRAINT fk_TypeCus FOREIGN KEY (idTypeCus) REFERENCES TYPECUSTOMER (idTypeCus),
-CONSTRAINT chk_phoneCustomer CHECK (len(phoneNumber) = 10)
+CONSTRAINT chk_phoneCustomer CHECK (len(phoneNumber) = 10),
+CONSTRAINT chk_pointCus CHECK (pointCus >= 0)
 )
 GO
 
@@ -93,21 +91,21 @@ CREATE TABLE [dbo].VOUCHER (
 idVoucher varchar(8) NOT NULL,
 valueVoucher int NOT NULL,
 nameOfEventVoucher nvarchar(40) NULL,
-dateStart date null,
-dateEnd date null,
+dateStart date not null,
+dateEnd date not null,
 amount int NULL,
 
 CONSTRAINT pk_voucher PRIMARY KEY (idVoucher),
+CONSTRAINT chk_dateOfVoucher CHECK (DATEDIFF(day,dateStart,dateEnd)>0)
 )
 GO
 
 CREATE TABLE [dbo].BILLOUTPUT (
 idBillOutPut varchar(8) NOT NULL,
-dateOfBill date NOT NULL,
+dateOfBill date NULL,
 total int NOT NULL DEFAULT 0,
 idCus varchar(8) NULL,
 idEmployee varchar(8) NULL,
-sttus bit default 0,
 idVoucher varchar(8) null,
 
 CONSTRAINT pk_billOutPut PRIMARY KEY (idBillOutPut),
@@ -116,27 +114,7 @@ CONSTRAINT fk_collect FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee),
 CONSTRAINT fk_Discount FOREIGN KEY (idVoucher) REFERENCES VOUCHER (idVoucher),
 )
 GO 
-alter table dbo.BILLOUTPUT
-add constraint df_total
-default 0 for total
-go
-alter table dbo.BILLOUTPUT
-alter column dateOfBill date null
-go
-alter table dbo.billoutput
-drop column 
-go
-alter table dbo.billoutput
-drop constraint DF__BILLOUTPU__total__3D5E1FD2
-go
-delete from dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL10'
-go
-delete from dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutput='BILL10'
-go
 
-go
 CREATE TABLE [dbo].ACCOUNT (
 idAccount varchar(8) NOT NULL,
 nameAccount varchar(20) NOT NULL unique,
@@ -153,15 +131,12 @@ GO
 
 CREATE TABLE [dbo].CATEGORY (
 idCategory varchar(8) NOT NULL,
-nameCategory nvarchar(20) NOT NULL,
+nameCategory nvarchar(20) NOT NULL unique,
 describeCategory nvarchar(50) NULL,
 
-unique(nameCategory),
 CONSTRAINT pk_category PRIMARY KEY (idCategory)
 )
-go
-
-
+GO
 
 CREATE TABLE [dbo].BOOK_AUTHOR (
 idBook varchar(8) NOT NULL,
@@ -197,7 +172,7 @@ GO
 CREATE TABLE [dbo].BOOK_BILLINPUT (
 idBillInput varchar(8) NOT NULL,
 idBook varchar(8) NOT NULL,
-amountInput INT NULL,
+amountInput INT NOT NULL,
 
 CONSTRAINT pk_book_billinput PRIMARY KEY (idBillInput,idBook),
 CONSTRAINT fk_idBillInput FOREIGN KEY (idBillInput) REFERENCES BILLINPUT (idBillInput),
@@ -207,18 +182,12 @@ GO
 CREATE TABLE [dbo].BOOK_BILLOUTPUT (
 idBillOutput varchar(8) NOT NULL,
 idBook varchar(8) NOT NULL,
-amountOutput int NULL
+amountOutput int NOT NULL
 
 CONSTRAINT pk_book_billoutput PRIMARY KEY (idBillOutput,idBook),
 CONSTRAINT fk_idBillOuput FOREIGN KEY (idBillOutput) REFERENCES BILLOUTPUT (idBillOutput),
 CONSTRAINT fk_idBook_into_output FOREIGN KEY (idBook) REFERENCES BOOK (idBook)
 )
-go
-alter table dbo.Book
-alter column urlImage image
-go
-alter table dbo.category
-add unique(nameCategory)
 go
 
 

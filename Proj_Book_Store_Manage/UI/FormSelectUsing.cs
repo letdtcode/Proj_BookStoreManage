@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proj_Book_Store_Manage.BSLayer;
 
 namespace Proj_Book_Store_Manage.UI
 {
     public partial class FormSelectUsing : Form
     {
+        private string err = null;
         public FormSelectUsing()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnManage_Click(object sender, EventArgs e)
         {
             FormDashBoard frmDashBoard = new FormDashBoard();
             frmDashBoard.FormClosed += Edit_Form;
@@ -28,15 +30,39 @@ namespace Proj_Book_Store_Manage.UI
         {
             this.Close();
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            /*FormSale frmSale = new FormSale();
-            frmSale.Show();*/
-        }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btnSale_Click(object sender, EventArgs e)
+        {
+            //Kết nối để lấy ID tự động
+            ReceiptExportBL receiptExport = new ReceiptExportBL();
+            DataTable dt = receiptExport.getDataReceiptExport();
+            Utilities utl = new Utilities(dt);
+            string idBill = utl.createIDBill("HDX");
+            //Tạo mới hóa đơn
+            receiptExport.addNewReceiptExport(idBill, ref err);
+            FormSale frmSale = new FormSale(idBill);
+            frmSale.FormClosed += Edit_Form;
+            frmSale.Show();
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            //Kết nối để lấy ID tự động
+            ReceiptImportBL receiptImport = new ReceiptImportBL();
+            DataTable dt = receiptImport.getDataReceiptImport();
+            Utilities utl = new Utilities(dt);
+            string idBill = utl.createIDBill("HDN");
+            //Tạo mới hóa đơn
+            receiptImport.addNewReceiptImport(idBill, ref err);
+            FormImportBook frmImportBook = new FormImportBook(idBill);
+            frmImportBook.FormClosed += Edit_Form;
+            frmImportBook.Show();
         }
     }
 }

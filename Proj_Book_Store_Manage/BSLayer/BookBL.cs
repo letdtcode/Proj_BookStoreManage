@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace Proj_Book_Store_Manage.BSLayer
 {
@@ -37,11 +38,17 @@ namespace Proj_Book_Store_Manage.BSLayer
             byte[] imgByte = null;
             if (img != null)
             {
-                MemoryStream ms = new MemoryStream();
+                /*MemoryStream ms = new MemoryStream();
                 img.Save(ms, img.RawFormat);
                 imgByte = ms.ToArray();
                 ms.Close();
-                return imgByte;
+                return imgByte;*/
+                Bitmap bmp = new Bitmap(img);
+                using (var ms = new MemoryStream())
+                {
+                    bmp.Save(ms,img.RawFormat);
+                    return ms.ToArray();
+                }
             }
             else
                 return null;
@@ -59,7 +66,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             return dtBook;
         }
 
-        public bool addNewBook(string idBook, string nameBook, Image img, int amount, int priceImport, int priceExport, string idPublisher, ref string err)
+        public bool addNewBook(string idBook, string nameBook, Image img, int priceImport, int priceExport, string idPublisher, ref string err)
         {
             strSQL = "proc_addNewBook";
             byte[] imgString = ImgToByteArray(img);
@@ -74,9 +81,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameter = new SqlParameter("@urlImage", imgString);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@amount", amount);
-            parameters.Add(parameter);
-
             parameter = new SqlParameter("@priceImport", priceImport);
             parameters.Add(parameter);
 
@@ -88,7 +92,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyBook(string idBook, string nameBook, Image img, int amount, int priceImport, int priceExport, string idPublisher, ref string err)
+        public bool modifyBook(string idBook, string nameBook, Image img, int priceImport, int priceExport, string idPublisher, ref string err)
         {
             strSQL = "proc_updateBook";
             byte[] imgString = ImgToByteArray(img);
@@ -101,9 +105,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@urlImage", imgString);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@amount", amount);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@priceImport", priceImport);
@@ -251,13 +252,13 @@ namespace Proj_Book_Store_Manage.BSLayer
             cmd.Parameters.AddWithValue("@idBook", idBook);
             return db.ExecuteFunctionToInt(cmd, ref err);
         }
-        public int getPriceExportOfBook(string idBook, ref string err)
+        /*public int getPriceExportOfBook(string idBook, ref string err)
         {
             SqlCommand cmd = new SqlCommand("select dbo.func_getPriceExportOfBook(@idBook)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBook", idBook);
             return db.ExecuteFunctionToInt(cmd, ref err);
-        }
+        }*/
         /*public DataTable addNewCateForBook(int idBook, int nameBook, ref string err)
         {
             strSQL = "proc_addNewBookCategory";

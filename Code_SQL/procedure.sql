@@ -1,7 +1,7 @@
 ﻿use BOOKSTOREMANAGE
 go
 -----------------------------PROCEDURE-------------------------
-
+exec proc_addNewAccount 'ACC1','dthanh123','abcd1234',1,'NV1'
 --PROCEDURE THÊM, SỬA, XÓA ACCOUNT
 --Thêm một account mới
 create or alter procedure proc_addNewAccount (@idAccount varchar(8), @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee varchar(8))
@@ -39,12 +39,10 @@ go
 create or alter procedure proc_updateAccount
 @idAccount varchar(8),
 @nameAccount varchar(20),
-@password varchar(30),
-@typeOfAcc bit,
-@idEmployee varchar(8)
+@password varchar(30)
 as
 begin
-	begin transaction udpateAcc
+	begin transaction updateAcc
 	begin try
 		exec proc_updateUser @nameAccount, @password
 		--Chỉ thay đổi mật khẩu
@@ -55,7 +53,7 @@ begin
 	end try
 	begin catch
 		print (error_message())
-		rollback transaction udpateAcc
+		rollback transaction updateAcc
 	end catch
 end
 go
@@ -65,12 +63,10 @@ create or alter procedure proc_DeleteAccount (@idAccount varchar(8))
 as
 begin
 	declare @username nvarchar (20)
-
 	set @username = (select ACCOUNT.nameAccount from ACCOUNT where idAccount = @idAccount)
 	begin transaction deleteAcc
 	begin try
 		-- Xóa user khỏi hệ thống
-
 		delete dbo.ACCOUNT
 		where dbo.ACCOUNT.idAccount=@idAccount
 
@@ -79,7 +75,7 @@ begin
 		commit transaction deleteAcc
 	end try
 	begin catch
-		--print error_message()
+		print error_message()
 		rollback transaction deleteAcc
 	end catch
 end
@@ -357,12 +353,11 @@ create or alter procedure proc_updateCustomer
 @idCus varchar(8),
 @nameCus nvarchar(30),
 @addressCus nvarchar(30),
-@phoneNumber varchar(20),
-@idTypeCus varchar(8)
+@phoneNumber varchar(20)
 as
 begin
 	update dbo.CUSTOMER
-	set nameCus=@nameCus, addressCus=@addressCus, phoneNumber=@phoneNumber, idTypeCus=@idTypeCus
+	set nameCus=@nameCus, addressCus=@addressCus, phoneNumber=@phoneNumber
 	where dbo.CUSTOMER.idCus=@idCus
 end
 go
@@ -645,6 +640,7 @@ begin
 	commit transaction
 	end try
 	begin catch
+		raiserror('Đã có lỗi xảy ra. Vui lòng thử lại',16,1)
 		rollback transaction
 	end catch
 end
@@ -748,8 +744,6 @@ begin
 end
 go
 
-
-
 --PROCEDURE THÊM SỬA XÓA BILLOUTPUT
 --Thêm một BillOutput
 create or alter procedure proc_addNewBillOutput
@@ -766,8 +760,6 @@ begin
 		)
 end
 go
-DELETE FROM dbo.Billoutput WHERE idBilloutput='BILL4';
-
 
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLOUTPUT
 --Thêm sản phẩm vào hóa đơn xuất
@@ -814,6 +806,35 @@ begin
 		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 end
 go
+--Cập nhật lại loại khách hàng sau mỗi đơn hàng
+create or alter procedure proc_updateTypeCusForCus
+@amountBooksBought int,
+@idCus varchar(8)
+as
+begin
+	declare @idTypeCus varchar(8), @pointMark int, @maxPointValue int
+	set @maxPointValue=0
+	declare point cursor for select dbo.TYPECUSTOMER.pointMark from dbo.TYPECUSTOMER order by pointMark ASC
+	open point
+	fetch next from point into @pointMark
+	while @@FETCH_STATUS=0
+	begin
+		if(@amountBooksBought>=@pointMark)
+			set @maxPointValue=@pointMark
+		else
+			break
+		fetch next from point into @pointMark
+	end
+	close point
+	deallocate point
+
+	select @idTypeCus=(select dbo.TYPECUSTOMER.idTypeCus from dbo.TYPECUSTOMER where dbo.TYPECUSTOMER.pointMark=@maxPointValue)
+	--Update lại IDtypecus cho khách hàng
+	update dbo.CUSTOMER
+	set idTypeCus=@idTypeCus
+	where dbo.CUSTOMER.idCus=@idCus
+end
+go
 --Xác nhận xuất hóa đơn
 create or alter procedure proc_confirmBillExport
 @idBillOutput varchar(8),
@@ -823,22 +844,59 @@ create or alter procedure proc_confirmBillExport
 @idVoucher varchar(8)
 as
 begin
-	declare @totalOfBill int
+	declare @totalOfBill int, @discountOfVoucher int, @discountOfTypeCus int
 
-	select @totalOfBill=dbo.BILLOUTPUT.total
-	from dbo.BILLOUTPUT
-	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+	--Lấy ra giá trị hóa đơn và giá trị chiết khấu
+	select @totalOfBill=dbo.BILLOUTPUT.total, @discountOfVoucher=dbo.VOUCHER.valueVoucher
+	from dbo.BILLOUTPUT, dbo.VOUCHER, dbo.TYPECUSTOMER
+	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput 
 
+	--Lấy giá trị chiết khấu của loại khách hàng
+	set @discountOfTypeCus=dbo.func_getValueDiscountOfTypeCustomer(@idCus)
+
+	--Tính tiền giá trị hóa đơn hiện tại
+	set @totalOfBill=@totalOfBill-((@discountOfTypeCus*@totalOfBill)/100)
+	set @totalOfBill=@totalOfBill-@discountOfVoucher
+
+	--Nếu tiền hóa đơn bé hơn hoặc bằng 0 thì hủy bỏ hóa đơn đó
 	if(@totalOfBill<=0)
 	begin
+			raiserror('Hóa đơn không hợp lệ',16,1)
 			delete from dbo.BILLOUTPUT
 			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 			return;
 	end
 
+	--Cập nhật hóa đơn vào bảng
 	update dbo.BILLOUTPUT
-	set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher
+	set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher, total=@totalOfBill
 	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+	
+	declare @amountBookInBill int, @amountBookTotal int
+	select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
+	select @amountBookTotal=@amountBookInBill+(select dbo.CUSTOMER.pointCus from dbo.CUSTOMER where dbo.CUSTOMER.idCus=@idCus)
+	exec proc_updateTypeCusForCus @amountBooksBought=@amountBookTotal, @idCus=@idCus
+end
+go
+--Xóa một item trong hóa đơn
+create or alter procedure proc_deleteBookBillOutput
+@idBillOutput varchar(8),
+@idBook varchar(8)
+as
+begin
+	--Lấy ra số lượng sách có trong hóa đơn
+	declare @amountBook int
+
+	select @amountBook=dbo.BOOK_BILLOUTPUT.amountOutput
+	from dbo.BOOK_BILLOUTPUT
+	where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
+	--Xóa sách đó trong hóa đơn
+	delete from dbo.BOOK_BILLOUTPUT
+	where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
+	--Cập nhật lại số lượng trong kho
+	update dbo.BOOK
+	set dbo.BOOK.amount=dbo.BOOK.amount+@amountBook
+	where dbo.BOOK.idBook=@idBook
 end
 go
 
@@ -864,8 +922,7 @@ begin
 	delete from dbo.BILLOUTPUT
 	where dbo.BILLOUTPUT.idBillOutPut=@idBill
 end
-
-
+go
 --Sửa số lượng item trong hóa đơn
 create or alter procedure proc_updateBookBillOutput
 @idBillOutput varchar(8),
@@ -895,160 +952,3 @@ begin
 end
 go
 --Xóa một item trong hóa đơn
-create or alter procedure proc_deleteBookBillOutput
-@idBillOutput varchar(8),
-@idBook varchar(8)
-as
-begin
-	--Lấy ra số lượng sách có trong hóa đơn
-	declare @amountBook int
-
-	select @amountBook=dbo.BOOK_BILLOUTPUT.amountOutput
-	from dbo.BOOK_BILLOUTPUT
-	where dbo.BOOK_BILLOUTPUT.idBook=@idBook and dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput
-	--Xóa sách đó trong hóa đơn
-	delete from dbo.BOOK_BILLOUTPUT
-	where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook
-	--Cập nhật lại số lượng trong kho
-	update dbo.BOOK
-	set dbo.BOOK.amount=dbo.BOOK.amount+@amountBook
-	where dbo.BOOK.idBook=@idBook
-end
-go
-insert into dbo.BILLOUTPUT(idBillOutPut) values ('BILL1')
-go
-insert into dbo.BOOK_BILLOUTPUT (idBillOutput,idBook,amountOutput) values ('BILL1','BK1',200)
-
-
----------------------------------------------
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL1'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL1'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL2'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL2'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL3'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL3'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL4'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL4'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL5'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL5'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL6'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL6'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL7'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL7'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL8'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL8'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL9'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL9'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='BILL10'
-go
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='BILL10'
-
----------------------------------------------------------------------------------------------------
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN1'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HND1'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN2'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN3'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN4'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN4'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN5'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN5'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN1'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN1'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN6'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN6'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN7'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN7'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN8'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN8'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN9'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN9'
-go
----------------------------------------------
-delete dbo.BOOK_BILLINPUT
-where dbo.BOOK_BILLINPUT.idBillInput='HDN10'
-go
-delete dbo.BILLINPUT
-where dbo.BILLINPUT.idBillInput='HDN10'
-

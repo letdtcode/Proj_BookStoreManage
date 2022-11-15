@@ -57,6 +57,7 @@ namespace Proj_Book_Store_Manage.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             this.lblIDBook.Text = utl.createID("BK");
+            this.lblAmount.Text = "0";
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -119,7 +120,7 @@ namespace Proj_Book_Store_Manage.UI
                     try
                     {
                         //imgBook = ImgToByteArray(ptbBook.Image);
-                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
+                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm sách thành công !");
@@ -137,7 +138,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    book.modifyBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
+                    book.modifyBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
                     LoadData();
                     if (err == "")
                     {
@@ -393,7 +394,7 @@ namespace Proj_Book_Store_Manage.UI
         private void LoadData()
         {
 
-            controls = new List<Control> { txtNameBook, txtAmount, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
+            controls = new List<Control> { txtNameBook, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
             dtBook = book.getDataBook();
             //DataGridViewImageColumn
             dgvBook.DataSource = dtBook;
@@ -417,7 +418,7 @@ namespace Proj_Book_Store_Manage.UI
             else
                 ptbBook.Image = (Image)dgvBook.Rows[utl.rowCurrent].Cells[6].Value;
             txtNameBook.Text = dgvBook.Rows[utl.rowCurrent].Cells[1].Value.ToString();
-            txtAmount.Text = dgvBook.Rows[utl.rowCurrent].Cells[2].Value.ToString();
+            lblAmount.Text = dgvBook.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             txtPriceImport.Text = dgvBook.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
             cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();

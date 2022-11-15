@@ -38,6 +38,8 @@ namespace Proj_Book_Store_Manage.UI
             utl = new Utilities(controls, dgvListBook);
             this.lbIdEmployee.Text = frmLogin.idEmp;
             this.lblIDReceipt.Text = idBill;
+            this.dtpReceiptExport.Format = DateTimePickerFormat.Custom;
+            this.dtpReceiptExport.CustomFormat = "dd-MM-yyyy";
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -62,8 +64,10 @@ namespace Proj_Book_Store_Manage.UI
         {
             if (checkFill())
             {
-                receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.lbIdEmployee.Text, this.cbIdVoucher.Text, ref err);
-                this.Close();
+                if (receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.lbIdEmployee.Text, this.cbIdVoucher.Text, ref err))
+                    this.Close();
+                else
+                    MessageBox.Show(err);
             }    
             else
                 result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

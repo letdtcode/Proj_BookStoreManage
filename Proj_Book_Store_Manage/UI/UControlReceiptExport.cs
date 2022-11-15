@@ -34,9 +34,9 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string idBill = utl.createID("BILL");
+            string idBill = utl.createID("HDX");
             receiptExport.addNewReceiptExport(idBill, ref err);
-            cart = new CartBL(idBill);
+            //cart = new CartBL(idBill);
             
             FormSale frmSale = new FormSale(idBill);
             frmSale.FormClosed += Edit_FormDetailReceiptExportClosed;

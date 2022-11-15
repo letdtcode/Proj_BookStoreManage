@@ -48,9 +48,9 @@ namespace Proj_Book_Store_Manage.UI
             this.gbPublisher = new System.Windows.Forms.GroupBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblIDPublisher = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gpSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPublisher)).BeginInit();
             this.panel2.SuspendLayout();
@@ -117,9 +117,9 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(866, 208);
+            this.panel2.Location = new System.Drawing.Point(849, 208);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(206, 373);
+            this.panel2.Size = new System.Drawing.Size(206, 355);
             this.panel2.TabIndex = 4;
             // 
             // btnReload
@@ -261,16 +261,16 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAddress.TabIndex = 0;
             this.lblAddress.Text = "Địa chỉ";
             // 
-            // panel1
+            // lblIDPublisher
             // 
-            this.panel1.Controls.Add(this.gpSearch);
-            this.panel1.Controls.Add(this.gbPublisher);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1072, 208);
-            this.panel1.TabIndex = 3;
+            this.lblIDPublisher.AutoSize = true;
+            this.lblIDPublisher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDPublisher.Location = new System.Drawing.Point(103, 48);
+            this.lblIDPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDPublisher.Name = "lblIDPublisher";
+            this.lblIDPublisher.Size = new System.Drawing.Size(21, 23);
+            this.lblIDPublisher.TabIndex = 0;
+            this.lblIDPublisher.Text = "0";
             // 
             // label1
             // 
@@ -283,16 +283,16 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã NXB";
             // 
-            // lblIDPublisher
+            // panel1
             // 
-            this.lblIDPublisher.AutoSize = true;
-            this.lblIDPublisher.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDPublisher.Location = new System.Drawing.Point(103, 48);
-            this.lblIDPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDPublisher.Name = "lblIDPublisher";
-            this.lblIDPublisher.Size = new System.Drawing.Size(21, 23);
-            this.lblIDPublisher.TabIndex = 0;
-            this.lblIDPublisher.Text = "0";
+            this.panel1.Controls.Add(this.gpSearch);
+            this.panel1.Controls.Add(this.gbPublisher);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1055, 208);
+            this.panel1.TabIndex = 3;
             // 
             // UControlPublisher
             // 
@@ -301,7 +301,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "UControlPublisher";
-            this.Size = new System.Drawing.Size(1072, 581);
+            this.Size = new System.Drawing.Size(1055, 563);
             this.Load += new System.EventHandler(this.UControlPublisher_Load);
             this.gpSearch.ResumeLayout(false);
             this.gpSearch.PerformLayout();

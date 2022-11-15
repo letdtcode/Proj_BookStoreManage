@@ -49,7 +49,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyCustomer(string idCus, string nameCus, string addressCus, string phoneNumber, string idTypeCus, ref string err)
+        public bool modifyCustomer(string idCus, string nameCus, string addressCus, string phoneNumber, ref string err)
         {
             strSQL = "proc_updateCustomer";
             parameters = new List<SqlParameter>();
@@ -64,9 +64,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@phoneNumber", phoneNumber);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idTypeCus", idTypeCus);
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);

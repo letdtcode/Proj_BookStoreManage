@@ -73,7 +73,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public List<string> getAllIDTypeCus()
+        /*public List<string> getAllIDTypeCus()
         {
             List<string> dataIDTypeCus = new List<string>();
             DataTable dtTypeCustomer = new DataTable();
@@ -83,6 +83,6 @@ namespace Proj_Book_Store_Manage.BSLayer
                 dataIDTypeCus.Add(row[0].ToString());
             }
             return dataIDTypeCus;
-        }
+        }*/
     }
 }
