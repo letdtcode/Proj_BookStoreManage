@@ -158,5 +158,42 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return f;
         }
+
+        // Trả về table thực thi procedure
+        public DataTable Procedure(string sqlProcedure, CommandType ct, List<SqlParameter> parameters, ref string error)
+        {
+            bool f = false;
+            error = "";
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            conn.Open();
+            //cmd = new SqlCommand();
+            cmd.CommandText = sqlProcedure;
+            cmd.CommandType = ct;
+            cmd.Parameters.Clear();
+            foreach (SqlParameter i in parameters)
+            {
+                cmd.Parameters.Add(i);
+            }
+
+            try
+            {
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                cmd.ExecuteNonQuery();
+                f = true;
+            }
+            catch (SqlException ex)
+            {
+                //MessageBox.Show(ex.Message.ToString());
+                error = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dt;
+        }
     }
 }

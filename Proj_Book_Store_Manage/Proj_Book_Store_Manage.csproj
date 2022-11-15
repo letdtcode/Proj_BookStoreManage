@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +60,7 @@
     <Compile Include="BSLayer\PublisherBL.cs" />
     <Compile Include="BSLayer\ReceiptExportBL.cs" />
     <Compile Include="BSLayer\ReceiptImportBL.cs" />
+    <Compile Include="BSLayer\Revenue.cs" />
     <Compile Include="BSLayer\TypeCustomerBL.cs" />
     <Compile Include="BSLayer\VoucherBL.cs" />
     <Compile Include="DBLayer\DBMain.cs" />
@@ -91,6 +93,12 @@
     </Compile>
     <Compile Include="UI\FormImportBook.Designer.cs">
       <DependentUpon>FormImportBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormRevenue.Designer.cs">
+      <DependentUpon>FormRevenue.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormSale.cs">
       <SubType>Form</SubType>
@@ -223,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormImportBook.resx">
       <DependentUpon>FormImportBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormRevenue.resx">
+      <DependentUpon>FormRevenue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormSale.resx">
       <DependentUpon>FormSale.cs</DependentUpon>

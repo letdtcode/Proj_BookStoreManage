@@ -284,6 +284,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1055, 184);
             this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // UControlCategory
             // 

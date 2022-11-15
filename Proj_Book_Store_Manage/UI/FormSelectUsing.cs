@@ -64,5 +64,11 @@ namespace Proj_Book_Store_Manage.UI
             frmImportBook.FormClosed += Edit_Form;
             frmImportBook.Show();
         }
+
+        private void btnRevenue_Click(object sender, EventArgs e)
+        {
+            FormRevenue revenue = new FormRevenue();
+            revenue.ShowDialog();
+        }
     }
 }

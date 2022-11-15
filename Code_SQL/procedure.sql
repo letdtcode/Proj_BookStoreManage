@@ -1,7 +1,6 @@
 ﻿use BOOKSTOREMANAGE
 go
 -----------------------------PROCEDURE-------------------------
-exec proc_addNewAccount 'ACC1','dthanh123','abcd1234',1,'NV1'
 --PROCEDURE THÊM, SỬA, XÓA ACCOUNT
 --Thêm một account mới
 create or alter procedure proc_addNewAccount (@idAccount int, @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee int)
@@ -835,9 +834,9 @@ begin
 	where dbo.CUSTOMER.idCus=@idCus
 end
 go
-exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
-exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
---Xác nhận xuất hóa đơn
+--exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
+--exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
+----Xác nhận xuất hóa đơn
 create or alter procedure proc_confirmBillExport
 @idBillOutput int,
 @dateTimeOfBill date,
@@ -963,38 +962,93 @@ begin
 	end catch
 end
 go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX1'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX1'
 
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX2'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX2'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX3'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX3'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX4'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX4'
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX1'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX1'
 
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX5'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX5'
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX2'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX2'
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX3'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX3'
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX4'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX4'
 
-go
+--go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX5'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX5'
 
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX7'
+--go
 
-go
+--delete dbo.BOOK_BILLOUTPUT
+--where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
+--delete dbo.BILLOUTPUT
+--where dbo.BILLOUTPUT.idBillOutPut='HDX7'
+
+--go
+---Procedure show doanh thu trong khoảng begin end---
+create or alter proc sp_ShowRevenue
+@begin date , @end date
+as
+begin
+	select convert(date,dateOfBill) as dateOfBill, sum(total) as total
+	from BILLOUTPUT where dateOfBill between @begin and @end
+	group by convert(date,dateOfBill)
+end
+exec sp_ShowRevenue @begin ='2022-06-01' ,@end ='2022-11-01'
+
+----Procedure show top 5 sản phẩm bán chạy nhất trong khoảng begin end-----
+create or alter proc sp_ShowTop5Book
+@begin date , @end date
+as
+begin
+	select top 5 BOOK.nameBook, sum(BOOK_BILLOUTPUT.amountOutput) as amountOutput
+	from BOOK_BILLOUTPUT, BOOK, BILLOUTPUT
+	where BOOK_BILLOUTPUT.idBook= BOOK.idBook
+		and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
+		and dateOfBill between @begin and @end
+	group by BOOK.nameBook 
+	order by amountOutput desc
+end
+exec sp_ShowTop5Book @begin ='2022-06-01' ,@end ='2022-11-01'
+-------Tổng quan về tổng doanh thu trong khoảng thời gian--------
+create or alter proc sp_Overview_Revenue
+@begin date, @end date
+as
+begin
+	select sum(total) 
+	from BILLOUTPUT 
+	where dateOfBill between @begin and @end
+end
+------Tổng quan về số hóa đơn trong khoảng thời gian----------
+create or alter proc sp_Overview_AmountBillOutput
+@begin date, @end date
+as
+begin
+	select count(*) 
+	from BILLOUTPUT 
+	where dateOfBill between @begin and @end
+end
+-----Tổng quan về số sách bán được trong khoảng thời gian--------
+create or alter proc sp_Overview_AmountBookBillOutput
+@begin date, @end date
+as
+begin
+	select sum(amountOutput) 
+	from BOOK_BILLOUTPUT, BILLOUTPUT,BOOK
+	where BOOK_BILLOUTPUT.idBook= BOOK.idBook
+	and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
+	and dateOfBill between @begin and @end
+end
