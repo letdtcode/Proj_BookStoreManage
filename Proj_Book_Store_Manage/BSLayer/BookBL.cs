@@ -60,7 +60,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             return dtBook;
         }
 
-        public bool addNewBook(string idBook, string nameBook, Image img, int priceImport, int priceExport, string idPublisher, ref string err)
+        public bool addNewBook(int idBook, string nameBook, Image img, int priceImport, int priceExport, int idPublisher, ref string err)
         {
             strSQL = "proc_addNewBook";
             byte[] imgString = ImgToByteArray(img);
@@ -86,7 +86,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyBook(string idBook, string nameBook, Image img, int priceImport, int priceExport, string idPublisher, ref string err)
+        public bool modifyBook(int idBook, string nameBook, Image img, int priceImport, int priceExport, int idPublisher, ref string err)
         {
             strSQL = "proc_updateBook";
             byte[] imgString = ImgToByteArray(img);
@@ -112,7 +112,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteBook(string idBook, ref string err)
+        public bool deleteBook(int idBook, ref string err)
         {
             strSQL = "proc_DeleteBook";
             parameters = new List<SqlParameter>();
@@ -122,21 +122,21 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public DataTable showCategory(string idBook, ref string err)
+        public DataTable showCategory(int idBook, ref string err)
         {
             SqlCommand cmd = new SqlCommand("Select * from func_getAllCategoryOfBook(@idBook)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBook", idBook);
             return db.ExecuteFunction(cmd, ref err);
         }
-        public DataTable showAuthor(string idBook, ref string err)
+        public DataTable showAuthor(int idBook, ref string err)
         {
             SqlCommand cmd = new SqlCommand("Select * from dbo.func_getAllAuthorOfBook(@idBook)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBook", idBook);
             return db.ExecuteFunction(cmd, ref err);
         }
-        public bool addNewBookCategory(string idBook, string nameCategory, ref string err)
+        public bool addNewBookCategory(int idBook, string nameCategory, ref string err)
         {
             strSQL = "proc_addNewBookCategory";
             parameters = new List<SqlParameter>();
@@ -149,7 +149,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyBookCategory(string idBook, string nameCategory, string nameNewCategory, ref string err)
+        public bool modifyBookCategory(int idBook, string nameCategory, string nameNewCategory, ref string err)
         {
             strSQL = "proc_updateBookCategory";
             parameters = new List<SqlParameter>();
@@ -165,7 +165,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteBookCategory(string idBook, string nameCategory, ref string err)
+        public bool deleteBookCategory(int idBook, string nameCategory, ref string err)
         {
             strSQL = "proc_deleteBookCategory";
             parameters = new List<SqlParameter>();
