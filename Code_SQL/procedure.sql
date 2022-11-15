@@ -877,7 +877,6 @@ begin
 			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 			return;
 	end
-	print(@totalOfBill)
 
 	--Cập nhật hóa đơn vào bảng
 	update dbo.BILLOUTPUT
@@ -994,8 +993,8 @@ where dbo.BILLOUTPUT.idBillOutPut='HDX5'
 go
 
 delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX6'
+where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
 delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX6'
+where dbo.BILLOUTPUT.idBillOutPut='HDX7'
 
 go

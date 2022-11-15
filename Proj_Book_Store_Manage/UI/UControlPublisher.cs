@@ -197,31 +197,31 @@ namespace Proj_Book_Store_Manage.UI
         void createAttributeComBoBox()
         {
             param = new List<string>();
-            param.Add("Id Customer");
-            param.Add("Name Customer");
+            param.Add("Id Publisher");
+            param.Add("Name Publisher");
             this.cbAttributeSearch.DataSource = param;
         }
 
         (string, string) getParameter()
         {
-            string id, nameCus;
-            if (cbAttributeSearch.Text == "Id Customer")
+            string id, namePublisher;
+            if (cbAttributeSearch.Text == "ID Publisher")
             {
                 id = this.txtSearch.Text.Trim();
-                nameCus = null;
+                namePublisher = null;
             }
 
-            else if (cbAttributeSearch.Text == "Name Customer")
+            else if (cbAttributeSearch.Text == "Name Publisher")
             {
                 id = null;
-                nameCus = this.txtSearch.Text.Trim(); ;
+                namePublisher = this.txtSearch.Text.Trim(); ;
             }
             else
             {
                 id = null;
-                nameCus = null;
+                namePublisher = null;
             }
-            return (id, nameCus);
+            return (id, namePublisher);
         }
     }
 }

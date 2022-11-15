@@ -61,8 +61,7 @@ begin
 end
 go
 
-
-Create or alter proc proc_deleteUser (@user nvarchar(20))
+create or alter proc proc_deleteUser (@user nvarchar(20))
 as
 begin
 	declare @state1 nvarchar(200), @state2 nvarchar(200)

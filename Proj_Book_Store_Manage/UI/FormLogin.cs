@@ -86,6 +86,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void ptbPassVisible_Click(object sender, EventArgs e)
         {
+            
             if (this.ptbPassVisible.Visible == true)
             {
                 this.ptbPassVisible.Visible = false;
@@ -102,7 +103,9 @@ namespace Proj_Book_Store_Manage.UI
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.txtPassword.PasswordChar = '✽';
+            //this.txtPassword.PasswordChar = '✽';
+            ptbPassVisible_Click(sender, e);
+            ptbPassInvisible_Click(sender, e);
         }
 
         private void txtUserName_Click(object sender, EventArgs e)
