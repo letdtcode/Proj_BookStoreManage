@@ -25,6 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isEdit = false;
         VoucherBL voucher = new VoucherBL();
         private bool roleTemp;
+        List<string> param;
         public UControlVoucher()
         {
             InitializeComponent();
@@ -32,6 +33,8 @@ namespace Proj_Book_Store_Manage.UI
             dtpDateStart.CustomFormat = "dd-MM-yyyy";
             dtpDateEnd.Format = DateTimePickerFormat.Custom;
             dtpDateEnd.CustomFormat = "dd-MM-yyyy";
+
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -62,19 +65,21 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (voucher.deleteVoucher(utl.IDCurrent, ref err) == true)
+                        voucher.deleteVoucher(utl.IDCurrent, ref err);
+                        if ( err == "")
                         {
+
                             MessageBox.Show("Xóa thành công !");
                         }
                         else
-                            MessageBox.Show("Xoá thất bại !");
+                            MessageBox.Show(err);
 
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể xóa !");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -108,9 +113,9 @@ namespace Proj_Book_Store_Manage.UI
                             MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Thông tin không hợp lệ");
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 else if (isEdit)
@@ -128,9 +133,9 @@ namespace Proj_Book_Store_Manage.UI
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Đã có lỗi xảy ra !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -177,6 +182,45 @@ namespace Proj_Book_Store_Manage.UI
         private void UControlVoucher_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            string id;
+            id = getParameter();
+            try
+            {
+                voucher = new VoucherBL();
+                dtVoucher = voucher.searchVoucher(id, ref err);
+                dgvVoucher.DataSource = dtVoucher;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Voucher");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        string getParameter()
+        {
+            string id;
+            if (cbAttributeSearch.Text == "Id Voucher")
+            {
+                id = this.txtSearch.Text.Trim();
+            }
+
+            else
+            {
+                id = null;
+            }
+            return (id);
         }
     }
 }

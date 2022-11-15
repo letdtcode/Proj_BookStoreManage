@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace Proj_Book_Store_Manage
 {
@@ -16,6 +17,7 @@ namespace Proj_Book_Store_Manage
         private static bool checkIDValid = false;
         private string rowIDCurrentIndex;
         private int rowCurrentIndex;
+        private DataTable dt = null;
 
         public Utilities(List<Control> controls,DataGridView dgv)
         {
@@ -30,6 +32,10 @@ namespace Proj_Book_Store_Manage
             rowIDCurrentIndex = null;
             rowCurrentIndex = -1;
         }
+        public Utilities(DataTable dataTable)
+        {
+            this.dt = dataTable;
+        }
         public bool CheckIDValid
         {
             get => checkIDValid;
@@ -39,7 +45,6 @@ namespace Proj_Book_Store_Manage
         public string IDCurrent
         {
             get => rowIDCurrentIndex;
-            //set => rowIDCurrentIndex = value;
         }
         public int rowCurrent
         {
@@ -49,19 +54,31 @@ namespace Proj_Book_Store_Manage
         public string createID(string codeMark)
         {
             int numIDNext = 0;
-            int indexLastRow = dgv.Rows.GetLastRow(DataGridViewElementStates.None);
-            if (indexLastRow == 0)
+            int numRows = dgv.Rows.Count;
+            if (numRows <= 0)
             {
                 numIDNext = 1;
             }
             else
             {
-                string resultString = Regex.Match(dgv.Rows[indexLastRow - 1].Cells[0].Value.ToString(), @"\d+").Value;
-                numIDNext = int.Parse(resultString) + 1;
+                numIDNext = numRows;
             }
-            return codeMark+numIDNext.ToString();
+            return codeMark + numIDNext.ToString();
         }
-
+        public string createIDBill(string codeMark)
+        {
+            int numIDNext = 0;
+            int numRows = dt.Rows.Count;
+            if (numRows < 0)
+            {
+                numIDNext = 1;
+            }
+            else
+            {
+                numIDNext = numRows + 1;
+            }
+            return codeMark + numIDNext.ToString();
+        }
         public void setEnableControl(bool b)
         {
             foreach (Control control in controls)

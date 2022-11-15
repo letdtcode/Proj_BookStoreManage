@@ -15,6 +15,8 @@ namespace Proj_Book_Store_Manage.UI
         public FormDashBoard()
         {
             InitializeComponent();
+            this.lblNameEmployee.Text = frmLogin.nameEmp;
+            this.lblRole.Text = frmLogin.idRole;
         }
 
         private void FormDashBoard_Load(object sender, EventArgs e)
@@ -37,19 +39,33 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnBook);
-            UControlBookOverview uc_BookOverView = new UControlBookOverview();
-            uc_BookOverView.Dock = DockStyle.Fill;
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(uc_BookOverView);
+            try
+            {
+                moveSidePanel(btnBook);
+                UControlBookOverview uc_BookOverView = new UControlBookOverview();
+                uc_BookOverView.Dock = DockStyle.Fill;
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(uc_BookOverView);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnAccount);
-            UControlAccount uc_Account = new UControlAccount();
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(uc_Account);
+            try
+            {
+                moveSidePanel(btnAccount);
+                UControlAccount uc_Account = new UControlAccount();
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(uc_Account);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnReceipt_Click(object sender, EventArgs e)
@@ -70,18 +86,34 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnEmployee);
-            UControlEmployee uc_Employee = new UControlEmployee();
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(uc_Employee);
+            try
+            {
+                moveSidePanel(btnEmployee);
+                UControlEmployee uc_Employee = new UControlEmployee();
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(uc_Employee);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnVoucher_Click(object sender, EventArgs e)
         {
-            moveSidePanel(btnVoucher);
-            UControlVoucher uc_Voucher = new UControlVoucher();
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(uc_Voucher);
+            try
+            {
+                moveSidePanel(btnVoucher);
+                UControlVoucher uc_Voucher = new UControlVoucher();
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(uc_Voucher);
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)

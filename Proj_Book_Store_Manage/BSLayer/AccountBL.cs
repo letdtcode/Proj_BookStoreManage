@@ -25,7 +25,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewAccount(string idAccount, string nameAccount, string passWord, bool typeOfAcc, string idEmployee, ref string err)
+        public bool addNewAccount(string idAccount, string nameAccount, string passWord, int typeOfAcc, string idEmployee, ref string err)
         {
             strSQL = "proc_addNewAccount";
             parameters = new List<SqlParameter>();
@@ -48,7 +48,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyAccount(string idAccount, string nameAccount, string password, bool typeOfAcc, string idEmployee, ref string err)
+        public bool modifyAccount(string idAccount, string nameAccount, string password, int typeOfAcc, string idEmployee, ref string err)
         {
             strSQL = "proc_updateAccount";
             parameters = new List<SqlParameter>();
@@ -82,28 +82,37 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        /*public DataTable searchAccount(int idAccount, string userName, string password, bool typeOfAcc, int idEmp, ref string err)
+        //public DataTable searchAccount(string userName, ref string err)
+        //{
+        //    //strSQL = "func_searchAccount";
+        //    //parameters = new List<SqlParameter>();
+
+        //    //parameter = new SqlParameter("@idAcc", idAccount);
+        //    //parameters.Add(parameter);
+
+        //    //parameter = new SqlParameter("@userName", userName);
+        //    //parameters.Add(parameter);
+
+        //    //parameter = new SqlParameter("@password", password);
+        //    //parameters.Add(parameter);
+
+        //    //parameter = new SqlParameter("@typeAcc", typeOfAcc);
+        //    //parameters.Add(parameter);
+
+        //    //parameter = new SqlParameter("@idEmp", idEmp);
+        //    //parameters.Add(parameter);
+
+        //    ////String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
+        //    //return db.ExecuteFunction(strSQL, CommandType.Text, parameters, ref err);
+        //}
+        public DataTable searchAccount(string id, string username, ref string err)
         {
-            strSQL = "func_searchAccount";
-            parameters = new List<SqlParameter>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = $"select * from dbo.func_searchAccount ('{id}', '{username}')";
+            cmd.CommandType = CommandType.Text;
 
-            parameter = new SqlParameter("@idAcc", idAccount);
-            parameters.Add(parameter);
+            return db.ExecuteFunction(cmd, ref err);
+        }
 
-            parameter = new SqlParameter("@userName", userName);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@password", password);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@typeAcc", typeOfAcc);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idEmp", idEmp);
-            parameters.Add(parameter);
-
-            //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
-            return db.ExecuteFunction(strSQL, CommandType.Text, parameters, ref err);
-        }*/
     }
 }

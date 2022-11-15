@@ -13,48 +13,48 @@ namespace Proj_Book_Store_Manage.UI
 {
     public partial class UControlReceiptImport : UserControl
     {
-        private List<Control> controls = null;
         private DataTable dtReceiptImport = null;
         private Utilities utl = null;
-        //private int IDAccount;
         private string err = "";
         private DialogResult result;
+        ReceiptImportBL receiptImport = null;
+        ImportBooksBL importBook = null;
 
         //false là chế độ sửa, true là chế độ thêm
         private bool isAdd = false;
         private bool isEdit = false;
-        ReceiptImportBL receiptImport = new ReceiptImportBL();
         private EmployeeBL emp = new EmployeeBL();
+        List<string> param;
         public UControlReceiptImport()
         {
             InitializeComponent();
             dtpReceiptImport.Format = DateTimePickerFormat.Custom;
             dtpReceiptImport.CustomFormat = "dd-MM-yyyy";
+            this.lbIdEmployee.Text = frmLogin.idEmp;
+            createAttributeComBoBox();
+            receiptImport = new ReceiptImportBL();
+            utl = new Utilities(dgvReceiptImport);
         }
 
         private void btnDetailImportReceipt_Click(object sender, EventArgs e)
         {
-            FormDetailReceiptImport frm_DetailReceiptImport = new FormDetailReceiptImport();
+            FormDetailReceiptImport frm_DetailReceiptImport = new FormDetailReceiptImport(this.lblIDBill.Text,this.lblEmployee.Text,this.lblDateImport.Text,int.Parse(this.lblTotal.Text.ToString()));
             frm_DetailReceiptImport.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.lblIDBill.Text = utl.createID("HDN");
-            isAdd = true;
-            utl.SetNullForAllControl();
-            utl.setEnableControl(true);
-            utl.SetEnableButton(new List<Button> { btnEdit, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
+            string idBill = utl.createID("HDN");
+            receiptImport.addNewReceiptImport(idBill, ref err);
+            //importBook = new ImportBooksBL(idBill);      
+            
+            FormImportBook frmImportBook = new FormImportBook(idBill);
+            frmImportBook.FormClosed += Edit_FormImportBookClosed;
+            frmImportBook.Show();
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void Edit_FormImportBookClosed(object sender, FormClosedEventArgs e)
         {
-            isEdit = true;
-            //utl.SetNullForAllControl();
-            utl.setEnableControl(true);
-            utl.SetEnableButton(new List<Button> { btnAdd, btnDelete }, false);
-            utl.SetEnableButton(new List<Button> { btnSave, btnReload }, true);
+            LoadData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -66,85 +66,26 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (receiptImport.deleteReceiptImport(this.lblIDBill.Text, ref err) == true)
+                        receiptImport.deleteReceiptImport(this.lblIDBill.Text, ref err);
+                        if (err == "")
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
                         else
-                            MessageBox.Show("Xoá thất bại !");
+                            MessageBox.Show(err);
 
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể xóa !");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 LoadData();
             }
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (utl.checkAllControlIsFill() == false)
-                {
-                    result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    isAdd = false;
-                    isEdit = false;
-                    return;
-                }
-                if (isAdd)
-                {
-                    receiptImport = new ReceiptImportBL();
-                    try
-                    {
-                        receiptImport.addNewReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.cbEmployee.Text, ref err); ;;
-                        if (err == "")
-                        {
-                            MessageBox.Show("Thêm hóa đơn nhập thành công !");
-                        }
-                        else
-                        {
-                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Thông tin không hợp lệ");
-                    }
-                }
-                else if (isEdit)
-                {
-                    //account = new AccountBL()
-                    receiptImport.modifyReceiptImport(this.lblIDBill.Text, this.dtpReceiptImport.Value.Date, this.cbEmployee.Text, ref err);
-                    //LoadData();
-                    if (err == "")
-                    {
-                        MessageBox.Show("Sửa thông tin đơn nhập thành công !");
-                    }
-                    else
-                    {
-                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Đã có lỗi xảy ra !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                isAdd = false;
-                isEdit = false;
-                utl.SetNullForAllControl();
-                LoadData();
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
 
@@ -157,12 +98,20 @@ namespace Proj_Book_Store_Manage.UI
 
         private void dgvReceiptImport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            utl.CellClick(btnCancel, btnDelete);
-            lblIDBill.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[0].Value.ToString();
-            dtpReceiptImport.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[1].Value.ToString();
-            lblTotal.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[2].Value.ToString();
-            cbEmployee.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
-            lblStt.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[4].Value.ToString();
+            try
+            {
+                utl.CellClick(btnDetailImportReceipt);
+                this.lblIDBill.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[0].Value.ToString();
+
+                string dt = DateTime.Parse(dgvReceiptImport.Rows[utl.rowCurrent].Cells[1].Value.ToString()).ToString("dd/MM/yyyy");
+                this.dtpReceiptImport.Text = dt;
+                this.lblTotal.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[2].Value.ToString();      
+                this.lbIdEmployee.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
+            }
+            catch
+            {
+                result = MessageBox.Show("Hóa đơn này không có giá trị ! Vui lòng chọn hóa đơn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void UControlReceiptImport_Load(object sender, EventArgs e)
@@ -171,24 +120,50 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadData()
         {
-            lblIDBill.Text = "None";
-            LoadDataIntoCbEmp(emp.getAllIDEmployee());
-            controls = new List<Control> { dtpReceiptImport, cbEmployee };
             dtReceiptImport = receiptImport.getDataReceiptImport();
             dgvReceiptImport.DataSource = dtReceiptImport;
-            utl = new Utilities(controls, dgvReceiptImport);
+            utl = new Utilities(dgvReceiptImport);
             dgvReceiptImport.AutoResizeColumns();
-            utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
-            utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
-            utl.setEnableControl(false);
+            utl.SetEnableButton(new List<Button>() { btnDetailImportReceipt }, false);
         }
-        private void LoadDataIntoCbEmp(List<string> idEmps)
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            cbEmployee.Items.Clear();
-            foreach (string idEmp in idEmps)
+            string id;
+            id = getParameter();
+            try
             {
-                cbEmployee.Items.Add(idEmp);
+                receiptImport = new ReceiptImportBL();
+                dtReceiptImport = receiptImport.searchReceiptImport(id, ref err);
+                dgvReceiptImport.DataSource = dtReceiptImport;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Receipt Import");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        string getParameter()
+        {
+            string id;
+            if (cbAttributeSearch.Text == "Id Receipt Import")
+            {
+                id = this.txtSearch.Text.Trim();
+            }
+
+            else
+            {
+                id = null;
+            }
+            return (id);
+        }
+
     }
 }

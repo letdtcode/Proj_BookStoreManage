@@ -18,6 +18,7 @@ namespace Proj_Book_Store_Manage.UI
         private int amount;
         BookBL book = null;
         string err = null;
+        DialogResult result;
 
         public FormEditItemSale(CartBL cart, string idBook, int amount)
         {
@@ -29,19 +30,10 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void FormEditDetailReceiptExport_Load(object sender, EventArgs e)
         {
-            this.cbIDBook.Text = idBook;
+            this.lblIdBook.Text = idBook;
             this.lblNameBook.Text = book.getNameBook(idBook, ref err).ToString();
-            int index = -1;
             this.lblInfoAmount.Text = "Số lượng sách còn trong kho: " + book.getAmountBook(idBook, ref err).ToString();
-            loadDataIDBook();
-        }
-        private void loadDataIDBook()
-        {
-            cbIDBook.Items.Clear();
-            foreach(string idBook in book.getAllIdBook())
-            {
-                cbIDBook.Items.Add(idBook);
-            }
+            this.nnrAmount.Value = this.amount;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -50,14 +42,23 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void editValue()
         {
-            cart.modifyItemInCart(this.idBook, this.cbIDBook.Text, this.amount, int.Parse(this.txtAmount.Text.ToString()), ref err);
+            if (this.nnrAmount.Value == 0)
+            {
+                result = MessageBox.Show("Xác nhận xóa khỏi đơn hàng ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                if (result == DialogResult.OK)
+                {
+                    cart.deleteItemInCart(this.idBook, ref err);
+                }
+                return;
+            }
+            cart.modifyItemInCart(this.idBook,this.amount, int.Parse(this.nnrAmount.Text.ToString()), ref err);
             if (err == "")
             {
-                MessageBox.Show("Cập nhật thành công");
+                result = MessageBox.Show("Cập nhật thành công");
             }
             else
             {
-                MessageBox.Show(err);
+                result = MessageBox.Show(err);
             }
         }
 
@@ -66,11 +67,11 @@ namespace Proj_Book_Store_Manage.UI
             this.Close();
         }
 
-        private void cbIDBook_SelectedValueChanged(object sender, EventArgs e)
+        /*private void cbIDBook_SelectedValueChanged(object sender, EventArgs e)
         {
             ComboBox cbb = sender as ComboBox;
             this.lblNameBook.Text = book.getNameBook(cbb.SelectedItem.ToString(), ref err).ToString();
             this.lblInfoAmount.Text = "Số lượng sách còn trong kho: " + book.getAmountBook(cbb.SelectedItem.ToString(), ref err).ToString();
-        }
+        }*/
     }
 }

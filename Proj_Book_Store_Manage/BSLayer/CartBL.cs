@@ -20,6 +20,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         string strSQL = "";
         private string idBill = null;
         private string err = "";
+        String nameView = "view_GetAllBookForSale";
         public CartBL(string idBill)
         {
             this.IdBill = idBill;
@@ -27,10 +28,13 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
 
         public string IdBill { get => idBill; set => idBill = value; }
-
+        public DataTable getDataBook()
+        {
+            return db.LoadData(nameView, CommandType.Text);
+        }
         public DataTable getDataItemOfBill()
         {
-            SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillOutput(@idBill)");
+            SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillExport(@idBill)");
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@idBill", IdBill);
             return db.ExecuteFunction(cmd, ref err);
@@ -71,7 +75,7 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyItemInCart(string idBook, string idNewBook, int amountBook, int amountNewBook, ref string err)
+        public bool modifyItemInCart(string idBook, int amountBook, int amountNewBook, ref string err)
         {
             strSQL = "proc_updateBookBillOutput";
             parameters = new List<SqlParameter>();
@@ -80,9 +84,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@idBook", idBook);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idnewBook", idNewBook);
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@amountBook", amountBook);

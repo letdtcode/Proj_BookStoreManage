@@ -31,19 +31,22 @@ namespace Proj_Book_Store_Manage.UI
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.gpSearch = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gbCustomer = new System.Windows.Forms.GroupBox();
-            this.cbTypeCus = new System.Windows.Forms.ComboBox();
+            this.lblIdTypeCus = new System.Windows.Forms.Label();
             this.txtPhoneNumberCus = new System.Windows.Forms.TextBox();
             this.txtAddCus = new System.Windows.Forms.TextBox();
             this.txtNameCustomer = new System.Windows.Forms.TextBox();
-            this.lblTypeCus = new System.Windows.Forms.Label();
+            this.lbl10 = new System.Windows.Forms.Label();
             this.lblPointCus = new System.Windows.Forms.Label();
-            this.lblPoint = new System.Windows.Forms.Label();
+            this.lbl11 = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.lblIDCustomer = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblNameCustomer = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -53,8 +56,6 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblIDCustomer = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gpSearch.SuspendLayout();
             this.gbCustomer.SuspendLayout();
@@ -75,51 +76,62 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gpSearch
             // 
+            this.gpSearch.Controls.Add(this.btnSearch);
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
             this.gpSearch.Location = new System.Drawing.Point(671, 21);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(293, 125);
+            this.gpSearch.Size = new System.Drawing.Size(293, 147);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(105, 105);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(119, 31);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(47, 83);
+            this.txtSearch.Location = new System.Drawing.Point(35, 79);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 22);
+            this.txtSearch.Size = new System.Drawing.Size(224, 20);
             this.txtSearch.TabIndex = 2;
             // 
             // cbAttributeSearch
             // 
             this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(138, 27);
+            this.cbAttributeSearch.Location = new System.Drawing.Point(11, 48);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(121, 24);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(248, 21);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // lblSearchBy
             // 
             this.lblSearchBy.AutoSize = true;
-            this.lblSearchBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(7, 30);
+            this.lblSearchBy.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchBy.Location = new System.Drawing.Point(7, 25);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(106, 23);
+            this.lblSearchBy.Size = new System.Drawing.Size(91, 20);
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "Thuộc tính";
             // 
             // gbCustomer
             // 
-            this.gbCustomer.Controls.Add(this.cbTypeCus);
+            this.gbCustomer.Controls.Add(this.lblIdTypeCus);
             this.gbCustomer.Controls.Add(this.txtPhoneNumberCus);
             this.gbCustomer.Controls.Add(this.txtAddCus);
             this.gbCustomer.Controls.Add(this.txtNameCustomer);
-            this.gbCustomer.Controls.Add(this.lblTypeCus);
+            this.gbCustomer.Controls.Add(this.lbl10);
             this.gbCustomer.Controls.Add(this.lblPointCus);
-            this.gbCustomer.Controls.Add(this.lblPoint);
+            this.gbCustomer.Controls.Add(this.lbl11);
             this.gbCustomer.Controls.Add(this.lblPhoneNumber);
             this.gbCustomer.Controls.Add(this.lblAddress);
             this.gbCustomer.Controls.Add(this.lblIDCustomer);
@@ -134,104 +146,138 @@ namespace Proj_Book_Store_Manage.UI
             this.gbCustomer.TabStop = false;
             this.gbCustomer.Text = "Thông tin khách hàng";
             // 
-            // cbTypeCus
+            // lblIdTypeCus
             // 
-            this.cbTypeCus.FormattingEnabled = true;
-            this.cbTypeCus.Location = new System.Drawing.Point(488, 103);
-            this.cbTypeCus.Name = "cbTypeCus";
-            this.cbTypeCus.Size = new System.Drawing.Size(121, 24);
-            this.cbTypeCus.TabIndex = 3;
+            this.lblIdTypeCus.AutoSize = true;
+            this.lblIdTypeCus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdTypeCus.Location = new System.Drawing.Point(484, 105);
+            this.lblIdTypeCus.Name = "lblIdTypeCus";
+            this.lblIdTypeCus.Size = new System.Drawing.Size(53, 23);
+            this.lblIdTypeCus.TabIndex = 3;
+            this.lblIdTypeCus.Text = "VIP1";  
             // 
             // txtPhoneNumberCus
             // 
             this.txtPhoneNumberCus.Location = new System.Drawing.Point(488, 27);
             this.txtPhoneNumberCus.Name = "txtPhoneNumberCus";
-            this.txtPhoneNumberCus.Size = new System.Drawing.Size(153, 22);
+            this.txtPhoneNumberCus.Size = new System.Drawing.Size(153, 20);
             this.txtPhoneNumberCus.TabIndex = 2;
             // 
             // txtAddCus
             // 
             this.txtAddCus.Location = new System.Drawing.Point(106, 105);
             this.txtAddCus.Name = "txtAddCus";
-            this.txtAddCus.Size = new System.Drawing.Size(247, 22);
+            this.txtAddCus.Size = new System.Drawing.Size(247, 20);
             this.txtAddCus.TabIndex = 2;
             // 
             // txtNameCustomer
             // 
             this.txtNameCustomer.Location = new System.Drawing.Point(106, 67);
             this.txtNameCustomer.Name = "txtNameCustomer";
-            this.txtNameCustomer.Size = new System.Drawing.Size(247, 22);
+            this.txtNameCustomer.Size = new System.Drawing.Size(247, 20);
             this.txtNameCustomer.TabIndex = 2;
             // 
-            // lblTypeCus
+            // lbl10
             // 
-            this.lblTypeCus.AutoSize = true;
-            this.lblTypeCus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTypeCus.Location = new System.Drawing.Point(390, 105);
-            this.lblTypeCus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTypeCus.Name = "lblTypeCus";
-            this.lblTypeCus.Size = new System.Drawing.Size(76, 23);
-            this.lblTypeCus.TabIndex = 1;
-            this.lblTypeCus.Text = "Loại KH";
+            this.lbl10.AutoSize = true;
+            this.lbl10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl10.Location = new System.Drawing.Point(390, 105);
+            this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl10.Name = "lbl10";
+            this.lbl10.Size = new System.Drawing.Size(76, 23);
+            this.lbl10.TabIndex = 1;
+            this.lbl10.Text = "Loại KH"; 
             // 
             // lblPointCus
             // 
             this.lblPointCus.AutoSize = true;
-            this.lblPointCus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointCus.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPointCus.Location = new System.Drawing.Point(537, 66);
             this.lblPointCus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPointCus.Name = "lblPointCus";
-            this.lblPointCus.Size = new System.Drawing.Size(21, 23);
+            this.lblPointCus.Size = new System.Drawing.Size(18, 20);
             this.lblPointCus.TabIndex = 1;
             this.lblPointCus.Text = "0";
             // 
-            // lblPoint
+            // lbl11
             // 
-            this.lblPoint.AutoSize = true;
-            this.lblPoint.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoint.Location = new System.Drawing.Point(390, 68);
-            this.lblPoint.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(139, 23);
-            this.lblPoint.TabIndex = 1;
-            this.lblPoint.Text = "Điểm Tích Lũy";
+            this.lbl11.AutoSize = true;
+            this.lbl11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl11.Location = new System.Drawing.Point(390, 68);
+            this.lbl11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl11.Name = "lbl11";
+            this.lbl11.Size = new System.Drawing.Size(139, 23);
+            this.lbl11.TabIndex = 1;
+            this.lbl11.Text = "Điểm Tích Lũy";
             // 
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhoneNumber.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneNumber.Location = new System.Drawing.Point(390, 24);
             this.lblPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(44, 23);
+            this.lblPhoneNumber.Size = new System.Drawing.Size(42, 20);
             this.lblPhoneNumber.TabIndex = 1;
             this.lblPhoneNumber.Text = "SĐT";
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddress.Location = new System.Drawing.Point(8, 105);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(82, 23);
+            this.lblAddress.Size = new System.Drawing.Size(62, 20);
             this.lblAddress.TabIndex = 1;
             this.lblAddress.Text = "Địa Chỉ";
+            // 
+            // lblIDCustomer
+            // 
+            this.lblIDCustomer.AutoSize = true;
+            this.lblIDCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDCustomer.Location = new System.Drawing.Point(102, 27);
+            this.lblIDCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDCustomer.Name = "lblIDCustomer";
+            this.lblIDCustomer.Size = new System.Drawing.Size(63, 23);
+            this.lblIDCustomer.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDCustomer.Location = new System.Drawing.Point(102, 27);
+            this.lblIDCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIDCustomer.Name = "lblIDCustomer";
+            this.lblIDCustomer.Size = new System.Drawing.Size(48, 20);
+            this.lblIDCustomer.TabIndex = 0;
+            this.lblIDCustomer.Text = "None";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 23);
+            this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã KH";
             // 
             // lblNameCustomer
             // 
             this.lblNameCustomer.AutoSize = true;
-            this.lblNameCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameCustomer.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameCustomer.Location = new System.Drawing.Point(8, 68);
             this.lblNameCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCustomer.Name = "lblNameCustomer";
-            this.lblNameCustomer.Size = new System.Drawing.Size(75, 23);
+            this.lblNameCustomer.Size = new System.Drawing.Size(67, 20);
             this.lblNameCustomer.TabIndex = 0;
             this.lblNameCustomer.Text = "Tên KH";
             // 
             // btnReload
             // 
-            this.btnReload.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReload.Location = new System.Drawing.Point(54, 302);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(121, 53);
@@ -242,7 +288,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(54, 7);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(121, 53);
@@ -253,7 +299,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnEdit
             // 
-            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(54, 66);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(121, 53);
@@ -264,7 +310,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(54, 243);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(121, 53);
@@ -275,7 +321,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(54, 184);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(121, 53);
@@ -300,7 +346,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // btnDelete
             // 
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(54, 125);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(121, 53);
@@ -322,28 +368,6 @@ namespace Proj_Book_Store_Manage.UI
             this.dgvCustomer.Size = new System.Drawing.Size(721, 280);
             this.dgvCustomer.TabIndex = 8;
             this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã KH";
-            // 
-            // lblIDCustomer
-            // 
-            this.lblIDCustomer.AutoSize = true;
-            this.lblIDCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDCustomer.Location = new System.Drawing.Point(102, 27);
-            this.lblIDCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDCustomer.Name = "lblIDCustomer";
-            this.lblIDCustomer.Size = new System.Drawing.Size(63, 23);
-            this.lblIDCustomer.TabIndex = 0;
-            this.lblIDCustomer.Text = "None";
             // 
             // UControlInfoCustomer
             // 
@@ -385,13 +409,14 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvCustomer;
-        private System.Windows.Forms.ComboBox cbTypeCus;
         private System.Windows.Forms.TextBox txtPhoneNumberCus;
-        private System.Windows.Forms.Label lblTypeCus;
+        private System.Windows.Forms.Label lbl10;
         private System.Windows.Forms.Label lblPointCus;
-        private System.Windows.Forms.Label lblPoint;
+        private System.Windows.Forms.Label lbl11;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label lblIDCustomer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblIdTypeCus;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

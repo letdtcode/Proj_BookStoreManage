@@ -20,16 +20,22 @@ namespace Proj_Book_Store_Manage.UI
         private string err="";
         private DialogResult result;
 
+        List<string> param;
+
         //false là chế độ sửa, true là chế độ thêm
         private bool isAdd = false;
         private bool isEdit = false;
         AccountBL account = new AccountBL();
         EmployeeBL employee = new EmployeeBL();
-        private bool roleTemp;
+        private int roleTemp;
         public UControlAccount()
         {
             InitializeComponent();
             lblIDAcount.Enabled = false;
+            LoadData();
+            createAttributeComBoBox();
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -60,19 +66,20 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (account.deleteAccount(this.lblID.Text, ref err) == true)
+                        account.deleteAccount(this.lblID.Text, ref err);
+                        if (err == "")
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
                         else
-                            MessageBox.Show("Xoá thất bại !");
+                            MessageBox.Show(err);
                         
                     }
                 }             
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể xóa !");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -85,9 +92,9 @@ namespace Proj_Book_Store_Manage.UI
             try
             {
                 if (cbTypeAcc.Text == "Admin")
-                    roleTemp = true;
+                    roleTemp = 1;
                 else
-                    roleTemp = false;
+                    roleTemp = 0;
                 if (utl.checkAllControlIsFill() == false)
                 {
                     result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -200,6 +207,53 @@ namespace Proj_Book_Store_Manage.UI
             {
                 cbEmployee.Items.Add(idCus);
             }
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            string id, username;
+            (id, username) = getParameter();
+
+            try
+            {
+                account = new AccountBL();
+                dtAccount= account.searchAccount(id, username, ref err);
+                dgvAuthor.DataSource = dtAccount;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox ()
+        {
+            param = new List<string>();
+            param.Add("Id Account");
+            param.Add("Name Account");
+            this.cbAttribute.DataSource = param;
+        }
+
+        (string, string) getParameter ()
+        {
+            string id, username;
+            if (cbAttribute.Text == "Id Account")
+            {
+                id = this.txtInput.Text.Trim();
+                username = null;
+            }    
+
+            else if (cbAttribute.Text == "Name Account")
+            {
+                id = null;
+                username = this.txtInput.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                username = null;
+            }
+            return (id, username);
         }
     }
 }

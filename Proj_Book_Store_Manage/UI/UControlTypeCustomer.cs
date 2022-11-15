@@ -24,14 +24,16 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         TypeCustomerBL typecustomer = new TypeCustomerBL();
+        List<string> param;
         public UControlTypeCustomer()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.lblID.Text = utl.createID("LKH");
+            this.lblID.Text = utl.createID("VIP");
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -57,19 +59,20 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if (typecustomer.deleteTypeCustomer(utl.IDCurrent, ref err) == true)
+                        typecustomer.deleteTypeCustomer(utl.IDCurrent, ref err);
+                        if ( err == "")
                         {
                             MessageBox.Show("Xóa thành công !");
                         }
                         else
-                            MessageBox.Show("Xoá thất bại !");
+                            MessageBox.Show(err);
 
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể xóa !");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -103,9 +106,9 @@ namespace Proj_Book_Store_Manage.UI
                             MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Thông tin không hợp lệ","Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     }
                 }
                 else if (isEdit)
@@ -171,5 +174,51 @@ namespace Proj_Book_Store_Manage.UI
             txtValue.Text = dgvTypeCustomer.Rows[utl.rowCurrent].Cells[3].Value.ToString();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameAuthor;
+            (id, nameAuthor) = getParameter();
+
+            try
+            {
+                typecustomer = new TypeCustomerBL();
+                dtTypeCustomer = typecustomer.searchTypeCustomer(id, nameAuthor, ref err);
+                dgvTypeCustomer.DataSource = dtTypeCustomer;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Type Customer");
+            param.Add("Name Type Customer");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string) getParameter()
+        {
+            string id, nameTypeCus;
+            if (cbAttributeSearch.Text == "Id Type Customer")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameTypeCus = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Type Customer")
+            {
+                id = null;
+                nameTypeCus = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                nameTypeCus = null;
+            }
+            return (id, nameTypeCus);
+        }
     }
 }

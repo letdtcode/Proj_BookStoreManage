@@ -28,7 +28,14 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewReceiptImport(string idBillInput, DateTime dateOfInput, string idEmployee, ref string err)
+        public DataTable getDataDetailReceiptImport(string idBillImport, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand("Select * from dbo.func_getDataOfBillImport(@idBill)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@idBill", idBillImport);
+            return db.ExecuteFunction(cmd, ref err);
+        }
+        public bool addNewReceiptImport(string idBillInput, ref string err)
         {
             strSQL = "proc_addNewBillInput";
             parameters = new List<SqlParameter>();
@@ -36,39 +43,43 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameter = new SqlParameter("@idBillInput", idBillInput);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@dateOfInput", dateOfInput);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idEmployee", idEmployee);
-            parameters.Add(parameter);
-
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyReceiptImport(string idBillInput, DateTime dateOfInput, string idEmployee, ref string err)
+        public bool confirmReceiptImport(string idBillInput, DateTime dateTimeOfBill, string idEmp, ref string err)
         {
-            strSQL = "proc_updateBillInput";
+            strSQL = "proc_confirmBillImport ";
             parameters = new List<SqlParameter>();
 
             parameter = new SqlParameter("@idBillInput", idBillInput);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@dateOfInput", dateOfInput);
+            parameter = new SqlParameter("@dateTimeOfBill", dateTimeOfBill);
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("@idEmployee", idEmployee);
+            parameter = new SqlParameter("@idEmp", idEmp);
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool deleteReceiptImport(string idBillInput, ref string err)
+
+        public bool deleteReceiptImport(string idBill, ref string err)
         {
-            strSQL = "proc_deleteBillInput";
+            strSQL = "proc_cancelBillImport";
             parameters = new List<SqlParameter>();
 
-            parameter = new SqlParameter("@idBillInput", idBillInput);
+            parameter = new SqlParameter("@idBill", idBill);
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }
+
+        public DataTable searchReceiptImport(string id, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = $"select * from dbo.func_searchReceiptImport('{id}')";
+            cmd.CommandType = CommandType.Text;
+
+            return db.ExecuteFunction(cmd, ref err);
         }
     }
 }

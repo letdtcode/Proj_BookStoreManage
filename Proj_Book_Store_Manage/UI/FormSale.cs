@@ -17,7 +17,7 @@ namespace Proj_Book_Store_Manage.UI
         private DataTable dtListIemOfBill = null;
         private string err = "";
 
-        DetailReceiptExport detailReceiptExport = null;
+/*        DetailReceiptExport detailReceiptExport = null;*/
         ReceiptExportBL receiptExport = null;
         CartBL cart = null;
         VoucherBL voucher = null;
@@ -30,12 +30,16 @@ namespace Proj_Book_Store_Manage.UI
         public FormSale(string idBill)
         {
             InitializeComponent();
-            detailReceiptExport = new DetailReceiptExport(idBill);
+/*            detailReceiptExport = new DetailReceiptExport(idBill);*/
             receiptExport = new ReceiptExportBL();
             cart = new CartBL(idBill);
             voucher = new VoucherBL();
-            controls = new List<Control> { dtpReceiptExport, cbIdEmployee, cbIdCustomer, cbIdVoucher };
+            controls = new List<Control> { dtpReceiptExport, cbIdCustomer, cbIdVoucher };
             utl = new Utilities(controls, dgvListBook);
+            this.lbIdEmployee.Text = frmLogin.idEmp;
+            this.lblIDReceipt.Text = idBill;
+            this.dtpReceiptExport.Format = DateTimePickerFormat.Custom;
+            this.dtpReceiptExport.CustomFormat = "dd-MM-yyyy";
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -52,7 +56,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private bool checkFill()
         {
-            if (this.cbIdCustomer.Text.ToString() == "" || this.cbIdEmployee.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
+            if (this.cbIdCustomer.Text.ToString() == "" || this.cbIdVoucher.Text.ToString() == "")
                 return false;
             return true;
         }
@@ -60,8 +64,10 @@ namespace Proj_Book_Store_Manage.UI
         {
             if (checkFill())
             {
-                receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.cbIdEmployee.Text, this.cbIdVoucher.Text, ref err);
-                this.Close();
+                if (receiptExport.confirmReceiptExport(this.lblIDReceipt.Text, this.dtpReceiptExport.Value.Date, this.cbIdCustomer.Text, this.lbIdEmployee.Text, this.cbIdVoucher.Text, ref err))
+                    this.Close();
+                else
+                    MessageBox.Show(err);
             }    
             else
                 result = MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -81,9 +87,7 @@ namespace Proj_Book_Store_Manage.UI
         }
         private void LoadDataBook()
         {
- 
-            this.lblIDReceipt.Text = detailReceiptExport.IdBill;
-            dtListBook = detailReceiptExport.getDataBook();
+            dtListBook = cart.getDataBook();
             dgvListBook.DataSource = dtListBook;
             dgvListBook.AutoResizeColumns();
         }
@@ -93,7 +97,6 @@ namespace Proj_Book_Store_Manage.UI
             ReloadAllData();
             LoadDataIntoCbVoucher(voucher.getAllIdVoucher());
             LoadDataIntoCbCustomer(customer.getAllIDCustomer());
-            LoadDataIntoCbEmployee(employee.getAllIDEmployee());
         }
 
         private void dgvListBook_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -102,11 +105,6 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[0].Value.ToString();
             this.lblNameBook.Text = dgvListBook.Rows[rowCurrentIndex].Cells[1].Value.ToString();
         }
-        /*private void addItemIntoBill(string idBook, string nameBook, int amount)
-        {
-            cart.addNewItemIntoCart(idBook, nameBook, amount);
-            LoadDataCartIntoDgv();
-        }*/
         private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -186,6 +184,7 @@ namespace Proj_Book_Store_Manage.UI
         private void LoadDataIntoCbVoucher(List<string> idVouchers)
         {
             cbIdVoucher.Items.Clear();
+            cbIdVoucher.Items.Add("Không áp dụng");
             foreach (string idVoucher in idVouchers)
             {
                 cbIdVoucher.Items.Add(idVoucher);
@@ -197,14 +196,6 @@ namespace Proj_Book_Store_Manage.UI
             foreach (string idCustomer in idCustomers)
             {
                 cbIdCustomer.Items.Add(idCustomer);
-            }
-        }
-        private void LoadDataIntoCbEmployee(List<string> idEmployees)
-        {
-            cbIdEmployee.Items.Clear();
-            foreach (string idEmployee in idEmployees)
-            {
-                cbIdEmployee.Items.Add(idEmployee);
             }
         }
     }

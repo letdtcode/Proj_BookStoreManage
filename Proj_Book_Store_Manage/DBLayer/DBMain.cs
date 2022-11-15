@@ -11,7 +11,11 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        private string ConnStr = @"Data Source=DUCTHANH\SQLEXPRESS; Initial Catalog=BOOKSTOREMANAGE;Integrated Security=True";
+        public static string ServerName = "DUCTHANH\\SQLEXPRESS";
+        public static string DatabaseName = "BOOKSTOREMANAGE";
+        public static string UserName= "";
+        public static string Password= "";
+        private string ConnStr = $@"Data Source={ServerName}; Initial Catalog={DatabaseName};User Id={UserName};Password={Password}";
         private SqlConnection conn = null;
         private SqlCommand cmd = null;
         private SqlDataAdapter adapter = null;
@@ -19,9 +23,9 @@ namespace Proj_Book_Store_Manage.DBLayer
 
         public DBMain()
         {
-            conn = new SqlConnection(ConnStr);
-            cmd = conn.CreateCommand();
-            dt = new DataTable();     
+                conn = new SqlConnection(ConnStr);
+                cmd = conn.CreateCommand();
+                dt = new DataTable();
         }
         //Trả về Datatable để load dữ liệu lên form từ view
         public DataTable LoadData(string nameView, CommandType ct)
@@ -36,6 +40,7 @@ namespace Proj_Book_Store_Manage.DBLayer
             string cmm = "select * from "+ nameView;
             adapter = new SqlDataAdapter(cmm,conn);
             adapter.Fill(dt);
+            conn.Close();
             return dt;
         }
         //Trả về Datatable để thực thi function
@@ -66,6 +71,8 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return dt;
         }
+
+        //dư -- có thể xóa
         public string ExecuteFunctionToString(SqlCommand cmdFunction, ref string error)
         {
             string valueReturn = null;
@@ -106,7 +113,6 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             catch (SqlException ex)
             {
-                //MessageBox.Show(ex.Message.ToString());
                 error = ex.Message;
                 MessageBox.Show(error);
             }

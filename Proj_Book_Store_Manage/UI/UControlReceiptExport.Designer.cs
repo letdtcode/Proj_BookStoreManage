@@ -1,5 +1,4 @@
-﻿
-namespace Proj_Book_Store_Manage.UI
+﻿namespace Proj_Book_Store_Manage.UI
 {
     partial class UControlReceiptExport
     {
@@ -37,19 +36,21 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblDateExport = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.dgvReceiptExport = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbReceiptExport = new System.Windows.Forms.GroupBox();
+            this.lblDateBill = new System.Windows.Forms.Label();
+            this.lblIdCustomer = new System.Windows.Forms.Label();
+            this.lblIDEmployee = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.lblEmployee = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
-            this.lblIDEmployee = new System.Windows.Forms.Label();
-            this.lblIdCustomer = new System.Windows.Forms.Label();
-            this.lblDateBill = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblIdVoucher = new System.Windows.Forms.Label();
             this.gpSearch.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptExport)).BeginInit();
@@ -139,16 +140,16 @@ namespace Proj_Book_Store_Manage.UI
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lblDateExport
+            // label10
             // 
-            this.lblDateExport.AutoSize = true;
-            this.lblDateExport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateExport.Location = new System.Drawing.Point(236, 32);
-            this.lblDateExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateExport.Name = "lblDateExport";
-            this.lblDateExport.Size = new System.Drawing.Size(161, 23);
-            this.lblDateExport.TabIndex = 0;
-            this.lblDateExport.Text = "Ngày Bán Sách";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(236, 32);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(161, 23);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Ngày Bán Sách";
             // 
             // dgvReceiptExport
             // 
@@ -178,6 +179,8 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // gbReceiptExport
             // 
+            this.gbReceiptExport.Controls.Add(this.lblIdVoucher);
+            this.gbReceiptExport.Controls.Add(this.label2);
             this.gbReceiptExport.Controls.Add(this.lblDateBill);
             this.gbReceiptExport.Controls.Add(this.lblIdCustomer);
             this.gbReceiptExport.Controls.Add(this.lblIDEmployee);
@@ -187,7 +190,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.Controls.Add(this.lblTotal);
             this.gbReceiptExport.Controls.Add(this.label1);
             this.gbReceiptExport.Controls.Add(this.lbl1);
-            this.gbReceiptExport.Controls.Add(this.lblDateExport);
+            this.gbReceiptExport.Controls.Add(this.label10);
             this.gbReceiptExport.Location = new System.Drawing.Point(16, 16);
             this.gbReceiptExport.Margin = new System.Windows.Forms.Padding(4);
             this.gbReceiptExport.Name = "gbReceiptExport";
@@ -196,7 +199,33 @@ namespace Proj_Book_Store_Manage.UI
             this.gbReceiptExport.TabIndex = 0;
             this.gbReceiptExport.TabStop = false;
             this.gbReceiptExport.Text = "Thông tin bán sách";
-            this.gbReceiptExport.Enter += new System.EventHandler(this.gbReceiptExport_Enter);
+            // 
+            // lblDateBill
+            // 
+            this.lblDateBill.AutoSize = true;
+            this.lblDateBill.Location = new System.Drawing.Point(425, 38);
+            this.lblDateBill.Name = "lblDateBill";
+            this.lblDateBill.Size = new System.Drawing.Size(46, 17);
+            this.lblDateBill.TabIndex = 6;
+            this.lblDateBill.Text = "label2";
+            // 
+            // lblIdCustomer
+            // 
+            this.lblIdCustomer.AutoSize = true;
+            this.lblIdCustomer.Location = new System.Drawing.Point(415, 89);
+            this.lblIdCustomer.Name = "lblIdCustomer";
+            this.lblIdCustomer.Size = new System.Drawing.Size(42, 17);
+            this.lblIdCustomer.TabIndex = 5;
+            this.lblIdCustomer.Text = "None";
+            // 
+            // lblIDEmployee
+            // 
+            this.lblIDEmployee.AutoSize = true;
+            this.lblIDEmployee.Location = new System.Drawing.Point(164, 83);
+            this.lblIDEmployee.Name = "lblIDEmployee";
+            this.lblIDEmployee.Size = new System.Drawing.Size(42, 17);
+            this.lblIDEmployee.TabIndex = 4;
+            this.lblIDEmployee.Text = "None";
             // 
             // lblCustomer
             // 
@@ -264,32 +293,23 @@ namespace Proj_Book_Store_Manage.UI
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "ID Bill:";
             // 
-            // lblIDEmployee
+            // label2
             // 
-            this.lblIDEmployee.AutoSize = true;
-            this.lblIDEmployee.Location = new System.Drawing.Point(164, 89);
-            this.lblIDEmployee.Name = "lblIDEmployee";
-            this.lblIDEmployee.Size = new System.Drawing.Size(42, 17);
-            this.lblIDEmployee.TabIndex = 4;
-            this.lblIDEmployee.Text = "None";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Voucher";
             // 
-            // lblIdCustomer
+            // lblIdVoucher
             // 
-            this.lblIdCustomer.AutoSize = true;
-            this.lblIdCustomer.Location = new System.Drawing.Point(415, 89);
-            this.lblIdCustomer.Name = "lblIdCustomer";
-            this.lblIdCustomer.Size = new System.Drawing.Size(42, 17);
-            this.lblIdCustomer.TabIndex = 5;
-            this.lblIdCustomer.Text = "None";
-            // 
-            // lblDateBill
-            // 
-            this.lblDateBill.AutoSize = true;
-            this.lblDateBill.Location = new System.Drawing.Point(425, 38);
-            this.lblDateBill.Name = "lblDateBill";
-            this.lblDateBill.Size = new System.Drawing.Size(46, 17);
-            this.lblDateBill.TabIndex = 6;
-            this.lblDateBill.Text = "label2";
+            this.lblIdVoucher.AutoSize = true;
+            this.lblIdVoucher.Location = new System.Drawing.Point(96, 135);
+            this.lblIdVoucher.Name = "lblIdVoucher";
+            this.lblIdVoucher.Size = new System.Drawing.Size(42, 17);
+            this.lblIdVoucher.TabIndex = 8;
+            this.lblIdVoucher.Text = "None";
             // 
             // UControlReceiptExport
             // 
@@ -321,7 +341,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblDateExport;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvReceiptExport;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbReceiptExport;
@@ -334,5 +354,7 @@ namespace Proj_Book_Store_Manage.UI
         private System.Windows.Forms.Label lblIdCustomer;
         private System.Windows.Forms.Label lblIDEmployee;
         private System.Windows.Forms.Label lblDateBill;
+        private System.Windows.Forms.Label lblIdVoucher;
+        private System.Windows.Forms.Label label2;
     }
 }

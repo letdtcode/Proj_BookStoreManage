@@ -41,9 +41,12 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAddAuthorOfBook = false;
         private bool isEditAuthorOfBook = false;
         private string nameAuthorCellClick = null;
+
+        List<string> param;
         public UControlInfoBook()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void UControlInfoBook_Load(object sender, EventArgs e)
@@ -57,6 +60,7 @@ namespace Proj_Book_Store_Manage.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             this.lblIDBook.Text = utl.createID("BK");
+            this.lblAmount.Text = "0";
             isAdd = true;
             utl.SetNullForAllControl();
             utl.setEnableControl(true);
@@ -119,7 +123,7 @@ namespace Proj_Book_Store_Manage.UI
                     try
                     {
                         //imgBook = ImgToByteArray(ptbBook.Image);
-                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
+                        book.addNewBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm sách thành công !");
@@ -137,7 +141,7 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    book.modifyBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtAmount.Text), int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
+                    book.modifyBook(this.lblIDBook.Text, this.txtNameBook.Text, this.ptbBook.Image, int.Parse(this.txtPriceImport.Text), int.Parse(this.txtPriceExport.Text), this.cbIDPublisher.Text, ref err);
                     LoadData();
                     if (err == "")
                     {
@@ -393,7 +397,7 @@ namespace Proj_Book_Store_Manage.UI
         private void LoadData()
         {
 
-            controls = new List<Control> { txtNameBook, txtAmount, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
+            controls = new List<Control> { txtNameBook, cbIDPublisher, txtPriceImport, txtPriceExport, btnUploadImg };
             dtBook = book.getDataBook();
             //DataGridViewImageColumn
             dgvBook.DataSource = dtBook;
@@ -417,7 +421,7 @@ namespace Proj_Book_Store_Manage.UI
             else
                 ptbBook.Image = (Image)dgvBook.Rows[utl.rowCurrent].Cells[6].Value;
             txtNameBook.Text = dgvBook.Rows[utl.rowCurrent].Cells[1].Value.ToString();
-            txtAmount.Text = dgvBook.Rows[utl.rowCurrent].Cells[2].Value.ToString();
+            lblAmount.Text = dgvBook.Rows[utl.rowCurrent].Cells[2].Value.ToString();
             txtPriceImport.Text = dgvBook.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
             cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();
@@ -460,6 +464,75 @@ namespace Proj_Book_Store_Manage.UI
             int rowAuthorIndex = dgvAuthor.CurrentCell.RowIndex;
             this.nameAuthorCellClick = dgvAuthor.Rows[rowAuthorIndex].Cells[0].Value.ToString();
             this.cbaddAuthor.Text = this.nameAuthorCellClick;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameBook, nameCategory, nameAuthor;
+            (id, nameBook, nameCategory, nameAuthor) = getParameter();
+            try
+            {
+                book = new BookBL();
+                dtBook = book.searchBook(id, nameBook, nameCategory, nameAuthor, ref err);
+                dgvBook.DataSource = dtBook;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Book");
+            param.Add("Name Book");
+            param.Add("Name Category");
+            param.Add("Name Author");
+
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string, string, string) getParameter()
+        {
+            string id, nameBook, nameCategory, nameAuthor;
+            if (cbAttributeSearch.Text == "Id Book")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameBook = null;
+                nameCategory = null;
+                nameAuthor = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Book")
+            {
+                id = null;
+                nameBook = this.txtSearch.Text.Trim();
+                nameCategory = null;
+                nameAuthor = null;
+            }
+            else if (cbAttributeSearch.Text == "Name Category")
+            {
+                id = null;
+                nameBook = null;
+                nameCategory = this.txtSearch.Text.Trim();
+                nameAuthor = null;
+            }
+            else if (cbAttributeSearch.Text == "Name Author")
+            {
+                id = null;
+                nameBook = null;
+                nameCategory = null;
+                nameAuthor = this.txtSearch.Text.Trim();
+            }
+            else
+            {
+                id = null;
+                nameBook = null;
+                nameCategory = null;
+                nameAuthor = null;
+            }
+            return (id, nameBook, nameCategory, nameAuthor);
         }
     }
 }

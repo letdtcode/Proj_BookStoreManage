@@ -81,5 +81,14 @@ namespace Proj_Book_Store_Manage.BSLayer
             }
             return dataNameAuthor;
         }
+
+        public DataTable searchAuthor(string id, string username, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = $"select * from dbo.func_searchAuthor ('{id}', '{username}')";
+            cmd.CommandType = CommandType.Text;
+
+            return db.ExecuteFunction(cmd, ref err);
+        }
     }
 }

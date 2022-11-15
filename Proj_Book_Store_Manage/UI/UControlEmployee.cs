@@ -24,11 +24,14 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         EmployeeBL employee = new EmployeeBL();
+        List<string> param;
         public UControlEmployee()
         {
             InitializeComponent();
             dtpBirth.Format = DateTimePickerFormat.Custom;
             dtpBirth.CustomFormat = "dd-MM-yyyy";
+            LoadData();
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -178,6 +181,51 @@ namespace Proj_Book_Store_Manage.UI
         private void UControlEmployee_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameEmployee;
+            (id, nameEmployee) = getParameter();
+            try
+            {
+                employee = new EmployeeBL();
+                dtEmployee = employee.searchEmployee(id, nameEmployee, ref err);
+                dgvEmployee.DataSource = dtEmployee;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Employee");
+            param.Add("Name Employee");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string) getParameter()
+        {
+            string id, username;
+            if (cbAttributeSearch.Text == "Id Employee")
+            {
+                id = this.txtSearch.Text.Trim();
+                username = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Employee")
+            {
+                id = null;
+                username = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                username = null;
+            }
+            return (id, username);
         }
     }
 }
