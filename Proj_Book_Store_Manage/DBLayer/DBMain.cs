@@ -11,7 +11,7 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        public static string ServerName = "DESKTOP-MINHDUN";
+        public static string ServerName = "DUCTHANH\\SQLEXPRESS";
         public static string DatabaseName = "BOOKSTOREMANAGE";
         public static string UserName= "";
         public static string Password= "";
@@ -162,12 +162,12 @@ namespace Proj_Book_Store_Manage.DBLayer
         // Trả về table thực thi procedure
         public DataTable Procedure(string sqlProcedure, CommandType ct, List<SqlParameter> parameters, ref string error)
         {
-            bool f = false;
+            //bool f = false;
             error = "";
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             conn.Open();
-            //cmd = new SqlCommand();
+
             cmd.CommandText = sqlProcedure;
             cmd.CommandType = ct;
             cmd.Parameters.Clear();
@@ -181,8 +181,8 @@ namespace Proj_Book_Store_Manage.DBLayer
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
-                cmd.ExecuteNonQuery();
-                f = true;
+                //cmd.ExecuteNonQuery();
+                //f = true;
             }
             catch (SqlException ex)
             {

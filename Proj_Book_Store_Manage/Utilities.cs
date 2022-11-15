@@ -55,13 +55,13 @@ namespace Proj_Book_Store_Manage
         {
             int numIDNext = 0;
             int numRows = dgv.Rows.Count;
-            if (numRows <= 0)
+            if (numRows <= 1)
             {
                 numIDNext = 1;
             }
             else
             {
-                numIDNext = getMax(idsInDgv(dgv));
+                numIDNext = getMax(idsInDgv(dgv))+1;
             }
             return codeMark + numIDNext.ToString();
         }
@@ -99,6 +99,8 @@ namespace Proj_Book_Store_Manage
             List<string> list = new List<string>();
             foreach(DataGridViewRow item in dgv.Rows)
             {
+                if (item.Cells[0].Value == null)
+                    break;
                 list.Add(item.Cells[0].Value.ToString());
             }
             return list;
