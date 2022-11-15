@@ -3,7 +3,7 @@ go
 -----------------------------PROCEDURE-------------------------
 --PROCEDURE THÊM, SỬA, XÓA ACCOUNT
 --Thêm một account mới
-create or alter procedure proc_addNewAccount (@idAccount varchar(8) , @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee varchar(8) )
+create or alter procedure proc_addNewAccount (@idAccount varchar(8) , @nameAccount varchar(20), @password varchar(30), @typeOfAcc bit, @idEmployee varchar(8))
 as
 begin
 	begin transaction addNewAcc
@@ -534,7 +534,7 @@ go
 --PROCEDURE VOUCHER
 --Thêm một Voucher
 create or alter procedure proc_addNewVoucher
-@idVoucher varchar(8) ,
+@idVoucher varchar(8),
 @valueVoucher int,
 @nameOfEvent nvarchar(40),
 @dateStart date,
@@ -605,8 +605,8 @@ go
 --PROCEDURE THÊM SỬA XÓA BOOK_BILLINPUT
 --Thêm một item vào đơn hàng nhập
 create or alter procedure proc_addNewBookBillInput
-@idBillInput varchar(8) ,
-@idBook varchar(8) ,
+@idBillInput varchar(8),
+@idBook varchar(8),
 @amountInput int
 as
 begin
@@ -639,15 +639,15 @@ begin
 	commit transaction
 	end try
 	begin catch
-		raiserror('Đã có lỗi xảy ra. Vui lòng thử lại',16,1)
+		raiserror('Sách đã có trong đơn hàng. Vui lòng thay đổi số lượng trong đơn',16,1)
 		rollback transaction
 	end catch
 end
 go
 --Sửa số lượng item trong hóa đơn
 create or alter procedure proc_updateBookBillInput
-@idBillImport varchar(8) ,
-@idBook varchar(8) ,
+@idBillImport varchar(8),
+@idBook varchar(8),
 @amountBook int,
 @amountNewBook int
 as
@@ -836,15 +836,12 @@ end
 go
 
 --Xác nhận xuất hóa đơn
---exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
---exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
-----Xác nhận xuất hóa đơn
 create or alter procedure proc_confirmBillExport
-@idBillOutput varchar(8) ,
+@idBillOutput varchar(8),
 @dateTimeOfBill date,
 @idCus varchar(8) ,
 @idEmp varchar(8) ,
-@idVoucher varchar(8) =null
+@idVoucher varchar(8) = null
 as
 begin
 	declare @totalOfBill int , @discountOfVoucher int, @discountOfTypeCus int
@@ -938,8 +935,8 @@ end
 go
 --Sửa số lượng item trong hóa đơn
 create or alter procedure proc_updateBookBillOutput
-@idBillOutput varchar(8) ,
-@idBook varchar(8) ,
+@idBillOutput varchar(8),
+@idBook varchar(8),
 @amountBook int,
 @amountNewBook int
 as
@@ -967,7 +964,6 @@ go
 
 
 ---Procedure show doanh thu trong khoảng begin end---
-go
 create or alter proc sp_ShowRevenue
 @begin date , @end date
 as
@@ -1022,40 +1018,3 @@ begin
 	and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
 	and dateOfBill between @begin and @end
 end
-
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX1'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX1'
-
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX2'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX2'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX3'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX3'
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX4'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX4'
-
-go
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX5'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX5'
-
-go
-
-delete dbo.BOOK_BILLOUTPUT
-where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
-delete dbo.BILLOUTPUT
-where dbo.BILLOUTPUT.idBillOutPut='HDX7'
-
-go
-

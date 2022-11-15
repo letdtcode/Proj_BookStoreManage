@@ -10,12 +10,8 @@ using Proj_Book_Store_Manage.DBLayer;
 namespace Proj_Book_Store_Manage.BSLayer
 {
     public class LoginBL
-    {
-        
-        string username, password;
+    {       
         DBMain db;
-
-        List<SqlParameter> parameters;
         public LoginBL()
         {
             db = new DBMain();

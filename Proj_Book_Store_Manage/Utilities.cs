@@ -55,13 +55,13 @@ namespace Proj_Book_Store_Manage
         {
             int numIDNext = 0;
             int numRows = dgv.Rows.Count;
-            if (numRows <= 0)
+            if (numRows <= 1)
             {
                 numIDNext = 1;
             }
             else
             {
-                numIDNext = numRows;
+                numIDNext = getMax(idsInDgv(dgv))+1;
             }
             return codeMark + numIDNext.ToString();
         }
@@ -75,10 +75,46 @@ namespace Proj_Book_Store_Manage
             }
             else
             {
-                numIDNext = numRows + 1;
+                //numIDNext = numRows + 1;
+                numIDNext = getMax(idsInDataTable(dt));
             }
             return codeMark + numIDNext.ToString();
         }
+        public int getMax(List<string> ID)
+        {
+            int max = int.Parse(Regex.Match(ID[0], @"\d+").Value);
+            int temp = -1;
+            foreach (string id in ID)
+            {
+                temp = int.Parse(Regex.Match(id, @"\d+").Value);
+                if (temp > max)
+                {
+                    max = temp;
+                }
+            }
+            return max;
+        }
+        public List<string> idsInDgv (DataGridView dgv)
+        {
+            List<string> list = new List<string>();
+            foreach(DataGridViewRow item in dgv.Rows)
+            {
+                if (item.Cells[0].Value == null)
+                    break;
+                list.Add(item.Cells[0].Value.ToString());
+            }
+            return list;
+        }
+        public List<string> idsInDataTable(DataTable dt)
+        {
+            List<string> list = new List<string>();
+            foreach (DataRow item in dt.Rows)
+            {
+                list.Add(item[0].ToString());
+            }
+            return list;
+        }
+        
         public void setEnableControl(bool b)
         {
             foreach (Control control in controls)

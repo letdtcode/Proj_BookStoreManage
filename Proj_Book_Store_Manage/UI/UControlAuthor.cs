@@ -17,7 +17,6 @@ namespace Proj_Book_Store_Manage.UI
         private List<Control> controls = null;
         private DataTable dtAuthor = null;
         private Utilities utl = null;
-        private int IDAuthor;
         private string err = "";
         private DialogResult result;
         List<string> param;
@@ -26,7 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         AuthorBL author = new AuthorBL();
-        //private bool roleTemp;
+
         public UControlAuthor()
         {
             InitializeComponent();
@@ -79,8 +78,7 @@ namespace Proj_Book_Store_Manage.UI
                     try
                     {
                         lblIDAuthor.Text = utl.createID("TG");
-                        int idAuthor = Convert.ToInt32(this.lblIDAuthor.Text);
-                        author.addNewAuthor(idAuthor, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
+                        author.addNewAuthor(this.lblIDAuthor.Text, this.txtNameAuthor.Text, this.txtPhoneNumber.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm tài khoản thành công !");
