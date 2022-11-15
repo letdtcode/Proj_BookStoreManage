@@ -46,9 +46,9 @@ on dbo.BILLOUTPUT
 for update
 as
 begin
-	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit, @idCustomer varchar(8)
-	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=i.total, @idCustomer=i.idCus
-	from inserted i
+	declare @idBillDiscount varchar(8), @idVcher varchar(8), @totalAfterDiscount int, @totalBeforeDiscount int, @checkBill bit, @amountVoucher int
+	select @idBillDiscount=i.idBillOutPut, @idVcher=i.idVoucher, @totalBeforeDiscount=d.total, @totalAfterDiscount=i.total
+	from inserted i, deleted d
 	--Kiểm tra idVoucher có tồn tại 
 	if (@idVcher is not null and not exists(select * from dbo.VOUCHER where @idVcher=dbo.VOUCHER.idVoucher))
 		begin
@@ -57,15 +57,17 @@ begin
 		end
 	if(@idVcher is not null)
 	begin
-		--Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill 
-		set @totalBeforeDiscount=@totalBeforeDiscount-(@totalBeforeDiscount*dbo.func_getValueDiscountOfTypeCustomer(@idCustomer))/100
-		select @totalAfterDiscount=@totalBeforeDiscount-VOUCHER.valueVoucher
-		from dbo.VOUCHER
-		where VOUCHER.idVoucher=@idVcher
-
+		--Kiểm tra nếu thêm voucher thì có vượt quá 50% giá trị bill
 		if (@totalAfterDiscount <= (0.5*@totalBeforeDiscount))
 			begin
-				raiserror (N'Voucher không thể áp dụng cho đơn hàng này',16,1)
+				raiserror ('Voucher không thể áp dụng cho đơn hàng này',16,1)
+				rollback transaction
+			end
+		set @amountVoucher=(select dbo.VOUCHER.amount from dbo.VOUCHER where dbo.VOUCHER.idVoucher=@idVcher)
+		--Kiểm tra số lượng voucher có còn còn trong kho 
+		if(@amountVoucher<=0)
+			begin
+				raiserror ('Voucher không đủ số lượng trong kho',16,1)
 				rollback transaction
 			end
 		--Kiểm tra Voucher có còn hạn sử dụng 
@@ -154,14 +156,14 @@ go
 
 --------------------------------Voucher--------------------------
 --kiểm tra value phải nhỏ hơn hoặc = 100 và  lớn hơn 0
-Create or alter trigger trg_checkValueVoucher on VOUCHER
+Create or alter trigger trg_checkTypeCustomer on TYPECUSTOMER
 for insert, update
 as
 begin
 	declare @value int
-	select @value = i.valueVoucher from inserted i
+	select @value = i.valueTypeCus from inserted i
 
-	if (@value <= 0 or @value >100)
+	if (@value < 0 or @value >100)
 	begin
 		print N'Nhập giá trị value không chính xác. Value nằm trong khoảng từ 0 -> 100'
 		rollback transaction
@@ -182,6 +184,5 @@ begin
 		print N'Ngày bắt đầu và kết thúc không hợp lệ'
 		rollback transaction
 	end
-
 end
 go

@@ -8,7 +8,6 @@ nameAuthor nvarchar(30) NOT NULL unique,
 phoneNumber varchar(10) NULL
 
 CONSTRAINT pk_author PRIMARY KEY (idAuthor)
---CONSTRAINT chk_phoneAuthor CHECK (len(phoneNumber) = 10)
 )
 GO 
 
@@ -18,7 +17,6 @@ namePublisher nvarchar(30) NOT NULL,
 addressPublisher nvarchar(30) NULL,
 phoneNumber varchar(10) NULL
 
---CONSTRAINT chk_phonePublisher CHECK (len(phoneNumber) = 10)
 CONSTRAINT pk_publisher PRIMARY KEY (idPublisher)
 )
 GO 
@@ -80,7 +78,6 @@ yearOfBirth date NULL,
 CONSTRAINT chk_sex CHECK (upper(sex) like N'NAM' or upper(sex) like N'NỮ' or upper(sex) like N'KHÁC'),
 CONSTRAINT chk_email CHECK (email like '%@gmail.com%'),
 CONSTRAINT chk_yearOfBirth CHECK (DATEDIFF(YEAR,yearOfBirth,GETDATE()) >= 18 AND DATEDIFF(YEAR,yearOfBirth,GETDATE()) <= 50),
---CONSTRAINT chk_phoneEmployee CHECK (len(phoneNumber) = 10),
 
 CONSTRAINT pk_employee PRIMARY KEY (idEmployee)
 )
@@ -96,7 +93,8 @@ dateEnd date not null,
 amount int NULL,
 
 CONSTRAINT pk_voucher PRIMARY KEY (idVoucher),
-CONSTRAINT chk_dateOfVoucher CHECK (DATEDIFF(day,dateStart,dateEnd)>0)
+--CONSTRAINT chk_dateOfVoucher CHECK (DATEDIFF(day,dateStart,dateEnd)>0),
+CONSTRAINT chk_amountVoucher CHECK (amount>=0)
 )
 GO
 
@@ -177,7 +175,8 @@ amountInput INT NOT NULL,
 
 CONSTRAINT pk_book_billinput PRIMARY KEY (idBillInput,idBook),
 CONSTRAINT fk_idBillInput FOREIGN KEY (idBillInput) REFERENCES BILLINPUT (idBillInput),
-CONSTRAINT fk_idBook_into_input FOREIGN KEY (idBook) REFERENCES BOOK (idBook)
+CONSTRAINT fk_idBook_into_input FOREIGN KEY (idBook) REFERENCES BOOK (idBook),
+CONSTRAINT chk_amountInput CHECK(amountInput>=0)
 )
 GO
 CREATE TABLE [dbo].BOOK_BILLOUTPUT (
@@ -187,7 +186,8 @@ amountOutput int NOT NULL
 
 CONSTRAINT pk_book_billoutput PRIMARY KEY (idBillOutput,idBook),
 CONSTRAINT fk_idBillOuput FOREIGN KEY (idBillOutput) REFERENCES BILLOUTPUT (idBillOutput),
-CONSTRAINT fk_idBook_into_output FOREIGN KEY (idBook) REFERENCES BOOK (idBook)
+CONSTRAINT fk_idBook_into_output FOREIGN KEY (idBook) REFERENCES BOOK (idBook),
+CONSTRAINT chk_amountOutput CHECK(amountOutput>=0)
 )
 go
 

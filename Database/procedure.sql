@@ -534,7 +534,6 @@ go
 --PROCEDURE VOUCHER
 --Thêm một Voucher
 create or alter procedure proc_addNewVoucher
-@idVoucher int,
 @valueVoucher int,
 @nameOfEvent nvarchar(40),
 @dateStart date,
@@ -544,7 +543,6 @@ as
 begin
 	insert into dbo.VOUCHER
 		(
-	idVoucher,
 	valueVoucher,
 	nameOfEventVoucher,
 	dateStart,
@@ -553,7 +551,6 @@ begin
 		)
 	values
 		(
-	@idVoucher,
 	@valueVoucher,
 	@nameOfEvent,
 	@dateStart,
@@ -834,19 +831,11 @@ begin
 	where dbo.CUSTOMER.idCus=@idCus
 end
 go
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
-exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
->>>>>>> parent of 936aff6 (fix bug)
 --Xác nhận xuất hóa đơn
-=======
---exec proc_addNewBookBillOutput @idBillOutput='HDX6', @idBook='BK1', @amount=10
---exec proc_confirmBillExport @idBillOutput='HDX6', @dateTimeOfBill='2022-12-12', @idCus='KH1', @idEmp='NV1'
+
 ----Xác nhận xuất hóa đơn
->>>>>>> cc427f870627160de414df4ffdb7fedf096a27f0
+
 create or alter procedure proc_confirmBillExport
 @idBillOutput int,
 @dateTimeOfBill date,
@@ -1099,6 +1088,4 @@ delete dbo.BOOK_BILLOUTPUT
 where dbo.BOOK_BILLOUTPUT.idBillOutput='HDX7'
 delete dbo.BILLOUTPUT
 where dbo.BILLOUTPUT.idBillOutPut='HDX7'
-
 go
->>>>>>> parent of 936aff6 (fix bug)

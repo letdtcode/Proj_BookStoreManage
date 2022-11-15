@@ -25,7 +25,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewVoucher(string idVoucher, int valueVoucher, string nameOfEvent, DateTime dateStart, DateTime dateEnd, int amount, ref string err)
+        public bool addNewVoucher(int idVoucher, int valueVoucher, string nameOfEvent, DateTime dateStart, DateTime dateEnd, int amount, ref string err)
         {
             strSQL = "proc_addNewVoucher";
             parameters = new List<SqlParameter>();
