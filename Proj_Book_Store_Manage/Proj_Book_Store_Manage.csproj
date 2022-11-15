@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B790C8D0-3D54-4A97-8991-D58C25C4A16F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Proj_Book_Store_Manage</RootNamespace>
+    <AssemblyName>Proj_Book_Store_Manage</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BSLayer\AccountBL.cs" />
+    <Compile Include="BSLayer\AuthorBL.cs" />
+    <Compile Include="BSLayer\BookBL.cs" />
+    <Compile Include="BSLayer\CartBL.cs" />
+    <Compile Include="BSLayer\CategoryBL.cs" />
+    <Compile Include="BSLayer\CustomerBL.cs" />
+    <Compile Include="BSLayer\ImportBooksBL.cs" />
+    <Compile Include="BSLayer\EmployeeBL.cs" />
+    <Compile Include="BSLayer\LoginBL.cs" />
+    <Compile Include="BSLayer\PublisherBL.cs" />
+    <Compile Include="BSLayer\ReceiptExportBL.cs" />
+    <Compile Include="BSLayer\ReceiptImportBL.cs" />
+    <Compile Include="BSLayer\Revenue.cs" />
+    <Compile Include="BSLayer\TypeCustomerBL.cs" />
+    <Compile Include="BSLayer\VoucherBL.cs" />
+    <Compile Include="DBLayer\DBMain.cs" />
+    <Compile Include="UI\FormApplyVoucherForBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormApplyVoucherForBill.Designer.cs">
+      <DependentUpon>FormApplyVoucherForBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormDashBoard.Designer.cs">
+      <DependentUpon>FormDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormDetailReceiptExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormDetailReceiptExport.Designer.cs">
+      <DependentUpon>FormDetailReceiptExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormEditItemImportBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormEditItemImportBooks.Designer.cs">
+      <DependentUpon>FormEditItemImportBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormImportBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormImportBook.Designer.cs">
+      <DependentUpon>FormImportBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormRevenue.Designer.cs">
+      <DependentUpon>FormRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormSale.Designer.cs">
+      <DependentUpon>FormSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormDetailReceiptImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormDetailReceiptImport.Designer.cs">
+      <DependentUpon>FormDetailReceiptImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormEditItemSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormEditItemSale.Designer.cs">
+      <DependentUpon>FormEditItemSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\FormSelectUsing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormSelectUsing.Designer.cs">
+      <DependentUpon>FormSelectUsing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlAccount.Designer.cs">
+      <DependentUpon>UControlAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlAuthor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlAuthor.Designer.cs">
+      <DependentUpon>UControlAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlBookOverview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlBookOverview.Designer.cs">
+      <DependentUpon>UControlBookOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlCategory.Designer.cs">
+      <DependentUpon>UControlCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlCustomerOverView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlCustomerOverView.Designer.cs">
+      <DependentUpon>UControlCustomerOverView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlEmployee.Designer.cs">
+      <DependentUpon>UControlEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlInfoBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlInfoBook.Designer.cs">
+      <DependentUpon>UControlInfoBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlInfoCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlInfoCustomer.Designer.cs">
+      <DependentUpon>UControlInfoCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlPublisher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlPublisher.Designer.cs">
+      <DependentUpon>UControlPublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlReceiptExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlReceiptExport.Designer.cs">
+      <DependentUpon>UControlReceiptExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlReceiptOverview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlReceiptOverview.Designer.cs">
+      <DependentUpon>UControlReceiptOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlReceiptImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlReceiptImport.Designer.cs">
+      <DependentUpon>UControlReceiptImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlTypeCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlTypeCustomer.Designer.cs">
+      <DependentUpon>UControlTypeCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UControlVoucher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UControlVoucher.Designer.cs">
+      <DependentUpon>UControlVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="UI\FormApplyVoucherForBill.resx">
+      <DependentUpon>FormApplyVoucherForBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormDashBoard.resx">
+      <DependentUpon>FormDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormDetailReceiptExport.resx">
+      <DependentUpon>FormDetailReceiptExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormEditItemImportBooks.resx">
+      <DependentUpon>FormEditItemImportBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormImportBook.resx">
+      <DependentUpon>FormImportBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormRevenue.resx">
+      <DependentUpon>FormRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormSale.resx">
+      <DependentUpon>FormSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormDetailReceiptImport.resx">
+      <DependentUpon>FormDetailReceiptImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormEditItemSale.resx">
+      <DependentUpon>FormEditItemSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\FormSelectUsing.resx">
+      <DependentUpon>FormSelectUsing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlAccount.resx">
+      <DependentUpon>UControlAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlAuthor.resx">
+      <DependentUpon>UControlAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlBookOverview.resx">
+      <DependentUpon>UControlBookOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlCategory.resx">
+      <DependentUpon>UControlCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlCustomerOverView.resx">
+      <DependentUpon>UControlCustomerOverView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlEmployee.resx">
+      <DependentUpon>UControlEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlInfoBook.resx">
+      <DependentUpon>UControlInfoBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlInfoCustomer.resx">
+      <DependentUpon>UControlInfoCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlPublisher.resx">
+      <DependentUpon>UControlPublisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlReceiptExport.resx">
+      <DependentUpon>UControlReceiptExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlReceiptImport.resx">
+      <DependentUpon>UControlReceiptImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlReceiptOverview.resx">
+      <DependentUpon>UControlReceiptOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlTypeCustomer.resx">
+      <DependentUpon>UControlTypeCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UControlVoucher.resx">
+      <DependentUpon>UControlVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
