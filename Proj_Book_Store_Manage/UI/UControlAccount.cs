@@ -66,7 +66,8 @@ namespace Proj_Book_Store_Manage.UI
                     result = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        account.deleteAccount(this.lblID.Text, ref err);
+                        int idAuthor = Convert.ToInt32(this.lblID.Text);
+                        account.deleteAccount(idAuthor, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Xóa thành công !");
@@ -107,7 +108,10 @@ namespace Proj_Book_Store_Manage.UI
                     account = new AccountBL();
                     try
                     {
-                        account.addNewAccount(this.lblID.Text, this.txtUserName.Text, this.txtPassword.Text, roleTemp, this.cbEmployee.Text, ref err);
+                        int idAuthor = Convert.ToInt32(this.lblID.Text);
+                        int idEmp = Convert.ToInt32(this.cbEmployee.Text);
+
+                        account.addNewAccount(idAuthor, this.txtUserName.Text, this.txtPassword.Text, roleTemp, idEmp, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm tài khoản thành công !");
@@ -125,7 +129,9 @@ namespace Proj_Book_Store_Manage.UI
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    account.modifyAccount(this.lblID.Text, this.txtUserName.Text, this.txtPassword.Text, roleTemp, this.cbEmployee.Text, ref err);
+                    int idAuthor = Convert.ToInt32(this.lblID.Text);
+                    int idEmp = Convert.ToInt32(this.cbEmployee.Text);
+                    account.modifyAccount(idAuthor, this.txtUserName.Text, this.txtPassword.Text, roleTemp, idEmp, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -211,7 +217,8 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnSearch_Click_1(object sender, EventArgs e)
         {
-            string id, username;
+            int id;
+            string username;
             (id, username) = getParameter();
 
             try
@@ -234,23 +241,24 @@ namespace Proj_Book_Store_Manage.UI
             this.cbAttribute.DataSource = param;
         }
 
-        (string, string) getParameter ()
+        (int, string) getParameter ()
         {
-            string id, username;
+            int id;
+            string username;
             if (cbAttribute.Text == "Id Account")
             {
-                id = this.txtInput.Text.Trim();
+                id = Convert.ToInt32(this.txtInput.Text);
                 username = null;
             }    
 
             else if (cbAttribute.Text == "Name Account")
             {
-                id = null;
+                id = 0;
                 username = this.txtInput.Text.Trim(); ;
             }
             else
             {
-                id = null;
+                id = 0;
                 username = null;
             }
             return (id, username);
