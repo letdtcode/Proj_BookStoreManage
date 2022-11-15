@@ -161,8 +161,6 @@ namespace Proj_Book_Store_Manage.UI
             // cbIdVoucher
             // 
             this.cbIdVoucher.FormattingEnabled = true;
-            this.cbIdVoucher.Items.AddRange(new object[] {
-            "Không áp dụng"});
             this.cbIdVoucher.Location = new System.Drawing.Point(553, 185);
             this.cbIdVoucher.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbIdVoucher.Name = "cbIdVoucher";

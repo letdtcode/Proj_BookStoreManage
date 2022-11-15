@@ -22,9 +22,11 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         CategoryBL category = new CategoryBL();
+        List<string> param;
         public UControlCategory()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -167,5 +169,51 @@ namespace Proj_Book_Store_Manage.UI
             LoadData();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameCate;
+            (id, nameCate) = getParameter();
+
+            try
+            {
+                category = new CategoryBL();
+                dtCategory = category.searchCategory(id, nameCate, ref err);
+                dgvCategory.DataSource = dtCategory;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Category");
+            param.Add("Name Category");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string) getParameter()
+        {
+            string id, username;
+            if (cbAttributeSearch.Text == "Id Category")
+            {
+                id = this.txtSearch.Text.Trim();
+                username = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Category")
+            {
+                id = null;
+                username = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                username = null;
+            }
+            return (id, username);
+        }
     }
 }

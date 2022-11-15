@@ -20,6 +20,7 @@ namespace Proj_Book_Store_Manage.UI
         private int IDAuthor;
         private string err = "";
         private DialogResult result;
+        List<string> param;
 
         //false là chế độ sửa, true là chế độ thêm
         private bool isAdd = false;
@@ -29,6 +30,7 @@ namespace Proj_Book_Store_Manage.UI
         public UControlAuthor()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
         public void LoadData()
         {
@@ -170,6 +172,52 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDAuthor.Text = utl.IDCurrent;
             txtNameAuthor.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[1].Value.ToString();
             txtPhoneNumber.Text = dgvAuthor.Rows[utl.rowCurrent].Cells[2].Value.ToString();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameAuthor;
+            (id, nameAuthor) = getParameter();
+
+            try
+            {
+                author = new AuthorBL();
+                dtAuthor = author.searchAuthor(id, nameAuthor, ref err);
+                dgvAuthor.DataSource = dtAuthor;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Author");
+            param.Add("Name Author");
+            this.cbAttributeSearch.DataSource = param;
+        }
+        (string, string) getParameter()
+        {
+            string id, nameAuthor;
+            if (cbAttributeSearch.Text == "Id Author")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameAuthor = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Author")
+            {
+                id = null;
+                nameAuthor = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                nameAuthor = null;
+            }
+            return (id, nameAuthor);
         }
     }
 }

@@ -72,7 +72,9 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
+
             this.panel1.Size = new System.Drawing.Size(222, 789);
+            this.panel1.Size = new System.Drawing.Size(222, 774);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -233,7 +235,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel3.Location = new System.Drawing.Point(222, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1072, 93);
+            this.panel3.Size = new System.Drawing.Size(1109, 93);
             this.panel3.TabIndex = 1;
             // 
             // btnExit
@@ -243,7 +245,7 @@ namespace Proj_Book_Store_Manage.UI
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(991, 0);
+            this.btnExit.Location = new System.Drawing.Point(1028, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(81, 93);
             this.btnExit.TabIndex = 9;
@@ -271,7 +273,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel4.Location = new System.Drawing.Point(222, 93);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1072, 52);
+            this.panel4.Size = new System.Drawing.Size(1109, 52);
             this.panel4.TabIndex = 2;
             // 
             // lblRole
@@ -320,9 +322,12 @@ namespace Proj_Book_Store_Manage.UI
             this.panelMain.BackColor = System.Drawing.Color.Gainsboro;
             this.panelMain.Location = new System.Drawing.Point(227, 151);
             this.panelMain.MaximumSize = new System.Drawing.Size(1055, 629);
+
+            this.panelMain.Location = new System.Drawing.Point(229, 152);
+            this.panelMain.MaximumSize = new System.Drawing.Size(1280, 629);
             this.panelMain.MinimumSize = new System.Drawing.Size(1055, 629);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1055, 629);
+            this.panelMain.Size = new System.Drawing.Size(1090, 629);
             this.panelMain.TabIndex = 1;
             // 
             // FormDashBoard
@@ -331,6 +336,7 @@ namespace Proj_Book_Store_Manage.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1294, 789);
+            this.ClientSize = new System.Drawing.Size(1331, 774);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);

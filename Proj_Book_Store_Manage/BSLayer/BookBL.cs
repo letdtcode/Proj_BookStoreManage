@@ -35,14 +35,8 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
         public byte[] ImgToByteArray(Image img)
         {
-            byte[] imgByte = null;
             if (img != null)
             {
-                /*MemoryStream ms = new MemoryStream();
-                img.Save(ms, img.RawFormat);
-                imgByte = ms.ToArray();
-                ms.Close();
-                return imgByte;*/
                 Bitmap bmp = new Bitmap(img);
                 using (var ms = new MemoryStream())
                 {
@@ -287,6 +281,19 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }*/
+
+        public DataTable searchBook(string id, string nameBook, string nameCategory, string nameAuthor, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand();
+            //cmd.CommandText = $"select * from dbo.func_searchBook(" +
+            //    $"'{id}', " +
+            //    $"'{nameBook}', " +
+            //    $"'{nameCategory}', " +
+            //    $"'{nameAuthor}')";
+            //cmd.CommandType = CommandType.Text;
+
+            return db.ExecuteFunction(cmd, ref err);
+        }
     }
 }
 

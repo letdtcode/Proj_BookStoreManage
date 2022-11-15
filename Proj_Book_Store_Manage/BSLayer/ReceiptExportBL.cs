@@ -61,10 +61,17 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             parameter = new SqlParameter("@idEmp", idEmployee);
             parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idVoucher", idVoucher);
-            parameters.Add(parameter);
-
+            
+            if(idVoucher=="Không áp dụng")
+            {
+                parameter = new SqlParameter("@idVoucher", DBNull.Value);
+                parameters.Add(parameter);
+            }
+            else
+            {
+                parameter = new SqlParameter("@idVoucher", idVoucher);
+                parameters.Add(parameter);
+            }
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
         
@@ -77,6 +84,14 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
+        }
+        public DataTable searchReceiptExport(string id, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = $"select * from dbo.func_searchReceiptExport('{id}')";
+            cmd.CommandType = CommandType.Text;
+
+            return db.ExecuteFunction(cmd, ref err);
         }
     }
 }

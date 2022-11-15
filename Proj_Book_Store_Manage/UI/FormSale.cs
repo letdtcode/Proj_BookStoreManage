@@ -184,6 +184,7 @@ namespace Proj_Book_Store_Manage.UI
         private void LoadDataIntoCbVoucher(List<string> idVouchers)
         {
             cbIdVoucher.Items.Clear();
+            cbIdVoucher.Items.Add("Không áp dụng");
             foreach (string idVoucher in idVouchers)
             {
                 cbIdVoucher.Items.Add(idVoucher);

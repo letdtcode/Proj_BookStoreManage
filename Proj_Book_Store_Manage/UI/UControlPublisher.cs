@@ -24,9 +24,12 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAdd = false;
         private bool isEdit = false;
         PublisherBL publisher = new PublisherBL();
+
+        List<string> param;
         public UControlPublisher()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -173,6 +176,52 @@ namespace Proj_Book_Store_Manage.UI
             utl.SetEnableButton(new List<Button>() { btnSave, btnCancel }, false);
             utl.SetEnableButton(new List<Button>() { btnAdd, btnEdit, btnDelete, btnReload }, true);
             utl.setEnableControl(false);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            string id, namePublisher;
+            (id, namePublisher) = getParameter();
+            try
+            {
+                publisher = new PublisherBL();
+                dtPublisher = publisher.searchPublisher(id, namePublisher, ref err);
+                dgvPublisher.DataSource = dtPublisher;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Customer");
+            param.Add("Name Customer");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string) getParameter()
+        {
+            string id, nameCus;
+            if (cbAttributeSearch.Text == "Id Customer")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameCus = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Customer")
+            {
+                id = null;
+                nameCus = this.txtSearch.Text.Trim(); ;
+            }
+            else
+            {
+                id = null;
+                nameCus = null;
+            }
+            return (id, nameCus);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Proj_Book_Store_Manage.UI
         private bool isEdit = false;
         VoucherBL voucher = new VoucherBL();
         private bool roleTemp;
+        List<string> param;
         public UControlVoucher()
         {
             InitializeComponent();
@@ -32,6 +33,8 @@ namespace Proj_Book_Store_Manage.UI
             dtpDateStart.CustomFormat = "dd-MM-yyyy";
             dtpDateEnd.Format = DateTimePickerFormat.Custom;
             dtpDateEnd.CustomFormat = "dd-MM-yyyy";
+
+            createAttributeComBoBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -179,6 +182,45 @@ namespace Proj_Book_Store_Manage.UI
         private void UControlVoucher_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            string id;
+            id = getParameter();
+            try
+            {
+                voucher = new VoucherBL();
+                dtVoucher = voucher.searchVoucher(id, ref err);
+                dgvVoucher.DataSource = dtVoucher;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Voucher");
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        string getParameter()
+        {
+            string id;
+            if (cbAttributeSearch.Text == "Id Voucher")
+            {
+                id = this.txtSearch.Text.Trim();
+            }
+
+            else
+            {
+                id = null;
+            }
+            return (id);
         }
     }
 }

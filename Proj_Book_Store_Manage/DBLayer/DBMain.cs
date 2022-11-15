@@ -40,6 +40,7 @@ namespace Proj_Book_Store_Manage.DBLayer
             string cmm = "select * from "+ nameView;
             adapter = new SqlDataAdapter(cmm,conn);
             adapter.Fill(dt);
+            conn.Close();
             return dt;
         }
         //Trả về Datatable để thực thi function
@@ -70,6 +71,8 @@ namespace Proj_Book_Store_Manage.DBLayer
             }
             return dt;
         }
+
+        //dư -- có thể xóa
         public string ExecuteFunctionToString(SqlCommand cmdFunction, ref string error)
         {
             string valueReturn = null;

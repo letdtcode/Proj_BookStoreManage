@@ -41,9 +41,12 @@ namespace Proj_Book_Store_Manage.UI
         private bool isAddAuthorOfBook = false;
         private bool isEditAuthorOfBook = false;
         private string nameAuthorCellClick = null;
+
+        List<string> param;
         public UControlInfoBook()
         {
             InitializeComponent();
+            createAttributeComBoBox();
         }
 
         private void UControlInfoBook_Load(object sender, EventArgs e)
@@ -461,6 +464,75 @@ namespace Proj_Book_Store_Manage.UI
             int rowAuthorIndex = dgvAuthor.CurrentCell.RowIndex;
             this.nameAuthorCellClick = dgvAuthor.Rows[rowAuthorIndex].Cells[0].Value.ToString();
             this.cbaddAuthor.Text = this.nameAuthorCellClick;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string id, nameBook, nameCategory, nameAuthor;
+            (id, nameBook, nameCategory, nameAuthor) = getParameter();
+            try
+            {
+                book = new BookBL();
+                dtBook = book.searchBook(id, nameBook, nameCategory, nameAuthor, ref err);
+                dgvBook.DataSource = dtBook;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void createAttributeComBoBox()
+        {
+            param = new List<string>();
+            param.Add("Id Book");
+            param.Add("Name Book");
+            param.Add("Name Category");
+            param.Add("Name Author");
+
+            this.cbAttributeSearch.DataSource = param;
+        }
+
+        (string, string, string, string) getParameter()
+        {
+            string id, nameBook, nameCategory, nameAuthor;
+            if (cbAttributeSearch.Text == "Id Book")
+            {
+                id = this.txtSearch.Text.Trim();
+                nameBook = null;
+                nameCategory = null;
+                nameAuthor = null;
+            }
+
+            else if (cbAttributeSearch.Text == "Name Book")
+            {
+                id = null;
+                nameBook = this.txtSearch.Text.Trim();
+                nameCategory = null;
+                nameAuthor = null;
+            }
+            else if (cbAttributeSearch.Text == "Name Category")
+            {
+                id = null;
+                nameBook = null;
+                nameCategory = this.txtSearch.Text.Trim();
+                nameAuthor = null;
+            }
+            else if (cbAttributeSearch.Text == "Name Author")
+            {
+                id = null;
+                nameBook = null;
+                nameCategory = null;
+                nameAuthor = this.txtSearch.Text.Trim();
+            }
+            else
+            {
+                id = null;
+                nameBook = null;
+                nameCategory = null;
+                nameAuthor = null;
+            }
+            return (id, nameBook, nameCategory, nameAuthor);
         }
     }
 }

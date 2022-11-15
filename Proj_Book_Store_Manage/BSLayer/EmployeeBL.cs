@@ -137,5 +137,14 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteFunction(strSQL, CommandType.Text, parameters, ref err);
         }*/
+
+        public DataTable searchEmployee(string id, string username, ref string err)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = $"select * from dbo.func_searchEmployee('{id}', '{username}')";
+            cmd.CommandType = CommandType.Text;
+
+            return db.ExecuteFunction(cmd, ref err);
+        }
     }
 }

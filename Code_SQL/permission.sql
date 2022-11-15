@@ -113,11 +113,3 @@ begin
 end
 go
 
-create role adminRole
-go
-
-go
-grant select, insert, delete, update on ACCOUNT to adminRole
-go
-grant create role to adminRole
-
