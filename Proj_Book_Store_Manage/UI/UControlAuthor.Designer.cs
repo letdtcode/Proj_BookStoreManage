@@ -84,7 +84,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(151, 152);
+            this.btnSearch.Location = new System.Drawing.Point(268, 146);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(110, 43);
             this.btnSearch.TabIndex = 2;
@@ -94,7 +94,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(91, 112);
+            this.txtSearch.Location = new System.Drawing.Point(86, 105);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(224, 24);
             this.txtSearch.TabIndex = 2;
@@ -103,7 +103,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.cbAttributeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAttributeSearch.FormattingEnabled = true;
-            this.cbAttributeSearch.Location = new System.Drawing.Point(11, 66);
+            this.cbAttributeSearch.Location = new System.Drawing.Point(6, 59);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
             this.cbAttributeSearch.Size = new System.Drawing.Size(304, 27);
             this.cbAttributeSearch.TabIndex = 1;
@@ -112,7 +112,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblSearchBy.AutoSize = true;
             this.lblSearchBy.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchBy.Location = new System.Drawing.Point(7, 38);
+            this.lblSearchBy.Location = new System.Drawing.Point(2, 31);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
             this.lblSearchBy.Size = new System.Drawing.Size(91, 20);
@@ -164,11 +164,6 @@ namespace Proj_Book_Store_Manage.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 66);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 23);
             this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(26, 66);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -180,11 +175,6 @@ namespace Proj_Book_Store_Manage.UI
             // lblIDAuthor
             // 
             this.lblIDAuthor.AutoSize = true;
-            this.lblIDAuthor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDAuthor.Location = new System.Drawing.Point(162, 66);
-            this.lblIDAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDAuthor.Name = "lblIDAuthor";
-            this.lblIDAuthor.Size = new System.Drawing.Size(63, 23);
             this.lblIDAuthor.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIDAuthor.Location = new System.Drawing.Point(162, 66);
             this.lblIDAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
