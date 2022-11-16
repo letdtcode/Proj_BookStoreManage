@@ -324,3 +324,20 @@ as
 		select * from BILLINPUT where idBillInput = @idBill
 	)
 go
+
+
+-- Hàm tìm kiếm sách
+Create or alter function func_searchBook (@idBook varchar(8), @nameBook nvarchar(20), @nameCategory nvarchar (20), @nameAuhtor nvarchar (30))
+returns table
+as
+	return (
+		select BOOK.idBook, BOOK.nameBook, BOOK.urlImage, BOOK.amount, BOOK.priceImport, BOOK.priceExport, book.idPublisher from BOOK inner join (
+			select distinct (BOOK.idBook)
+			from AUTHOR, BOOK_AUTHOR, BOOK, CATEGORY, BOOK_CATEGORY
+			where (AUTHOR.nameAuthor like @nameAuhtor and AUTHOR.idAuthor = BOOK_AUTHOR.idAuthor and BOOK_AUTHOR.idBook = BOOK.idBook) or
+					(CATEGORY.nameCategory like @nameCategory and CATEGORY.idCategory = BOOK_CATEGORY.idCategory and BOOK_CATEGORY.idBook = BOOK.idBook) or
+					(BOOK.idBook = @idBook or BOOk.nameBook = @nameBook)
+			)A on BOOK.idBook = A.idBook
+	)
+go
+ 
