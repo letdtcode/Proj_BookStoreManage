@@ -84,6 +84,17 @@ begin
 end
 go
 
+---Trả về idBIllOuput nếu đơn hàng false
+create or alter function func_returnIdBillFalse ()
+returns varchar(8)
+as
+begin
+	declare @idBill varchar (8)
+	select @idBill = idBillOutPut from BILLOUTPUT
+	where stateBill = 0
+	return @idBill
+end
+go
 --Check xem ID sách này có trong đơn hàng chưa. Trả về true nếu đã tồn tại trong đơn hàng, trả về false nếu chưa tồn tại
 create or alter function func_checkBookIsInBill(@idBill varchar(8) , @idBook varchar(8) )
 returns bit
