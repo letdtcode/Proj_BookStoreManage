@@ -921,7 +921,10 @@ as
 begin
 	--Duyệt qua từng idBook trong hóa đơn
 	declare @idBook varchar(8) 
-	declare item cursor for (select dbo.BOOK_BILLOUTPUT.idBook from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
+	declare item cursor for (
+		select dbo.BOOK_BILLOUTPUT.idBook 
+		from dbo.BOOK_BILLOUTPUT 
+		where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
 	open item
 	fetch next from item into @idBook
 	while @@FETCH_STATUS=0
@@ -944,7 +947,9 @@ create or alter procedure proc_deleteBillOutput
 as
 begin
 	declare @idBillOutput varchar(8)
-	set @idBillOutput = (select * from dbo.func_returnIdBillFalse())
+	set @idBillOutput = (select dbo.func_returnIdBillFalse())
+	
+	print (@idBillOutput)
 	exec proc_cancelBillExport @idBillOutput
 end
 go
