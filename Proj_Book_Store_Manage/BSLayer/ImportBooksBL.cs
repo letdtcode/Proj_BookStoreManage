@@ -26,7 +26,10 @@ namespace Proj_Book_Store_Manage.BSLayer
         }
 
         public string IdBill { get => idBill; set => idBill = value; }
-
+        public DataTable getDataBook()
+        {
+            return db.LoadData("view_GetAllBookForSale", CommandType.Text);
+        }
         public DataTable getDataItemOfBill()
         {
             SqlCommand cmd = new SqlCommand("select * from dbo.func_getDataOfBillImport(@idBill)");

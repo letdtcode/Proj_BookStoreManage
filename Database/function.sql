@@ -29,17 +29,17 @@ end
 go
 
 --Tìm kiếm một Account
-create or alter function func_searchAccount(@idAcc varchar(8) , @userName varchar(20), @password varchar(30), @typeAcc bit, @idEmp varchar(8) )
-returns table
-as
-	return ( select *
-	from dbo.ACCOUNT
-	where ACCOUNT.idAccount=@idAcc and
-			ACCOUNT.nameAccount like @userName+'%' and 
-			ACCOUNT.password like @password+'%' and 
-			ACCOUNT.typeOfAcc = typeOfAcc and 
-			ACCOUNT.idEmployee=@idEmp )
-go
+--create or alter function func_searchAccount(@idAcc varchar(8) , @userName varchar(20), @password varchar(30), @typeAcc bit, @idEmp varchar(8) )
+--returns table
+--as
+--	return ( select *
+--	from dbo.ACCOUNT
+--	where ACCOUNT.idAccount=@idAcc and
+--			ACCOUNT.nameAccount like @userName+'%' and 
+--			ACCOUNT.password like @password+'%' and 
+--			ACCOUNT.typeOfAcc = typeOfAcc and 
+--			ACCOUNT.idEmployee=@idEmp )
+--go
 --Trả về danh sách các thể loại của sách
 create or alter function func_getAllCategoryOfBook(@idBook varchar(8) )
 returns table
@@ -96,17 +96,17 @@ begin
 end
 go
 --Check xem ID sách này có trong đơn hàng chưa. Trả về true nếu đã tồn tại trong đơn hàng, trả về false nếu chưa tồn tại
-create or alter function func_checkBookIsInBill(@idBill varchar(8) , @idBook varchar(8) )
-returns bit
-as
-begin
-	if exists(select * 
-				from dbo.BOOK_BILLOUTPUT 
-				where BOOK_BILLOUTPUT.idBillOutput=@idBill and BOOK_BILLOUTPUT.idBook=@idBook)
-			return 1
-	return 0		
-end
-go
+--create or alter function func_checkBookIsInBill(@idBill varchar(8) , @idBook varchar(8) )
+--returns bit
+--as
+--begin
+--	if exists(select * 
+--				from dbo.BOOK_BILLOUTPUT 
+--				where BOOK_BILLOUTPUT.idBillOutput=@idBill and BOOK_BILLOUTPUT.idBook=@idBook)
+--			return 1
+--	return 0		
+--end
+--go
 --Lấy thông tin chi tiết hóa đơn xuất
 create or alter function func_getDataOfBillExport(@idBill varchar(8) )
 returns table
@@ -123,7 +123,7 @@ as
 			from dbo.BOOK_BILLINPUT, dbo.BOOK
 			where dbo.BOOK_BILLINPUT.idBillInput=@idBill and dbo.BOOK_BILLINPUT.idBook=BOOK.idBook )
 go
-
+----------------**************************
 --Hàm trả về tên khách hàng (đầu vào là mã Bill)
 create or alter function func_getNameCusOfBillOutPut(@idBill varchar(8) )
 returns varchar(30)
@@ -133,6 +133,7 @@ begin
 	where dbo.CUSTOMER.idCus=dbo.BILLOUTPUT.idCus and dbo.BILLOUTPUT.idBillOutPut=@idBill)
 end
 go
+----------------**************************
 --Hàm trả về tên nhân viên (đầu vào là mã Bill)
 create or alter function func_getNameEmpOfBillOutPut(@idBill varchar(8) )
 returns varchar(30)
@@ -240,6 +241,7 @@ as
 				nameAuthor = @nameAuthor
 	)
 go
+
 ---Hàm tìm kiếm thể loại
 create or alter function func_searchCategory (@idCategory varchar(8) , @nameCategory nvarchar(20))
 returns table
@@ -262,8 +264,6 @@ as
 	)
 go
 
-
---- Hàm tìm kiếm sách
 --Hàm tìm kiếm khách hàng
 Create or alter function func_searchCustomer (@idCustomer varchar(8) , @nameCustomer nvarchar(40))
 returns table
@@ -312,7 +312,7 @@ as
 	return (
 		select * from TYPECUSTOMER
 		where idTypeCus = @id or
-				nameTypeCus = nameTypeCus
+				nameTypeCus = @name
 	)
 go
 

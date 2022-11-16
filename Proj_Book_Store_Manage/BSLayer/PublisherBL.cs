@@ -71,7 +71,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameter = new SqlParameter("@idPublisher", idPublisher);
             parameters.Add(parameter);
 
-            //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
         public List<string> getAllIDPublisher()

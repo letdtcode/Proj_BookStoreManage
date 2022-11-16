@@ -29,7 +29,6 @@ begin
 	commit transaction addNewAcc
 	end try
 	begin catch
-		print (error_message())
 		rollback transaction addNewAcc
 	end catch
 end
@@ -848,7 +847,7 @@ begin
 	end catch
 end
 go
-
+exec proc_confirmBillExport 'HDX3','2022-11-17','KH10','NV1','VC1'
 --Xác nhận xuất hóa đơn
 create or alter procedure proc_confirmBillExport
 @idBillOutput varchar(8),
@@ -860,8 +859,8 @@ as
 begin
 	declare @totalOfBill int , @discountOfVoucher int, @discountOfTypeCus int
 
-	begin transaction
-	begin try
+	--begin transaction
+	--begin try
 		--Lấy ra giá trị hóa đơn và giá trị chiết khấu
 		select @totalOfBill=dbo.BILLOUTPUT.total
 		from dbo.BILLOUTPUT
@@ -896,7 +895,14 @@ begin
 		update dbo.BILLOUTPUT
 		set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher, total=@totalOfBill
 		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-	
+
+		--Cập nhật lại số lượng voucher
+		if(@idVoucher is not null)
+		begin
+			update dbo.VOUCHER
+			set amount=amount-1
+			where dbo.VOUCHER.idVoucher=@idVoucher
+		end
 		--Cập lại điểm tích lũy và Type cho khách hàng
 		declare @amountBookInBill int, @amountBookTotal int
 		select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
@@ -906,11 +912,11 @@ begin
 		update dbo.BILLOUTPUT
 		set stateBill = 1
 		where dbo.BILLOUTPUT.idBillOutPut = @idBillOutput
-		commit transaction
-	end try
-	begin catch
-		rollback transaction
-	end catch
+	--	commit transaction
+	--end try
+	--begin catch
+	--	rollback transaction
+	--end catch
 end
 go
 --Xóa một item trong hóa đơn
@@ -1020,8 +1026,9 @@ go
 
 ----------------------------------------------Tân thêm-------------------------------
 ---Procedure show doanh thu trong khoảng begin end---
-create or alter proc sp_ShowRevenue
-@begin date , @end date
+create or alter procedure proc_ShowRevenue
+@begin date, 
+@end date
 as
 begin
 	select convert(date,dateOfBill) as dateOfBill, sum(total) as total
@@ -1030,7 +1037,7 @@ begin
 end
 go
 ----Procedure show top 5 sản phẩm bán chạy nhất trong khoảng begin end-----
-create or alter proc sp_ShowTop5Book
+create or alter proc proc_ShowTop5Book
 @begin date , @end date
 as
 begin
@@ -1044,7 +1051,7 @@ begin
 end
 go
 -------Tổng quan về tổng doanh thu trong khoảng thời gian--------
-create or alter proc sp_Overview_Revenue
+create or alter proc proc_Overview_Revenue
 @begin date, @end date
 as
 begin
@@ -1054,7 +1061,7 @@ begin
 end
 go
 ------Tổng quan về số hóa đơn trong khoảng thời gian----------
-create or alter proc sp_Overview_AmountBillOutput
+create or alter proc proc_Overview_AmountBillOutput
 @begin date, @end date
 as
 begin
@@ -1064,7 +1071,7 @@ begin
 end
 go
 -----Tổng quan về số sách bán được trong khoảng thời gian--------
-create or alter proc sp_Overview_AmountBookBillOutput
+create or alter proc proc_Overview_AmountBookBillOutput
 @begin date, @end date
 as
 begin
@@ -1074,3 +1081,4 @@ begin
 	and BILLOUTPUT.idBillOutPut= BOOK_BILLOUTPUT.idBillOutput
 	and dateOfBill between @begin and @end
 end
+go

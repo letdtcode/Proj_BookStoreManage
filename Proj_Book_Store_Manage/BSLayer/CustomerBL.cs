@@ -76,7 +76,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameter = new SqlParameter("@idCus", idCus);
             parameters.Add(parameter);
 
-            //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
         public List<string> getAllIDCustomer()
@@ -94,7 +93,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         public DataTable searchCustomer(string id, string username, ref string err)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = $"select * from dbo.func_searchCustomer('{id}', '{username}')";
+            cmd.CommandText = $"select * from dbo.func_searchCustomer('{id}', N'{username}')";
             cmd.CommandType = CommandType.Text;
 
             return db.ExecuteFunction(cmd, ref err);

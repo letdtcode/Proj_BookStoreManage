@@ -281,7 +281,6 @@ namespace Proj_Book_Store_Manage.BSLayer
 
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }*/
-
         public DataTable searchBook(string id, string nameBook, string nameCategory, string nameAuthor, ref string err)
         {
             SqlCommand cmd = new SqlCommand();

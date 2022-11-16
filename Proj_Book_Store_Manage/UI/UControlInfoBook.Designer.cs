@@ -29,12 +29,6 @@ namespace Proj_Book_Store_Manage.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gpSearch = new System.Windows.Forms.GroupBox();
@@ -97,7 +91,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(33, 85);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 27);
+            this.txtSearch.Size = new System.Drawing.Size(224, 32);
             this.txtSearch.TabIndex = 2;
             // 
             // lblSearchBy
@@ -107,7 +101,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblSearchBy.Location = new System.Drawing.Point(7, 16);
             this.lblSearchBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSearchBy.Name = "lblSearchBy";
-            this.lblSearchBy.Size = new System.Drawing.Size(91, 20);
+            this.lblSearchBy.Size = new System.Drawing.Size(109, 23);
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "Thuộc tính";
             // 
@@ -143,7 +137,7 @@ namespace Proj_Book_Store_Manage.UI
             this.cbAttributeSearch.FormattingEnabled = true;
             this.cbAttributeSearch.Location = new System.Drawing.Point(11, 43);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(246, 28);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(246, 31);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // btnReload
@@ -217,7 +211,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtNameBook.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameBook.Location = new System.Drawing.Point(106, 84);
             this.txtNameBook.Name = "txtNameBook";
-            this.txtNameBook.Size = new System.Drawing.Size(147, 27);
+            this.txtNameBook.Size = new System.Drawing.Size(147, 32);
             this.txtNameBook.TabIndex = 2;
             // 
             // lbl10
@@ -227,7 +221,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lbl10.Location = new System.Drawing.Point(10, 129);
             this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl10.Name = "lbl10";
-            this.lbl10.Size = new System.Drawing.Size(74, 20);
+            this.lbl10.Size = new System.Drawing.Size(85, 23);
             this.lbl10.TabIndex = 1;
             this.lbl10.Text = "Số lượng";
             // 
@@ -238,7 +232,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblNameBook.Location = new System.Drawing.Point(10, 85);
             this.lblNameBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameBook.Name = "lblNameBook";
-            this.lblNameBook.Size = new System.Drawing.Size(78, 20);
+            this.lblNameBook.Size = new System.Drawing.Size(96, 23);
             this.lblNameBook.TabIndex = 0;
             this.lblNameBook.Text = "Tên Sách";
             // 
@@ -273,7 +267,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblAmount.Location = new System.Drawing.Point(101, 127);
             this.lblAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(18, 20);
+            this.lblAmount.Size = new System.Drawing.Size(21, 23);
             this.lblAmount.TabIndex = 4;
             this.lblAmount.Text = "0";
             // 
@@ -285,7 +279,7 @@ namespace Proj_Book_Store_Manage.UI
             "3"});
             this.cbIDPublisher.Location = new System.Drawing.Point(359, 39);
             this.cbIDPublisher.Name = "cbIDPublisher";
-            this.cbIDPublisher.Size = new System.Drawing.Size(99, 28);
+            this.cbIDPublisher.Size = new System.Drawing.Size(99, 31);
             this.cbIDPublisher.TabIndex = 3;
             // 
             // txtPriceExport
@@ -293,7 +287,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtPriceExport.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPriceExport.Location = new System.Drawing.Point(364, 131);
             this.txtPriceExport.Name = "txtPriceExport";
-            this.txtPriceExport.Size = new System.Drawing.Size(87, 27);
+            this.txtPriceExport.Size = new System.Drawing.Size(87, 32);
             this.txtPriceExport.TabIndex = 2;
             // 
             // txtPriceImport
@@ -301,7 +295,7 @@ namespace Proj_Book_Store_Manage.UI
             this.txtPriceImport.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPriceImport.Location = new System.Drawing.Point(364, 86);
             this.txtPriceImport.Name = "txtPriceImport";
-            this.txtPriceImport.Size = new System.Drawing.Size(87, 27);
+            this.txtPriceImport.Size = new System.Drawing.Size(87, 32);
             this.txtPriceImport.TabIndex = 2;
             // 
             // lblPriceExport
@@ -311,7 +305,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceExport.Location = new System.Drawing.Point(268, 131);
             this.lblPriceExport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceExport.Name = "lblPriceExport";
-            this.lblPriceExport.Size = new System.Drawing.Size(70, 20);
+            this.lblPriceExport.Size = new System.Drawing.Size(86, 23);
             this.lblPriceExport.TabIndex = 1;
             this.lblPriceExport.Text = "Giá Bán";
             // 
@@ -322,7 +316,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPublisher.Location = new System.Drawing.Point(268, 39);
             this.lblPublisher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPublisher.Name = "lblPublisher";
-            this.lblPublisher.Size = new System.Drawing.Size(45, 20);
+            this.lblPublisher.Size = new System.Drawing.Size(54, 23);
             this.lblPublisher.TabIndex = 1;
             this.lblPublisher.Text = "NXB";
             // 
@@ -333,7 +327,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblPriceImport.Location = new System.Drawing.Point(268, 88);
             this.lblPriceImport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPriceImport.Name = "lblPriceImport";
-            this.lblPriceImport.Size = new System.Drawing.Size(80, 20);
+            this.lblPriceImport.Size = new System.Drawing.Size(97, 23);
             this.lblPriceImport.TabIndex = 1;
             this.lblPriceImport.Text = "Giá Nhập";
             // 
@@ -344,7 +338,7 @@ namespace Proj_Book_Store_Manage.UI
             this.lblIDBook.Location = new System.Drawing.Point(101, 39);
             this.lblIDBook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIDBook.Name = "lblIDBook";
-            this.lblIDBook.Size = new System.Drawing.Size(48, 20);
+            this.lblIDBook.Size = new System.Drawing.Size(58, 23);
             this.lblIDBook.TabIndex = 0;
             this.lblIDBook.Text = "None";
             // 
@@ -355,7 +349,7 @@ namespace Proj_Book_Store_Manage.UI
             this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 20);
+            this.label1.Size = new System.Drawing.Size(85, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Sách";
             // 
@@ -438,41 +432,17 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.cbaddAuthor.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbaddAuthor.FormattingEnabled = true;
-            this.cbaddAuthor.Location = new System.Drawing.Point(210, 33);
+            this.cbaddAuthor.Location = new System.Drawing.Point(230, 33);
             this.cbaddAuthor.Name = "cbaddAuthor";
-            this.cbaddAuthor.Size = new System.Drawing.Size(121, 28);
+            this.cbaddAuthor.Size = new System.Drawing.Size(121, 31);
             this.cbaddAuthor.TabIndex = 2;
             // 
             // dgvAuthor
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAuthor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAuthor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAuthor.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAuthor.Location = new System.Drawing.Point(15, 70);
             this.dgvAuthor.Name = "dgvAuthor";
             this.dgvAuthor.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAuthor.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAuthor.RowHeadersWidth = 51;
             this.dgvAuthor.RowTemplate.Height = 24;
             this.dgvAuthor.Size = new System.Drawing.Size(211, 95);
@@ -527,10 +497,10 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameAuthor.AutoSize = true;
             this.lblNameAuthor.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameAuthor.Location = new System.Drawing.Point(101, 33);
+            this.lblNameAuthor.Location = new System.Drawing.Point(76, 33);
             this.lblNameAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameAuthor.Name = "lblNameAuthor";
-            this.lblNameAuthor.Size = new System.Drawing.Size(99, 20);
+            this.lblNameAuthor.Size = new System.Drawing.Size(121, 23);
             this.lblNameAuthor.TabIndex = 0;
             this.lblNameAuthor.Text = "Tên Tác Giả";
             // 
@@ -555,41 +525,17 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.cbaddCategory.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbaddCategory.FormattingEnabled = true;
-            this.cbaddCategory.Location = new System.Drawing.Point(210, 28);
+            this.cbaddCategory.Location = new System.Drawing.Point(230, 30);
             this.cbaddCategory.Name = "cbaddCategory";
-            this.cbaddCategory.Size = new System.Drawing.Size(121, 28);
+            this.cbaddCategory.Size = new System.Drawing.Size(121, 31);
             this.cbaddCategory.TabIndex = 2;
             // 
             // dgvCategory
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCategory.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCategory.Location = new System.Drawing.Point(15, 70);
             this.dgvCategory.Name = "dgvCategory";
             this.dgvCategory.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategory.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCategory.RowHeadersWidth = 51;
             this.dgvCategory.RowTemplate.Height = 24;
             this.dgvCategory.Size = new System.Drawing.Size(211, 92);
@@ -644,10 +590,10 @@ namespace Proj_Book_Store_Manage.UI
             // 
             this.lblNameCategory.AutoSize = true;
             this.lblNameCategory.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameCategory.Location = new System.Drawing.Point(101, 33);
+            this.lblNameCategory.Location = new System.Drawing.Point(75, 33);
             this.lblNameCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNameCategory.Name = "lblNameCategory";
-            this.lblNameCategory.Size = new System.Drawing.Size(103, 20);
+            this.lblNameCategory.Size = new System.Drawing.Size(122, 23);
             this.lblNameCategory.TabIndex = 0;
             this.lblNameCategory.Text = "Tên Thể loại";
             // 

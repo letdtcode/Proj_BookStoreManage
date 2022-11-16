@@ -205,7 +205,7 @@ namespace Proj_Book_Store_Manage.UI
         (string, string) getParameter()
         {
             string id, namePublisher;
-            if (cbAttributeSearch.Text == "ID Publisher")
+            if (cbAttributeSearch.Text == "Id Publisher")
             {
                 id = this.txtSearch.Text.Trim();
                 namePublisher = null;

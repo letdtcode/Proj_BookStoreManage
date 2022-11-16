@@ -93,7 +93,6 @@ dateEnd date not null,
 amount int NULL,
 
 CONSTRAINT pk_voucher PRIMARY KEY (idVoucher),
---CONSTRAINT chk_dateOfVoucher CHECK (DATEDIFF(day,dateStart,dateEnd)>0),
 CONSTRAINT chk_amountVoucher CHECK (amount>=0)
 )
 GO
@@ -105,7 +104,7 @@ total int NOT NULL DEFAULT 0,
 idCus varchar(8)NULL,
 idEmployee varchar(8) NULL,
 idVoucher varchar(8) null,
-stateBill bit default 0,
+stateBill bit not null default 0,
 
 CONSTRAINT pk_billOutPut PRIMARY KEY (idBillOutPut),
 CONSTRAINT fk_pay FOREIGN KEY (idCus) REFERENCES CUSTOMER (idCus),
@@ -119,7 +118,7 @@ idAccount varchar(8) NOT NULL,
 nameAccount varchar(20) NOT NULL unique,
 password varchar(30) NOT NULL,
 typeOfAcc bit NOT NULL,
-idEmployee varchar(8) NULL unique
+idEmployee varchar(8) NULL 
 
 CONSTRAINT pk_account PRIMARY KEY (idAccount),
 CONSTRAINT fk_acc_Of_Employee FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee),

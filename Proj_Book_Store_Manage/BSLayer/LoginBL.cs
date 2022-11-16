@@ -16,7 +16,6 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             db = new DBMain();
         }
-
         public LoginBL(string user, string password)
         {
             DBMain.UserName = user;
