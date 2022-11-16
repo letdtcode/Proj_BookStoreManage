@@ -43,12 +43,12 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbAttributeSearch = new System.Windows.Forms.ComboBox();
             this.gpSearch = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.dgvReceiptImport = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDetailImportReceipt = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.gbReceiptImport.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gpSearch.SuspendLayout();
@@ -88,6 +88,7 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // dtpReceiptImport
             // 
+            this.dtpReceiptImport.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpReceiptImport.Location = new System.Drawing.Point(367, 38);
             this.dtpReceiptImport.Name = "dtpReceiptImport";
             this.dtpReceiptImport.Size = new System.Drawing.Size(200, 20);
@@ -213,6 +214,17 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(185, 82);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(110, 43);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(54, 56);
@@ -266,17 +278,6 @@ namespace Proj_Book_Store_Manage.UI
             this.btnDetailImportReceipt.Text = "Chi tiết hóa đơn";
             this.btnDetailImportReceipt.UseVisualStyleBackColor = false;
             this.btnDetailImportReceipt.Click += new System.EventHandler(this.btnDetailImportReceipt_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(185, 82);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 43);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Tìm Kiếm";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // UControlReceiptImport
             // 
