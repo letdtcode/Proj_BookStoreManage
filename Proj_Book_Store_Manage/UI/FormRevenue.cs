@@ -22,6 +22,7 @@ namespace Proj_Book_Store_Manage.UI
         public FormRevenue()
         {
             InitializeComponent();
+            LoadData(DateTime.Now.AddDays(-7), DateTime.Now);
         }
 
         private void FormRevenue_Load(object sender, EventArgs e)

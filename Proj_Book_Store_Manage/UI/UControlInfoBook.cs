@@ -410,23 +410,30 @@ namespace Proj_Book_Store_Manage.UI
 
         private void dgvBook_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            err = "";
-            utl.CellClick(btnCancel, btnDelete);
+            try
+            {
+                err = "";
+                utl.CellClick(btnCancel, btnDelete);
 
-            //dgvCategory.DataSource = book.sh(utl.IDCurrent,ref err);
-            lblIDBook.Text = utl.IDCurrent;
-            //dgvAuthor.DataSource = book.showAuthor(utl.IDCurrent, ref err);
-            if (dgvBook.Rows[utl.rowCurrent].Cells[6].Value.ToString() == "")
-                ptbBook.Image = null;
-            else
-                ptbBook.Image = (Image)dgvBook.Rows[utl.rowCurrent].Cells[6].Value;
-            txtNameBook.Text = dgvBook.Rows[utl.rowCurrent].Cells[1].Value.ToString();
-            lblAmount.Text = dgvBook.Rows[utl.rowCurrent].Cells[2].Value.ToString();
-            txtPriceImport.Text = dgvBook.Rows[utl.rowCurrent].Cells[3].Value.ToString();
-            txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
-            cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();
-            LoadDataCategory(lblIDBook.Text.ToString(),ref err);
-            LoadDataAuthor(lblIDBook.Text.ToString(), ref err);
+                //dgvCategory.DataSource = book.sh(utl.IDCurrent,ref err);
+                lblIDBook.Text = utl.IDCurrent;
+                //dgvAuthor.DataSource = book.showAuthor(utl.IDCurrent, ref err);
+                if (dgvBook.Rows[utl.rowCurrent].Cells[6].Value.ToString() == "")
+                    ptbBook.Image = null;
+                else
+                    ptbBook.Image = (Image)dgvBook.Rows[utl.rowCurrent].Cells[6].Value;
+                txtNameBook.Text = dgvBook.Rows[utl.rowCurrent].Cells[1].Value.ToString();
+                lblAmount.Text = dgvBook.Rows[utl.rowCurrent].Cells[2].Value.ToString();
+                txtPriceImport.Text = dgvBook.Rows[utl.rowCurrent].Cells[3].Value.ToString();
+                txtPriceExport.Text = dgvBook.Rows[utl.rowCurrent].Cells[4].Value.ToString();
+                cbIDPublisher.Text = dgvBook.Rows[utl.rowCurrent].Cells[5].Value.ToString();
+                LoadDataCategory(lblIDBook.Text.ToString(), ref err);
+                LoadDataAuthor(lblIDBook.Text.ToString(), ref err);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void LoadDataIntoCbPublisher(List<string> idPublishers)
         {
@@ -472,8 +479,14 @@ namespace Proj_Book_Store_Manage.UI
             (id, nameBook, nameCategory, nameAuthor) = getParameter();
             try
             {
-                book = new BookBL();
+                //DataGridViewImageColumn
                 dtBook = book.searchBook(id, nameBook, nameCategory, nameAuthor, ref err);
+                dtBook.Columns.Add("Hình ảnh", typeof(Image));
+                foreach (DataRow row in dtBook.Rows)
+                {
+                    row["Hình ảnh"] = book.ByteArrayToImage((byte[])row[2]);
+                }
+                dtBook.Columns.Remove("urlImage");
                 dgvBook.DataSource = dtBook;
             }
             catch (Exception ex)

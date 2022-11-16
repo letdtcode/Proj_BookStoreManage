@@ -29,6 +29,9 @@ namespace Proj_Book_Store_Manage.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.gpSearch = new System.Windows.Forms.GroupBox();
@@ -59,9 +62,10 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(6, 120);
+            this.txtSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(6, 104);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(159, 20);
+            this.txtSearch.Size = new System.Drawing.Size(159, 27);
             this.txtSearch.TabIndex = 2;
             // 
             // lblSearchBy
@@ -81,6 +85,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
+            this.gpSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpSearch.Location = new System.Drawing.Point(580, 21);
             this.gpSearch.Name = "gpSearch";
             this.gpSearch.Size = new System.Drawing.Size(384, 147);
@@ -91,7 +96,7 @@ namespace Proj_Book_Store_Manage.UI
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(257, 100);
+            this.btnSearch.Location = new System.Drawing.Point(257, 104);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(121, 33);
             this.btnSearch.TabIndex = 2;
@@ -101,10 +106,12 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // cbAttributeSearch
             // 
+            this.cbAttributeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAttributeSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAttributeSearch.FormattingEnabled = true;
             this.cbAttributeSearch.Location = new System.Drawing.Point(6, 57);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(251, 21);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(251, 28);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // panel2
@@ -116,6 +123,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(849, 184);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(206, 379);
@@ -189,9 +197,10 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtNameCategory
             // 
+            this.txtNameCategory.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameCategory.Location = new System.Drawing.Point(166, 80);
             this.txtNameCategory.Name = "txtNameCategory";
-            this.txtNameCategory.Size = new System.Drawing.Size(247, 20);
+            this.txtNameCategory.Size = new System.Drawing.Size(247, 27);
             this.txtNameCategory.TabIndex = 2;
             // 
             // lblDescribe
@@ -224,6 +233,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbCategory.Controls.Add(this.lblIDCategory);
             this.gbCategory.Controls.Add(this.label1);
             this.gbCategory.Controls.Add(this.lblNameCategory);
+            this.gbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCategory.Location = new System.Drawing.Point(30, 21);
             this.gbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.gbCategory.Name = "gbCategory";
@@ -235,9 +245,10 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // txtDescribe
             // 
+            this.txtDescribe.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescribe.Location = new System.Drawing.Point(166, 120);
             this.txtDescribe.Name = "txtDescribe";
-            this.txtDescribe.Size = new System.Drawing.Size(247, 20);
+            this.txtDescribe.Size = new System.Drawing.Size(247, 27);
             this.txtDescribe.TabIndex = 2;
             // 
             // lblIDCategory
@@ -264,10 +275,34 @@ namespace Proj_Book_Store_Manage.UI
             // 
             // dgvCategory
             // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCategory.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCategory.Location = new System.Drawing.Point(30, 245);
             this.dgvCategory.Name = "dgvCategory";
             this.dgvCategory.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategory.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCategory.RowHeadersWidth = 51;
             this.dgvCategory.RowTemplate.Height = 24;
             this.dgvCategory.Size = new System.Drawing.Size(721, 280);
@@ -279,6 +314,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Controls.Add(this.gpSearch);
             this.panel1.Controls.Add(this.gbCategory);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -293,6 +329,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvCategory);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UControlCategory";
             this.Size = new System.Drawing.Size(1055, 563);
             this.Load += new System.EventHandler(this.UControlCategory_Load);

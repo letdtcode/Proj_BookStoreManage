@@ -67,8 +67,15 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnRevenue_Click(object sender, EventArgs e)
         {
-            FormRevenue revenue = new FormRevenue();
-            revenue.ShowDialog();
+           try
+            {
+                FormRevenue revenue = new FormRevenue();
+                revenue.ShowDialog();
+            }    
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

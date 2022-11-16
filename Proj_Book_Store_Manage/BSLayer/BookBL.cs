@@ -285,13 +285,12 @@ namespace Proj_Book_Store_Manage.BSLayer
         public DataTable searchBook(string id, string nameBook, string nameCategory, string nameAuthor, ref string err)
         {
             SqlCommand cmd = new SqlCommand();
-            //cmd.CommandText = $"select * from dbo.func_searchBook(" +
-            //    $"'{id}', " +
-            //    $"'{nameBook}', " +
-            //    $"'{nameCategory}', " +
-            //    $"'{nameAuthor}')";
-            //cmd.CommandType = CommandType.Text;
-
+            cmd.CommandText = $"select * from dbo.func_searchBook(" +
+                $"'{id}', " +
+                $"N'{nameBook}', " +
+                $"N'{nameCategory}', " +
+                $"N'{nameAuthor}')";
+            cmd.CommandType = CommandType.Text;
             return db.ExecuteFunction(cmd, ref err);
         }
     }

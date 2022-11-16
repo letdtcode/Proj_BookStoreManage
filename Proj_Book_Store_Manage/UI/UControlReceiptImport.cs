@@ -102,15 +102,13 @@ namespace Proj_Book_Store_Manage.UI
             {
                 utl.CellClick(btnDetailImportReceipt);
                 this.lblIDBill.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[0].Value.ToString();
-
-                string dt = DateTime.Parse(dgvReceiptImport.Rows[utl.rowCurrent].Cells[1].Value.ToString()).ToString("dd/MM/yyyy");
-                this.dtpReceiptImport.Text = dt;
+                this.dtpReceiptImport.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[1].Value.ToString();
                 this.lblTotal.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[2].Value.ToString();      
                 this.lbIdEmployee.Text = dgvReceiptImport.Rows[utl.rowCurrent].Cells[3].Value.ToString();
             }
-            catch
+            catch (Exception ex)
             {
-                result = MessageBox.Show("Hóa đơn này không có giá trị ! Vui lòng chọn hóa đơn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                result = MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -56,6 +56,24 @@ begin
 		set @state = 'deny exec on object::proc_deleteEmployee to ' + @user
 		exec (@state)
 		
+		-- Cấm quyền xem doanh thu
+		set @state = 'deny exec on object::sp_ShowRevenue to ' + @user
+		exec (@state)
+
+		set @state = 'deny exec on object::sp_ShowTop5Book to ' + @user
+		exec (@state)
+
+		set @state = 'deny exec on object::sp_Overview_Revenue to ' + @user
+		exec (@state)
+
+		set @state = 'deny exec on object::sp_Overview_AmountBillOutput to ' + @user
+		exec (@state)
+
+		set @state = 'deny control, select, update, delete, insert on object::view_top5StockMin to ' + @user
+		exec (@state)
+
+		set @state = 'deny exec on object::sp_Overview_AmountBookBillOutput to ' + @user
+		exec (@state)
 		print N'Đã gán quyền user'
 	end
 end

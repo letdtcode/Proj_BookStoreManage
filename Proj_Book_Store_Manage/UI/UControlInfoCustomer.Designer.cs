@@ -68,6 +68,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel1.Controls.Add(this.gpSearch);
             this.panel1.Controls.Add(this.gbCustomer);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
@@ -80,9 +81,10 @@ namespace Proj_Book_Store_Manage.UI
             this.gpSearch.Controls.Add(this.txtSearch);
             this.gpSearch.Controls.Add(this.cbAttributeSearch);
             this.gpSearch.Controls.Add(this.lblSearchBy);
+            this.gpSearch.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpSearch.Location = new System.Drawing.Point(671, 21);
             this.gpSearch.Name = "gpSearch";
-            this.gpSearch.Size = new System.Drawing.Size(293, 147);
+            this.gpSearch.Size = new System.Drawing.Size(370, 147);
             this.gpSearch.TabIndex = 1;
             this.gpSearch.TabStop = false;
             this.gpSearch.Text = "Tìm kiếm";
@@ -90,26 +92,30 @@ namespace Proj_Book_Store_Manage.UI
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(105, 105);
+            this.btnSearch.Location = new System.Drawing.Point(245, 110);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(119, 31);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Tìm Kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(35, 79);
+            this.txtSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(11, 98);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(224, 20);
+            this.txtSearch.Size = new System.Drawing.Size(224, 27);
             this.txtSearch.TabIndex = 2;
             // 
             // cbAttributeSearch
             // 
+            this.cbAttributeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAttributeSearch.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAttributeSearch.FormattingEnabled = true;
             this.cbAttributeSearch.Location = new System.Drawing.Point(11, 48);
             this.cbAttributeSearch.Name = "cbAttributeSearch";
-            this.cbAttributeSearch.Size = new System.Drawing.Size(248, 21);
+            this.cbAttributeSearch.Size = new System.Drawing.Size(248, 28);
             this.cbAttributeSearch.TabIndex = 1;
             // 
             // lblSearchBy
@@ -137,6 +143,7 @@ namespace Proj_Book_Store_Manage.UI
             this.gbCustomer.Controls.Add(this.lblIDCustomer);
             this.gbCustomer.Controls.Add(this.label1);
             this.gbCustomer.Controls.Add(this.lblNameCustomer);
+            this.gbCustomer.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCustomer.Location = new System.Drawing.Point(17, 21);
             this.gbCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.gbCustomer.Name = "gbCustomer";
@@ -149,44 +156,47 @@ namespace Proj_Book_Store_Manage.UI
             // lblIdTypeCus
             // 
             this.lblIdTypeCus.AutoSize = true;
-            this.lblIdTypeCus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdTypeCus.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdTypeCus.Location = new System.Drawing.Point(484, 105);
             this.lblIdTypeCus.Name = "lblIdTypeCus";
-            this.lblIdTypeCus.Size = new System.Drawing.Size(53, 23);
+            this.lblIdTypeCus.Size = new System.Drawing.Size(48, 20);
             this.lblIdTypeCus.TabIndex = 3;
-            this.lblIdTypeCus.Text = "VIP1";  
+            this.lblIdTypeCus.Text = "VIP1";
             // 
             // txtPhoneNumberCus
             // 
+            this.txtPhoneNumberCus.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumberCus.Location = new System.Drawing.Point(488, 27);
             this.txtPhoneNumberCus.Name = "txtPhoneNumberCus";
-            this.txtPhoneNumberCus.Size = new System.Drawing.Size(153, 20);
+            this.txtPhoneNumberCus.Size = new System.Drawing.Size(153, 27);
             this.txtPhoneNumberCus.TabIndex = 2;
             // 
             // txtAddCus
             // 
+            this.txtAddCus.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddCus.Location = new System.Drawing.Point(106, 105);
             this.txtAddCus.Name = "txtAddCus";
-            this.txtAddCus.Size = new System.Drawing.Size(247, 20);
+            this.txtAddCus.Size = new System.Drawing.Size(247, 27);
             this.txtAddCus.TabIndex = 2;
             // 
             // txtNameCustomer
             // 
+            this.txtNameCustomer.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameCustomer.Location = new System.Drawing.Point(106, 67);
             this.txtNameCustomer.Name = "txtNameCustomer";
-            this.txtNameCustomer.Size = new System.Drawing.Size(247, 20);
+            this.txtNameCustomer.Size = new System.Drawing.Size(247, 27);
             this.txtNameCustomer.TabIndex = 2;
             // 
             // lbl10
             // 
             this.lbl10.AutoSize = true;
-            this.lbl10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl10.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl10.Location = new System.Drawing.Point(390, 105);
             this.lbl10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl10.Name = "lbl10";
-            this.lbl10.Size = new System.Drawing.Size(76, 23);
+            this.lbl10.Size = new System.Drawing.Size(71, 20);
             this.lbl10.TabIndex = 1;
-            this.lbl10.Text = "Loại KH"; 
+            this.lbl10.Text = "Loại KH";
             // 
             // lblPointCus
             // 
@@ -202,11 +212,11 @@ namespace Proj_Book_Store_Manage.UI
             // lbl11
             // 
             this.lbl11.AutoSize = true;
-            this.lbl11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl11.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl11.Location = new System.Drawing.Point(390, 68);
             this.lbl11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl11.Name = "lbl11";
-            this.lbl11.Size = new System.Drawing.Size(139, 23);
+            this.lbl11.Size = new System.Drawing.Size(120, 20);
             this.lbl11.TabIndex = 1;
             this.lbl11.Text = "Điểm Tích Lũy";
             // 
@@ -235,11 +245,6 @@ namespace Proj_Book_Store_Manage.UI
             // lblIDCustomer
             // 
             this.lblIDCustomer.AutoSize = true;
-            this.lblIDCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDCustomer.Location = new System.Drawing.Point(102, 27);
-            this.lblIDCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIDCustomer.Name = "lblIDCustomer";
-            this.lblIDCustomer.Size = new System.Drawing.Size(63, 23);
             this.lblIDCustomer.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIDCustomer.Location = new System.Drawing.Point(102, 27);
             this.lblIDCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -251,11 +256,6 @@ namespace Proj_Book_Store_Manage.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 23);
             this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -339,6 +339,7 @@ namespace Proj_Book_Store_Manage.UI
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(866, 193);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(206, 375);
@@ -375,6 +376,7 @@ namespace Proj_Book_Store_Manage.UI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvCustomer);
+            this.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UControlInfoCustomer";
             this.Size = new System.Drawing.Size(1072, 568);
             this.Load += new System.EventHandler(this.UControlInfoCustomer_Load);

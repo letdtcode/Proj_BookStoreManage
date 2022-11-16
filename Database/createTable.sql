@@ -119,7 +119,7 @@ idAccount varchar(8) NOT NULL,
 nameAccount varchar(20) NOT NULL unique,
 password varchar(30) NOT NULL,
 typeOfAcc bit NOT NULL,
-idEmployee varchar(8) NULL
+idEmployee varchar(8) NULL unique
 
 CONSTRAINT pk_account PRIMARY KEY (idAccount),
 CONSTRAINT fk_acc_Of_Employee FOREIGN KEY (idEmployee) REFERENCES EMPLOYEE (idEmployee),
