@@ -53,6 +53,7 @@ namespace Proj_Book_Store_Manage.UI
         }   
         private void LoadData()
         {
+            updateBill();
             dtReceiptExport = receiptExport.getDataReceiptExport();
             dgvReceiptExport.DataSource = dtReceiptExport;
             utl = new Utilities(dgvReceiptExport);
@@ -125,6 +126,22 @@ namespace Proj_Book_Store_Manage.UI
                 id = null;
             }
             return (id);
+        }
+        void updateBill ()
+        {
+            try
+            {
+
+                receiptExport.updateBill(ref err);
+                if (err != "")
+                {
+                    MessageBox.Show(err);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
