@@ -25,7 +25,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         {
             return db.LoadData(nameView, CommandType.Text);
         }
-        public bool addNewAccount(int idAccount, string nameAccount, string passWord, int typeOfAcc, int idEmployee, ref string err)
+        public bool addNewAccount(string idAccount, string nameAccount, string passWord, int typeOfAcc, string idEmployee, ref string err)
         {
             strSQL = "proc_addNewAccount";
             parameters = new List<SqlParameter>();
@@ -48,7 +48,7 @@ namespace Proj_Book_Store_Manage.BSLayer
             //String sqlString = "exec"+ @nameAccount = '" + nameAccount + "', @password = '" + passWord + "', @typeOfAcc = " + typeOfAcc.ToString() + ", @idEmployee = " + idEmployee.ToString() ;
             return db.ExecuteProcedure(strSQL, CommandType.StoredProcedure, parameters, ref err);
         }
-        public bool modifyAccount(int idAccount, string nameAccount, string password, int typeOfAcc, int idEmployee, ref string err)
+        public bool modifyAccount(string idAccount, string nameAccount, string password, ref string err)
         {
             strSQL = "proc_updateAccount";
             parameters = new List<SqlParameter>();
@@ -60,12 +60,6 @@ namespace Proj_Book_Store_Manage.BSLayer
             parameters.Add(parameter);
 
             parameter = new SqlParameter("@password", password);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@typeOfAcc", typeOfAcc);
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("@idEmployee", idEmployee);
             parameters.Add(parameter);
 
             //String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
@@ -105,7 +99,7 @@ namespace Proj_Book_Store_Manage.BSLayer
         //    ////String sqlString = "exec proc_updateAccount @idAccount = " + idAccount + ", @nameAccount = '" + nameAccount + "', @password = '" + password + "', @typeOfAcc = " + typeOfAcc + ", @idEmployee = " + idEmployee;
         //    //return db.ExecuteFunction(strSQL, CommandType.Text, parameters, ref err);
         //}
-        public DataTable searchAccount(int id, string username, ref string err)
+        public DataTable searchAccount(string id, string username, ref string err)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = $"select * from dbo.func_searchAccount ('{id}', '{username}')";

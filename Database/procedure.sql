@@ -768,6 +768,8 @@ create or alter procedure proc_addNewBookBillOutput
 @amount int
 as
 begin
+		begin transaction
+		begin try
 		--Thêm item vào bảng (amount đảm bảo thỏa ràng buộc do đã có trigger)
 		if(exists(select * from dbo.BOOK_BILLOUTPUT 
 						where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput and dbo.BOOK_BILLOUTPUT.idBook=@idBook))
@@ -803,6 +805,11 @@ begin
 		update dbo.BILLOUTPUT
 		set dbo.BILLOUTPUT.total=@totalBill
 		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+		commit transaction
+		end try
+		begin catch
+		rollback transaction
+		end catch
 end
 go
 --Cập nhật lại loại khách hàng sau mỗi đơn hàng
@@ -811,27 +818,34 @@ create or alter procedure proc_updateTypeCusForCus
 @idCus varchar(8) 
 as
 begin
-	declare @idTypeCus varchar(8) , @pointMark int, @maxPointValue int
-	set @maxPointValue=0
-	declare point cursor for select dbo.TYPECUSTOMER.pointMark from dbo.TYPECUSTOMER order by pointMark ASC
-	open point
-	fetch next from point into @pointMark
-	while @@FETCH_STATUS=0
-	begin
-		if(@amountBooksBought>=@pointMark)
-			set @maxPointValue=@pointMark
-		else
-			break
+	begin transaction
+	begin try
+		declare @idTypeCus varchar(8) , @pointMark int, @maxPointValue int
+		set @maxPointValue=0
+		declare point cursor for select dbo.TYPECUSTOMER.pointMark from dbo.TYPECUSTOMER order by pointMark ASC
+		open point
 		fetch next from point into @pointMark
-	end
-	close point
-	deallocate point
+		while @@FETCH_STATUS=0
+		begin
+			if(@amountBooksBought>=@pointMark)
+				set @maxPointValue=@pointMark
+			else
+				break
+			fetch next from point into @pointMark
+		end
+		close point
+		deallocate point
 
-	select @idTypeCus=(select dbo.TYPECUSTOMER.idTypeCus from dbo.TYPECUSTOMER where dbo.TYPECUSTOMER.pointMark=@maxPointValue)
-	--Update lại IDtypecus cho khách hàng
-	update dbo.CUSTOMER
-	set idTypeCus=@idTypeCus, pointCus=@amountBooksBought
-	where dbo.CUSTOMER.idCus=@idCus
+		select @idTypeCus=(select dbo.TYPECUSTOMER.idTypeCus from dbo.TYPECUSTOMER where dbo.TYPECUSTOMER.pointMark=@maxPointValue)
+		--Update lại IDtypecus cho khách hàng
+		update dbo.CUSTOMER
+		set idTypeCus=@idTypeCus, pointCus=@amountBooksBought
+		where dbo.CUSTOMER.idCus=@idCus
+		commit transaction
+	end try
+	begin catch
+		rollback transaction
+	end catch
 end
 go
 
@@ -846,50 +860,57 @@ as
 begin
 	declare @totalOfBill int , @discountOfVoucher int, @discountOfTypeCus int
 
-	--Lấy ra giá trị hóa đơn và giá trị chiết khấu
-	select @totalOfBill=dbo.BILLOUTPUT.total
-	from dbo.BILLOUTPUT
-	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput 
+	begin transaction
+	begin try
+		--Lấy ra giá trị hóa đơn và giá trị chiết khấu
+		select @totalOfBill=dbo.BILLOUTPUT.total
+		from dbo.BILLOUTPUT
+		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput 
 
-	--Lấy giá trị chiết khấu của loại khách hàng
-	set @discountOfTypeCus=dbo.func_getValueDiscountOfTypeCustomer(@idCus)
+		--Lấy giá trị chiết khấu của loại khách hàng
+		set @discountOfTypeCus=dbo.func_getValueDiscountOfTypeCustomer(@idCus)
 
-	--Tính giá trị chiết khấu voucher nếu có
-	if(@idVoucher is not null)
-	begin
-		select @discountOfVoucher=dbo.VOUCHER.valueVoucher
-		from dbo.VOUCHER
-		where dbo.VOUCHER.idVoucher=@idVoucher
-	end
-	else
-		set @discountOfVoucher=0
-	--Tính tiền giá trị hóa đơn hiện tại
-	set @totalOfBill=@totalOfBill-((@discountOfTypeCus*@totalOfBill)/100)
-	set @totalOfBill=@totalOfBill-@discountOfVoucher
+		--Tính giá trị chiết khấu voucher nếu có
+		if(@idVoucher is not null)
+		begin
+			select @discountOfVoucher=dbo.VOUCHER.valueVoucher
+			from dbo.VOUCHER
+			where dbo.VOUCHER.idVoucher=@idVoucher
+		end
+		else
+			set @discountOfVoucher=0
+		--Tính tiền giá trị hóa đơn hiện tại
+		set @totalOfBill=@totalOfBill-((@discountOfTypeCus*@totalOfBill)/100)
+		set @totalOfBill=@totalOfBill-@discountOfVoucher
 
-	--Nếu tiền hóa đơn bé hơn hoặc bằng 0 thì hủy bỏ hóa đơn đó
-	if(@totalOfBill<=0)
-	begin
-			raiserror('Hóa đơn không hợp lệ',16,1)
-			delete from dbo.BILLOUTPUT
-			where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
-			return;
-	end
+		--Nếu tiền hóa đơn bé hơn hoặc bằng 0 thì hủy bỏ hóa đơn đó
+		if(@totalOfBill<=0)
+		begin
+				raiserror('Hóa đơn không hợp lệ',16,1)
+				delete from dbo.BILLOUTPUT
+				where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+				return;
+		end
 
-	--Cập nhật hóa đơn vào bảng
-	update dbo.BILLOUTPUT
-	set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher, total=@totalOfBill
-	where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
+		--Cập nhật hóa đơn vào bảng
+		update dbo.BILLOUTPUT
+		set dateOfBill=@dateTimeOfBill, idCus=@idCus, idEmployee=@idEmp, idVoucher=@idVoucher, total=@totalOfBill
+		where dbo.BILLOUTPUT.idBillOutPut=@idBillOutput
 	
-	--Cập lại điểm tích lũy và Type cho khách hàng
-	declare @amountBookInBill int, @amountBookTotal int
-	select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
-	select @amountBookTotal=@amountBookInBill+(select dbo.CUSTOMER.pointCus from dbo.CUSTOMER where dbo.CUSTOMER.idCus=@idCus)
-	exec proc_updateTypeCusForCus @amountBooksBought=@amountBookTotal, @idCus=@idCus
-	--Cập nhật trạng thái của đơn hàng
-	update dbo.BILLOUTPUT
-	set stateBill = 1
-	where dbo.BILLOUTPUT.idBillOutPut = @idBillOutput
+		--Cập lại điểm tích lũy và Type cho khách hàng
+		declare @amountBookInBill int, @amountBookTotal int
+		select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
+		select @amountBookTotal=@amountBookInBill+(select dbo.CUSTOMER.pointCus from dbo.CUSTOMER where dbo.CUSTOMER.idCus=@idCus)
+		exec proc_updateTypeCusForCus @amountBooksBought=@amountBookTotal, @idCus=@idCus
+		--Cập nhật trạng thái của đơn hàng
+		update dbo.BILLOUTPUT
+		set stateBill = 1
+		where dbo.BILLOUTPUT.idBillOutPut = @idBillOutput
+		commit transaction
+	end try
+	begin catch
+		rollback transaction
+	end catch
 end
 go
 --Xóa một item trong hóa đơn
@@ -919,25 +940,32 @@ create or alter procedure proc_cancelBillExport
 @idBill varchar(8) 
 as 
 begin
-	--Duyệt qua từng idBook trong hóa đơn
-	declare @idBook varchar(8) 
-	declare item cursor for (
-		select dbo.BOOK_BILLOUTPUT.idBook 
-		from dbo.BOOK_BILLOUTPUT 
-		where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
-	open item
-	fetch next from item into @idBook
-	while @@FETCH_STATUS=0
-	begin
-		execute proc_deleteBookBillOutput @idBill, @idBook
+	begin transaction
+	begin try
+		--Duyệt qua từng idBook trong hóa đơn
+		declare @idBook varchar(8) 
+		declare item cursor for (
+			select dbo.BOOK_BILLOUTPUT.idBook 
+			from dbo.BOOK_BILLOUTPUT 
+			where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
+		open item
 		fetch next from item into @idBook
-	end
-	close item
-	deallocate item
+		while @@FETCH_STATUS=0
+		begin
+			execute proc_deleteBookBillOutput @idBill, @idBook
+			fetch next from item into @idBook
+		end
+		close item
+		deallocate item
 
-	--Xóa hóa đơn đó
-	delete from dbo.BILLOUTPUT
-	where dbo.BILLOUTPUT.idBillOutPut=@idBill
+		--Xóa hóa đơn đó
+		delete from dbo.BILLOUTPUT
+		where dbo.BILLOUTPUT.idBillOutPut=@idBill
+		commit transaction
+	end try
+	begin catch
+		rollback transaction
+	end catch
 end
 go
 
@@ -946,11 +974,18 @@ go
 create or alter procedure proc_deleteBillOutput 
 as
 begin
-	declare @idBillOutput varchar(8)
-	set @idBillOutput = (select dbo.func_returnIdBillFalse())
+	begin transaction
+	begin try
+		declare @idBillOutput varchar(8)
+		set @idBillOutput = (select dbo.func_returnIdBillFalse())
 	
-	print (@idBillOutput)
-	exec proc_cancelBillExport @idBillOutput
+		print (@idBillOutput)
+		exec proc_cancelBillExport @idBillOutput
+		commit transaction
+	end try
+	begin catch 
+		rollback transaction
+	end catch
 end
 go
 

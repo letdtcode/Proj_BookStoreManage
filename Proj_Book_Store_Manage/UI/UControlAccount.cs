@@ -108,10 +108,8 @@ namespace Proj_Book_Store_Manage.UI
                     account = new AccountBL();
                     try
                     {
-                        int idAuthor = Convert.ToInt32(this.lblID.Text);
-                        int idEmp = Convert.ToInt32(this.cbEmployee.Text);
 
-                        account.addNewAccount(idAuthor, this.txtUserName.Text, this.txtPassword.Text, roleTemp, idEmp, ref err);
+                        account.addNewAccount(this.lblID.Text, this.txtUserName.Text, this.txtPassword.Text, roleTemp, this.cbEmployee.Text, ref err);
                         if (err == "")
                         {
                             MessageBox.Show("Thêm tài khoản thành công !");
@@ -121,17 +119,16 @@ namespace Proj_Book_Store_Manage.UI
                             MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Thông tin không hợp lệ");
+                        MessageBox.Show(ex.Message);
                     }              
                 }
                 else if (isEdit)
                 {
                     //account = new AccountBL()
-                    int idAuthor = Convert.ToInt32(this.lblID.Text);
-                    int idEmp = Convert.ToInt32(this.cbEmployee.Text);
-                    account.modifyAccount(idAuthor, this.txtUserName.Text, this.txtPassword.Text, roleTemp, idEmp, ref err);
+                  
+                    account.modifyAccount(this.lblID.Text, this.txtUserName.Text, this.txtPassword.Text, ref err);
                     //LoadData();
                     if (err == "")
                     {
@@ -217,7 +214,7 @@ namespace Proj_Book_Store_Manage.UI
 
         private void btnSearch_Click_1(object sender, EventArgs e)
         {
-            int id;
+            string id;
             string username;
             (id, username) = getParameter();
 
@@ -241,24 +238,24 @@ namespace Proj_Book_Store_Manage.UI
             this.cbAttribute.DataSource = param;
         }
 
-        (int, string) getParameter ()
+        (string, string) getParameter ()
         {
-            int id;
+            string id;
             string username;
             if (cbAttribute.Text == "Id Account")
             {
-                id = Convert.ToInt32(this.txtInput.Text);
+                id = this.txtInput.Text;
                 username = null;
             }    
 
             else if (cbAttribute.Text == "Name Account")
             {
-                id = 0;
+                id = null;
                 username = this.txtInput.Text.Trim(); ;
             }
             else
             {
-                id = 0;
+                id = null;
                 username = null;
             }
             return (id, username);

@@ -103,12 +103,12 @@ begin
 end
 go
 
-Create or alter proc proc_updateUser (@user varchar (20), @newPass varchar(30), @oldPass varchar)
+Create or alter proc proc_updateUser (@user varchar (20), @newPass varchar(30))
 as
 begin 
 	declare @state varchar (200)
-	set @state = 'login '+@user+' with password = '+@newPass --+ ' old_password = ' +@oldPass
+	set @state =' alter login '+@user+' with password = '+ ''''+@newPass+ ''''
+	print (@state)
 	exec (@state)
 end
 go
-
