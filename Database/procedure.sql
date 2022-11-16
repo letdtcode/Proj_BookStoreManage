@@ -886,6 +886,10 @@ begin
 	select @amountBookInBill=(select sum(amountOutput) from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBillOutput)
 	select @amountBookTotal=@amountBookInBill+(select dbo.CUSTOMER.pointCus from dbo.CUSTOMER where dbo.CUSTOMER.idCus=@idCus)
 	exec proc_updateTypeCusForCus @amountBooksBought=@amountBookTotal, @idCus=@idCus
+	--Cập nhật trạng thái của đơn hàng
+	update dbo.BILLOUTPUT
+	set stateBill = 1
+	where dbo.BILLOUTPUT.idBillOutPut = @idBillOutput
 end
 go
 --Xóa một item trong hóa đơn
@@ -917,7 +921,10 @@ as
 begin
 	--Duyệt qua từng idBook trong hóa đơn
 	declare @idBook varchar(8) 
-	declare item cursor for (select dbo.BOOK_BILLOUTPUT.idBook from dbo.BOOK_BILLOUTPUT where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
+	declare item cursor for (
+		select dbo.BOOK_BILLOUTPUT.idBook 
+		from dbo.BOOK_BILLOUTPUT 
+		where dbo.BOOK_BILLOUTPUT.idBillOutput=@idBill)
 	open item
 	fetch next from item into @idBook
 	while @@FETCH_STATUS=0
@@ -933,6 +940,20 @@ begin
 	where dbo.BILLOUTPUT.idBillOutPut=@idBill
 end
 go
+
+
+--Xóa bỏ đơn hàng khi trạng thái đơn hàng false
+create or alter procedure proc_deleteBillOutput 
+as
+begin
+	declare @idBillOutput varchar(8)
+	set @idBillOutput = (select dbo.func_returnIdBillFalse())
+	
+	print (@idBillOutput)
+	exec proc_cancelBillExport @idBillOutput
+end
+go
+
 --Sửa số lượng item trong hóa đơn
 create or alter procedure proc_updateBookBillOutput
 @idBillOutput varchar(8),

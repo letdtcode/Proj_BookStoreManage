@@ -11,7 +11,7 @@ namespace Proj_Book_Store_Manage.DBLayer
 {
     public class DBMain
     {
-        public static string ServerName = "DUCTHANH\\SQLEXPRESS";
+        public static string ServerName = "DESKTOP-MINHDUN";
         public static string DatabaseName = "BOOKSTOREMANAGE";
         public static string UserName= "";
         public static string Password= "";
@@ -134,10 +134,14 @@ namespace Proj_Book_Store_Manage.DBLayer
             cmd.CommandText = sqlProcedure;
             cmd.CommandType = ct;
             cmd.Parameters.Clear();
-            foreach (SqlParameter i in parameters)
+
+            if (parameters != null)
             {
-                cmd.Parameters.Add(i);
-            }
+                foreach (SqlParameter i in parameters)
+                {
+                    cmd.Parameters.Add(i);
+                }
+            }    
 
             try
             {

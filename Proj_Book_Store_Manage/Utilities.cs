@@ -69,7 +69,7 @@ namespace Proj_Book_Store_Manage
         {
             int numIDNext = 0;
             int numRows = dt.Rows.Count;
-            if (numRows < 0)
+            if (numRows <= 0)
             {
                 numIDNext = 1;
             }

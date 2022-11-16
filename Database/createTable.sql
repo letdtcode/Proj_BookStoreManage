@@ -105,7 +105,7 @@ total int NOT NULL DEFAULT 0,
 idCus varchar(8)NULL,
 idEmployee varchar(8) NULL,
 idVoucher varchar(8) null,
-stateBill bit,
+stateBill bit default 0,
 
 CONSTRAINT pk_billOutPut PRIMARY KEY (idBillOutPut),
 CONSTRAINT fk_pay FOREIGN KEY (idCus) REFERENCES CUSTOMER (idCus),
@@ -151,7 +151,7 @@ CREATE TABLE [dbo].BOOK_CATEGORY (
 idBook varchar(8) NOT NULL,
 idCategory varchar(8) NOT NULL,
 
-CONSTRAINT pk_book_category PRIMARY KEY (idBook,idCategory)
+CONSTRAINT pk_book_category PRIMARY KEY (idBook,idCategory),
 CONSTRAINT fk_id_into_book FOREIGN KEY (idBook) REFERENCES BOOK (idBook),
 CONSTRAINT fk_id_into_categgory FOREIGN KEY (idCategory) REFERENCES CATEGORY (idCategory)
 )
@@ -190,20 +190,4 @@ CONSTRAINT fk_idBook_into_output FOREIGN KEY (idBook) REFERENCES BOOK (idBook),
 CONSTRAINT chk_amountOutput CHECK(amountOutput>=0)
 )
 go
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
