@@ -165,3 +165,7 @@ select *
 from dbo.VOUCHER
 go
 
+---------------------------------------------------------------------------Tân thêm
+---View doanh thu
+create view view_top5StockMin
+as select top 5 nameBook,amount from BOOK order by amount asc
