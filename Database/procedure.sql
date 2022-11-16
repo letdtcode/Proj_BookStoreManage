@@ -1018,7 +1018,7 @@ begin
 end
 go
 
-
+----------------------------------------------Tân thêm-------------------------------
 ---Procedure show doanh thu trong khoảng begin end---
 create or alter proc sp_ShowRevenue
 @begin date , @end date
